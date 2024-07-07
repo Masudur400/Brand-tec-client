@@ -42,7 +42,7 @@ const NavBar = () => {
                         <img src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg" />
                     </div>
                 </div>
-                <button className="btn font-bold max-sm:btn-sm">Login</button>
+                <Link to='/login' className="btn font-bold max-sm:btn-sm">Login</Link>
             </div>
         </div>
     );
