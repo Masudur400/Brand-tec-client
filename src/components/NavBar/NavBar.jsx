@@ -8,10 +8,12 @@ const NavBar = () => {
     const [open, setOpen] = useState(false)
 
     const routes = <>
-        <li><NavLink to='/'> Home</NavLink> </li>
-        <li><NavLink to='/watch'>Watch</NavLink> </li>
-        <li><NavLink to='/mobile'>Mobile</NavLink> </li>
-        <li><NavLink to='/laptop'>LapTop</NavLink> </li>
+        <li><NavLink to='/' className={({ isActive }) => isActive ? 'text-orange-500 underline font-bold' : 'hover:text-red-500'}> Home</NavLink> </li>
+        <li><NavLink to='/watch' className={({ isActive }) => isActive ? 'text-orange-500 underline font-bold' : 'hover:text-red-500'}>Watch</NavLink> </li>
+        <li><NavLink to='/mobile' className={({ isActive }) => isActive ? 'text-orange-500 underline font-bold' : 'hover:text-red-500'}>Mobile</NavLink> </li>
+        <li><NavLink to='/laptop' className={({ isActive }) => isActive ? 'text-orange-500 underline font-bold' : 'hover:text-red-500'}>LapTop</NavLink> </li>
+        <li><NavLink to='/dashboard' className={({ isActive }) => isActive ? 'text-orange-500 underline font-bold' : 'hover:text-red-500'}>Dashboard</NavLink> </li>
+
      </>
 
     return (
@@ -29,7 +31,7 @@ const NavBar = () => {
             </div>
 
             {/* menu / routes  */}
-            <ul className={`lg:flex gap-5 left-0 min-w-28  absolute lg:static ${open ? 'top-14 md:top-16' : 'hidden'} bg-gray-50 lg:bg-white p-3 rounded-sm justify-center `}>
+            <ul className={`lg:flex gap-5 left-0 min-w-28  absolute lg:static ${open ? 'top-14 md:top-16' : 'hidden'} bg-gray-50 lg:bg-white p-3 rounded-sm justify-center font-semibold`}>
                 {routes}
             </ul>
 

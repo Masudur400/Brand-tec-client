@@ -11,6 +11,7 @@ import Home from './components/Home/Home.jsx';
 import Watch from './components/Watch/Watch.jsx';
 import Mobile from './components/Mobile/Mobile.jsx';
 import Laptop from './components/Laptop/Laptop.jsx';
+import Dashboard from './dashboard/Dashboard/Dashboard.jsx';
 
 const router = createBrowserRouter([
   {
@@ -35,6 +36,15 @@ const router = createBrowserRouter([
       }
     ]
   },
+  {
+    path:'dashboard',
+    element:<Dashboard></Dashboard>,
+    children:[
+      {
+
+      }
+    ]
+  }
 ]);
 
 ReactDOM.createRoot(document.getElementById('root')).render(
