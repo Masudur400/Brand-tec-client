@@ -17,7 +17,7 @@ const NavBar = () => {
      </>
 
     return (
-        <div className="  p-3 flex justify-between items-center shadow-md">
+        <div className="p-3 flex justify-between items-center shadow-md shadow-orange-100">
             {/* dropdown icons  */}
             <div onClick={() => setOpen(!open)} className="lg:hidden text-2xl md:text-3xl">
                 {
