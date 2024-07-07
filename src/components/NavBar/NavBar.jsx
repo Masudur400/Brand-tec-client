@@ -1,18 +1,18 @@
 import { useState } from "react";
 import { GrMenu } from "react-icons/gr";
 import { HiOutlineX } from "react-icons/hi";
+import { Link, NavLink } from "react-router-dom";
 
 const NavBar = () => {
 
     const [open, setOpen] = useState(false)
 
     const routes = <>
-        <li> Home </li>
-        <li> About </li>
-        <li> Contact </li>
-        <li> Blogs </li>
-        <li> Features </li>
-    </>
+        <li><NavLink to='/'> Home</NavLink> </li>
+        <li><NavLink to='/watch'>Watch</NavLink> </li>
+        <li><NavLink to='/mobile'>Mobile</NavLink> </li>
+        <li><NavLink to='/laptop'>LapTop</NavLink> </li>
+     </>
 
     return (
         <div className="  p-3 flex justify-between items-center shadow-md">
@@ -25,7 +25,7 @@ const NavBar = () => {
 
             {/* logo  */}
             <div>
-                <h3 className="text-3xl font-bold  absolute lg:static max-sm:left-12 max-sm:top-[8px] md:left-20 md:top-[17px]"> <span className="text-orange-500">Brand</span><span className="text-xl">TEC</span></h3>
+                <Link to='/' className="text-3xl font-bold  absolute lg:static max-sm:left-12 max-sm:top-[8px] md:left-20 md:top-[17px]"> <span className="text-orange-500">Brand</span><span className="text-xl">TEC</span></Link>
             </div>
 
             {/* menu / routes  */}

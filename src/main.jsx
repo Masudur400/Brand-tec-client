@@ -8,6 +8,9 @@ import {
 } from "react-router-dom";
 import Root from './components/Root/Root.jsx';
 import Home from './components/Home/Home.jsx';
+import Watch from './components/Watch/Watch.jsx';
+import Mobile from './components/Mobile/Mobile.jsx';
+import Laptop from './components/Laptop/Laptop.jsx';
 
 const router = createBrowserRouter([
   {
@@ -17,6 +20,18 @@ const router = createBrowserRouter([
       {
         path:'/',
         element: <Home></Home>
+      },
+      {
+        path:'/watch',
+        element:<Watch></Watch>
+      },
+      {
+        path:'/mobile',
+        element:<Mobile></Mobile>
+      },
+      {
+        path:'/laptop',
+        element:<Laptop></Laptop>
       }
     ]
   },
