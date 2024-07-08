@@ -16,7 +16,7 @@ const Slider = ({image,title, text}) => {
 Slider.propTypes = {
     image: PropTypes.photo,
     text: PropTypes.string,
-
+    title: PropTypes.string,
 }
 
 export default Slider;
