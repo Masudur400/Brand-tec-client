@@ -2,10 +2,21 @@ import { Link } from "react-router-dom";
 
  
 const Register = () => {
+
+    const handleRegister = e =>{
+    e.preventDefault()
+    const form = new FormData(e.currentTarget)
+    const name = form.get('name')
+    const email = form.get('email')
+    const password = form.get('password')
+    const photoFile = form.get('photo');
+    console.table(name,email,password, photoFile)
+    }
+
     return (
         <div className="lg:w-1/3 md:w-1/2 mx-auto my-14 p-5 rounded-lg bg-orange-100 shadow-md">
-            <h3 className="text-3xl font-bold text-center text-orange-500 my-4">Please Register</h3>
-            <form className="space-y-5">
+            <h3 className="text-3xl font-bold text-center text-orange-600 my-4">Please Register</h3>
+            <form onSubmit={handleRegister} className="space-y-5">
                 <div>
                     <input type="text" name="name" placeholder="Your Name" id="" className="w-full px-4 py-2 rounded-md" />
                 </div>
