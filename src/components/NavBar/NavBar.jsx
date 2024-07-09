@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { BsCart4 } from "react-icons/bs";
 import { GrMenu } from "react-icons/gr";
 import { HiOutlineX } from "react-icons/hi";
 import { Link, NavLink } from "react-router-dom";
@@ -12,6 +13,7 @@ const NavBar = () => {
         <li><NavLink to='/watch' onClick={()=>setOpen(!open)} className={({ isActive }) => isActive ? 'text-orange-500 underline font-bold' : 'hover:text-red-500'}>Watch</NavLink> </li>
         <li><NavLink to='/mobile' onClick={()=>setOpen(!open)} className={({ isActive }) => isActive ? 'text-orange-500 underline font-bold' : 'hover:text-red-500'}>Mobile</NavLink> </li>
         <li><NavLink to='/laptop' onClick={()=>setOpen(!open)} className={({ isActive }) => isActive ? 'text-orange-500 underline font-bold' : 'hover:text-red-500'}>LapTop</NavLink> </li>
+        <li><NavLink to='/cart' onClick={()=>setOpen(!open)} className={({ isActive }) => isActive ? 'text-orange-500 underline font-bold flex items-center gap-1' : 'hover:text-red-500 flex items-center gap-1'}>Cart<BsCart4></BsCart4></NavLink> </li>
         <li><NavLink to='/dashboard' onClick={()=>setOpen(!open)} className={({ isActive }) => isActive ? 'text-orange-500 underline font-bold' : 'hover:text-red-500'}>Dashboard</NavLink> </li>
 
      </>
@@ -31,7 +33,7 @@ const NavBar = () => {
             </div>
 
             {/* menu / routes  */}
-            <ul className={`lg:flex gap-5 left-0 min-w-28  absolute lg:static ${open ? 'top-14 md:top-16' : 'hidden'} bg-gray-50 lg:bg-white p-3 rounded-sm justify-center font-semibold`}>
+            <ul className={`lg:flex gap-5 left-0 min-w-28  absolute lg:static ${open ? 'top-14 md:top-16 z-[99]' : 'hidden'} bg-gray-50 lg:bg-white p-3 rounded-sm justify-center font-semibold`}>
                 {routes}
             </ul>
 
