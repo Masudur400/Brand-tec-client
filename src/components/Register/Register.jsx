@@ -17,7 +17,7 @@ const Register = () => {
     return (
         <div className="lg:w-1/3 md:w-1/2 mx-auto my-14 p-3 md:p-5 rounded-lg bg-orange-100 shadow-md max-sm:mx-4">
             <div className="flex justify-end">
-            <Link to='/'><FaXmark className="text-3xl text-orange-600 my-0"></FaXmark></Link>
+            <Link to='/' className="p-1 border-2 border-orange-500 rounded-full"><FaXmark className="text-3xl text-orange-600 my-0"></FaXmark></Link>
             </div>
             <h3 className="text-3xl font-bold text-center text-orange-600 my-4">Please Register</h3>
             <form onSubmit={handleRegister} className="space-y-5">
