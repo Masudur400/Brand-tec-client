@@ -16,6 +16,7 @@ import Login from './components/Login/Login.jsx';
 import Register from './components/Register/Register.jsx';
 import LoginRegister from './LoginRegister/LoginRegister.jsx';
 import Cart from './components/Cart/Cart.jsx';
+import AddProduct from './components/AddProduct/AddProduct.jsx';
 
 const router = createBrowserRouter([
   {
@@ -41,6 +42,10 @@ const router = createBrowserRouter([
       {
         path:'/cart',
         element: <Cart></Cart>
+      },
+      {
+        path:'/addProduct',
+        element: <AddProduct></AddProduct>
       },
       // {
       //   path:'/login',
