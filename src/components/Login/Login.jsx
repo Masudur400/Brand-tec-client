@@ -20,10 +20,12 @@ const Login = () => {
             <form onSubmit={handleLogin} className="space-y-5">
                  
                 <div>
+                    <p>Email</p>
                     <input type="email" name="email" placeholder="Your Email" id="" className="w-full px-4 py-2 rounded-md" />
 
                 </div>
                 <div>
+                    <p>Password</p>
                     <input type="password" name="password" placeholder="Password" id="" className="w-full px-4 py-2 rounded-md" />
                 </div>
                 
