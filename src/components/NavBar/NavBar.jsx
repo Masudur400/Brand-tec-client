@@ -7,6 +7,7 @@ import useAuth from "../Hooks/useAuth";
 import { MdLogout } from "react-icons/md";
 import { FaXmark } from "react-icons/fa6";
 import { GoX } from "react-icons/go";
+import Loading from "../../Loading/Loading";
 
 const NavBar = () => {
 
@@ -25,8 +26,10 @@ const NavBar = () => {
 
     </>
 
+    if (loading) {
+        return <Loading></Loading>
+    }
 
- 
 
     return (
         <div className="p-3 flex justify-between items-center shadow-md shadow-orange-100">
@@ -52,27 +55,27 @@ const NavBar = () => {
                 user ?
                     <div className="flex max-sm:gap-2 gap-4 justify-center mr-2 lg:mr-6">
                         <div>
-                        <div className="avatar">
-                            <div className="max-sm:w-8 w-12 rounded-full border">
-                                <img src={user?.photoURL} alt="user image" referrerPolicy="no-referrer" 
-                                onClick={()=>setProfile(!profile)}/>
+                            <div className="avatar">
+                                <div className="max-sm:w-8 w-12 rounded-full border">
+                                    <img src={user?.photoURL} alt="user image" referrerPolicy="no-referrer"
+                                        onClick={() => setProfile(!profile)} />
+                                </div>
                             </div>
-                        </div>
-                            <ul className={`absolute space-y-5 ${profile ? 'bg-gray-50 md:min-w-32 px-3 py-2 z-[99] font-bold rounded-md right-1 md:right-4': 'hidden'}`}>
-                                <li onClick={()=>setProfile(!profile)} className="absolute text-2xl md:text-3xl top-0 right-0"> <GoX className="border border-black rounded-full"></GoX></li>
+                            <ul className={`absolute space-y-5 ${profile ? 'bg-gray-50 md:min-w-32 px-3 py-2 z-[99] font-bold rounded-md right-1 md:right-4' : 'hidden'}`}>
+                                <li onClick={() => setProfile(!profile)} className="absolute text-2xl md:text-3xl top-0 right-0"> <GoX className="border border-black rounded-full"></GoX></li>
                                 <div>
-                                <li onClick={()=>setProfile(!profile)}><Link to='/profile' className="hover:text-orange-500">Profile</Link></li>
-                                <li onClick={()=>logOut()} className="flex gap-1 items-center hover:text-orange-500">LogOut <MdLogout></MdLogout></li>
+                                    <li onClick={() => setProfile(!profile)}><Link to='/profile' className="hover:text-orange-500">Profile</Link></li>
+                                    <li onClick={() => logOut()} className="flex gap-1 items-center hover:text-orange-500">LogOut <MdLogout></MdLogout></li>
                                 </div>
                             </ul>
                         </div>
                         {/* <button  className="btn md:font-bold max-sm:btn-sm text-white bg-orange-400 hover:bg-orange-500">LogOut</button> */}
-                    </div> 
+                    </div>
 
                     // <div className="dropdown dropdown-end">
                     //     <div 
                     //     tabIndex={0}
-                        
+
                     //      role="button" className="btn btn-ghost btn-circle avatar">
                     //         <div className="w-10 rounded-full">
                     //             <img

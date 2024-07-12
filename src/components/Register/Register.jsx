@@ -94,15 +94,44 @@ const Register = () => {
                     console.log(error.message)
                 })
 
-
-
-
         } catch (error) {
             console.error('Error uploading the image or submitting the form:', error);
         }
-
-
     }
+
+
+    const handleGoogleLogin = () => {
+        googleLogin()
+            .then(result => {
+                const userinfo = {
+                    email: result.user?.email,
+                    name: result.user?.displayName,
+                    image: result.user?.photoURL,
+                    role: 'anonymous' 
+                }
+                axiosPublic.post('/users', userinfo)
+                .then(res => {
+                    if (res.data.insertedId) {
+                        Swal.fire({
+                            title: "Success!",
+                            text: "login successful!",
+                            icon: "success"
+                        });
+                    }
+                    
+                    navigate(location?.state ? location.state : '/')
+                })
+                .catch(err=>{
+                    console.log(err.message)
+                })
+
+            })
+            .catch(err=>{
+                console.log(err.message)
+            })
+    }
+
+
 
     return (
         // <div className="lg:w-1/3 md:w-1/2 mx-auto my-14 p-3 md:p-5 rounded-lg bg-orange-100 shadow-md max-sm:mx-4">
@@ -186,10 +215,9 @@ const Register = () => {
                 <div className="divider my-5"></div>
                 <div className="mb-t">
                     <div>
-                        <button onClick={''} className=" p-3 bg-white rounded-xl font-bold"> <FcGoogle className="text-3xl"></FcGoogle></button>
+                        <button onClick={handleGoogleLogin} className=" p-3 bg-white rounded-xl font-bold"> <FcGoogle className="text-3xl"></FcGoogle></button>
 
-                    </div>
-
+                    </div> 
                 </div>
             </div>
         </div>
