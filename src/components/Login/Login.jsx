@@ -5,6 +5,7 @@ import { Link, useNavigate } from "react-router-dom";
 import useAuth from "../Hooks/useAuth";
 import useAxiosPublic from "../Hooks/useAxiosPublic";
 import Swal from "sweetalert2";
+import Loading from "../../Loading/Loading";
 
 const Login = () => {
 
@@ -38,13 +39,15 @@ const Login = () => {
 
 
     const handleGoogleLogin = () => {
+        const date = new Date()
         googleLogin()
             .then(result => {
                 const userinfo = {
                     email: result.user?.email,
                     name: result.user?.displayName,
                     image: result.user?.photoURL,
-                    role: 'anonymous'
+                    role: 'anonymous',
+                    userCreateTime: date
                 }
                 axiosPublic.post('/users', userinfo)
                     .then(res => {
@@ -66,6 +69,10 @@ const Login = () => {
             .catch(err => {
                 console.log(err.message)
             })
+    }
+
+    if(loading){
+        return <Loading></Loading>
     }
 
     return (

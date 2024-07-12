@@ -35,6 +35,7 @@ const Register = () => {
         const password = form.get('password')
         const photoFile = form.get('photo');
         console.table(name, email, password, photoFile)
+        const date = new Date()
 
         setUserSuccess('');
         setPasswordError('');
@@ -75,7 +76,8 @@ const Register = () => {
                         name: name,
                         email: email,
                         photo: imageUrl,
-                        role: 'anonymous'
+                        role: 'anonymous',
+                        userCreateTime: date
                     }
                     axiosPublic.post('/users', userInfo)
                         .then(res => {
@@ -101,13 +103,15 @@ const Register = () => {
 
 
     const handleGoogleLogin = () => {
+        const date = new Date()
         googleLogin()
             .then(result => {
                 const userinfo = {
                     email: result.user?.email,
                     name: result.user?.displayName,
                     image: result.user?.photoURL,
-                    role: 'anonymous' 
+                    role: 'anonymous' ,
+                    userCreateTime: date
                 }
                 axiosPublic.post('/users', userinfo)
                 .then(res => {

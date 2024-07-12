@@ -4,8 +4,7 @@ import { GrMenu } from "react-icons/gr";
 import { HiOutlineX } from "react-icons/hi";
 import { Link, NavLink } from "react-router-dom";
 import useAuth from "../Hooks/useAuth";
-import { MdLogout } from "react-icons/md";
-import { FaXmark } from "react-icons/fa6";
+import { MdLogout } from "react-icons/md"; 
 import { GoX } from "react-icons/go";
 import Loading from "../../Loading/Loading";
 
