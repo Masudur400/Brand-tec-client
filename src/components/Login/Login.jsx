@@ -1,3 +1,4 @@
+import { Helmet } from "react-helmet";
 import { FaXmark } from "react-icons/fa6";
 import { Link } from "react-router-dom";
 
@@ -13,6 +14,9 @@ const Login = () => {
 
     return (
         <div className="lg:w-1/3 md:w-1/2 mx-auto my-20 md:p-5 p-3 rounded-lg bg-orange-100 shadow-md max-sm:mx-4 ">
+            <Helmet>
+                <title>Login</title>
+            </Helmet>
             <div className="flex justify-end">
             <Link to='/' className="p-1 border-2 border-orange-500 rounded-full"><FaXmark className="text-3xl text-orange-600 my-0"></FaXmark></Link>
             </div>

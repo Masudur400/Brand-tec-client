@@ -3,21 +3,26 @@ import { BsCart4 } from "react-icons/bs";
 import { GrMenu } from "react-icons/gr";
 import { HiOutlineX } from "react-icons/hi";
 import { Link, NavLink } from "react-router-dom";
+import useAuth from "../Hooks/useAuth";
 
 const NavBar = () => {
 
     const [open, setOpen] = useState(false)
+    const { user, logOut, loading } = useAuth()
 
     const routes = <>
-        <li><NavLink to='/' onClick={()=>setOpen(!open)} className={({ isActive }) => isActive ? 'text-orange-500 underline font-bold' : 'hover:text-red-500'}> Home</NavLink> </li>
-        <li><NavLink to='/watch' onClick={()=>setOpen(!open)} className={({ isActive }) => isActive ? 'text-orange-500 underline font-bold' : 'hover:text-red-500'}>Watch</NavLink> </li>
-        <li><NavLink to='/mobile' onClick={()=>setOpen(!open)} className={({ isActive }) => isActive ? 'text-orange-500 underline font-bold' : 'hover:text-red-500'}>Mobile</NavLink> </li>
-        <li><NavLink to='/laptop' onClick={()=>setOpen(!open)} className={({ isActive }) => isActive ? 'text-orange-500 underline font-bold' : 'hover:text-red-500'}>LapTop</NavLink> </li>
-        <li><NavLink to='/cart' onClick={()=>setOpen(!open)} className={({ isActive }) => isActive ? 'text-orange-500 underline font-bold flex items-center gap-1' : 'hover:text-red-500 flex items-center gap-1'}>Cart<BsCart4></BsCart4></NavLink> </li>
-        <li><NavLink to='/addProduct' onClick={()=>setOpen(!open)} className={({ isActive }) => isActive ? 'text-orange-500 underline font-bold' : 'hover:text-red-500'}>AddProduct</NavLink> </li>
-        <li><NavLink to='/dashboard' onClick={()=>setOpen(!open)} className={({ isActive }) => isActive ? 'text-orange-500 underline font-bold' : 'hover:text-red-500'}>Dashboard</NavLink> </li>
+        <li><NavLink to='/' onClick={() => setOpen(!open)} className={({ isActive }) => isActive ? 'text-orange-500 underline font-bold' : 'hover:text-red-500'}> Home</NavLink> </li>
+        <li><NavLink to='/watch' onClick={() => setOpen(!open)} className={({ isActive }) => isActive ? 'text-orange-500 underline font-bold' : 'hover:text-red-500'}>Watch</NavLink> </li>
+        <li><NavLink to='/mobile' onClick={() => setOpen(!open)} className={({ isActive }) => isActive ? 'text-orange-500 underline font-bold' : 'hover:text-red-500'}>Mobile</NavLink> </li>
+        <li><NavLink to='/laptop' onClick={() => setOpen(!open)} className={({ isActive }) => isActive ? 'text-orange-500 underline font-bold' : 'hover:text-red-500'}>LapTop</NavLink> </li>
+        <li><NavLink to='/cart' onClick={() => setOpen(!open)} className={({ isActive }) => isActive ? 'text-orange-500 underline font-bold flex items-center gap-1' : 'hover:text-red-500 flex items-center gap-1'}>Cart<BsCart4></BsCart4></NavLink> </li>
+        <li><NavLink to='/addProduct' onClick={() => setOpen(!open)} className={({ isActive }) => isActive ? 'text-orange-500 underline font-bold' : 'hover:text-red-500'}>AddProduct</NavLink> </li>
+        <li><NavLink to='/dashboard' onClick={() => setOpen(!open)} className={({ isActive }) => isActive ? 'text-orange-500 underline font-bold' : 'hover:text-red-500'}>Dashboard</NavLink> </li>
 
-     </>
+    </>
+
+
+ 
 
     return (
         <div className="p-3 flex justify-between items-center shadow-md shadow-orange-100">
@@ -39,14 +44,20 @@ const NavBar = () => {
             </ul>
 
             {/* user image & button  */}
-            <div className="flex max-sm:gap-2 gap-4 justify-center">
-                <div className="avatar">
-                    <div className="max-sm:w-8 w-12 rounded-full">
-                        <img src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg" />
+            {
+                user ?
+                    <div className="flex max-sm:gap-2 gap-4 justify-center">
+                        <div className="avatar">
+                            <div className="max-sm:w-8 w-12 rounded-full border">
+                                <img src={user?.photoURL} alt="user image"/>
+                            </div>
+                        </div>
+                        <button onClick={()=>logOut()} className="btn md:font-bold max-sm:btn-sm text-white bg-orange-400 hover:bg-orange-500">LogOut</button>
+                    </div> 
+                    : <div>
+                        <Link to='/loginRegister/login' className="btn font-bold max-sm:btn-sm text-white bg-orange-400 hover:bg-orange-500">Login</Link>
                     </div>
-                </div>
-                <Link to='/loginRegister/login' className="btn font-bold max-sm:btn-sm text-white bg-orange-400 hover:bg-orange-500">Login</Link>
-            </div>
+            }
         </div>
     );
 };

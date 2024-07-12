@@ -2,9 +2,12 @@ import { useState } from "react";
 import { Helmet } from "react-helmet";
 import { FaRegEye, FaRegEyeSlash, FaXmark } from "react-icons/fa6";
 import { FcGoogle } from "react-icons/fc";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import useAuth from "../Hooks/useAuth";
 import axios from "axios";
+import { updateProfile } from "firebase/auth";
+import useAxiosPublic from "../Hooks/useAxiosPublic";
+import Swal from "sweetalert2";
 
 
 
@@ -15,6 +18,8 @@ const imageHostingApi = `https://api.imgbb.com/1/upload?key=${imageHostingKey}`;
 const Register = () => {
 
     const { createUser, googleLogin, loading } = useAuth()
+    const axiosPublic = useAxiosPublic()
+    const navigate= useNavigate()
 
     const [showPassword, setShowPassword] = useState(false);
     const [emailError, setEmailError] = useState('');
@@ -56,11 +61,42 @@ const Register = () => {
             });
 
             const imageUrl = imageRes.data.data.url;
-            console.log(imageUrl)
+            // console.log(imageUrl)
+
+            createUser(email, password)
+                .then(result => {
+                    console.log(result.user)
+                    updateProfile(result.user, {
+                        displayName: name,
+                        photoURL: imageUrl
+                    })
+                })
+                .then(() => {
+                    const userInfo = {
+                        name: name,
+                        email: email,
+                        photo: imageUrl,
+                        role: 'anonymous'
+                    }
+                    axiosPublic.post('/users',userInfo)
+                    .then(res=>{
+                        if(res.data.insertedId){
+                            Swal.fire({
+                                title: "Success!",
+                                text: "Register successfully!",
+                                icon: "success"
+                            });
+                        }
+                    })
+                })
+                .catch(error =>{
+                    console.log(error.message)
+                })
+                setUserSuccess('user created successfully')
+                navigate(location?.state ? location.state : '/')
 
 
 
-  
         } catch (error) {
             console.error('Error uploading the image or submitting the form:', error);
         }
