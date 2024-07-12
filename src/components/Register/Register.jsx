@@ -19,7 +19,7 @@ const Register = () => {
 
     const { createUser, googleLogin, loading } = useAuth()
     const axiosPublic = useAxiosPublic()
-    const navigate= useNavigate()
+    const navigate = useNavigate()
 
     const [showPassword, setShowPassword] = useState(false);
     const [emailError, setEmailError] = useState('');
@@ -65,7 +65,6 @@ const Register = () => {
 
             createUser(email, password)
                 .then(result => {
-                    console.log(result.user)
                     updateProfile(result.user, {
                         displayName: name,
                         photoURL: imageUrl
@@ -78,22 +77,23 @@ const Register = () => {
                         photo: imageUrl,
                         role: 'anonymous'
                     }
-                    axiosPublic.post('/users',userInfo)
-                    .then(res=>{
-                        if(res.data.insertedId){
-                            Swal.fire({
-                                title: "Success!",
-                                text: "Register successfully!",
-                                icon: "success"
-                            });
-                        }
-                    })
+                    axiosPublic.post('/users', userInfo)
+                        .then(res => {
+                            if (res.data.insertedId) {
+                                Swal.fire({
+                                    title: "Success!",
+                                    text: "Register successfully!",
+                                    icon: "success"
+                                });
+                            }
+                            setUserSuccess('user created successfully')
+                            navigate(location?.state ? location.state : '/')
+                        })
                 })
-                .catch(error =>{
+                .catch(error => {
                     console.log(error.message)
                 })
-                setUserSuccess('user created successfully')
-                navigate(location?.state ? location.state : '/')
+
 
 
 
@@ -175,7 +175,11 @@ const Register = () => {
                     <p className="font-semibold">Your Photo</p>
                     <input type="file" placeholder="" name="photo" id="" className="w-full px-4 py-2 rounded-md bg-white" />
 
-                    <input className="w-full px-4 py-2 text-center text-lg rounded-md bg-orange-500 hover:bg-orange-600 border hover:border-black-500 text-white font-bold my-3" type="submit" value="Register" />
+                    {
+                        loading ? <button disabled className="w-full px-4 py-2 text-center text-lg rounded-md bg-orange-500 hover:bg-orange-600 border hover:border-black-500 text-white font-bold my-3"><span className="loading loading-spinner loading-md"></span></button> :
+                            <input disabled={loading} className="w-full px-4 py-2 text-center text-lg rounded-md bg-orange-500 hover:bg-orange-600 border hover:border-black-500 text-white font-bold my-3" type="submit" value="Register" />
+                    }
+
                 </form>
 
                 <p>Already have an account ? <Link to='/loginRegister/login' className="text-red-500 font-bold underline">please Login</Link></p>
