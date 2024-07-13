@@ -124,6 +124,7 @@ const Register = () => {
                     }
                     
                     navigate(location?.state ? location.state : '/')
+                    // window.location.reload()
                 })
                 .catch(err=>{
                     console.log(err.message)
@@ -137,40 +138,14 @@ const Register = () => {
 
 
 
-    return (
-        // <div className="lg:w-1/3 md:w-1/2 mx-auto my-14 p-3 md:p-5 rounded-lg bg-orange-100 shadow-md max-sm:mx-4">
-        //     <div className="flex justify-end">
-        //     <Link to='/' className="p-1 border-2 border-orange-500 rounded-full"><FaXmark className="text-3xl text-orange-600 my-0"></FaXmark></Link>
-        //     </div>
-        //     <h3 className="text-3xl font-bold text-center text-orange-600 my-4">Please Register</h3>
-        //     <form onSubmit={handleRegister} className="space-y-5">
-        //         <div>
-        //             <input type="text" name="name" placeholder="Your Name" id="" className="w-full px-4 py-2 rounded-md" />
-        //         </div>
-        //         <div>
-        //             <input type="email" name="email" placeholder="Your Email" id="" className="w-full px-4 py-2 rounded-md" />
-
-        //         </div>
-        //         <div>
-        //             <input type="password" name="password" placeholder="Password" id="" className="w-full px-4 py-2 rounded-md" />
-        //         </div>
-        //         <div>
-        //             <input type="file" name="photo" id="" className="w-full px-4 py-2 rounded-md" />
-        //         </div>
-        //         <div>
-        //             <input type="submit" value="Register" className="w-full px-4 py-2 rounded-md bg-orange-500 text-white font-bold hover:bg-orange-600" />
-        //         </div>
-        //     </form>
-        //     <p className="my-3">Already an account <Link to='/loginRegister/login' className="text-red-500 font-bold">Please Login</Link></p>
-        // </div>
-
+    return ( 
 
         <div className="min-h-screen">
             <Helmet>
                 <title>Register</title>
             </Helmet>
 
-            <div data-aos="zoom-in-down" className="w-4/5 lg:w-1/3 md:w-2/3 mx-auto bg-orange-100 shadow-xl p-5 rounded-lg my-20">
+            <div data-aos="zoom-in-down" className="w-4/5 lg:w-1/3 md:w-2/3 mx-auto bg-gradient-to-r from-orange-200 to-red-200 shadow-xl p-5 rounded-lg my-20">
 
                 <div className="flex justify-end">
                     <Link to='/' className="p-1 border-2 border-orange-500 rounded-full"><FaXmark className="md:text-3xl text-orange-600 my-0"></FaXmark></Link>
@@ -184,20 +159,20 @@ const Register = () => {
 
                 <form onSubmit={handleRegister}>
 
-                    <p className="font-semibold">Name</p>
-                    <input className="border-2 rounded-md w-full px-4 py-2 mb-2" type="text" name="name" placeholder="Name" id="name" required />
+                    <p className="font-semibold text-sm md:text-base">Name</p>
+                    <input className="border-2 rounded-md w-full text-sm md:text-base px-4 md:py-1 mb-2" type="text" name="name" placeholder="Name" id="name" required />
 
 
-                    <p className="font-semibold">Email</p>
-                    <input className="border-2 rounded-md w-full px-4 py-2 mb-2" type="email" name="email" placeholder="Email" id="email" required />
+                    <p className="font-semibold text-sm md:text-base">Email</p>
+                    <input className="border-2 rounded-md w-full text-sm md:text-base px-4 md:py-1 mb-2" type="email" name="email" placeholder="Email" id="email" required />
                     {
                         emailError && <p className="  text-red-500">{emailError}</p>
                     }
 
-                    <p className="font-semibold">Password</p>
+                    <p className="font-semibold text-sm md:text-base">Password</p>
                     <div className="relative">
-                        <input className="border-2 rounded-md w-full px-4 py-2 mb-2" type={showPassword ? "text" : "password"} name="password" placeholder="Password" id="password" required />
-                        <span className="absolute top-1/4 right-3" onClick={() => setShowPassword(!showPassword)}>
+                        <input className="border-2 rounded-md w-full text-sm md:text-base px-4 md:py-1 mb-2" type={showPassword ? "text" : "password"} name="password" placeholder="Password" id="password" required />
+                        <span className="absolute md:top-1/4 top-[5px] right-3" onClick={() => setShowPassword(!showPassword)}>
                             {showPassword ? <FaRegEyeSlash></FaRegEyeSlash> : <FaRegEye></FaRegEye>}
                         </span>
                     </div>
@@ -205,12 +180,14 @@ const Register = () => {
                         passwordError && <p className="text-red-500">  {passwordError}</p>
                     }
 
-                    <p className="font-semibold">Your Photo</p>
-                    <input type="file" placeholder="" name="photo" id="" className="w-full px-4 py-2 rounded-md bg-white" />
+                    <p className="font-semibold text-sm md:text-base">Your Photo</p>
+                    <input type="file" placeholder="" name="photo" id="" className="border-2 rounded-sm md:rounded-md w-full text-sm md:text-base  mb-2 bg-white" />
 
                     {
-                        loading ? <button disabled className="w-full px-4 py-2 text-center text-lg rounded-md bg-orange-500 hover:bg-orange-600 border hover:border-black-500 text-white font-bold my-3"><span className="loading loading-spinner loading-md"></span></button> :
-                            <input disabled={loading} className="w-full px-4 py-2 text-center text-lg rounded-md bg-orange-500 hover:bg-orange-600 border hover:border-black-500 text-white font-bold my-3" type="submit" value="Register" />
+                        loading ? 
+                        <button disabled className="w-full px-4 py-1 md:py-2 text-center text-lg rounded-md bg-orange-500 hover:bg-orange-600 border hover:border-black-500 text-white font-bold my-3"><span className="loading loading-spinner loading-md"></span></button> 
+                        :
+                            <input disabled={loading} className="w-full px-4 py-1 md:py-2 text-center text-lg rounded-md bg-gradient-to-r from-orange-500 to-red-500 hover:from-red-400 hover:to-orange-400 text-white font-bold my-3" type="submit" value="Register" />
                     }
 
                 </form>
