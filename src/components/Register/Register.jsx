@@ -76,7 +76,7 @@ const Register = () => {
                         name: name,
                         email: email,
                         photo: imageUrl,
-                        role: 'anonymous',
+                        role: 'Gast',
                         userCreateTime: date
                     }
                     axiosPublic.post('/users', userInfo)
@@ -110,7 +110,7 @@ const Register = () => {
                     email: result.user?.email,
                     name: result.user?.displayName,
                     image: result.user?.photoURL,
-                    role: 'anonymous' ,
+                    role: 'Gast' ,
                     userCreateTime: date
                 }
                 axiosPublic.post('/users', userinfo)

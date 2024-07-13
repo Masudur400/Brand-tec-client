@@ -31,7 +31,8 @@ const NavBar = () => {
 
 
     return (
-        <div className="p-3 flex justify-between items-center shadow-md shadow-orange-100">
+      <div className="shadow-md shadow-orange-100">
+          <div className="container mx-auto p-3 flex justify-between items-center ">
             {/* dropdown icons  */}
             <div onClick={() => setOpen(!open)} className="lg:hidden text-2xl md:text-3xl">
                 {
@@ -41,11 +42,11 @@ const NavBar = () => {
 
             {/* logo  */}
             <div>
-                <Link to='/' className="text-3xl font-bold  absolute lg:static max-sm:left-12 max-sm:top-[8px] md:left-20 md:top-[17px]"> <span className="text-orange-500">Brand</span><span className="text-xl">TEC</span></Link>
+                <Link to='/' className="text-3xl font-bold  absolute lg:static max-sm:left-12 max-sm:top-[9px] md:left-20 md:top-[18px]"> <span className="text-orange-500">Brand</span><span className="text-xl">TEC</span></Link>
             </div>
 
             {/* menu / routes  */}
-            <ul className={`lg:flex gap-5 left-0 min-w-28  absolute lg:static ${open ? 'top-14 md:top-16 z-[99]' : 'hidden'} bg-gray-50 lg:bg-white p-3 rounded-sm justify-center font-semibold`}>
+            <ul className={`lg:flex justify-center items-center gap-5 left-0 min-w-28  absolute lg:static ${open ? 'top-14 md:top-16 z-[99] space-y-1' : 'hidden'} bg-gray-50 lg:bg-white p-3 rounded-sm justify-center font-semibold`}>
                 {routes}
             </ul>
 
@@ -61,43 +62,20 @@ const NavBar = () => {
                                 </div>
                             </div>
                             <ul className={`absolute space-y-5 ${profile ? 'bg-gray-50 md:min-w-32 px-3 py-2 z-[99] font-bold rounded-md right-1 md:right-4' : 'hidden'}`}>
-                                <li onClick={() => setProfile(!profile)} className="absolute text-2xl md:text-3xl top-0 right-0"> <GoX className="border border-black rounded-full"></GoX></li>
+                                <li onClick={() => setProfile(!profile)} className="absolute text-2xl  top-0 right-0"> <GoX className="border border-black rounded-full"></GoX></li> 
                                 <div>
                                     <li onClick={() => setProfile(!profile)}><Link to='/profile' className="hover:text-orange-500">Profile</Link></li>
                                     <li onClick={() => logOut()} className="flex gap-1 items-center hover:text-orange-500">LogOut <MdLogout></MdLogout></li>
                                 </div>
                             </ul>
-                        </div>
-                        {/* <button  className="btn md:font-bold max-sm:btn-sm text-white bg-orange-400 hover:bg-orange-500">LogOut</button> */}
-                    </div>
-
-                    // <div className="dropdown dropdown-end">
-                    //     <div 
-                    //     tabIndex={0}
-
-                    //      role="button" className="btn btn-ghost btn-circle avatar">
-                    //         <div className="w-10 rounded-full">
-                    //             <img
-                    //                 alt="Tailwind CSS Navbar component"
-                    //                 src={user?.photoURL} onClick={()=>setOpen(!open)} />
-                    //         </div>
-                    //     </div>
-                    //     {open === true ? <ul
-                    //         tabIndex={0}
-                    //         className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[99] mt-3 w-36 p-2 shadow">
-                    //         <li>
-                    //             <a>  Profile  </a>
-                    //         </li>
-                    //         <li><a>Settings</a></li>
-                    //         <li><a>Logout</a></li>
-                    //     </ul>:''}
-                    // </div>
-
+                        </div> 
+                    </div>  
                     : <div>
                         <Link to='/loginRegister/login' className="btn font-bold max-sm:btn-sm text-white bg-orange-400 hover:bg-orange-500">Login</Link>
                     </div>
             }
         </div>
+      </div>
     );
 };
 
