@@ -7,12 +7,25 @@ import useAuth from "../Hooks/useAuth";
 import { MdLogout } from "react-icons/md"; 
 import { GoX } from "react-icons/go";
 import Loading from "../../Loading/Loading";
+import { useQuery } from "@tanstack/react-query";
+import useAxiosSecure from "../Hooks/useAxiosSecure";
 
 const NavBar = () => {
 
     const [open, setOpen] = useState(false)
     const [profile, setProfile] = useState(false)
     const { user, logOut, loading } = useAuth()
+    const axiosSecure = useAxiosSecure()
+
+    const { data: users = {}, isPending  } = useQuery({
+        queryKey: ['users'],
+        enabled: !loading,
+        queryFn: async () => {
+            const res = await axiosSecure.get(`/users/${user?.email}`)
+            return res.data
+        }
+    })
+    const { photo } = users;
 
     const routes = <>
         <li><NavLink to='/' onClick={() => setOpen(!open)} className={({ isActive }) => isActive ? 'text-orange-500 underline font-bold' : 'hover:text-red-500'}> Home</NavLink> </li>
@@ -25,7 +38,7 @@ const NavBar = () => {
 
     </>
 
-    if (loading) {
+    if (loading || isPending) {
         return <Loading></Loading>
     }
 
@@ -57,8 +70,7 @@ const NavBar = () => {
                         <div>
                             <div className="avatar">
                                 <div className="max-sm:w-8 w-12 rounded-full border">
-                                    <img src={user?.photoURL} alt="user image" referrerPolicy="no-referrer"
-                                        onClick={() => setProfile(!profile)} />
+                                    <img src={photo} alt="user image" onClick={() => setProfile(!profile)} />
                                 </div>
                             </div>
                             <ul className={`absolute space-y-5 ${profile ? 'bg-gray-50 md:min-w-32 px-3 py-2 z-[99] font-bold rounded-md right-1 md:right-4' : 'hidden'}`}>

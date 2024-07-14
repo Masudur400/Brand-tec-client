@@ -23,6 +23,8 @@ const AddProduct = () => {
         const productQuantity = form.get('productQuantity')
         const photoFile = form.get('productImage')
         const productDetails = form.get('productDetails')
+        const productType = form.get('productType')
+        const date = new Date()
 
         // console.log(productName, productBrand, oldPrice, newPrice, productQuantity, photoFile, productDetails)
 
@@ -41,24 +43,25 @@ const AddProduct = () => {
             const data = {
                 productName,
                 productBrand,
-                oldPrice,
-                newPrice,
-                productQuantity,
+                oldPrice: parseInt(oldPrice),
+                newPrice: parseInt(newPrice),
+                productQuantity: parseInt(productQuantity),
                 productImage: imageUrl,
-                productDetails
-            }
- 
+                productDetails,
+                productType,
+                productAddDate:date
+            } 
 
             axiosSecure.post('/products', data)
-                .then(res => {
+                .then(res => { 
                     if (res.data.insertedId) {
                         Swal.fire({
                             title: "Success!",
                             text: "Product added successfully!",
                             icon: "success"
                         });
-                    }
-                    
+                         
+                    } 
                 }) 
 
         } catch (error) {
@@ -71,7 +74,7 @@ const AddProduct = () => {
         <div>
             <div className="lg:w-2/4 md:w-2/3 mx-auto my-5 md:p-5 p-3 rounded-lg bg-gradient-to-r from-orange-200 to-red-200 shadow-md max-sm:mx-4 ">
                 <Helmet>
-                    <title>Login</title>
+                    <title>Add Product</title>
                 </Helmet>
 
                 <h3 className="text-3xl font-bold text-center text-orange-600 my-4">Add Product</h3>
@@ -81,6 +84,10 @@ const AddProduct = () => {
                         <div>
                             <p className="font-semibold">Product Name</p>
                             <input type="text" name="productName" placeholder="Product Name" id="" className="border-2 rounded-md w-full text-sm md:text-base px-4 md:py-1 mb-2" />
+                        </div>
+                        <div>
+                            <p className="font-semibold">Product Type</p>
+                            <input type="text" name="productType" placeholder="Product Type" id="" className="border-2 rounded-md w-full text-sm md:text-base px-4 md:py-1 mb-2" />
                         </div>
                         <div>
                             <p className="font-semibold">Product Brand</p>
@@ -102,10 +109,10 @@ const AddProduct = () => {
                             <p className="font-semibold text-sm md:text-base">Product Image</p>
                             <input type="file" placeholder="" name="productImage" id="" className="border-2 rounded-sm md:rounded-md w-full text-sm md:text-base  mb-2 bg-white" />
                         </div>
-                    </div>
                     <div>
                         <p className="font-semibold text-sm md:text-base">Product Details</p>
                         <textarea name="productDetails" placeholder="Product Details" id="" className="border-2 rounded-md w-full text-sm md:text-base px-4 md:py-1 mb-2"></textarea>
+                    </div>
                     </div>
 
 

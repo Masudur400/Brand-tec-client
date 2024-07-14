@@ -29,7 +29,7 @@ const Profile = () => {
             return res.data
         }
     })
-    const { _id, name, photo, email, role, userCreateTime } = users;
+    const {  name, photo, email, role, userCreateTime } = users;
 
 
 
@@ -77,14 +77,14 @@ const Profile = () => {
             })
             .then(async()=>{
                 const res = await axiosSecure.patch(`/users/user/${currentUser?._id}`, data) 
-            if (res.data.modifiedCount > 0) {
-                refetch()
+            if (res.data.modifiedCount > 0) { 
                 Swal.fire({
                     title: "success !",
                     text: `Profile update successfully !`,
                     icon: "success"
                 });
-                window.location.reload()
+                refetch()
+                // window.location.reload()
             }
             }) 
  

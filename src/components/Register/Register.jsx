@@ -81,7 +81,7 @@ const Register = () => {
                     }
                     axiosPublic.post('/users', userInfo)
                         .then(res => {
-                            if (res.data.insertedId) {
+                            if (res.data.insertedId) { 
                                 Swal.fire({
                                     title: "Success!",
                                     text: "Register successfully!",
