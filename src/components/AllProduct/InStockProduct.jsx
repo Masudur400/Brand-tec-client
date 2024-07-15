@@ -19,7 +19,9 @@ const InStockProduct = () => {
     return (
         <div>
 
-            <div className="overflow-x-auto">
+            {
+                inStockProduct?.length?
+                <div className="overflow-x-auto">
                 <div className="overflow-x-auto">
                     <table className="table">
                         {/* head */}
@@ -49,12 +51,12 @@ const InStockProduct = () => {
                                     </td>
                                     <td>
                                         <p className='text-xs font-bold'>{data?.productName}</p>
-                                        {data?.productQuantity > 0 ? <span className='text-xs text-green-500 font-medium'>In Stock</span> : <span className='text-xs text-red-500 font-medium' >Out Of Stock</span>}
-                                        <p className='flex gap-2 items-center'><span className='text-sm text-orange-500 font-medium'>{data?.newPrice} Tk</span> <span className='text-xs'>{data?.oldPrice} Tk</span></p>
+                                        {data?.productQuantity > 0 ? <span className='text-xs text-green-500 font-medium'>In Stock</span> : <span className='text-xs text-red-500 font-medium' >Stock Out</span>}
+                                        <p className='flex gap-2 items-center'><span className='text-sm text-orange-500 font-medium'>{data?.newPrice} Tk</span> <span className='text-xs line-through'>{data?.oldPrice} Tk</span></p>
                                         <p><span className="font-medium">Quantity :</span> {data?.productQuantity}</p>
                                         <p><span className="font-medium">Brand :</span> {data?.productBrand}</p>
                                     </td>
-                                    <td>{data?.productDetails}</td>
+                                    <td className="md:text-sm text-xs">{data?.productDetails}</td>
                                     <td className="flex flex-col justify-center items-center gap-2"> 
                                         <button className="w-fit md:px-2 px-1 py-1 text-center rounded-md bg-gradient-to-r from-orange-500 to-red-500 hover:from-red-400 hover:to-orange-400 text-white font-normal text-[10px]">Update</button>
                                         <button className="w-fit md:px-2 px-1 py-1 text-center rounded-md bg-gradient-to-r from-orange-500 to-red-500 hover:from-red-400 hover:to-orange-400 text-white font-normal text-[10px]">Delete</button>
@@ -67,6 +69,8 @@ const InStockProduct = () => {
                     </table>
                 </div>
             </div>
+            : <p>Data is not available</p>
+            }
 
         </div>
     );

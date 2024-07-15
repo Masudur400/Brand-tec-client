@@ -48,7 +48,7 @@ const Login = () => {
                     email: result.user?.email,
                     name: result.user?.displayName,
                     image: result.user?.photoURL,
-                    role: 'Gast',
+                    role: 'Guest',
                     userCreateTime: date
                 }
                 axiosPublic.post('/users', userinfo)

@@ -14,8 +14,8 @@ const SingleBrand = ({ brand }) => {
             </div>
             <div className='space-y-1 my-3 flex-grow'>
                 <p className='text-xs font-bold'>{productName}</p>
-                {productQuantity > 0 ? <span className='text-xs text-green-500 font-medium'>In Stock</span> : <span className='text-xs text-red-500 font-medium' >Out Of Stock</span>}
-                <p className='flex gap-2 items-center'><span className='text-xs text-orange-500 font-medium'>{newPrice} Tk</span> <span className='text-[10px]'>{oldPrice} Tk</span></p>
+                {productQuantity > 0 ? <span className='text-xs text-green-500 font-medium'>In Stock</span> : <span className='text-xs text-red-500 font-medium' >Stock Out</span>}
+                <p className='flex gap-2 items-center'><span className='text-xs text-orange-500 font-medium'>{newPrice} Tk</span> <span className='text-[10px] line-through'>{oldPrice} Tk</span></p>
             </div>
             <div className='flex justify-between gap-2 items-center mb-1'>
                 <Link to={`/details/${_id}`}> <button className="w-fit px-2 py-1 text-center rounded-md bg-gradient-to-r from-orange-500 to-red-500 hover:from-red-400 hover:to-orange-400 text-white font-normal text-[10px]">Details</button></Link>
