@@ -60,7 +60,7 @@ const Details = () => {
                 </div>
             </div>
             <h2 className="text-2xl font-bold mt-10 text-center text-orange-500">More</h2>
-            <Marquee speed={50}>
+            <Marquee speed={30}>
                 <div className="flex gap-4 my-10 ml-4">
                     {
                         allBrand?.map(brand => <SingleBrand key={brand?._id} brand={brand}></SingleBrand>)

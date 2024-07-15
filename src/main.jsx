@@ -26,6 +26,7 @@ import AddProduct from './components/AddProduct/AddProduct.jsx';
 import AuthProvider from './components/Providers/AuthProvider.jsx';
 import Profile from './components/Profile/Profile.jsx';
 import Details from './components/Details/Details.jsx';
+import AllProduct from './components/AllProduct/AllProduct.jsx';
 
 const router = createBrowserRouter([
   {
@@ -63,6 +64,10 @@ const router = createBrowserRouter([
       {
         path: '/details/:id',
         element: <Details></Details>
+      },
+      {
+        path: '/allProduct',
+        element:<AllProduct></AllProduct>
       },
       // {
       //   path:'/login',
