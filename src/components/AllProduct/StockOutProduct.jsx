@@ -16,6 +16,36 @@ const StockOutProduct = () => {
 
     const outOfStock = Array.isArray(allData) ? allData.filter(data => parseInt(data?.productQuantity) === 0) : [];
 
+    // const handleDelete = scholar => {
+    //     if (status === 'processing' || status === 'completed') {
+    //         return toast.error(`status : ${status} ! can not delete`)
+    //     }
+    //     Swal.fire({
+    //         title: "Are you sure?",
+    //         text: "You want to delete application...!",
+    //         icon: "warning",
+    //         showCancelButton: true,
+    //         confirmButtonColor: "#3085d6",
+    //         cancelButtonColor: "#d33",
+    //         confirmButtonText: "Yes, delete it!"
+    //     }).then((result) => {
+    //         if (result.isConfirmed) {
+
+    //             axiosSecure.delete(`/applies/${scholar?._id}`)
+    //                 .then(res => {
+    //                     if (res.data.deletedCount > 0) {
+    //                         Swal.fire({
+    //                             title: "Deleted!",
+    //                             text: ` application has been deleted.`,
+    //                             icon: "success"
+    //                         });
+    //                         navigate('/dashboard/myApplication')
+    //                     }
+    //                 })
+    //         }
+    //     });
+    // }
+
     return (
         <div>
 
