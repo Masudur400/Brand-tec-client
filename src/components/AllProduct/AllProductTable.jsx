@@ -2,6 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../Hooks/useAxiosSecure";
 import Loading from "../../Loading/Loading";
 import Swal from "sweetalert2";
+import { Link } from "react-router-dom";
 
 
 
@@ -96,7 +97,7 @@ const AllProductTable = () => {
                                 {/* <td className="md:text-sm text-xs">{data?.productDetails}</td> */}
                                 <td className="flex justify-center items-center  "> 
                                     <div className="flex flex-col gap-2">
-                                    <button className="w-fit md:px-2 px-1 py-1 text-center rounded-md bg-gradient-to-r from-orange-500 to-red-500 hover:from-red-400 hover:to-orange-400 text-white font-normal text-[10px]">Update</button>
+                                    <Link to={`/updateProduct/${data?._id}`}><button className="w-fit md:px-2 px-1 py-1 text-center rounded-md bg-gradient-to-r from-orange-500 to-red-500 hover:from-red-400 hover:to-orange-400 text-white font-normal text-[10px]">Update</button></Link>
                                     <button onClick={()=>handleDelete(data)} className="w-fit md:px-2 px-1 py-1 text-center rounded-md bg-gradient-to-r from-orange-500 to-red-500 hover:from-red-400 hover:to-orange-400 text-white font-normal text-[10px]">Delete</button>
                                     </div>
                                     </td>
