@@ -109,7 +109,7 @@ const Register = () => {
                 const userinfo = {
                     email: result.user?.email,
                     name: result.user?.displayName,
-                    image: result.user?.photoURL,
+                    photo: result?.user?.photoURL,
                     role: 'Guest' ,
                     userCreateTime: date
                 }

@@ -12,6 +12,9 @@ import {
   QueryClientProvider,
 } from '@tanstack/react-query'
 
+ 
+  
+
 import Root from './components/Root/Root.jsx';
 import Home from './components/Home/Home.jsx';
 import Watch from './components/Watch/Watch.jsx';
@@ -28,6 +31,7 @@ import Profile from './components/Profile/Profile.jsx';
 import Details from './components/Details/Details.jsx';
 import AllProduct from './components/AllProduct/AllProduct.jsx';
 import UpdateProduct from './components/AllProduct/UpdateProduct.jsx';
+import AllUsers from './components/AllUsers/AllUsers.jsx';
 
 const router = createBrowserRouter([
   {
@@ -74,6 +78,10 @@ const router = createBrowserRouter([
         path: '/updateProduct/:id',
         element: <UpdateProduct></UpdateProduct>
       },
+      {
+        path: '/allUsers',
+        element: <AllUsers></AllUsers>
+      },
       // {
       //   path:'/login',
       //   element:<Login></Login>
@@ -113,10 +121,12 @@ const queryClient = new QueryClient()
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
+     
     <AuthProvider>
       <QueryClientProvider client={queryClient}>
         <RouterProvider router={router} />
       </QueryClientProvider>
     </AuthProvider>
+     
   </React.StrictMode>,
 )
