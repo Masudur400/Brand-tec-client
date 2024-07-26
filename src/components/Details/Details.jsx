@@ -5,12 +5,20 @@ import { Helmet } from "react-helmet";
 import Loading from "../../Loading/Loading";
 import SingleBrand from "./SingleBrand";
 import Marquee from "react-fast-marquee";
+import { useState } from "react"; 
+import { GoPlus } from "react-icons/go";
+import { HiMinus } from "react-icons/hi";
+import 'react-toastify/dist/ReactToastify.css';
+import { toast, ToastContainer } from "react-toastify";
+import useAuth from "../Hooks/useAuth";
 
 
 const Details = () => {
 
     const { id } = useParams()
     const axiosSecure = useAxiosSecure()
+    const [count, setCount] = useState(1)
+    const {user, loading} = useAuth()
 
     // data load for details
     const { data: singleData = {}, isPending } = useQuery({
@@ -31,11 +39,46 @@ const Details = () => {
             const res = await axiosSecure.get(`/products/br/${productBrand}`)
             return res.data
         }
-    }) 
+    })
 
-    const allBrand = Array.isArray(allData) ? allData?.filter(data => data?.productType === productType) : []; 
+    const allBrand = Array.isArray(allData) ? allData?.filter(data => data?.productType === productType) : [];
 
-    if (isPending || isLoading) {
+    // minus count 
+    const handleMinus = () => {
+        if(count === 1){
+            return
+        }
+        setCount(count - 1)
+    }
+    
+    // plus count 
+    const handlePlus = () => {
+        setCount(count + 1) 
+    }
+
+    const handleAddCart = async (singleData) => {
+
+        const data = {
+            email: user?.email,
+            name: user?.displayName,
+            productName : singleData.productName,
+            productBrand : singleData.productBrand, 
+            oldPrice : parseFloat(singleData.oldPrice) * count,
+            newPrice : parseInt(singleData.newPrice) * count,
+            productQuantity :singleData.productQuantity,
+            quantity: count,
+            productImage : singleData.productImage,
+            productDetails : singleData.productDetails,
+            productType : singleData.productType,
+            productAddDate : singleData.productAddDate
+        }
+        const res = await axiosSecure.post('/carts', data)
+        if (res.data.insertedId) {
+            toast.success('Add cart successful')
+        }
+    }
+
+    if (isPending || isLoading || loading) {
         return <Loading></Loading>
     }
 
@@ -44,24 +87,30 @@ const Details = () => {
             <Helmet>
                 <title>Details</title>
             </Helmet>
+            <ToastContainer></ToastContainer>
 
-            <div className="md:flex gap-3 justify-center items-center lg:w-2/3 mx-auto bg-gradient-to-r from-orange-100 to-red-100 rounded-md shadow-md p-2">
-                <div>
-                    <img src={productImage} alt="" className="w-60 md:w-80 mx-auto" />
+            <div className="md:flex gap-3 justify-center items-center lg:w-2/3 mx-auto bg-gradient-to-r from-orange-100 to-red-100 rounded-md shadow-md p-1">
+                <div className="flex-1">
+                    <img src={productImage} alt="image" className="w-52 md:w-72 mx-auto" />
                 </div>
-                <div className='space-y-1 my-3 flex-grow'>
+                <div className='space-y-1 my-3 flex-grow flex-1'>
                     <p className='font-bold'>{productName}</p>
                     {productQuantity > 0 ? <span className='  text-green-500 font-medium'>In Stock</span> : <span className='  text-red-500 font-medium' >Stock Out</span>}
                     <p className='flex gap-2 items-center'><span className='text-orange-500 font-medium'>{newPrice} Tk</span> <span className='text-sm line-through'>{oldPrice} Tk</span></p>
                     <p className="">{productDetails}</p>
-                    <div className="flex justify-center md:block">
-                        <button className="w-fit px-4 py-1 text-center rounded-md bg-gradient-to-r from-orange-500 to-red-500 hover:from-red-400 hover:to-orange-400 text-white font-medium text-sm my-3">Add Cart</button>
+                    <div className="flex justify-between items-center px-2">
+                        <div className="flex gap-1">
+                            <button onClick={handleMinus} className="px-1 flex justify-center items-center"><HiMinus></HiMinus></button>
+                            <p className="font-medium bg-slate-50 px-4">{count}</p>
+                            <button onClick={handlePlus} className="px-1 flex justify-center items-center"><GoPlus></GoPlus></button>
+                        </div>
+                        <button onClick={()=>handleAddCart(singleData)} className="w-fit px-4 py-1 text-center rounded-md bg-gradient-to-r from-orange-500 to-red-500 hover:from-red-400 hover:to-orange-400 text-white font-medium text-sm my-3 mr-7">Add Cart</button>
                     </div>
                 </div>
             </div>
-            <h2 className="text-2xl font-bold mt-10 text-center text-orange-500">More</h2>
+            <h2 className="text-2xl font-bold mt-5 text-center text-orange-500">More</h2>
             <Marquee speed={30}>
-                <div className="flex gap-4 my-10 ml-4">
+                <div className="flex gap-4 my-5 ml-4">
                     {
                         allBrand?.map(brand => <SingleBrand key={brand?._id} brand={brand}></SingleBrand>)
                     }
