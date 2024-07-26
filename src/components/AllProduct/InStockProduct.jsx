@@ -23,7 +23,7 @@ const InStockProduct = () => {
          
         Swal.fire({
             title: "Are you sure?",
-            text: "You want to delete application...!",
+            text: "You want to delete product...!",
             icon: "warning",
             showCancelButton: true,
             confirmButtonColor: "#3085d6",
@@ -38,7 +38,7 @@ const InStockProduct = () => {
                             refetch()
                             Swal.fire({
                                 title: "Deleted!",
-                                text: ` application has been deleted.`,
+                                text: ` product has been deleted.`,
                                 icon: "success"
                             }); 
                         }

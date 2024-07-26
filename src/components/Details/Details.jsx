@@ -90,10 +90,10 @@ const Details = () => {
             <ToastContainer></ToastContainer>
 
             <div className="md:flex gap-3 justify-center items-center lg:w-2/3 mx-auto bg-gradient-to-r from-orange-100 to-red-100 rounded-md shadow-md p-1">
-                <div className="flex-1">
+                <div className="flex-none">
                     <img src={productImage} alt="image" className="w-52 md:w-72 mx-auto" />
                 </div>
-                <div className='space-y-1 my-3 flex-grow flex-1'>
+                <div className='space-y-1 my-3 flex-grow'>
                     <p className='font-bold'>{productName}</p>
                     {productQuantity > 0 ? <span className='  text-green-500 font-medium'>In Stock</span> : <span className='  text-red-500 font-medium' >Stock Out</span>}
                     <p className='flex gap-2 items-center'><span className='text-orange-500 font-medium'>{newPrice} Tk</span> <span className='text-sm line-through'>{oldPrice} Tk</span></p>
