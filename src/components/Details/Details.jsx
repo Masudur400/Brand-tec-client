@@ -5,12 +5,12 @@ import { Helmet } from "react-helmet";
 import Loading from "../../Loading/Loading";
 import SingleBrand from "./SingleBrand";
 import Marquee from "react-fast-marquee";
-import { useState } from "react"; 
-import { GoPlus } from "react-icons/go";
+import { useState } from "react";  
 import { HiMinus } from "react-icons/hi";
 import 'react-toastify/dist/ReactToastify.css';
 import { toast, ToastContainer } from "react-toastify";
 import useAuth from "../Hooks/useAuth";
+import { FiPlus } from "react-icons/fi";
 
 
 const Details = () => {
@@ -102,7 +102,7 @@ const Details = () => {
                         <div className="flex gap-1">
                             <button onClick={handleMinus} className="px-1 flex justify-center items-center"><HiMinus></HiMinus></button>
                             <p className="font-medium bg-slate-50 px-4">{count}</p>
-                            <button onClick={handlePlus} className="px-1 flex justify-center items-center"><GoPlus></GoPlus></button>
+                            <button onClick={handlePlus} className="px-1 flex justify-center items-center"><FiPlus></FiPlus></button>
                         </div>
                         <button onClick={()=>handleAddCart(singleData)} className="w-fit px-4 py-1 text-center rounded-md bg-gradient-to-r from-orange-500 to-red-500 hover:from-red-400 hover:to-orange-400 text-white font-medium text-sm my-3 mr-7">Add Cart</button>
                     </div>
