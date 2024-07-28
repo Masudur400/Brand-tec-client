@@ -36,8 +36,7 @@ const Laptop = () => {
             setSortPrice('Low - High')
             setOpen(!open)
         }
-        else if (element === 'high') {
-
+        else if (element === 'high') { 
             const sorted = laptops.slice().sort((a, b) => b.newPrice - a.newPrice);
             setProducts(sorted);
             // setSortPrice('descending');
