@@ -18,7 +18,7 @@ const NavBar = () => {
     const axiosSecure = useAxiosSecure()
 
     const { data: users = {}, isPending  } = useQuery({
-        queryKey: ['users',user?.email],
+        queryKey: ['users',user?.email, axiosSecure],
         enabled: !loading,
         queryFn: async () => {
             const res = await axiosSecure.get(`/users/${user?.email}`)

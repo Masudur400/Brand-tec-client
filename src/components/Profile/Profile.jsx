@@ -22,7 +22,7 @@ const Profile = () => {
 
 
     const { data: users = {}, isPending, refetch } = useQuery({
-        queryKey: ['users',user?.email],
+        queryKey: ['users',user?.email, axiosSecure],
         enabled: !loading,
         queryFn: async () => {
             const res = await axiosSecure.get(`/users/${user?.email}`)
