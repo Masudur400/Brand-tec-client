@@ -11,12 +11,14 @@ const AllProductTable = () => {
 
     const axiosSecure = useAxiosSecure()
     const [pages, setPages] = useState([])
+    const [itemParPage, setItemParPage] = useState(12)
+    const [currentPage, setCurrentPage] = useState(0)
 
 
     const { data: allData = [], isPending, refetch } = useQuery({
-        queryKey: ['products', axiosSecure],
+        queryKey: ['products', axiosSecure, currentPage, itemParPage],
         queryFn: async () => {
-            const res = await axiosSecure.get('/products')
+            const res = await axiosSecure.get(`/products/product?page=${currentPage}&size=${itemParPage}`)
             return res.data
         }
     })
@@ -30,23 +32,35 @@ const AllProductTable = () => {
         }
     })
 
-    useEffect(()=>{
-        if(count.count){
-            const itemParPage = 12
+    useEffect(() => {
+        if (count.count) {
             const numberOfPages = Math.ceil(count.count / itemParPage)
             const page = [...Array(numberOfPages).keys()];
             setPages(page)
         }
-    },[count])
+    }, [itemParPage, count])
 
- 
+    const handleItemParPage = e => {
+        const val = parseInt(e.target.value)
+        setItemParPage(val)
+        setCurrentPage(0)
+    }
 
+    const handlePrevPage = () => {
+        if (currentPage > 0) {
+            setCurrentPage(currentPage - 1)
+        }
+    }
+    const handleNextPage = () => {
+        if (currentPage < pages.length - 1) {
+            setCurrentPage(currentPage + 1) 
+        }
+    }
 
 
     // const { _id, productName, productBrand, oldPrice, newPrice, productQuantity, productImage, productDetails, productType, productAddDate } = watch
 
     const handleDelete = data => {
-
         Swal.fire({
             title: "Are you sure?",
             text: "You want to delete product...!",
@@ -79,6 +93,15 @@ const AllProductTable = () => {
 
     return (
         <div>
+            <div className="flex gap-1 justify-end items-center mr-4">
+                <p className="px-2 py-1 bg-gray-100">Show : </p>
+                <select onChange={handleItemParPage} defaultValue={itemParPage} name="" id="" className="border px-2 py-1">
+                    <option value="12">12</option>
+                    <option value="20">20</option>
+                    <option value="40">40</option>
+                    <option value="60">60</option>
+                </select>
+            </div>
 
             {
                 allData?.length ?
@@ -136,12 +159,13 @@ const AllProductTable = () => {
                     : <p>Data is not available</p>
             }
 
-            <div>
+            <div className="md:w-1/2 mx-auto mt-10 mb-5">
+                <button onClick={handlePrevPage} className="px-3 py-1 font-medium bg-orange-100 hover:bg-orange-200 mr-3 rounded-sm ">Prev</button>
                 {
-                    pages?.map(page => <button key={page} className="px-3 py-1 bg-orange-100 hover:bg-orange-200 mr-3 rounded-sm ">{page+1}</button>)
+                    pages?.map(page => <button onClick={() => setCurrentPage(page)} key={page} className={currentPage === page ? "px-3 py-1 bg-orange-400 hover:bg-orange-500 mr-3 rounded-sm mb-2" : "px-3 py-1 bg-orange-100 hover:bg-orange-200 mr-3 rounded-sm mb-2"}>{page+1}</button>)
                 }
+                <button onClick={handleNextPage} className="px-3 py-1 font-medium bg-orange-100 hover:bg-orange-200 mr-3 rounded-sm ">Next</button>
             </div>
-
         </div>
     );
 };

@@ -9,15 +9,15 @@ const InStockProduct = () => {
 
     const axiosSecure = useAxiosSecure()
 
-    const { data: allData = [], isPending, refetch } = useQuery({
-        queryKey: ['products'],
+    const { data: inStockProduct = [], isPending, refetch } = useQuery({
+        queryKey: ['/products/st/stock'],
         queryFn: async () => {
-            const res = await axiosSecure.get('/products')
+            const res = await axiosSecure.get('/products/st/stock')
             return res.data
         }
     })
 
-    const inStockProduct = Array.isArray(allData) ? allData.filter(data => parseInt(data?.productQuantity) > 0) : [];
+    // const inStockProduct = Array.isArray(allData) ? allData.filter(data => parseInt(data?.productQuantity) > 0) : [];
 
     const handleDelete = data => {
          

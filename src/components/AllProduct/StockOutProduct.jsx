@@ -10,15 +10,15 @@ const StockOutProduct = () => {
     const axiosSecure = useAxiosSecure()
      
 
-    const { data: allData = [], isPending, refetch } = useQuery({
-        queryKey: ['products'],
+    const { data: outOfStock = [], isPending, refetch } = useQuery({
+        queryKey: ['/products/st/stockOut'],
         queryFn: async () => {
-            const res = await axiosSecure.get('/products')
+            const res = await axiosSecure.get('/products/st/stockOut')
             return res.data
         }
     })
 
-    const outOfStock = Array.isArray(allData) ? allData.filter(data => parseInt(data?.productQuantity) === 0) : [];
+    // const outOfStock = Array.isArray(allData) ? allData.filter(data => parseInt(data?.productQuantity) === 0) : [];
 
     const handleDelete = data => {
          
