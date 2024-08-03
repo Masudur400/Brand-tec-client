@@ -87,7 +87,13 @@ const AddProduct = () => {
                         </div>
                         <div>
                             <p className="font-semibold">Product Type</p>
-                            <input type="text" name="productType" placeholder="Product Type" id="" className="border-2 rounded-md w-full text-sm md:text-base px-4 md:py-1 mb-2" />
+                            {/* <input type="text" name="productType" placeholder="Product Type" id="" className="border-2 rounded-md w-full text-sm md:text-base px-4 md:py-1 mb-2" /> */}
+                            <select name="productType" id="" className="border-2 rounded-md w-full text-sm md:text-base px-4 md:py-1 mb-2">
+                                <option disabled selected value="">Select One</option>
+                                <option value="Phone">Phone</option>
+                                <option value="Laptop">Laptop</option>
+                                <option value="Watch">Watch</option>
+                            </select>
                         </div>
                         <div>
                             <p className="font-semibold">Product Brand</p>
