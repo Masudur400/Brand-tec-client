@@ -26,7 +26,6 @@ const Watch = () => {
     const watches = Array.isArray(allData) ? allData.filter(data => data?.productType === 'Watch') : [];
 
 
-
     const handleYesNo = element => { 
         if (element === 'default') {
             setProducts(watches);
