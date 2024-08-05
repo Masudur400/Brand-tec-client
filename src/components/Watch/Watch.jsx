@@ -40,7 +40,6 @@ const Watch = () => {
             setOpen(!open)
         }
         else if (element === 'high') {
-
             const sorted = watches.slice().sort((a, b) => b.newPrice - a.newPrice);
             setProducts(sorted);
             // setSortPrice('descending');
