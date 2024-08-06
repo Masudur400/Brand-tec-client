@@ -35,12 +35,7 @@ const AllUsers = () => {
 
         const res = await axiosSecure.patch(`/users/user/${currentUser?._id}`, data)
         if (res.data.modifiedCount > 0) {
-            refetch()
-            // Swal.fire({
-            //     title: "success !",
-            //     text: `role update successfully !`,
-            //     icon: "success"
-            // }); 
+            refetch() 
             toast.success('role update', { autoClose: 1000 })
             document.getElementById("my_modal_3").close();
             navigate('/allUsers')
