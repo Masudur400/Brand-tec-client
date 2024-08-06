@@ -31,7 +31,7 @@ import Profile from './components/Profile/Profile.jsx';
 import Details from './components/Details/Details.jsx';
 import AllProduct from './components/AllProduct/AllProduct.jsx';
 import UpdateProduct from './components/AllProduct/UpdateProduct.jsx';
-import AllUsers from './components/AllUsers/AllUsers.jsx';
+import AllUsers from './components/AllUsers/AllUsers.jsx'; 
 
 const router = createBrowserRouter([
   {
@@ -81,7 +81,8 @@ const router = createBrowserRouter([
       {
         path: '/allUsers',
         element: <AllUsers></AllUsers>
-      },
+      }, 
+
       // {
       //   path:'/login',
       //   element:<Login></Login>

@@ -12,12 +12,13 @@ const Watch = () => {
     const axiosSecure = useAxiosSecure()
     const [products, setProducts] = useState([]);
     const [sortPrice, setSortPrice] = useState('Default');
+    const [search, setSearch] = useState('')
     const [open, setOpen] = useState(false)
 
     const { data: allData = [], isPending } = useQuery({
-        queryKey: ['products'],
+        queryKey: ['products', axiosSecure, search],
         queryFn: async () => {
-            const res = await axiosSecure.get('/products')
+            const res = await axiosSecure.get(`/products?search=${search}`)
             return res.data
         }
     })
@@ -50,6 +51,10 @@ const Watch = () => {
 
     const handleSearch = e =>{
         e.preventDefault()
+        const form = new FormData(e.currentTarget)
+        // const form = new FormData(e.currentTarget)
+        const searchText = form.get('search') 
+        setSearch(searchText)
     }
 
     if (isPending) {
@@ -82,7 +87,7 @@ const Watch = () => {
 
             <div>
                 <form onSubmit={handleSearch} className="flex justify-center items-center mb-4">
-                    <input type="text" name="" id="" placeholder="Search...." className="px-2 py-1 border border-orange-500" />
+                    <input type="text" name="search" id="" placeholder="Search...." className="px-2 py-1 border border-orange-500" />
                     <input type="submit" value="Search"  className="px-2 py-1 border border-orange-500 bg-gradient-to-r from-orange-500 to-red-500 hover:from-red-400 hover:to-orange-400 text-white" />
                 </form>
             </div>
