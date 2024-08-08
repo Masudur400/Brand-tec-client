@@ -59,8 +59,7 @@ const AddProduct = () => {
                             title: "Success!",
                             text: "Product added successfully!",
                             icon: "success"
-                        });
-                         
+                        }); 
                     } 
                 }) 
 
