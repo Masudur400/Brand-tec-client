@@ -17,7 +17,7 @@ const Mobile = () => {
     const { data: allData = [], isPending } = useQuery({
         queryKey: ['products', axiosSecure, search],
         queryFn: async () => {
-            const res = await axiosSecure.get(`/products?search=${search}`)
+            const res = await axiosSecure.get(`/products/pp?search=${search}`)
             return res.data
         }
     })
