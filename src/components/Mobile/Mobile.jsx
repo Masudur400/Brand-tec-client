@@ -48,18 +48,18 @@ const Mobile = () => {
         }
     }
 
-    const handleSearch = e =>{
+    const handleSearch = e => {
         e.preventDefault()
         const form = new FormData(e.currentTarget)
         // const form = new FormData(e.currentTarget)
-        const searchText = form.get('search') 
+        const searchText = form.get('search')
         setSearch(searchText)
     }
- 
+
     if (isPending) {
         return <Loading></Loading>
     }
-     
+
 
     return (
         <div>
@@ -67,7 +67,7 @@ const Mobile = () => {
                 <title>Mobile</title>
             </Helmet>
             <div className="my-4 flex justify-center items-center gap-10">
-                <h3 className="text-lg md:text-2xl font-bold text-center text-orange-500 ">Mobile</h3>
+                <h3 className="text-lg md:text-2xl font-bold text-center text-orange-500">Mobile</h3>
                 <div>
                     <div className="flex gap-[2px] justify-center items-center text-xs font-medium">
                         <span>Sort By :</span>
@@ -90,7 +90,7 @@ const Mobile = () => {
                     <input type="submit" value="Search" className="px-2 py-1 border border-orange-500 bg-gradient-to-r from-orange-500 to-red-500 hover:from-red-400 hover:to-orange-400 text-white" />
                 </form>
             </div>
-            
+
             <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-3 my-10">
                 {
                     products.length ?

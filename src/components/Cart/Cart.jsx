@@ -18,6 +18,8 @@ const Cart = () => {
         }
     })
 
+    const totalPrice = carts.reduce((total, product) => total + product.newPrice, 0);
+
 if(isPending || loading){
     return <Loading></Loading>
 }
@@ -30,7 +32,7 @@ if(isPending || loading){
             <div className="bg-gradient-to-r from-orange-300 to-red-300 p-4 flex">
                 <h2 className="text text-xl md:text-2xl font-bold text-white text-center flex-1">Your Cart</h2>
                 <div className="flex justify-end">
-                <button  className="w-fit px-2 py-1 text-center rounded-md bg-gradient-to-r from-orange-500 to-red-500 hover:from-red-400 hover:to-orange-400 text-white font-medium">Pay: tk</button>
+                <button  className="w-fit px-2 py-1 text-center rounded-md bg-gradient-to-r from-orange-500 to-red-500 hover:from-red-400 hover:to-orange-400 text-white font-medium">Pay: {totalPrice} tk</button>
                 </div>
             </div>
             <div>
