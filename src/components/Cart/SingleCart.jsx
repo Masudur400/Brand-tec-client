@@ -1,5 +1,6 @@
 import Swal from "sweetalert2";
 import useAxiosSecure from "../Hooks/useAxiosSecure";
+import PropTypes from 'prop-types'
 
  
 const SingleCart = ({cart, refetch}) => {
@@ -56,5 +57,12 @@ const SingleCart = ({cart, refetch}) => {
         </div>
     );
 };
+
+SingleCart.propTypes ={
+    cart:PropTypes.object,
+    refetch:PropTypes.func
+        
+}
+ 
 
 export default SingleCart;
