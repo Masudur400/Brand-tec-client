@@ -76,10 +76,11 @@ const StockOutProduct = () => {
                         if (res.data.deletedCount > 0) {
                             refetch()
                             Swal.fire({
-                                title: "Deleted!",
-                                text: ` product has been deleted.`,
-                                icon: "success"
-                            });
+                                position: "top-end", 
+                                title: "delete successful !",
+                                showConfirmButton: false,
+                                timer: 1000
+                              });
                         }
                     })
             }
