@@ -35,8 +35,7 @@ const Login = () => {
             })
             .catch(err => {
                 console.log(err.message)
-            })
-
+            }) 
     }
 
 
@@ -59,14 +58,12 @@ const Login = () => {
                                 text: "login successful!",
                                 icon: "success"
                             });
-                        }
-
+                        } 
                         navigate(location?.state ? location.state : '/')
                     })
                     .catch(err => {
                         console.log(err.message)
-                    })
-
+                    }) 
             })
             .catch(err => {
                 console.log(err.message)
@@ -86,8 +83,7 @@ const Login = () => {
                 <Link to='/' className="p-1 border-2 border-orange-500 rounded-full"><FaXmark className="md:text-3xl text-orange-600 my-0"></FaXmark></Link>
             </div>
             <h3 className="text-3xl font-bold text-center text-orange-600 my-4">Please LogIn</h3>
-            <form onSubmit={handleLogin} className="">
-
+            <form onSubmit={handleLogin} className=""> 
                 <div>
                     <p className="font-semibold">Email</p>
                     <input type="email" name="email" placeholder="Your Email" id="" className="border-2 rounded-md w-full text-sm md:text-base px-4 md:py-1 mb-2" />
@@ -99,8 +95,7 @@ const Login = () => {
                         <span className="absolute md:top-1/4 top-[5px] right-3" onClick={() => setShowPassword(!showPassword)}>
                             {showPassword ? <FaRegEyeSlash></FaRegEyeSlash> : <FaRegEye></FaRegEye>}
                         </span>
-                    </div>
-
+                    </div> 
                 <div>
                     {
                         loading ? 
