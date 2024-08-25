@@ -87,13 +87,10 @@ const Profile = () => {
                 // window.location.reload()
             }
             }) 
- 
-            document.getElementById("my_modal_3").close();
-
+            document.getElementById("my_modal_3").close(); 
         } catch (error) {
             console.error('Error uploading the image or submitting the form:', error);
-        } 
-
+        }  
     }
 
 
