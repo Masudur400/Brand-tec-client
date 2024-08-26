@@ -23,7 +23,7 @@ const Watch = () => {
         }
     })
 
-    // const watches = allData?.filter(data => data?.productType === 'Watch')
+     
     const watches = Array.isArray(allData) ? allData.filter(data => data?.productType === 'Watch') : [];
 
 
