@@ -33,6 +33,7 @@ import AllProduct from './components/AllProduct/AllProduct.jsx';
 import UpdateProduct from './components/AllProduct/UpdateProduct.jsx';
 import AllUsers from './components/AllUsers/AllUsers.jsx'; 
 import OrderInfo from './components/OrderInfo/OrderInfo.jsx';
+import AddShippingMethod from './components/AddShippingMethod/AddShippingMethod.jsx';
 
 const router = createBrowserRouter([
   {
@@ -62,6 +63,10 @@ const router = createBrowserRouter([
       {
         path: '/addProduct',
         element: <AddProduct></AddProduct>
+      },
+      {
+        path: '/addShippingMethod',
+        element:  <AddShippingMethod></AddShippingMethod>
       },
       {
         path: '/profile',

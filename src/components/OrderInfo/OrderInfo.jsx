@@ -1,16 +1,28 @@
 import { useState } from "react";
 import useCart from "../Hooks/useCart";
 import { IoIosArrowDown } from "react-icons/io";
+import { useQuery } from "@tanstack/react-query";
+import useAxiosSecure from "../Hooks/useAxiosSecure";
 
 
 const OrderInfo = () => {
 
+    const axiosSecure = useAxiosSecure()
     const [carts, isPending, refetch] = useCart()
     const [open, setOpen] = useState(false)
     const [location, setLocation] = useState('Service Charge')
     const [serviceCharge, setServiceCharge] = useState(0)
+    const [serviceError, setServiceError] = useState('')
     const totalPrice = carts.reduce((total, product) => total + product.newPrice, 0);
     const inTotal = parseInt(totalPrice) + parseInt(serviceCharge)
+
+    const { data: shippings = [], isPending: shippingLoading } = useQuery({
+        queryKey: ['shippings', axiosSecure],
+        queryFn: async () => {
+            const res = await axiosSecure.get('/shippings')
+            return res.data
+        }
+    })
 
     const cartsData = carts?.map(cart => {
         return {
@@ -22,17 +34,24 @@ const OrderInfo = () => {
 
     // console.log(cartsData);
 
-    const handleServiceCharge = element => {
-        if (element === '70') {
-            setServiceCharge(70);
-            setLocation('In Dhaka City (tk : 70)')
-            setOpen(!open)
-        }
-        else if (element === '120') {
-            setServiceCharge(120)
-            setLocation('Out of Dhaka City (Tk : 120)')
-            setOpen(!open)
-        }
+    const handleServiceCharge = shipping => {
+        // if (element === '70') {
+        //     setServiceCharge(70);
+        //     setLocation('In Dhaka City (tk : 70)')
+        //     setOpen(!open)
+        //     setServiceError('')
+        // }
+        // else if (element === '120') {
+        //     setServiceCharge(120)
+        //     setLocation('Out of Dhaka City (Tk : 120)')
+        //     setOpen(!open)
+        //     setServiceError('')
+        // }
+
+        setServiceCharge(shipping?.serviceCharge);
+        setLocation(shipping?.shippingLocation)
+        setOpen(!open)
+        setServiceError('')
     }
 
     const handleOrder = e => {
@@ -48,6 +67,13 @@ const OrderInfo = () => {
         const productsIds = carts?.map(cart => cart._id)
         // const images = carts.map(cart => cart.productImage)
         const date = new Date()
+        if (serviceCharge === 0) {
+            setServiceError('select one service method')
+            return
+        }
+        setServiceError('')
+
+        console.log('all right')
     }
 
     return (
@@ -55,11 +81,11 @@ const OrderInfo = () => {
             <div className="lg:w-2/4 md:w-2/3 mx-auto my-5 md:p-5 p-3 rounded-lg  shadow-md max-sm:mx-4">
                 <h3 className="text-3xl font-bold text-center text-orange-500 my-2">Order Information</h3>
 
-                <div>
+                {/* <div>
                     <p className="font-semibold text-sm md:text-base"> Service Charge  (select your location) </p>
                     <div className="flex gap-[2px] justify-center items-center text-xs font-medium">
 
-                        <button onClick={() => setOpen(!open)} required className=" flex   items-center gap-1 bg-gray-100 rounded-md px-2 py-[9px] w-full "> {location}  <IoIosArrowDown></IoIosArrowDown></button>
+                        <p onClick={() => setOpen(!open)} required className=" flex   items-center gap-1 bg-gray-100 rounded-md px-2 py-[9px] w-full "> {location}  <IoIosArrowDown></IoIosArrowDown></p>
                     </div>
                     {
                         open ?
@@ -69,7 +95,7 @@ const OrderInfo = () => {
 
                             </ul> : ''
                     }
-                </div>
+                </div> */}
 
                 <form onSubmit={handleOrder}>
 
@@ -86,6 +112,30 @@ const OrderInfo = () => {
                         <div>
                             <p className="font-semibold text-sm md:text-base">Address</p>
                             <input type="text" required name="address" placeholder="Address" id="" className="border-2 rounded-md w-full text-sm md:text-base px-4 md:py-1 mb-2" />
+                        </div>
+
+                        <div>
+                            <p className="font-semibold text-sm md:text-base"> Service Charge  (select your location) </p>
+                            <div className="flex gap-[2px] justify-center items-center text-xs font-medium">
+
+                                <p onClick={() => setOpen(!open)} required className=" flex items-center gap-1 bg-gray-100 rounded-md px-2 py-[9px] w-full "> {location}  <IoIosArrowDown></IoIosArrowDown></p>
+                            </div>
+                            {
+                                serviceError ?
+                                    <p className="text-sm text-red-500 my-1">{serviceError}</p> : ''
+                            }
+                            {
+                                open ?
+                                    <ul className="flex flex-col z-[999] absolute bg-gray-50 p-2">
+                                        {/* <li><button onClick={() => handleServiceCharge('70')} className="font-medium mb-1 text-center text-xs border px-2 w-full">In Dhaka City (tk : 70)</button></li>
+                                        <li><button onClick={() => handleServiceCharge('120')} className="font-medium mb-1 text-center text-xs border px-2 w-full">Out of Dhaka City (Tk : 120)</button></li> */}
+                                        {
+                                            shippings?.length ?
+                                                shippings?.map(shipping => <li key={shipping._id}><button onClick={() => handleServiceCharge(shipping)} className="font-medium mb-1 text-center text-xs border px-2 w-full"> {shipping?.shippingLocation} (tk :  {shipping?.serviceCharge})</button></li>)
+                                                : ''
+                                        }
+                                    </ul> : ''
+                            }
                         </div>
 
                     </div>
