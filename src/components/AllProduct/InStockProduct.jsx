@@ -61,7 +61,7 @@ const InStockProduct = () => {
         Swal.fire({
             title: "Are you sure?",
             text: "You want to delete product...!",
-            icon: "warning",
+            // icon: "warning",
             showCancelButton: true,
             confirmButtonColor: "#3085d6",
             cancelButtonColor: "#d33",

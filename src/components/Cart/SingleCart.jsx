@@ -14,7 +14,7 @@ const SingleCart = ({cart, refetch}) => {
         Swal.fire({
             title: "Are you sure?",
             text: "You want to delete item...!",
-            icon: "warning",
+            // icon: "warning",
             showCancelButton: true,
             confirmButtonColor: "#3085d6",
             cancelButtonColor: "#d33",

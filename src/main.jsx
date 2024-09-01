@@ -32,6 +32,7 @@ import Details from './components/Details/Details.jsx';
 import AllProduct from './components/AllProduct/AllProduct.jsx';
 import UpdateProduct from './components/AllProduct/UpdateProduct.jsx';
 import AllUsers from './components/AllUsers/AllUsers.jsx'; 
+import OrderInfo from './components/OrderInfo/OrderInfo.jsx';
 
 const router = createBrowserRouter([
   {
@@ -81,6 +82,10 @@ const router = createBrowserRouter([
       {
         path: '/allUsers',
         element: <AllUsers></AllUsers>
+      }, 
+      {
+        path: '/orderInfo',
+        element: <OrderInfo></OrderInfo>
       }, 
 
       // {
