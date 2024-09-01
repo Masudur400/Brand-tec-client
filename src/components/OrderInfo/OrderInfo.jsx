@@ -1,14 +1,14 @@
 import { useState } from "react";
 import useCart from "../Hooks/useCart";
-import { IoIosArrowDown } from "react-icons/io";
-import { useQuery } from "@tanstack/react-query";
-import useAxiosSecure from "../Hooks/useAxiosSecure";
+import { IoIosArrowDown } from "react-icons/io"; 
+import Loading from "../../Loading/Loading";
+import useShippings from "../Hooks/useShippings";
 
 
-const OrderInfo = () => {
-
-    const axiosSecure = useAxiosSecure()
+const OrderInfo = () => { 
+    
     const [carts, isPending, refetch] = useCart()
+    const [shippings, shippingLoading]= useShippings()
     const [open, setOpen] = useState(false)
     const [location, setLocation] = useState('Service Charge')
     const [serviceCharge, setServiceCharge] = useState(0)
@@ -16,13 +16,7 @@ const OrderInfo = () => {
     const totalPrice = carts.reduce((total, product) => total + product.newPrice, 0);
     const inTotal = parseInt(totalPrice) + parseInt(serviceCharge)
 
-    const { data: shippings = [], isPending: shippingLoading } = useQuery({
-        queryKey: ['shippings', axiosSecure],
-        queryFn: async () => {
-            const res = await axiosSecure.get('/shippings')
-            return res.data
-        }
-    })
+     
 
     const cartsData = carts?.map(cart => {
         return {
@@ -32,22 +26,9 @@ const OrderInfo = () => {
         };
     });
 
-    // console.log(cartsData);
+     
 
-    const handleServiceCharge = shipping => {
-        // if (element === '70') {
-        //     setServiceCharge(70);
-        //     setLocation('In Dhaka City (tk : 70)')
-        //     setOpen(!open)
-        //     setServiceError('')
-        // }
-        // else if (element === '120') {
-        //     setServiceCharge(120)
-        //     setLocation('Out of Dhaka City (Tk : 120)')
-        //     setOpen(!open)
-        //     setServiceError('')
-        // }
-
+    const handleServiceCharge = shipping => {  
         setServiceCharge(shipping?.serviceCharge);
         setLocation(shipping?.shippingLocation)
         setOpen(!open)
@@ -74,6 +55,10 @@ const OrderInfo = () => {
         setServiceError('')
 
         console.log('all right')
+    }
+
+    if (isPending || shippingLoading) {
+        return <Loading></Loading>
     }
 
     return (

@@ -87,6 +87,7 @@ const Register = () => {
                                     text: "Register successfully!",
                                     icon: "success"
                                 });
+                                e.target.reset()
                             }
                             setUserSuccess('user created successfully')
                             navigate(location?.state ? location.state : '/')

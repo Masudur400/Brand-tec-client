@@ -60,6 +60,7 @@ const AddProduct = () => {
                             text: "Product added successfully!",
                             icon: "success"
                         }); 
+                        e.target.reset()
                     } 
                 }) 
 

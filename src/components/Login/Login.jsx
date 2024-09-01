@@ -30,6 +30,7 @@ const Login = () => {
                         text: "login successful!",
                         icon: "success"
                     });
+                    e.target.reset()
                     navigate(location?.state ? location.state : '/')
                 }
             })
@@ -57,7 +58,7 @@ const Login = () => {
                                 title: "Success!",
                                 text: "login successful!",
                                 icon: "success"
-                            });
+                            }); 
                         } 
                         navigate(location?.state ? location.state : '/')
                     })

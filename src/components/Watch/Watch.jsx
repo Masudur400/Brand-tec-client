@@ -55,6 +55,7 @@ const Watch = () => {
         // const form = new FormData(e.currentTarget)
         const searchText = form.get('search') 
         setSearch(searchText)
+        e.target.reset()
     }
 
     if (isPending) {

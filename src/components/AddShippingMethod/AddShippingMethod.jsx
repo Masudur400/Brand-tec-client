@@ -25,6 +25,7 @@ const AddShippingMethod = () => {
                 showConfirmButton: false,
                 timer: 1000
             });
+            e.target.reset()
         }
 
 

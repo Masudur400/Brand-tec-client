@@ -34,6 +34,7 @@ import UpdateProduct from './components/AllProduct/UpdateProduct.jsx';
 import AllUsers from './components/AllUsers/AllUsers.jsx'; 
 import OrderInfo from './components/OrderInfo/OrderInfo.jsx';
 import AddShippingMethod from './components/AddShippingMethod/AddShippingMethod.jsx';
+import AllShipping from './components/AllShipping/AllShipping.jsx';
 
 const router = createBrowserRouter([
   {
@@ -79,6 +80,10 @@ const router = createBrowserRouter([
       {
         path: '/allProduct',
         element:<AllProduct></AllProduct>
+      },
+      {
+        path: '/allShipping',
+        element: <AllShipping></AllShipping>
       },
       {
         path: '/updateProduct/:id',
