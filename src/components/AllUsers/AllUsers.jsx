@@ -2,7 +2,7 @@ import { Helmet } from "react-helmet";
 import useAxiosSecure from "../Hooks/useAxiosSecure";
 import Loading from "../../Loading/Loading";
 import { useQuery } from "@tanstack/react-query";
-import { useState } from "react"; 
+import { useState } from "react";
 import { toast, ToastContainer } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 import { useNavigate } from "react-router-dom";
@@ -45,13 +45,13 @@ const AllUsers = () => {
     }
 
     const sortedUsers = allUser?.sort((a, b) => {
-        if (a.role === 'Admin' && b.role !== 'Admin') return -1;  
-        if (a.role !== 'Admin' && b.role === 'Admin') return 1;  
-        if (a.role === 'Moderator' && b.role !== 'Moderator') return -1;  
-        if (a.role !== 'Moderator' && b.role === 'Moderator') return 1;  
-        if (a.role === 'Guest' && b.role !== 'Guest') return 1;  
-        if (a.role !== 'Guest' && b.role === 'Guest') return -1;  
-        return 0;  
+        if (a.role === 'Admin' && b.role !== 'Admin') return -1;
+        if (a.role !== 'Admin' && b.role === 'Admin') return 1;
+        if (a.role === 'Moderator' && b.role !== 'Moderator') return -1;
+        if (a.role !== 'Moderator' && b.role === 'Moderator') return 1;
+        if (a.role === 'Guest' && b.role !== 'Guest') return 1;
+        if (a.role !== 'Guest' && b.role === 'Guest') return -1;
+        return 0;
     });
 
     return (
@@ -92,12 +92,20 @@ const AllUsers = () => {
                                                 </div>
                                             </div>
                                         </td>
-                                        <td>{user?.role}</td>
                                         <td>
-                                           
-                                                <div onClick={() => handleUpdate(user)}>
-                                                    <button onClick={() => document.getElementById('my_modal_3').showModal()} className="w-fit md:px-3 px-2 py-1 text-center rounded-md bg-gradient-to-r from-orange-500 to-red-500 hover:from-red-400 hover:to-orange-400 text-white font-normal text-[10px]">Edit</button></div>
-                                           
+                                            {
+                                                user?.role === 'Guest' ?
+                                                    <p><span className='font-medium'>Role :</span> <span className='text-red-500'>{user?.role}</span></p> :
+                                                    user?.role === 'Admin' ?
+                                                        <p><span className='font-medium'>Role :</span> <span className='text-green-500'>{user?.role}</span></p> :
+                                                        <p><span className='font-medium'>Role :</span> <span className='text-sky-500'>{user?.role}</span></p>
+                                            }
+                                        </td>
+                                        <td>
+
+                                            <div onClick={() => handleUpdate(user)}>
+                                                <button onClick={() => document.getElementById('my_modal_3').showModal()} className="w-fit md:px-3 px-2 py-1 text-center rounded-md bg-gradient-to-r from-orange-500 to-red-500 hover:from-red-400 hover:to-orange-400 text-white font-normal text-[10px]">Edit</button></div>
+
                                         </td>
                                     </tr>
                                 ))
