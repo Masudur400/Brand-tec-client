@@ -63,7 +63,7 @@ const NavBar = () => {
                 </div>
 
                 {/* menu / routes  */}
-                <ul className={`lg:flex justify-center items-center gap-5 left-0 min-w-28  absolute lg:static ${open ? 'top-14 md:top-16 z-[99] space-y-1' : 'hidden'} bg-gray-50 lg:bg-inherit p-3 rounded-sm justify-center font-semibold`}>
+                <ul className={`lg:flex justify-center items-center gap-5 left-0 min-w-28  absolute lg:static ${open ? 'top-14 md:top-16 z-[99] space-y-1' : 'hidden'} bg-gray-50 lg:bg-inherit p-3 rounded-sm justify-center font-semibold min-w-40`}>
                     {routes}
                 </ul>
 

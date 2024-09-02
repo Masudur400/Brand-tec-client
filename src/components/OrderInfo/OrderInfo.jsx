@@ -22,10 +22,10 @@ const OrderInfo = () => {
         return {
             productName: cart.productName,
             productImage: cart.productImage,
+            productPrice: cart.newPrice,
             quantity: cart.quantity,
         };
-    });
-
+    }); 
      
 
     const handleServiceCharge = shipping => {  

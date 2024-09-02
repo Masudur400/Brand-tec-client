@@ -10,10 +10,11 @@ import { useState } from "react";
 
 const Login = () => {
 
-    const { login, googleLogin, loading } = useAuth()
+    const { login, googleLogin, loading, setLoading } = useAuth()
     const axiosPublic = useAxiosPublic()
     const navigate = useNavigate()
     const [showPassword, setShowPassword] = useState(false);
+    const [error, setError] = useState('')
 
     const handleLogin = e => {
         e.preventDefault()
@@ -25,16 +26,21 @@ const Login = () => {
         login(email, password)
             .then(result => {
                 if (result?.user) {
-                    Swal.fire({
-                        title: "Success!",
-                        text: "login successful!",
-                        icon: "success"
+                    Swal.fire({ 
+                        position: "center",
+                        icon: "success",
+                        title: "Login successful",
+                        showConfirmButton: false,
+                        timer: 1000
                     });
+                    setError('')
                     e.target.reset()
                     navigate(location?.state ? location.state : '/')
                 }
             })
             .catch(err => {
+                setLoading(false)
+                setError(err.message)
                 console.log(err.message)
             }) 
     }
@@ -54,10 +60,12 @@ const Login = () => {
                 axiosPublic.post('/users', userinfo)
                     .then(res => {
                         if (res.data.insertedId) {
-                            Swal.fire({
-                                title: "Success!",
-                                text: "login successful!",
-                                icon: "success"
+                            Swal.fire({ 
+                                tposition: "center",
+                                icon: "success",
+                                title: "Login successful",
+                                showConfirmButton: false,
+                                timer: 1000
                             }); 
                         } 
                         navigate(location?.state ? location.state : '/')
@@ -98,6 +106,10 @@ const Login = () => {
                         </span>
                     </div> 
                 <div>
+                {
+                    error?
+                    <p className='text-sm text-red-500'>please give your right email and password</p>:''
+                }
                     {
                         loading ? 
                         <button disabled className="w-full px-4 py-1 md:py-2 text-center text-lg rounded-md bg-orange-500 hover:bg-orange-600 border hover:border-black-500 text-white font-bold my-3"><span className="loading loading-spinner loading-md"></span></button>

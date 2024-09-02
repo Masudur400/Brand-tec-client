@@ -81,11 +81,13 @@ const Register = () => {
                     }
                     axiosPublic.post('/users', userInfo)
                         .then(res => {
-                            if (res.data.insertedId) { 
+                            if (res.data.insertedId) {
                                 Swal.fire({
-                                    title: "Success!",
-                                    text: "Register successfully!",
-                                    icon: "success"
+                                    position: "center",
+                                    icon: "success",
+                                    title: "Login successful",
+                                    showConfirmButton: false,
+                                    timer: 1000
                                 });
                                 e.target.reset()
                             }
@@ -111,35 +113,37 @@ const Register = () => {
                     email: result.user?.email,
                     name: result.user?.displayName,
                     photo: result?.user?.photoURL,
-                    role: 'Guest' ,
+                    role: 'Guest',
                     userCreateTime: date
                 }
                 axiosPublic.post('/users', userinfo)
-                .then(res => {
-                    if (res.data.insertedId) {
-                        Swal.fire({
-                            title: "Success!",
-                            text: "login successful!",
-                            icon: "success"
-                        });
-                    }
-                    
-                    navigate(location?.state ? location.state : '/')
-                    // window.location.reload()
-                })
-                .catch(err=>{
-                    console.log(err.message)
-                })
+                    .then(res => {
+                        if (res.data.insertedId) {
+                            Swal.fire({
+                                position: "center",
+                                icon: "success",
+                                title: "Login successful",
+                                showConfirmButton: false,
+                                timer: 1000
+                            });
+                        }
+
+                        navigate(location?.state ? location.state : '/')
+                        // window.location.reload()
+                    })
+                    .catch(err => {
+                        console.log(err.message)
+                    })
 
             })
-            .catch(err=>{
+            .catch(err => {
                 console.log(err.message)
             })
     }
 
 
 
-    return ( 
+    return (
 
         <div className="min-h-screen">
             <Helmet>
@@ -185,9 +189,9 @@ const Register = () => {
                     <input type="file" placeholder="" name="photo" id="" className="border-2 rounded-sm md:rounded-md w-full text-sm md:text-base  mb-2 bg-white" />
 
                     {
-                        loading ? 
-                        <button disabled className="w-full px-4 py-1 md:py-2 text-center text-lg rounded-md bg-orange-500 hover:bg-orange-600 border hover:border-black-500 text-white font-bold my-3"><span className="loading loading-spinner loading-md"></span></button> 
-                        :
+                        loading ?
+                            <button disabled className="w-full px-4 py-1 md:py-2 text-center text-lg rounded-md bg-orange-500 hover:bg-orange-600 border hover:border-black-500 text-white font-bold my-3"><span className="loading loading-spinner loading-md"></span></button>
+                            :
                             <input disabled={loading} className="w-full px-4 py-1 md:py-2 text-center text-lg rounded-md bg-gradient-to-r from-orange-500 to-red-500 hover:from-red-400 hover:to-orange-400 text-white font-bold my-3" type="submit" value="Register" />
                     }
 
@@ -199,7 +203,7 @@ const Register = () => {
                     <div>
                         <button onClick={handleGoogleLogin} className=" p-3 bg-white rounded-xl font-bold"> <FcGoogle className="text-3xl"></FcGoogle></button>
 
-                    </div> 
+                    </div>
                 </div>
             </div>
         </div>
