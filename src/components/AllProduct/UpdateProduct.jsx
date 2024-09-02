@@ -93,7 +93,7 @@ const UpdateProduct = () => {
 
     return (
         <div>
-            <div className="lg:w-2/4 md:w-2/3 mx-auto my-5 md:p-5 p-3 rounded-lg bg-gradient-to-r from-orange-200 to-red-200 shadow-md max-sm:mx-4 ">
+            <div className="lg:w-2/4 md:w-2/3 mx-auto my-5 md:p-5 p-3 rounded-lg border shadow-md max-sm:mx-4 ">
                 <Helmet>
                     <title>Update Product</title>
                 </Helmet>
@@ -141,7 +141,7 @@ const UpdateProduct = () => {
 
 
                     <div className="flex justify-center">
-                        <input className="w-fit px-4 py-1 md:py-2 text-center text-lg rounded-md bg-gradient-to-r from-orange-500 to-red-500 hover:from-red-400 hover:to-orange-400 text-white font-bold my-3" type="submit" value="Add Product" />
+                        <input className="w-fit px-4 py-1 md:py-2 text-center text-lg rounded-md bg-gradient-to-r from-orange-500 to-red-500 hover:from-red-400 hover:to-orange-400 text-white font-medium my-3" type="submit" value="Add Product" />
 
                     </div>
                 </form>

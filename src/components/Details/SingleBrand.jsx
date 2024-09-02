@@ -8,7 +8,7 @@ const SingleBrand = ({ brand }) => {
     const { _id, productName, productBrand, oldPrice, newPrice, productQuantity, productImage, productDetails, productType, productAddDate } = brand
 
     return (
-        <Link to={`/details/${_id}`} className='flex flex-col p-2 shadow-md rounded-md bg-gradient-to-r from-orange-50 to-red-50 group w-40'> 
+        <Link to={`/details/${_id}`} className='flex flex-col p-2 shadow-md rounded-md border group w-40'> 
             <div>
                 <img src={productImage} alt="image" className='w-36 mx-auto group-hover:scale-105' />
             </div>

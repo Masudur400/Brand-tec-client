@@ -72,7 +72,7 @@ const AddProduct = () => {
 
     return (
         <div>
-            <div className="lg:w-2/4 md:w-2/3 mx-auto my-5 md:p-5 p-3 rounded-lg bg-gradient-to-r from-orange-200 to-red-200 shadow-md max-sm:mx-4 ">
+            <div className="lg:w-2/4 md:w-2/3 mx-auto my-5 md:p-5 p-3 rounded-lg  shadow-md max-sm:mx-4  border">
                 <Helmet>
                     <title>Add Product</title>
                 </Helmet>

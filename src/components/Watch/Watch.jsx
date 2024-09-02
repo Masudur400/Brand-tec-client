@@ -77,7 +77,7 @@ const Watch = () => {
                     </div>
                     {
                         open ?
-                            <ul className="flex flex-col z-[999] absolute bg-gray-50 p-2">
+                            <ul className="flex flex-col z-[999] absolute bg-gray-50 p-2 border">
                                 <li><button onClick={() => handleYesNo('default')} className="font-medium mb-1 text-center text-xs border px-2 w-full">Default</button></li>
                                 <li><button onClick={() => handleYesNo('low')} className="font-medium mb-1 text-center text-xs border px-2 w-full">Price(Low - High)</button></li>
                                 <li><button onClick={() => handleYesNo('high')} className="font-medium mb-1 text-center text-xs border px-2 w-full">Price(High - low)</button></li>

@@ -103,7 +103,7 @@ const Profile = () => {
             <Helmet>
                 <title>Profile</title>
             </Helmet>
-            <div className="md:w-1/2 lg:w-2/5 mx-auto bg-gradient-to-r from-orange-200 to-red-200 my-4 p-3 rounded-md">
+            <div className="md:w-1/2 lg:w-2/5 mx-auto border my-4 p-3 rounded-md">
                 <h3 className="text-2xl font-bold text-center text-orange-500 mb-6">Profile</h3>
                 <div>
                     <img src={photo} alt="image" className="w-56  h-56 rounded-full mx-auto" />

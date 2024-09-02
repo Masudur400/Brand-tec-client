@@ -42,7 +42,7 @@ const SingleWatch = ({ watch }) => {
 
     return (
 
-        <div className='flex flex-col p-2 shadow-md rounded-md bg-gradient-to-r from-orange-50 to-red-50 group'>
+        <div className='flex flex-col p-2 shadow-md rounded-md border group'>
             <ToastContainer></ToastContainer>
             <div>
                 <img src={productImage} alt="" className=' w-40 mx-auto group-hover:scale-105' />

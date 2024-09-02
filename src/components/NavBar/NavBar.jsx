@@ -28,7 +28,7 @@ const NavBar = () => {
     const { photo } = users;
 
     const routes = <>
-     
+        <li><NavLink></NavLink></li>
         <li><NavLink to='/' onClick={() => setOpen(!open)} className={({ isActive }) => isActive ? 'text-orange-500 underline font-bold' : 'hover:text-red-500'}> Home</NavLink> </li>
         <li><NavLink to='/watch' onClick={() => setOpen(!open)} className={({ isActive }) => isActive ? 'text-orange-500 underline font-bold' : 'hover:text-red-500'}>Watch</NavLink> </li>
         <li><NavLink to='/mobile' onClick={() => setOpen(!open)} className={({ isActive }) => isActive ? 'text-orange-500 underline font-bold' : 'hover:text-red-500'}>Mobile</NavLink> </li>
@@ -37,7 +37,7 @@ const NavBar = () => {
         <li><NavLink to='/addProduct' onClick={() => setOpen(!open)} className={({ isActive }) => isActive ? 'text-orange-500 underline font-bold' : 'hover:text-red-500'}>AddProduct</NavLink> </li>
         <li><NavLink to='/allProduct' onClick={() => setOpen(!open)} className={({ isActive }) => isActive ? 'text-orange-500 underline font-bold' : 'hover:text-red-500'}>AllProduct</NavLink> </li>
         <li><NavLink to='/addShippingMethod' onClick={() => setOpen(!open)} className={({ isActive }) => isActive ? 'text-orange-500 underline font-bold' : 'hover:text-red-500'}>AddShipping</NavLink> </li>
-        <li><NavLink to='/allShipping' onClick={() => setOpen(!open)} className={({ isActive }) => isActive ? 'text-orange-500 underline font-bold' : 'hover:text-red-500'}>AllShipping</NavLink> </li> 
+        <li><NavLink to='/allShipping' onClick={() => setOpen(!open)} className={({ isActive }) => isActive ? 'text-orange-500 underline font-bold' : 'hover:text-red-500'}>AllShipping</NavLink> </li>
         <li><NavLink to='/allUsers' onClick={() => setOpen(!open)} className={({ isActive }) => isActive ? 'text-orange-500 underline font-bold' : 'hover:text-red-500'}>AllUsers</NavLink> </li>
         <li><NavLink to='/dashboard' onClick={() => setOpen(!open)} className={({ isActive }) => isActive ? 'text-orange-500 underline font-bold' : 'hover:text-red-500'}>Dashboard</NavLink> </li>
 
@@ -64,7 +64,7 @@ const NavBar = () => {
                 </div>
 
                 {/* menu / routes  */}
-                <ul className={`lg:flex justify-center items-center gap-5 left-0 min-w-28  absolute lg:static ${open ? 'top-14 md:top-16 z-[99] space-y-1' : 'hidden'} bg-gray-50 lg:bg-inherit p-3 rounded-sm justify-center font-semibold min-w-40`}>
+                <ul className={`lg:flex justify-center duration-500 items-center gap-5 left-0 min-w-28  absolute lg:static overflow-x-auto ${open ? 'top-14 md:top-16 z-[99] space-y-3' : '-left-52 top-14 md:top-16 z-[99] space-y-3'} bg-gray-50 lg:bg-inherit p-3 rounded-sm justify-center font-semibold min-w-40`}>
                     {routes}
                 </ul>
 

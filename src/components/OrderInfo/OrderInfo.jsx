@@ -63,25 +63,9 @@ const OrderInfo = () => {
 
     return (
         <div>
-            <div className="lg:w-2/4 md:w-2/3 mx-auto my-5 md:p-5 p-3 rounded-lg  shadow-md max-sm:mx-4">
+            <div className="lg:w-2/4 md:w-2/3 mx-auto my-5 md:p-5 p-3 rounded-lg border shadow-md max-sm:mx-4">
                 <h3 className="text-3xl font-bold text-center text-orange-500 my-2">Order Information</h3>
-
-                {/* <div>
-                    <p className="font-semibold text-sm md:text-base"> Service Charge  (select your location) </p>
-                    <div className="flex gap-[2px] justify-center items-center text-xs font-medium">
-
-                        <p onClick={() => setOpen(!open)} required className=" flex   items-center gap-1 bg-gray-100 rounded-md px-2 py-[9px] w-full "> {location}  <IoIosArrowDown></IoIosArrowDown></p>
-                    </div>
-                    {
-                        open ?
-                            <ul className="flex flex-col z-[999] absolute bg-gray-50 p-2">
-                                <li><button onClick={() => handleServiceCharge('70')} className="font-medium mb-1 text-center text-xs border px-2 w-full">In Dhaka City (tk : 70)</button></li>
-                                <li><button onClick={() => handleServiceCharge('120')} className="font-medium mb-1 text-center text-xs border px-2 w-full">Out of Dhaka City (Tk : 120)</button></li>
-
-                            </ul> : ''
-                    }
-                </div> */}
-
+  
                 <form onSubmit={handleOrder}>
 
                     <div className="">
@@ -111,9 +95,7 @@ const OrderInfo = () => {
                             }
                             {
                                 open ?
-                                    <ul className="flex flex-col z-[999] absolute bg-gray-50 p-2">
-                                        {/* <li><button onClick={() => handleServiceCharge('70')} className="font-medium mb-1 text-center text-xs border px-2 w-full">In Dhaka City (tk : 70)</button></li>
-                                        <li><button onClick={() => handleServiceCharge('120')} className="font-medium mb-1 text-center text-xs border px-2 w-full">Out of Dhaka City (Tk : 120)</button></li> */}
+                                    <ul className="flex flex-col z-[999] absolute bg-gray-50 p-2"> 
                                         {
                                             shippings?.length ?
                                                 shippings?.map(shipping => <li key={shipping._id}><button onClick={() => handleServiceCharge(shipping)} className="font-medium mb-1 text-center text-xs border px-2 w-full"> {shipping?.shippingLocation} (tk :  {shipping?.serviceCharge})</button></li>)
@@ -126,21 +108,17 @@ const OrderInfo = () => {
                     </div>
 
                     <div className="overflow-x-auto w-full">
-                        <table className="table">
-                            {/* head */}
+                        <table className="table"> 
                             <thead>
-                                <tr>
-                                    {/* <th></th> */}
+                                <tr> 
                                     <th></th>
                                     <th></th>
                                     <th></th>
                                 </tr>
                             </thead>
-                            <tbody>
-                                {/* row 1 */}
+                            <tbody> 
                                 {
-                                    carts?.map((cart, idx) => <tr key={cart._id}>
-                                        {/* <th>{idx+1}</th> */}
+                                    carts?.map((cart, idx) => <tr key={cart._id}> 
                                         <td>
                                             <div className="avatar">
                                                 <div className="mask mask-squircle h-12 w-12">
