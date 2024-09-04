@@ -22,13 +22,13 @@ const StockOutProduct = () => {
         }
     })
 
-    const { data: count = []} = useQuery({
+    const { data: count = [] } = useQuery({
         queryKey: ['/products/st/stockOut', axiosSecure],
         queryFn: async () => {
             const res = await axiosSecure.get('/products/st/stockOut')
             return res.data
         }
-    }) 
+    })
 
 
     useEffect(() => {
@@ -76,11 +76,11 @@ const StockOutProduct = () => {
                         if (res.data.deletedCount > 0) {
                             refetch()
                             Swal.fire({
-                                position: "top-end", 
+                                position: "top-end",
                                 title: "delete successful !",
                                 showConfirmButton: false,
                                 timer: 1000
-                              });
+                            });
                         }
                     })
             }

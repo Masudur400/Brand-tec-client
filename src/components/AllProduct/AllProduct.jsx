@@ -17,7 +17,7 @@ const AllProduct = () => {
              
             <div>
             <Tabs>
-                <div className="md:text-center my-10 md:font-bold text-xs">
+                <div className="md:text-center my-5 md:font-bold text-xs">
                 <TabList>
                     <Tab>All Product</Tab>
                     <Tab>In Stock</Tab>

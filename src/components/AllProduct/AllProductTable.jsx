@@ -76,11 +76,11 @@ const AllProductTable = () => {
                         if (res.data.deletedCount > 0) {
                             refetch()
                             Swal.fire({
-                                position: "top-end", 
+                                position: "top-end",
                                 title: "delete successful !",
                                 showConfirmButton: false,
                                 timer: 1000
-                              });
+                            });
                         }
                     })
             }
@@ -147,7 +147,7 @@ const AllProductTable = () => {
                                                     <Link to={`/updateProduct/${data?._id}`}><button className="w-fit md:px-2 px-1 py-1 text-center rounded-md bg-gradient-to-r from-orange-500 to-red-500 hover:from-red-400 hover:to-orange-400 text-white font-normal text-[10px]">Update</button></Link>
                                                     <button onClick={() => handleDelete(data)} className="w-fit md:px-2 px-1 py-1 text-center rounded-md bg-gradient-to-r from-orange-500 to-red-500 hover:from-red-400 hover:to-orange-400 text-white font-normal text-[10px]">Delete</button>
                                                 </div>
-                                            </td> 
+                                            </td>
                                         </tr>)
                                     }
                                 </tbody>
