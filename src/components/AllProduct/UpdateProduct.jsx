@@ -7,14 +7,14 @@ import { useQuery } from "@tanstack/react-query";
 import Loading from "../../Loading/Loading";
 import { FaXmark } from "react-icons/fa6";
 
- 
+
 const imageHostingKey = import.meta.env.VITE_image_hosting_key;
 const imageHostingApi = `https://api.imgbb.com/1/upload?key=${imageHostingKey}`;
 
 const UpdateProduct = () => {
 
-    const {id} = useParams()
-    const axiosSecure = useAxiosSecure() 
+    const { id } = useParams()
+    const axiosSecure = useAxiosSecure()
     const navigate = useNavigate()
 
     const { data: singleData = {}, isPending, refetch } = useQuery({
@@ -46,7 +46,7 @@ const UpdateProduct = () => {
             const imageData = new FormData();
             imageData.append('image', photoFile);
 
-            if(photoFile?.name){
+            if (photoFile?.name) {
                 var imageRes = await axios.post(imageHostingApi, imageData, {
                     headers: {
                         'Content-Type': 'multipart/form-data',
@@ -65,21 +65,21 @@ const UpdateProduct = () => {
                 productImage: imageUrl || productImage,
                 productDetails,
                 productType,
-                productAddDate:productAddDate
-            } 
+                productAddDate: productAddDate
+            }
 
             const res = await axiosSecure.patch(`/products/${_id}`, updateData)
-                 
-                    if (res.data.modifiedCount > 0) {
-                        refetch()
-                        Swal.fire({
-                            title: "Success!",
-                            text: "Product update successfully!",
-                            icon: "success"
-                        });
-                         navigate('/allProduct')
-                    } 
-                 
+
+            if (res.data.modifiedCount > 0) {
+                refetch()
+                Swal.fire({
+                    title: "Success!",
+                    text: "Product update successfully!",
+                    icon: "success"
+                });
+                navigate('/allProduct')
+            }
+
 
         } catch (error) {
             console.error('Error uploading the image or submitting the form:', error);
@@ -87,7 +87,7 @@ const UpdateProduct = () => {
 
     }
 
-    if(isPending){
+    if (isPending) {
         return <Loading></Loading>
     }
 
@@ -98,8 +98,8 @@ const UpdateProduct = () => {
                     <title>Update Product</title>
                 </Helmet>
                 <div className="flex justify-end">
-                <Link to='/allProduct' className="p-1 border-2 border-orange-500 rounded-full"><FaXmark className="md:text-3xl text-orange-600 my-0"></FaXmark></Link>
-            </div>
+                    <Link to='/allProduct' className="p-1 border-2 border-orange-500 rounded-full"><FaXmark className="md:text-3xl text-orange-600 my-0"></FaXmark></Link>
+                </div>
 
                 <h3 className="text-3xl font-bold text-center text-orange-600 my-4">Update Product</h3>
                 <form onSubmit={handleAddProduct}>
@@ -133,10 +133,10 @@ const UpdateProduct = () => {
                             <p className="font-semibold text-sm md:text-base">Product Image</p>
                             <input type="file" placeholder="" name="productImage" id="" className="border-2 rounded-sm md:rounded-md w-full text-sm md:text-base  mb-2 bg-white" />
                         </div>
-                    <div>
-                        <p className="font-semibold text-sm md:text-base">Product Details</p>
-                        <textarea name="productDetails" defaultValue={productDetails} placeholder="Product Details" id="" className="border-2 rounded-md w-full text-sm md:text-base px-4 md:py-1 mb-2"></textarea>
-                    </div>
+                        <div>
+                            <p className="font-semibold text-sm md:text-base">Product Details</p>
+                            <textarea name="productDetails" defaultValue={productDetails} placeholder="Product Details" id="" className="border-2 rounded-md w-full text-sm md:text-base px-4 md:py-1 mb-2"></textarea>
+                        </div>
                     </div>
 
 
