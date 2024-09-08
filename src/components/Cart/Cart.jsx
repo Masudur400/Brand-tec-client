@@ -21,7 +21,7 @@ const Cart = () => {
     //     }
     // })
 
-    const [carts, isPending, refetch,loading]= useCart();
+    const [carts, isPending, refetch, loading] = useCart();
 
     const totalPrice = carts.reduce((total, product) => total + product.newPrice, 0);
 
@@ -39,8 +39,8 @@ const Cart = () => {
                 <div className="flex justify-end">
                     {
                         carts.length ?
-                        <Link to='/orderInfo'><button className="w-fit px-2 py-1 text-center rounded-md bg-gradient-to-r from-orange-500 to-red-500 hover:from-red-400 hover:to-orange-400 text-white font-medium">Pay: {totalPrice} tk</button> </Link>
-                            
+                            <Link to='/orderInfo'><button className="w-fit px-2 py-1 text-center rounded-md bg-gradient-to-r from-orange-500 to-red-500 hover:from-red-400 hover:to-orange-400 text-white font-medium">Pay: {totalPrice} tk</button> </Link>
+
                             : <button onClick={() => {
                                 Swal.fire({
                                     position: "top-end",
