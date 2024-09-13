@@ -2,15 +2,15 @@ import Swal from "sweetalert2";
 import useAxiosSecure from "../Hooks/useAxiosSecure";
 import PropTypes from 'prop-types'
 
- 
-const SingleCart = ({cart, refetch}) => {
+
+const SingleCart = ({ cart, refetch }) => {
 
     const axiosSecure = useAxiosSecure()
 
-    const { _id, productName, productBrand, oldPrice, newPrice, productQuantity, productImage, productDetails, productType, productAddDate,quantity }= cart
+    const { _id, productName, productBrand, oldPrice, newPrice, productQuantity, productImage, productDetails, productType, productAddDate, quantity } = cart
 
     const handleDelete = data => {
-         
+
         Swal.fire({
             title: "Are you sure?",
             text: "You want to delete item...!",
@@ -27,11 +27,11 @@ const SingleCart = ({cart, refetch}) => {
                         if (res.data.deletedCount > 0) {
                             refetch()
                             Swal.fire({
-                                position: "top-end", 
+                                position: "top-end",
                                 title: "cart successful !",
                                 showConfirmButton: false,
                                 timer: 1000
-                              }); 
+                            });
                         }
                     })
             }
@@ -50,8 +50,8 @@ const SingleCart = ({cart, refetch}) => {
                     <p className='flex gap-2 items-center'><span className='text-orange-500 font-medium'>{newPrice} Tk</span> <span className='text-sm line-through'>{oldPrice} Tk</span></p>
                     <p>Quantity : {quantity}</p>
                     <p className="">{productDetails}</p>
-                    <div className="flex justify-end items-center px-2"> 
-                        <button onClick={()=>handleDelete(cart)} className="w-fit px-4 py-1 text-center rounded-md bg-gradient-to-r from-orange-500 to-red-500 hover:from-red-400 hover:to-orange-400 text-white font-medium text-sm my-3 mr-7">Remove</button>
+                    <div className="flex justify-end items-center px-2">
+                        <button onClick={() => handleDelete(cart)} className="w-fit px-4 py-1 text-center rounded-md bg-gradient-to-r from-orange-500 to-red-500 hover:from-red-400 hover:to-orange-400 text-white font-medium text-sm my-3 mr-7">Remove</button>
                     </div>
                 </div>
             </div>
@@ -59,11 +59,11 @@ const SingleCart = ({cart, refetch}) => {
     );
 };
 
-SingleCart.propTypes ={
-    cart:PropTypes.object,
-    refetch:PropTypes.func
-        
+SingleCart.propTypes = {
+    cart: PropTypes.object,
+    refetch: PropTypes.func
+
 }
- 
+
 
 export default SingleCart;
