@@ -5,7 +5,7 @@ import { Helmet } from "react-helmet";
 import Loading from "../../Loading/Loading";
 import SingleBrand from "./SingleBrand";
 import Marquee from "react-fast-marquee";
-import { useState } from "react";  
+import { useState } from "react";
 import { HiMinus } from "react-icons/hi";
 import 'react-toastify/dist/ReactToastify.css';
 import { toast, ToastContainer } from "react-toastify";
@@ -18,7 +18,7 @@ const Details = () => {
     const { id } = useParams()
     const axiosSecure = useAxiosSecure()
     const [count, setCount] = useState(1)
-    const {user, loading} = useAuth()
+    const { user, loading } = useAuth()
 
     // data load for details
     const { data: singleData = {}, isPending } = useQuery({
@@ -45,15 +45,15 @@ const Details = () => {
 
     // minus count 
     const handleMinus = () => {
-        if(count === 1){
+        if (count === 1) {
             return
         }
         setCount(count - 1)
     }
-    
+
     // plus count 
     const handlePlus = () => {
-        setCount(count + 1) 
+        setCount(count + 1)
     }
 
     const handleAddCart = async (singleData) => {
@@ -61,16 +61,16 @@ const Details = () => {
         const data = {
             email: user?.email,
             name: user?.displayName,
-            productName : singleData.productName,
-            productBrand : singleData.productBrand, 
-            oldPrice : parseFloat(singleData.oldPrice) * count,
-            newPrice : parseInt(singleData.newPrice) * count,
-            productQuantity :singleData.productQuantity,
+            productName: singleData.productName,
+            productBrand: singleData.productBrand,
+            oldPrice: parseFloat(singleData.oldPrice) * count,
+            newPrice: parseInt(singleData.newPrice) * count,
+            productQuantity: singleData.productQuantity,
             quantity: count,
-            productImage : singleData.productImage,
-            productDetails : singleData.productDetails,
-            productType : singleData.productType,
-            productAddDate : singleData.productAddDate
+            productImage: singleData.productImage,
+            productDetails: singleData.productDetails,
+            productType: singleData.productType,
+            productAddDate: singleData.productAddDate
         }
         const res = await axiosSecure.post('/carts', data)
         if (res.data.insertedId) {
@@ -104,7 +104,7 @@ const Details = () => {
                             <p className="font-medium bg-slate-50 px-4">{count}</p>
                             <button onClick={handlePlus} className="px-1 flex justify-center items-center"><FiPlus></FiPlus></button>
                         </div>
-                        <button onClick={()=>handleAddCart(singleData)} className="w-fit px-4 py-1 text-center rounded-md bg-gradient-to-r from-orange-500 to-red-500 hover:from-red-400 hover:to-orange-400 text-white font-medium text-sm my-3 mr-7">Add Cart</button>
+                        <button onClick={() => handleAddCart(singleData)} className="w-fit px-4 py-1 text-center rounded-md bg-gradient-to-r from-orange-500 to-red-500 hover:from-red-400 hover:to-orange-400 text-white font-medium text-sm my-3 mr-7">Add Cart</button>
                     </div>
                 </div>
             </div>
