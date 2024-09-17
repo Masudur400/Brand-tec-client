@@ -11,7 +11,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import { toast, ToastContainer } from "react-toastify";
 import useAuth from "../Hooks/useAuth";
 import { FiPlus } from "react-icons/fi";
-// import Barcode from "react-barcode";
+import Barcode from "react-barcode";
 
 
 const Details = () => {
@@ -20,6 +20,8 @@ const Details = () => {
     const axiosSecure = useAxiosSecure()
     const [count, setCount] = useState(1)
     const { user, loading } = useAuth()
+
+
 
     // data load for details
     const { data: singleData = {}, isPending } = useQuery({
@@ -79,9 +81,13 @@ const Details = () => {
         }
     }
 
+
+
     if (isPending || isLoading || loading) {
         return <Loading></Loading>
     }
+
+
 
     return (
         <div className="my-10">
@@ -108,9 +114,9 @@ const Details = () => {
                         <button onClick={() => handleAddCart(singleData)} className="w-fit px-4 py-1 text-center rounded-md bg-gradient-to-r from-orange-500 to-red-500 hover:from-red-400 hover:to-orange-400 text-white font-medium text-sm my-3 mr-7">Add Cart</button>
                     </div>
                 </div>
-                {/* <div>
-                    <Barcode value={id}></Barcode>
-                </div> */}
+            </div>
+            <div>
+                <Barcode value={id} className='w-52'></Barcode>
             </div>
             <h2 className="text-2xl font-bold mt-5 text-center text-orange-500">More</h2>
             <Marquee speed={30}>
@@ -125,4 +131,4 @@ const Details = () => {
     );
 };
 
-export default Details;
+export default Details; 
