@@ -64,7 +64,7 @@ const NavBar = () => {
                 </div>
 
                 {/* menu / routes  */}
-                <ul className={`lg:flex justify-center duration-500 items-center gap-5 left-0 min-w-28  absolute lg:static overflow-x-auto ${open ? 'top-14 md:top-16 z-[99] space-y-3' : '-left-52 top-14 md:top-16 z-[99] space-y-3'} bg-gray-50 lg:bg-inherit p-3 rounded-sm justify-center font-semibold min-w-40`}>
+                <ul className={`lg:flex justify-center duration-500 items-center gap-5 left-0 min-w-28  absolute lg:static overflow-x-auto ${open ? 'top-14 md:top-16 z-[99] space-y-3 h-full' : '-left-96  top-14 md:top-16 z-[99] space-y-3 h-full'} bg-gray-50 lg:bg-inherit p-3 rounded-sm justify-center font-semibold min-w-40`}>
                     {routes}
                 </ul>
 
