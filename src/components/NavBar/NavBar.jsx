@@ -29,17 +29,22 @@ const NavBar = () => {
 
     const routes = <>
         <li><NavLink></NavLink></li>
-        <li><NavLink to='/' onClick={() => setOpen(!open)} className={({ isActive }) => isActive ? 'text-orange-500 underline font-bold' : 'hover:text-red-500'}> Home</NavLink> </li>
-        <li><NavLink to='/watch' onClick={() => setOpen(!open)} className={({ isActive }) => isActive ? 'text-orange-500 underline font-bold' : 'hover:text-red-500'}>Watch</NavLink> </li>
-        <li><NavLink to='/mobile' onClick={() => setOpen(!open)} className={({ isActive }) => isActive ? 'text-orange-500 underline font-bold' : 'hover:text-red-500'}>Mobile</NavLink> </li>
-        <li><NavLink to='/laptop' onClick={() => setOpen(!open)} className={({ isActive }) => isActive ? 'text-orange-500 underline font-bold' : 'hover:text-red-500'}>LapTop</NavLink> </li>
-        <li><NavLink to='/cart' onClick={() => setOpen(!open)} className={({ isActive }) => isActive ? 'text-orange-500 underline font-bold flex items-center gap-1' : 'hover:text-red-500 flex items-center gap-1'}>Carts<BsCart4></BsCart4></NavLink> </li>
-        <li><NavLink to='/addProduct' onClick={() => setOpen(!open)} className={({ isActive }) => isActive ? 'text-orange-500 underline font-bold' : 'hover:text-red-500'}>AddProduct</NavLink> </li>
-        <li><NavLink to='/allProduct' onClick={() => setOpen(!open)} className={({ isActive }) => isActive ? 'text-orange-500 underline font-bold' : 'hover:text-red-500'}>AllProduct</NavLink> </li>
-        <li><NavLink to='/addShippingMethod' onClick={() => setOpen(!open)} className={({ isActive }) => isActive ? 'text-orange-500 underline font-bold' : 'hover:text-red-500'}>AddShipping</NavLink> </li>
-        <li><NavLink to='/allShipping' onClick={() => setOpen(!open)} className={({ isActive }) => isActive ? 'text-orange-500 underline font-bold' : 'hover:text-red-500'}>AllShipping</NavLink> </li>
-        <li><NavLink to='/allUsers' onClick={() => setOpen(!open)} className={({ isActive }) => isActive ? 'text-orange-500 underline font-bold' : 'hover:text-red-500'}>AllUsers</NavLink> </li>
-        <li><NavLink to='/dashboard' onClick={() => setOpen(!open)} className={({ isActive }) => isActive ? 'text-orange-500 underline font-bold' : 'hover:text-red-500'}>Dashboard</NavLink> </li>
+
+        <li className="flex justify-between items-center lg:hidden"><p className="text-3xl font-bold mb-3"> <span className="text-orange-500">Brand</span><span className="text-xl">TEC</span></p> <p onClick={() => setOpen(!open)} className="text-xl md:text-2xl p-1 border-2 border-black rounded-md"><HiOutlineX></HiOutlineX></p></li>
+
+        <p className="divider"></p>
+
+        <li><NavLink to='/' onClick={() => setOpen(!open)} className={({ isActive }) => isActive ? 'text-orange-500 underline  ' : 'hover:text-red-500'}> Home</NavLink> </li>
+        <li><NavLink to='/watch' onClick={() => setOpen(!open)} className={({ isActive }) => isActive ? 'text-orange-500 underline  ' : 'hover:text-red-500'}>Watch</NavLink> </li>
+        <li><NavLink to='/mobile' onClick={() => setOpen(!open)} className={({ isActive }) => isActive ? 'text-orange-500 underline  ' : 'hover:text-red-500'}>Mobile</NavLink> </li>
+        <li><NavLink to='/laptop' onClick={() => setOpen(!open)} className={({ isActive }) => isActive ? 'text-orange-500 underline  ' : 'hover:text-red-500'}>LapTop</NavLink> </li>
+        <li><NavLink to='/cart' onClick={() => setOpen(!open)} className={({ isActive }) => isActive ? 'text-orange-500 underline  flex items-center gap-1' : 'hover:text-red-500 flex items-center gap-1'}>Carts<BsCart4></BsCart4></NavLink> </li>
+        <li><NavLink to='/addProduct' onClick={() => setOpen(!open)} className={({ isActive }) => isActive ? 'text-orange-500 underline  ' : 'hover:text-red-500'}>AddProduct</NavLink> </li>
+        <li><NavLink to='/allProduct' onClick={() => setOpen(!open)} className={({ isActive }) => isActive ? 'text-orange-500 underline  ' : 'hover:text-red-500'}>AllProduct</NavLink> </li>
+        <li><NavLink to='/addShippingMethod' onClick={() => setOpen(!open)} className={({ isActive }) => isActive ? 'text-orange-500 underline  d' : 'hover:text-red-500'}>AddShipping</NavLink> </li>
+        <li><NavLink to='/allShipping' onClick={() => setOpen(!open)} className={({ isActive }) => isActive ? 'text-orange-500 underline  ' : 'hover:text-red-500'}>AllShipping</NavLink> </li>
+        <li><NavLink to='/allUsers' onClick={() => setOpen(!open)} className={({ isActive }) => isActive ? 'text-orange-500 underline  ' : 'hover:text-red-500'}>AllUsers</NavLink> </li>
+        <li><NavLink to='/dashboard' onClick={() => setOpen(!open)} className={({ isActive }) => isActive ? 'text-orange-500 underline  ' : 'hover:text-red-500'}>Dashboard</NavLink> </li>
 
     </>
 
@@ -49,24 +54,27 @@ const NavBar = () => {
 
 
     return (
-        <div className="shadow-md shadow-orange-100">
-            <div className="container mx-auto p-3 flex justify-between items-center">
+        <div className="  border-b border-orange-100">
+            <div className="container mx-auto p-2 flex justify-between items-center">
                 {/* dropdown icons  */}
                 <div onClick={() => setOpen(!open)} className="lg:hidden text-2xl md:text-3xl">
                     {
-                        open === true ? <HiOutlineX></HiOutlineX> : <GrMenu></GrMenu>
+                        open === true ? ''
+                            // <HiOutlineX></HiOutlineX> 
+                            : <GrMenu></GrMenu>
                     }
                 </div>
 
                 {/* logo  */}
                 <div>
-                    <Link to='/' className="text-3xl font-bold  absolute lg:static max-sm:left-12 max-sm:top-[9px] md:left-20 md:top-[18px]"> <span className="text-orange-500">Brand</span><span className="text-xl">TEC</span></Link>
+                    <Link to='/' className="text-3xl font-bold  absolute lg:static max-sm:left-12 max-sm:top-[6px] md:left-20 md:top-[14px]"> <span className="text-orange-500">Brand</span><span className="text-xl">TEC</span></Link>
                 </div>
 
                 {/* menu / routes  */}
-                <ul className={`lg:flex justify-center duration-500 items-center gap-5 left-0 min-w-28  absolute lg:static overflow-x-auto ${open ? 'top-14 md:top-16 z-[99] space-y-3 h-full' : '-left-96  top-14 md:top-16 z-[99] space-y-3 h-full'} bg-gray-50 lg:bg-inherit p-3 rounded-sm justify-center font-semibold min-w-40`}>
+                <ul className={`lg:flex justify-center duration-1000 items-center gap-5 left-0 absolute lg:static overflow-x-auto ${open ? 'top-0 z-[99] min-w-56 md:min-w-96 space-y-3  backdrop-blur-md bg-opacity-30 ' : '-left-[500px] top-0  z-[99] space-y-3'} lg:bg-inherit px-3 rounded-sm justify-center font-semibold  pb-10 lg:pb-0 lg:min-h-fit`}>
                     {routes}
                 </ul>
+
 
                 {/* user image & button  */}
                 {

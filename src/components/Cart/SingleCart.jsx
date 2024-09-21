@@ -40,7 +40,7 @@ const SingleCart = ({ cart, refetch }) => {
 
     return (
         <div>
-            <div className="md:flex gap-3 justify-center items-center lg:w-2/3 mx-auto border rounded-md shadow-md p-1 mb-5 mt-10 group">
+            <div className="md:flex gap-3 justify-center items-center lg:w-2/3 mx-auto border rounded-md shadow-md p-1 my-5 group">
                 <div className="flex-none">
                     <img src={productImage} alt="image" className="w-52 md:w-60 mx-auto group-hover:scale-105" />
                 </div>

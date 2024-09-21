@@ -113,7 +113,7 @@ const AddProduct = () => {
                         </div>
                         <div>
                             <p className="font-semibold text-sm md:text-base">Product Image</p>
-                            <input type="file" placeholder="" name="productImage" id="" className="border-2 rounded-sm md:rounded-md w-full text-sm md:text-base  mb-2 bg-white" />
+                            <input type="file" placeholder="" name="productImage" id="" className="border-2 rounded-sm md:rounded-md w-full text-sm md:text-base  mb-2" />
                         </div>
                     <div>
                         <p className="font-semibold text-sm md:text-base">Product Details</p>
