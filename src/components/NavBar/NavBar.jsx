@@ -12,7 +12,7 @@ import useAxiosSecure from "../Hooks/useAxiosSecure";
 
 const NavBar = () => {
 
-    const [open, setOpen] = useState(false)
+    const [open, setOpen] = useState(false) 
     const [profile, setProfile] = useState(false)
     const { user, logOut, loading } = useAuth()
     const axiosSecure = useAxiosSecure()
@@ -30,11 +30,13 @@ const NavBar = () => {
     const routes = <>
         <li><NavLink></NavLink></li>
 
-        <li className="flex justify-between items-center lg:hidden"><p className="text-3xl font-bold mb-3"> <span className="text-orange-500">Brand</span><span className="text-xl">TEC</span></p> <p onClick={() => setOpen(!open)} className="text-xl md:text-2xl p-1 border-2 border-black rounded-md"><HiOutlineX></HiOutlineX></p></li>
+        <div className="flex justify-between items-center w-screen lg:hidden">
+        <li className="flex justify-between items-center min-w-56 md:min-w-96 lg:hidden"><p className="text-3xl font-bold mb-0"> <span className="text-orange-500">Brand</span><span className="text-xl">TEC</span></p> <p onClick={() => setOpen(!open)} className="text-xl md:text-2xl p-1 border-2 border-black rounded-md opacity-75 border-opacity-75"><HiOutlineX></HiOutlineX></p></li>
+        </div>
 
-        <p className="divider"></p>
+        <p className="divider lg:hidden my-0"></p>
 
-        <li><NavLink to='/' onClick={() => setOpen(!open)} className={({ isActive }) => isActive ? 'text-orange-500 underline  ' : 'hover:text-red-500'}> Home</NavLink> </li>
+        <li><NavLink to='/' onClick={() => setOpen(!open)} className={({ isActive }) => isActive ? 'text-orange-500 underline  ' : 'hover:text-red-500'}> Home</NavLink> </li>   
         <li><NavLink to='/watch' onClick={() => setOpen(!open)} className={({ isActive }) => isActive ? 'text-orange-500 underline  ' : 'hover:text-red-500'}>Watch</NavLink> </li>
         <li><NavLink to='/mobile' onClick={() => setOpen(!open)} className={({ isActive }) => isActive ? 'text-orange-500 underline  ' : 'hover:text-red-500'}>Mobile</NavLink> </li>
         <li><NavLink to='/laptop' onClick={() => setOpen(!open)} className={({ isActive }) => isActive ? 'text-orange-500 underline  ' : 'hover:text-red-500'}>LapTop</NavLink> </li>
@@ -45,6 +47,8 @@ const NavBar = () => {
         <li><NavLink to='/allShipping' onClick={() => setOpen(!open)} className={({ isActive }) => isActive ? 'text-orange-500 underline  ' : 'hover:text-red-500'}>AllShipping</NavLink> </li>
         <li><NavLink to='/allUsers' onClick={() => setOpen(!open)} className={({ isActive }) => isActive ? 'text-orange-500 underline  ' : 'hover:text-red-500'}>AllUsers</NavLink> </li>
         <li><NavLink to='/dashboard' onClick={() => setOpen(!open)} className={({ isActive }) => isActive ? 'text-orange-500 underline  ' : 'hover:text-red-500'}>Dashboard</NavLink> </li>
+
+        
 
     </>
 
@@ -70,10 +74,12 @@ const NavBar = () => {
                     <Link to='/' className="text-3xl font-bold  absolute lg:static max-sm:left-12 max-sm:top-[6px] md:left-20 md:top-[14px]"> <span className="text-orange-500">Brand</span><span className="text-xl">TEC</span></Link>
                 </div>
 
-                {/* menu / routes  */}
-                <ul className={`lg:flex justify-center duration-1000 items-center gap-5 left-0 absolute lg:static overflow-x-auto ${open ? 'top-0 z-[99] min-w-56 md:min-w-96 space-y-3  backdrop-blur-md bg-opacity-30 ' : '-left-[500px] top-0  z-[99] space-y-3'} lg:bg-inherit px-3 rounded-sm justify-center font-semibold  pb-10 lg:pb-0 lg:min-h-fit`}>
+                {/* menu / routes  */} 
+                
+                <ul className={`lg:flex justify-center items-center duration-1000  gap-5 left-0 absolute lg:static overflow-x-auto overflow-y-auto lg:bg-inherit px-3 rounded-sm font-semibold  pb-10 lg:pb-0 h-screen lg:h-fit ${open ? 'top-0 z-[99] min-w-56 md:min-w-96 space-y-3  backdrop-blur-md bg-opacity-30 ' : '-left-[1500px] top-0  z-[99] space-y-3'}`}>
                     {routes}
                 </ul>
+                 
 
 
                 {/* user image & button  */}

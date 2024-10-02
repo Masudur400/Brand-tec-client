@@ -37,6 +37,8 @@ const Profile = () => {
     // const formattedDateOnly = date.toLocaleDateString()
     const formattedDate = date.toLocaleString();
 
+    
+
 
 
     const handleDataUpdate = (users) => {
@@ -109,8 +111,9 @@ const Profile = () => {
                     <img src={photo} alt="image" className="w-56  h-56 rounded-full mx-auto" />
                     <div className="w-fit mx-auto my-5 space-y-2">
                         <p><span className="font-bold">Name : </span>{name}</p>
+                        <p><span className="font-bold">Email : </span>{email}</p>
                         <p><span className="font-bold">Role : </span>{role}</p>
-                        <p><span className="font-bold">Time : </span>{formattedDate}</p>
+                        {/* <p><span className="font-bold">Time : </span>{formattedDate}</p> */}
                     </div>
                     <div className="flex justify-center items-center">
                         <div onClick={() => handleDataUpdate(users)} className="w-fit mx-auto bg-gradient-to-r from-orange-500 to-red-500 hover:from-red-400 hover:to-orange-400 px-4 py-2 rounded-md text-white font-bold mb-5">
