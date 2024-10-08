@@ -95,7 +95,7 @@ const StockOutProduct = () => {
         <div>
 
             <div className="flex gap-1 justify-end items-center mr-4 text-xs font-medium">
-                <p className="px-2 py-1 bg-gray-100">Show : </p>
+                <p className="px-2 py-1 bg-base-100">Show : </p>
                 <select onChange={handleItemParPage} defaultValue={itemParPage} name="" id="" className="border px-2 py-1">
                     <option value="12">12</option>
                     <option value="20">20</option>

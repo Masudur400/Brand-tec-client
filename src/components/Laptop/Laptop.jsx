@@ -70,11 +70,11 @@ const Laptop = () => {
                 <div>
                     <div className="flex gap-[2px] justify-center items-center text-xs font-medium">
                         <span>Sort By :</span> 
-                        <button onClick={() => setOpen(!open)} className="flex justify-center items-center gap-1 bg-gray-100 rounded-sm px-2 py-1">  {sortPrice}<IoIosArrowDown></IoIosArrowDown></button> 
+                        <button onClick={() => setOpen(!open)} className="flex justify-center items-center gap-1 bg-base-100 rounded-sm px-2 py-1">  {sortPrice}<IoIosArrowDown></IoIosArrowDown></button> 
                     </div>
                     {
                         open ?
-                            <ul className="flex flex-col z-[999] absolute bg-gray-50 p-2">
+                            <ul className="flex flex-col z-[999] absolute bg-base-100 p-2">
                                 <li><button onClick={() => handleYesNo('default')} className="font-medium mb-1 text-center text-xs border px-2 w-full">Default</button></li>
                                 <li><button onClick={() => handleYesNo('low')} className="font-medium mb-1 text-center text-xs border px-2 w-full">Price(Low - High)</button></li>
                                 <li><button onClick={() => handleYesNo('high')} className="font-medium mb-1 text-center text-xs border px-2 w-full">Price(High - low)</button></li>
