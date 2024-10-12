@@ -34,7 +34,7 @@ const Cart = () => {
             <Helmet>
                 <title>MyCart</title>
             </Helmet>
-            <div className="  p-4 flex mt-2">
+            <div className="px-4 flex mt-2">
                 <h2 className="text text-xl md:text-2xl font-bold text-white text-center flex-1">My Cart</h2>
                 <div className="flex justify-end">
                     {

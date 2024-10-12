@@ -32,7 +32,7 @@ const AddShippingMethod = () => {
     }
 
     return (
-        <div className="lg:w-2/4 md:w-2/3 mx-auto my-5 md:p-5 p-3 rounded-lg shadow-md max-sm:mx-4 border" >
+        <div className="lg:w-4/5 md:w-2/3 mx-auto my-5 md:p-5 p-3 rounded-lg shadow-md max-sm:mx-4 border" >
             <Helmet>
                 <title>Add Shipping</title>
             </Helmet>

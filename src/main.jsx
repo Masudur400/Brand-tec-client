@@ -46,54 +46,67 @@ const router = createBrowserRouter([
         element: <Home></Home>
       },
       {
+        // user route 
         path: '/watch',
         element: <Watch></Watch>
       },
       {
+        // user route 
         path: '/mobile',
         element: <Mobile></Mobile>
       },
       {
+        // user route 
         path: '/laptop',
         element: <Laptop></Laptop>
       },
       {
+        // user route 
         path: '/cart',
         element: <Cart></Cart>
       },
       {
+        // admin route 
         path: '/addProduct',
         element: <AddProduct></AddProduct>
       },
       {
+        // admin route 
         path: '/addShippingMethod',
         element:  <AddShippingMethod></AddShippingMethod>
       },
       {
+        // user route 
         path: '/profile',
         element: <Profile></Profile>
       },
       {
+        // user route 
         path: '/details/:id',
         element: <Details></Details>
       },
       {
+        // admin route 
         path: '/allProduct',
         element:<AllProduct></AllProduct>
       },
       {
+        // admin route 
         path: '/allShipping',
         element: <AllShipping></AllShipping>
       },
       {
+        // user route 
         path: '/updateProduct/:id',
         element: <UpdateProduct></UpdateProduct>
       },
       {
+        // admin route 
         path: '/allUsers',
         element: <AllUsers></AllUsers>
       }, 
       {
+        // user route 
         path: '/orderInfo',
         element: <OrderInfo></OrderInfo>
       }, 
