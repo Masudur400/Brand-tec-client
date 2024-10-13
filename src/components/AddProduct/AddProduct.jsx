@@ -82,11 +82,11 @@ const AddProduct = () => {
 
                     <div className="grid grid-cols-1 md:grid-cols-2 md:gap-3">
                         <div>
-                            <p className="font-semibold">Product Name</p>
+                            <p className="font-semibold mb-2">Product Name</p>
                             <input type="text" name="productName" placeholder="Product Name" id="" className="border-2 rounded-md w-full text-sm md:text-base px-4 md:py-1 mb-2" />
                         </div>
                         <div>
-                            <p className="font-semibold">Product Type</p>
+                            <p className="font-semibold mb-2">Product Type</p>
                             {/* <input type="text" name="productType" placeholder="Product Type" id="" className="border-2 rounded-md w-full text-sm md:text-base px-4 md:py-1 mb-2" /> */}
                             <select name="productType" id="" className="border-2 rounded-md w-full text-sm md:text-base px-4 md:py-1 mb-2">
                                 <option disabled selected value="">Select One</option>
@@ -96,34 +96,34 @@ const AddProduct = () => {
                             </select>
                         </div>
                         <div>
-                            <p className="font-semibold">Product Brand</p>
+                            <p className="font-semibold mb-2">Product Brand</p>
                             <input type="text" name="productBrand" placeholder="Product Brand" id="" className="border-2 rounded-md w-full text-sm md:text-base px-4 md:py-1 mb-2" />
                         </div>
                         <div>
-                            <p className="font-semibold">Old Price</p>
+                            <p className="font-semibold mb-2">Old Price</p>
                             <input type="text" name="oldPrice" placeholder="Old Price" id="" className="border-2 rounded-md w-full text-sm md:text-base px-4 md:py-1 mb-2" />
                         </div>
                         <div>
-                            <p className="font-semibold">New Price</p>
+                            <p className="font-semibold mb-2">New Price</p>
                             <input type="text" name="newPrice" placeholder="New Price" id="" className="border-2 rounded-md w-full text-sm md:text-base px-4 md:py-1 mb-2" />
                         </div>
                         <div>
-                            <p className="font-semibold">Product Quantity</p>
+                            <p className="font-semibold mb-2">Product Quantity</p>
                             <input type="text" name="productQuantity" placeholder="Product Quantity" id="" className="border-2 rounded-md w-full text-sm md:text-base px-4 md:py-1 mb-2" />
                         </div>
                         <div>
-                            <p className="font-semibold text-sm md:text-base">Product Image</p>
+                            <p className="font-semibold text-sm md:text-base mb-2">Product Image</p>
                             <input type="file" placeholder="" name="productImage" id="" className="border-2 rounded-sm md:rounded-md w-full text-sm md:text-base  mb-2" />
                         </div>
                     <div>
-                        <p className="font-semibold text-sm md:text-base">Product Details</p>
+                        <p className="font-semibold text-sm md:text-base mb-2">Product Details</p>
                         <textarea name="productDetails" placeholder="Product Details" id="" className="border-2 rounded-md w-full text-sm md:text-base px-4 md:py-1 mb-2"></textarea>
                     </div>
                     </div>
 
 
                     <div className="flex justify-center">
-                        <input className="w-fit px-4 py-1 md:py-2 text-center text-lg rounded-md bg-gradient-to-r from-orange-500 to-red-500 hover:from-red-400 hover:to-orange-400 text-white font-bold my-3" type="submit" value="Add Product" />
+                        <input className="w-fit px-4 py-1 md:py-2 text-center rounded-md text-orange-500 border border-orange-400 hover:shadow-lg font-bold my-3" type="submit" value="Add Product" />
 
                     </div>
                 </form>

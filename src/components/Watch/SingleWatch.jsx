@@ -54,8 +54,8 @@ const SingleWatch = ({ watch }) => {
             </div>
             <div className="divider my-1"></div>
             <div className='flex justify-between items-center'>
-                <Link to={`/details/${_id}`}> <button className="w-fit px-2 py-1 text-center rounded-md bg-gradient-to-r from-orange-500 to-red-500 hover:from-red-400 hover:to-orange-400 text-white font-medium mb-3 text-sm">Details</button></Link>
-                <button onClick={() => handleAddCart(watch)} className="w-fit md:px-2 px-1 py-1 text-center rounded-md bg-gradient-to-r from-orange-500 to-red-500 hover:from-red-400 hover:to-orange-400 text-white font-medium text-sm mb-3">AddCart</button>
+                <Link to={`/details/${_id}`}> <button className="w-fit px-2 py-1 text-center rounded-md border border-orange-400 text-orange-500 hover:shadow-lg font-medium mb-3 text-sm">Details</button></Link>
+                <button onClick={() => handleAddCart(watch)} className="w-fit md:px-2 px-1 py-1 text-center rounded-md border border-orange-400 text-orange-500 hover:shadow-lg font-medium text-sm mb-3">AddCart</button>
             </div>
         </div>
 
