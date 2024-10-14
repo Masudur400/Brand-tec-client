@@ -22,9 +22,8 @@
     100%{
         background-position: 0% 50%;
     }
-}
-
-
+} 
+ 
 
 .scrollbar-hidden {
     scrollbar-width: none; /* Firefox */

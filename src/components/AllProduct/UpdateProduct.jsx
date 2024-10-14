@@ -141,7 +141,7 @@ const UpdateProduct = () => {
 
 
                     <div className="flex justify-center">
-                        <input className="w-fit px-4 py-1 md:py-2 text-center text-lg rounded-md bg-gradient-to-r from-orange-500 to-red-500 hover:from-red-400 hover:to-orange-400 text-white font-medium my-3" type="submit" value="Add Product" />
+                        <input className="w-fit px-4 py-1 md:py-2 text-center text-lg rounded-md border border-orange-400 text-orange-500 hover:shadow-lg font-medium my-3" type="submit" value="Add Product" />
 
                     </div>
                 </form>

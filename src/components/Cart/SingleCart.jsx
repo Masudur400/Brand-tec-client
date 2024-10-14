@@ -9,6 +9,9 @@ const SingleCart = ({ cart, refetch }) => {
 
     const { _id, productName, productBrand, oldPrice, newPrice, productQuantity, productImage, productDetails, productType, productAddDate, quantity } = cart
 
+    const modOldPrice = new Intl.NumberFormat('en-IN').format(oldPrice);
+    const modNewPrice = new Intl.NumberFormat('en-IN').format(newPrice);
+
     const handleDelete = data => {
 
         Swal.fire({
@@ -47,11 +50,11 @@ const SingleCart = ({ cart, refetch }) => {
                 <div className='space-y-1 my-3 flex-grow'>
                     <p className='font-bold'>{productName}</p>
                     {productQuantity > 0 ? <span className='  text-green-500 font-medium'>In Stock</span> : <span className='  text-red-500 font-medium' >Stock Out</span>}
-                    <p className='flex gap-2 items-center'><span className='text-orange-500 font-medium'>{newPrice} Tk</span> <span className='text-sm line-through'>{oldPrice} Tk</span></p>
+                    <p className='flex gap-2 items-center'><span className='text-orange-500 font-medium'>{modNewPrice} Tk</span> <span className='text-sm line-through'>{modOldPrice} Tk</span></p>
                     <p>Quantity : {quantity}</p>
                     <p className="">{productDetails}</p>
                     <div className="flex justify-end items-center px-2">
-                        <button onClick={() => handleDelete(cart)} className="w-fit px-4 py-1 text-center rounded-md bg-gradient-to-r from-orange-500 to-red-500 hover:from-red-400 hover:to-orange-400 text-white font-medium text-sm my-3 mr-7">Remove</button>
+                        <button onClick={() => handleDelete(cart)} className="w-fit px-4 py-1 text-center rounded-md border border-orange-400 text-orange-500 hover:shadow-lg font-medium text-sm my-3 mr-7">Remove</button>
                     </div>
                 </div>
             </div>

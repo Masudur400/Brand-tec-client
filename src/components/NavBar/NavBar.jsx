@@ -97,8 +97,8 @@ const NavBar = () => {
                                     </ul>
                                 </div>
                             </div>
-                            : <div>
-                                <Link to='/loginRegister/login' className="btn font-bold max-sm:btn-sm text-white bg-orange-400 hover:bg-orange-500">Login</Link>
+                            : <div className="px-5">
+                                <Link to='/loginRegister/login' className="px-3 py-1 rounded-md font-bold max-sm:btn-sm text-white bg-orange-400 hover:bg-orange-500">Login</Link>
                             </div>
                     }
                     </div>

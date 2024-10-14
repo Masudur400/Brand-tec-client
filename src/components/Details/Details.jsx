@@ -34,6 +34,9 @@ const Details = () => {
 
     const { _id, productName, productBrand, oldPrice, newPrice, productQuantity, productImage, productDetails, productType, productAddDate } = singleData
 
+    const modOldPrice = new Intl.NumberFormat('en-IN').format(oldPrice);
+    const modNewPrice = new Intl.NumberFormat('en-IN').format(newPrice);
+
 
     // load data by productBrand 
     const { data: allData = [], isPending: isLoading } = useQuery({
@@ -103,7 +106,7 @@ const Details = () => {
                 <div className='space-y-1 my-3 flex-grow'>
                     <p className='font-bold'>{productName}</p>
                     {productQuantity > 0 ? <span className='  text-green-500 font-medium'>In Stock</span> : <span className='  text-red-500 font-medium' >Stock Out</span>}
-                    <p className='flex gap-2 items-center'><span className='text-orange-500 font-medium'>{newPrice} Tk</span> <span className='text-sm line-through'>{oldPrice} Tk</span></p>
+                    <p className='flex gap-2 items-center'><span className='text-orange-500 font-medium'>{modNewPrice} Tk</span> <span className='text-sm line-through'>{modOldPrice} Tk</span></p>
                     <p className="">{productDetails}</p>
                     <div className="flex justify-between items-center px-2">
                         <div className="flex gap-1">
@@ -111,7 +114,7 @@ const Details = () => {
                             <p className="font-medium bg-slate-50 px-4">{count}</p>
                             <button onClick={handlePlus} className="px-1 flex justify-center items-center"><FiPlus></FiPlus></button>
                         </div>
-                        <button onClick={() => handleAddCart(singleData)} className="w-fit px-4 py-1 text-center rounded-md bg-gradient-to-r from-orange-500 to-red-500 hover:from-red-400 hover:to-orange-400 text-white font-medium text-sm my-3 mr-7">Add Cart</button>
+                        <button onClick={() => handleAddCart(singleData)} className="w-fit px-4 py-1 text-center rounded-md border border-orange-400 text-orange-500 hover:shadow-lg font-medium text-sm my-3 mr-7">Add Cart</button>
                     </div>
                 </div>
             </div>

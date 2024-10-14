@@ -58,7 +58,7 @@ const AllShipping = () => {
                                 <td>{idx + 1}.</td>
                                 <td className="min-w-56">{shipping?.shippingLocation}</td>
                                 <td className="min-w-36 text-center p-0">{shipping?.serviceCharge} Tk</td>
-                                <td><button onClick={() => handleDelete(shipping)} className="w-fit md:px-2 px-1 py-1 text-center rounded-md bg-gradient-to-r from-orange-500 to-red-500 hover:from-red-400 hover:to-orange-400 text-white font-normal text-[10px]">Delete</button></td>
+                                <td><button onClick={() => handleDelete(shipping)} className="w-fit md:px-2 px-1 py-1 text-center rounded-md border border-orange-400 text-orange-500 hover:shadow-lg font-bold text-[10px]">Delete</button></td>
                             </tr>)
                         }
                     </tbody>

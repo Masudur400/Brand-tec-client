@@ -16,6 +16,10 @@ const OrderInfo = () => {
     const totalPrice = carts.reduce((total, product) => total + product.newPrice, 0);
     const inTotal = parseInt(totalPrice) + parseInt(serviceCharge)
 
+    console.log(carts)
+    // const modOldPrice = new Intl.NumberFormat('en-IN').format(oldPrice);
+    // const modNewPrice = new Intl.NumberFormat('en-IN').format(newPrice);
+
      
 
     const cartsData = carts?.map(cart => {
@@ -70,21 +74,21 @@ const OrderInfo = () => {
 
                     <div className="">
                         <div>
-                            <p className="font-semibold">Your Name</p>
+                            <p className="font-semibold mb-2">Your Name</p>
                             <input type="text" required name="name" placeholder="Your Name" id="" className="border-2 rounded-md w-full text-sm md:text-base px-4 md:py-1 mb-2" />
                         </div>
                         <div>
-                            <p className="font-semibold">Phone Number</p>
+                            <p className="font-semibold mb-2">Phone Number</p>
                             <input type="text" required name="phone" placeholder="Phone Number" id="" className="border-2 rounded-md w-full text-sm md:text-base px-4 md:py-1 mb-2" />
                         </div>
 
                         <div>
-                            <p className="font-semibold text-sm md:text-base">Address</p>
+                            <p className="font-semibold text-sm md:text-base mb-2">Address</p>
                             <input type="text" required name="address" placeholder="Address" id="" className="border-2 rounded-md w-full text-sm md:text-base px-4 md:py-1 mb-2" />
                         </div>
 
                         <div>
-                            <p className="font-semibold text-sm md:text-base"> Service Charge  (select your location) </p>
+                            <p className="font-semibold text-sm md:text-base mb-2"> Service Charge  (select your location) </p>
                             <div className="flex gap-[2px] justify-center items-center text-xs font-medium">
 
                                 <p onClick={() => setOpen(!open)} required className=" flex items-center gap-1 bg-gray-100 rounded-md px-2 py-[9px] w-full "> {location}  <IoIosArrowDown></IoIosArrowDown></p>
@@ -95,7 +99,7 @@ const OrderInfo = () => {
                             }
                             {
                                 open ?
-                                    <ul className="flex flex-col z-[999] absolute bg-gray-50 p-2"> 
+                                    <ul className="flex flex-col z-[999] absolute bg-base-200 rounded-md p-2"> 
                                         {
                                             shippings?.length ?
                                                 shippings?.map(shipping => <li key={shipping._id}><button onClick={() => handleServiceCharge(shipping)} className="font-medium mb-1 text-center text-xs border px-2 w-full"> {shipping?.shippingLocation} (tk :  {shipping?.serviceCharge})</button></li>)
@@ -114,6 +118,7 @@ const OrderInfo = () => {
                                     <th></th>
                                     <th></th>
                                     <th></th>
+                                    <th></th>
                                 </tr>
                             </thead>
                             <tbody> 
@@ -129,7 +134,8 @@ const OrderInfo = () => {
                                             </div>
                                         </td>
                                         <td className="min-w-56">{cart?.productName}</td>
-                                        <td className="min-w-36 text-center p-0">{cart?.newPrice} Tk</td>
+                                        <td className="min-w-36 text-center p-0">{new Intl.NumberFormat('en-IN').format(cart?.newPrice)} Tk</td>
+                                        <td className="text-orange-500">({cart?.quantity})</td>
                                     </tr>)
                                 }
                             </tbody>
@@ -138,14 +144,14 @@ const OrderInfo = () => {
                     <div className="divider my-0"></div>
 
                     <div className=''>
-                        <p className='flex justify-between items-center font-medium'><span>Sub Total :</span><span>{totalPrice} TK</span></p>
+                        <p className='flex justify-between items-center font-medium'><span>Sub Total :</span><span>{new Intl.NumberFormat('en-IN').format(totalPrice)} TK</span></p>
                         <p className='flex justify-between items-center font-medium'><span>Service Charge :</span><span>{serviceCharge} Tk</span></p>
                     </div>
                     <div className="divider my-0"></div>
-                    <p className='flex justify-between items-center font-medium'><span>Total :</span><span>{inTotal} Tk</span></p>
+                    <p className='flex justify-between items-center font-medium'><span>Total :</span><span>{new Intl.NumberFormat('en-IN').format(inTotal)} Tk</span></p>
 
                     <div className="flex justify-center">
-                        <input className="w-fit px-4 py-1 text-center text-lg rounded-md bg-gradient-to-r from-orange-500 to-red-500 hover:from-red-400 hover:to-orange-400 text-white font-medium my-3" type="submit" value="Order Now" />
+                        <input className="w-fit px-4 py-1 text-center text-lg rounded-md border border-orange-400 text-orange-500 hover:shadow-lg font-medium my-3" type="submit" value="Order Now" />
 
                     </div>
                 </form>

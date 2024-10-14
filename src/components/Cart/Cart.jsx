@@ -1,29 +1,17 @@
-import { Helmet } from "react-helmet";
-import useAxiosSecure from "../Hooks/useAxiosSecure";
-import useAuth from "../Hooks/useAuth";
-import { useQuery } from "@tanstack/react-query";
+import { Helmet } from "react-helmet"; 
 import Loading from "../../Loading/Loading";
 import SingleCart from "./SingleCart";
 import Swal from "sweetalert2";
 import useCart from "../Hooks/useCart";
 import { Link } from "react-router-dom";
 
-const Cart = () => {
-
-    // const axiosSecure = useAxiosSecure()
-    // const { user, loading } = useAuth()
-
-    // const { data: carts = [], isPending, refetch } = useQuery({
-    //     queryKey: ['carts', user?.email, axiosSecure],
-    //     queryFn: async () => {
-    //         const res = await axiosSecure.get(`/carts/${user?.email}`)
-    //         return res.data
-    //     }
-    // })
+const Cart = () => { 
 
     const [carts, isPending, refetch, loading] = useCart();
 
     const totalPrice = carts.reduce((total, product) => total + product.newPrice, 0);
+    const modTotalPrice = new Intl.NumberFormat('en-IN').format(totalPrice);
+    
 
     if (isPending || loading) {
         return <Loading></Loading>
@@ -39,7 +27,7 @@ const Cart = () => {
                 <div className="flex justify-end">
                     {
                         carts.length ?
-                            <Link to='/orderInfo'><button className="w-fit px-2 py-1 text-center rounded-md bg-gradient-to-r from-orange-500 to-red-500 hover:from-red-400 hover:to-orange-400 text-white font-medium">Pay: {totalPrice} tk</button> </Link>
+                            <Link to='/orderInfo'><button className="w-fit px-2 py-1 text-center rounded-md border border-orange-400 text-orange-500 hover:shadow-lg font-medium">Pay: {modTotalPrice} tk</button> </Link>
 
                             : <button onClick={() => {
                                 Swal.fire({
@@ -48,7 +36,7 @@ const Cart = () => {
                                     showConfirmButton: false,
                                     timer: 1000
                                 });
-                            }} className="w-fit px-2 py-1 text-center rounded-md bg-gradient-to-r from-orange-500 to-red-500 hover:from-red-400 hover:to-orange-400 text-white font-medium">Pay: {totalPrice} tk</button>
+                            }} className="w-fit px-2 py-1 text-center rounded-md bg-gradient-to-r from-orange-500 to-red-500 hover:from-red-400 hover:to-orange-400 text-white font-medium">Pay: {modTotalPrice} tk</button>
                     }
                 </div>
             </div>

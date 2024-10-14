@@ -14,6 +14,9 @@ const SingleWatch = ({ watch }) => {
 
     const { _id, productName, productBrand, oldPrice, newPrice, productQuantity, productImage, productDetails, productType, productAddDate } = watch
 
+    const modOldPrice = new Intl.NumberFormat('en-IN').format(oldPrice);
+    const modNewPrice = new Intl.NumberFormat('en-IN').format(newPrice);
+
     const handleAddCart = async (watch) => {
 
         const data = {
@@ -50,7 +53,7 @@ const SingleWatch = ({ watch }) => {
             <div className='space-y-1 my-3 flex-grow'>
                 <p className='text-xs font-bold'>{productName}</p>
                 {productQuantity > 0 ? <span className='text-xs text-green-500 font-medium'>In Stock</span> : <span className='text-xs text-red-500 font-medium' >Stock Out</span>}
-                <p className='flex gap-1 md:gap-2 items-center'><span className='text-sm text-orange-500 font-medium'>{newPrice} Tk</span> <span className='text-xs line-through'>{oldPrice} Tk</span></p>
+                <p className='flex gap-1 md:gap-2 items-center'><span className='text-sm text-orange-500 font-medium'>{modNewPrice} Tk</span> <span className='text-xs line-through'>{modOldPrice} Tk</span></p>
             </div>
             <div className="divider my-1"></div>
             <div className='flex justify-between items-center'>

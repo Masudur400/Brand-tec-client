@@ -7,6 +7,7 @@ import { useState, useRef } from "react";
 import axios from "axios";
 import Swal from "sweetalert2";
 import { updateProfile } from "firebase/auth";
+import { RiEdit2Line } from "react-icons/ri";
 
 const imageHostingKey = import.meta.env.VITE_image_hosting_key;
 const imageHostingApi = `https://api.imgbb.com/1/upload?key=${imageHostingKey}`;
@@ -115,9 +116,9 @@ const Profile = () => {
           <div className="flex justify-center items-center">
             <div
               onClick={() => handleDataUpdate(users)}
-              className="w-fit mx-auto border border-orange-500 text-orange-500 hover:shadow-md px-4 py-2 rounded-md font-bold mb-5"
+              className="w-fit mx-auto border border-orange-500 text-orange-500 hover:shadow-md px-4 py-1 rounded-md font-bold mb-5"
             >
-              <button>Update Profile</button>
+              <button className="flex gap-1 justify-center items-center"><span>Edit</span><RiEdit2Line /></button>
             </div>
           </div>
         </div>
@@ -150,8 +151,8 @@ const Profile = () => {
             <div className="flex items-center justify-center mt-5">
               <input
                 type="submit"
-                value="Update"
-                className="w-fit bg-orange-500 hover:bg-orange-600 px-4 py-2 rounded-md text-white font-bold mb-5"
+                value="Save"
+                className="w-fit px-4 py-2 rounded-md border border-orange-400 text-orange-500 hover:shadow-lg font-bold mb-5"
               />
             </div>
           </form>
