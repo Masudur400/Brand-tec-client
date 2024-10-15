@@ -24,10 +24,10 @@ const Root = () => {
                         </div>
                         {/* large device dashboard */}
                         <div className="hidden lg:flex gap-5 px-4 container mx-auto">
-                            <div className="  min-w-60 overflow-y-auto scrollbar-hidden h-screen bg-base-100 fixed z-10 shadow-lg border border-t-0 ">
+                            <div className="  min-w-60 overflow-y-auto scrollbar-hidden h-screen bg-base-200 fixed z-10">
                                 <DashboardSideBar></DashboardSideBar>
                             </div>
-                            <div className="container   overflow-y-auto scrollbar-hidden w-[calc(100vw-240px)] flex-1 ml-[255px] min-h-screen shadow-lg border border-t-0 py-5 px-3">
+                            <div className="container overflow-y-auto scrollbar-hidden w-[calc(100vw-240px)] flex-1 ml-[255px] min-h-screen bg-base-200 py-5 px-3">
                                 <Outlet></Outlet>
                             </div>
                         </div>

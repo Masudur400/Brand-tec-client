@@ -16,7 +16,7 @@ const OrderInfo = () => {
     const totalPrice = carts.reduce((total, product) => total + product.newPrice, 0);
     const inTotal = parseInt(totalPrice) + parseInt(serviceCharge)
 
-    console.log(carts)
+     
     // const modOldPrice = new Intl.NumberFormat('en-IN').format(oldPrice);
     // const modNewPrice = new Intl.NumberFormat('en-IN').format(newPrice);
 
