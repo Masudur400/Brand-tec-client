@@ -99,7 +99,7 @@ const Details = () => {
             </Helmet>
             <ToastContainer></ToastContainer>
 
-            <div className="md:flex gap-3 justify-center items-center lg:w-2/3 mx-auto border rounded-md shadow-md p-1">
+            <div className="md:flex gap-3 justify-center items-center lg:w-2/3 mx-auto border border-base-300 rounded-md shadow-md p-1">
                 <div className="flex-none">
                     <img src={productImage} alt="image" className="w-52 md:w-72 mx-auto" />
                 </div>

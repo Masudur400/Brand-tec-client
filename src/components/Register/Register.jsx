@@ -150,13 +150,13 @@ const Register = () => {
                 <title>Register</title>
             </Helmet>
 
-            <div data-aos="zoom-in-down" className="w-4/5 lg:w-1/3 md:w-2/3 mx-auto border shadow-xl p-5 rounded-lg my-20">
+            <div data-aos="zoom-in-down" className="w-4/5 lg:w-1/3 md:w-2/3 mx-auto border border-base-300 shadow-xl p-5 rounded-lg my-20">
 
                 <div className="flex justify-end">
                     <Link to='/' className="p-1 border-2 border-orange-500 rounded-full"><FaXmark className="md:text-3xl text-orange-600 my-0"></FaXmark></Link>
                 </div>
 
-                <h2 className="text-2xl font-bold text-center my-3 animate__animated animate__rubberBand text-orange-600">Please Register </h2>
+                <h2 className="text-lg md:text-3xl font-bold text-center my-3 animate__animated animate__rubberBand text-orange-600">Please Register </h2>
 
                 {
                     userSuccess && <p className="  text-green-500">{userSuccess}</p>
@@ -165,18 +165,18 @@ const Register = () => {
                 <form onSubmit={handleRegister}>
 
                     <p className="font-semibold text-sm md:text-base mb-2">Name</p>
-                    <input className="border-2 rounded-md w-full text-sm md:text-base px-4 md:py-1 mb-2" type="text" name="name" placeholder="Name" id="name" required />
+                    <input className="border-2 border-base-300 bg-base-100 rounded-md w-full text-sm md:text-base px-4  py-1 mb-2" type="text" name="name" placeholder="Name" id="name" required />
 
 
                     <p className="font-semibold text-sm md:text-base mb-2">Email</p>
-                    <input className="border-2 rounded-md w-full text-sm md:text-base px-4 md:py-1 mb-2" type="email" name="email" placeholder="Email" id="email" required />
+                    <input className="border-2 border-base-300 bg-base-100 rounded-md w-full text-sm md:text-base px-4 py-1 mb-2" type="email" name="email" placeholder="Email" id="email" required />
                     {
                         emailError && <p className="  text-red-500">{emailError}</p>
                     }
 
                     <p className="font-semibold text-sm md:text-base mb-2">Password</p>
                     <div className="relative">
-                        <input className="border-2 rounded-md w-full text-sm md:text-base px-4 md:py-1 mb-2" type={showPassword ? "text" : "password"} name="password" placeholder="Password" id="password" required />
+                        <input className="border-2 border-base-300 bg-base-100 rounded-md w-full text-sm md:text-base px-4  py-1 mb-2" type={showPassword ? "text" : "password"} name="password" placeholder="Password" id="password" required />
                         <span className="absolute md:top-1/4 top-[5px] right-3" onClick={() => setShowPassword(!showPassword)}>
                             {showPassword ? <FaRegEyeSlash></FaRegEyeSlash> : <FaRegEye></FaRegEye>}
                         </span>
@@ -186,13 +186,13 @@ const Register = () => {
                     }
 
                     <p className="font-semibold text-sm md:text-base mb-2">Your Photo</p>
-                    <input type="file" placeholder="" name="photo" id="" className="border-2 rounded-sm md:rounded-md w-full text-sm md:text-base  mb-2 bg-white" />
+                    <input type="file" placeholder="" name="photo" id="" className="border-2 border-base-300 bg-base-100 rounded-sm md:rounded-md w-full text-sm md:text-base  mb-2" />
 
                     {
                         loading ?
                             <button disabled className="w-full px-4 py-1 md:py-2 text-center text-lg rounded-md bg-orange-500 hover:bg-orange-600 border hover:border-black-500 text-white font-bold my-3"><span className="loading loading-spinner loading-md"></span></button>
                             :
-                            <input disabled={loading} className="w-full px-4 py-1 md:py-2 text-center text-lg rounded-md border border-orange-400 text-orange-500 hover:shadow-lg font-bold my-3" type="submit" value="Register" />
+                            <input disabled={loading} className="w-full px-4 py-1 md:py-2 text-center max-sm:text-sm text-lg rounded-md border border-orange-400 text-orange-500 hover:shadow-lg font-bold my-3" type="submit" value="Register" />
                     }
 
                 </form>

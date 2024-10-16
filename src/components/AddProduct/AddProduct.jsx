@@ -72,23 +72,23 @@ const AddProduct = () => {
 
     return (
         <div>
-            <div className="lg:w-4/5 md:w-2/3 mx-auto my-5 md:p-5 p-3 rounded-lg  shadow-md max-sm:mx-4  border">
+            <div className="lg:w-4/5 md:w-2/3 mx-auto my-5 md:p-5 p-3 rounded-lg  shadow-md max-sm:mx-4  border border-base-300">
                 <Helmet>
                     <title>Add Product</title>
                 </Helmet>
 
-                <h3 className="text-3xl font-bold text-center text-orange-600 my-4">Add Product</h3>
+                <h3 className="text-lg md:text-3xl font-bold text-center text-orange-600 my-4">Add Product</h3>
                 <form onSubmit={handleAddProduct}>
 
                     <div className="grid grid-cols-1 md:grid-cols-2 md:gap-3">
                         <div>
-                            <p className="font-semibold mb-2">Product Name</p>
-                            <input type="text" name="productName" placeholder="Product Name" id="" className="border-2 rounded-md w-full text-sm md:text-base px-4 md:py-1 mb-2" />
+                            <p className="font-semibold mb-2 max-sm:text-sm">Product Name</p>
+                            <input type="text" name="productName" placeholder="Product Name" id="" className="border-2 border-base-300 bg-base-100 rounded-md w-full text-sm md:text-base px-4  py-1 mb-2" />
                         </div>
                         <div>
-                            <p className="font-semibold mb-2">Product Type</p>
+                            <p className="font-semibold mb-2 max-sm:text-sm">Product Type</p>
                             {/* <input type="text" name="productType" placeholder="Product Type" id="" className="border-2 rounded-md w-full text-sm md:text-base px-4 md:py-1 mb-2" /> */}
-                            <select name="productType" id="" className="border-2 rounded-md w-full text-sm md:text-base px-4 md:py-1 mb-2">
+                            <select name="productType" id="" className="border-2 border-base-300 bg-base-100 rounded-md w-full text-sm md:text-base px-4  py-1 mb-2">
                                 <option disabled selected value="">Select One</option>
                                 <option value="Phone">Phone</option>
                                 <option value="Laptop">Laptop</option>
@@ -96,28 +96,28 @@ const AddProduct = () => {
                             </select>
                         </div>
                         <div>
-                            <p className="font-semibold mb-2">Product Brand</p>
-                            <input type="text" name="productBrand" placeholder="Product Brand" id="" className="border-2 rounded-md w-full text-sm md:text-base px-4 md:py-1 mb-2" />
+                            <p className="font-semibold mb-2 max-sm:text-sm">Product Brand</p>
+                            <input type="text" name="productBrand" placeholder="Product Brand" id="" className="border-2 border-base-300 bg-base-100 rounded-md w-full text-sm md:text-base px-4  py-1 mb-2" />
                         </div>
                         <div>
-                            <p className="font-semibold mb-2">Old Price</p>
-                            <input type="text" name="oldPrice" placeholder="Old Price" id="" className="border-2 rounded-md w-full text-sm md:text-base px-4 md:py-1 mb-2" />
+                            <p className="font-semibold mb-2 max-sm:text-sm">Old Price</p>
+                            <input type="text" name="oldPrice" placeholder="Old Price" id="" className="border-2 border-base-300 bg-base-100 rounded-md w-full text-sm md:text-base px-4  py-1 mb-2" />
                         </div>
                         <div>
-                            <p className="font-semibold mb-2">New Price</p>
-                            <input type="text" name="newPrice" placeholder="New Price" id="" className="border-2 rounded-md w-full text-sm md:text-base px-4 md:py-1 mb-2" />
+                            <p className="font-semibold mb-2 max-sm:text-sm">New Price</p>
+                            <input type="text" name="newPrice" placeholder="New Price" id="" className="border-2 border-base-300 bg-base-100 rounded-md w-full text-sm md:text-base px-4  py-1 mb-2" />
                         </div>
                         <div>
-                            <p className="font-semibold mb-2">Product Quantity</p>
-                            <input type="text" name="productQuantity" placeholder="Product Quantity" id="" className="border-2 rounded-md w-full text-sm md:text-base px-4 md:py-1 mb-2" />
+                            <p className="font-semibold mb-2 max-sm:text-sm">Product Quantity</p>
+                            <input type="text" name="productQuantity" placeholder="Product Quantity" id="" className="border-2 border-base-300 bg-base-100 rounded-md w-full text-sm md:text-base px-4 py-1 mb-2" />
                         </div>
                         <div>
                             <p className="font-semibold text-sm md:text-base mb-2">Product Image</p>
-                            <input type="file" placeholder="" name="productImage" id="" className="border-2 rounded-sm md:rounded-md w-full text-sm md:text-base  mb-2" />
+                            <input type="file" placeholder="" name="productImage" id="" className="border-2 border-base-300 bg-base-100 rounded-sm md:rounded-md w-full text-sm md:text-base  mb-2" />
                         </div>
                     <div>
                         <p className="font-semibold text-sm md:text-base mb-2">Product Details</p>
-                        <textarea name="productDetails" placeholder="Product Details" id="" className="border-2 rounded-md w-full text-sm md:text-base px-4 md:py-1 mb-2"></textarea>
+                        <textarea name="productDetails" placeholder="Product Details" id="" className="border-2 border-base-300 bg-base-100 rounded-md w-full text-sm md:text-base px-4  py-1 mb-2"></textarea>
                     </div>
                     </div>
 

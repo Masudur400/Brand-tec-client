@@ -14,7 +14,7 @@ const Root = () => {
             {
                 admin ?
                     // admin outlate 
-                    <div>
+                    <div className="">
                         {/* small devide dashboard  */}
                         <div className="lg:hidden">
                             <DashboardNavBar></DashboardNavBar>
@@ -23,11 +23,11 @@ const Root = () => {
                             </div>
                         </div>
                         {/* large device dashboard */}
-                        <div className="hidden lg:flex gap-5 px-4 container mx-auto">
-                            <div className="  min-w-60 overflow-y-auto scrollbar-hidden h-screen bg-base-200 fixed z-10">
+                        <div className="hidden lg:flex gap-5 px-4 container mx-auto mt-3">
+                            <div className="min-w-60 overflow-y-auto scrollbar-hidden h-screen bg-base-100 border border-base-300 fixed z-10 rounded-t-md">
                                 <DashboardSideBar></DashboardSideBar>
                             </div>
-                            <div className="container overflow-y-auto scrollbar-hidden w-[calc(100vw-240px)] flex-1 ml-[255px] min-h-screen bg-base-200 py-5 px-3">
+                            <div className="container overflow-y-auto scrollbar-hidden h-[calc(100vh-12px)] w-[calc(100vw-285px)] flex-1 ml-[255px]  bg-base-100 border border-base-300 py-5 px-3 rounded-t-md">
                                 <Outlet></Outlet>
                             </div>
                         </div>
@@ -39,7 +39,7 @@ const Root = () => {
                         <div className="">
                             <NavBar></NavBar>
                         </div> 
-                        <div className="container my-20 mx-auto px-4 md:px-9 min-h-[calc(100vh-250px)]">
+                        <div className="container my-20 mx-auto px-4 md:px-9  ">
                             <Outlet></Outlet>
                         </div> 
                     </div>

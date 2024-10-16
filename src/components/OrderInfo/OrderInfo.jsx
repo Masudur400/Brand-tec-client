@@ -67,7 +67,7 @@ const OrderInfo = () => {
 
     return (
         <div>
-            <div className="lg:w-2/4 md:w-2/3 mx-auto my-5 md:p-5 p-3 rounded-lg border shadow-md max-sm:mx-4">
+            <div className="lg:w-2/4 md:w-2/3 mx-auto my-5 md:p-5 p-3 rounded-lg border border-base-300 shadow-md max-sm:mx-4">
                 <h3 className="text-3xl font-bold text-center text-orange-500 my-2">Order Information</h3>
   
                 <form onSubmit={handleOrder}>

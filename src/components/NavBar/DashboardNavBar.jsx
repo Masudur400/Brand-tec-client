@@ -128,8 +128,8 @@ const DashboardNavBar = () => {
                                         <div className="space-y-2 py-4">
                                             <p className="text-sm font-medium">{name}</p>
                                             <div className="divider"></div>
-                                            <Link to='/profile'> <li onClick={() => setProfile(!profile)} className="flex gap-1 items-center text-sm hover:bg-gray-100 px-2 py-1 rounded-md"><span><PiUserCircleThin></PiUserCircleThin></span>Profile</li></Link>
-                                            <button onClick={() => logOut()} className="text-sm w-full flex gap-1 items-center text-red-400 hover:text-black hover:bg-gray-100 px-2 py-1 rounded-md">LogOut <MdLogout></MdLogout></button>
+                                            <Link to='/profile'> <li onClick={() => setProfile(!profile)} className="flex gap-1 items-center text-sm hover:bg-base-300 px-2 py-1 rounded-md"><span><PiUserCircleThin></PiUserCircleThin></span>Profile</li></Link>
+                                            <button onClick={() => logOut()} className="text-sm w-full flex gap-1 items-center text-red-400  hover:bg-base-300 px-2 py-1 rounded-md">LogOut <MdLogout></MdLogout></button>
                                         </div>
                                     </ul>
                                 </div>

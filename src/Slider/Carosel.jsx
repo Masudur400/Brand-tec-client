@@ -18,7 +18,7 @@ import p3 from '../../src/assets/images/laptop-5-removebg-preview.png'
 
 const Carosel = () => {
     return (
-        <div className='border rounded-md'>
+        <div className='border border-base-300 rounded-md shadow-md'>
             <Swiper
                 spaceBetween={30}
                 centeredSlides={true}

@@ -95,7 +95,7 @@ const Profile = () => {
       <Helmet>
         <title>Profile</title>
       </Helmet>
-      <div className="md:w-1/2 lg:w-1/2 mx-auto border my-4 p-3 rounded-md">
+      <div className="md:w-1/2 lg:w-1/2 mx-auto border border-base-300 my-4 p-3 rounded-md">
         <h3 className="text-2xl font-bold text-center text-orange-500 mb-6">Profile</h3>
         <div>
           <img src={photo} alt="image" className="w-56 h-56 rounded-full mx-auto" />
@@ -135,24 +135,24 @@ const Profile = () => {
             </button>
           </form>
           <form onSubmit={handleProfileUpdate}>
-            <p className="font-bold mb-1">Your Name</p>
+            <p className="font-medium mb-1 max-sm:text-sm">Your Name</p>
             <input
               defaultValue={currentUser?.name}
               type="text"
               name="name"
-              className="w-full px-4 py-2 rounded-md border border-orange-500"
+              className="w-full px-4 py-1 rounded-md border bg-base-100 border-orange-500"
             />
-            <p className="font-bold mb-1">Your Photo</p>
+            <p className="font-medium mb-1 max-sm:text-sm">Your Photo</p>
             <input
               type="file"
               name="photo"
-              className="w-full px-4 py-2 rounded-md border border-orange-500"
+              className="w-full px-4 py-1 rounded-md border bg-base-100 border-orange-500"
             />
             <div className="flex items-center justify-center mt-5">
               <input
                 type="submit"
                 value="Save"
-                className="w-fit px-4 py-2 rounded-md border border-orange-400 text-orange-500 hover:shadow-lg font-bold mb-5"
+                className="w-fit px-4 py-1 rounded-md border border-orange-400 text-orange-500 hover:shadow-lg font-bold mb-5"
               />
             </div>
           </form>

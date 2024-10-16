@@ -66,7 +66,7 @@ const SingleUser = ({ user, idx, refetch }) => {
                     <button onClick={() => setOpen(!open)} className='border border-orange-400 text-orange-500 hover:shadow-lg font-medium px-2 py-1 rounded-md max-sm:mb-3 flex gap-1 justify-center items-center'><span>Edit</span><RiEdit2Line /></button>
                     :
                     <form onSubmit={handleRoleUpdate} className='flex items-center gap-3 my-2'>
-                        <select name="role" id="" className="border px-4 py-1 rounded-md">
+                        <select name="role" id="" className="border-2 border-base-300 bg-base-100 px-4 py-1 rounded-md">
                             <option disabled selected>{user?.role}</option>
                             <option value='Guest'>Guest</option>
                             <option value='Moderator'>Moderator</option>

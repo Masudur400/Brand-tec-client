@@ -32,22 +32,22 @@ const AddShippingMethod = () => {
     }
 
     return (
-        <div className="lg:w-4/5 md:w-2/3 mx-auto my-5 md:p-5 p-3 rounded-lg shadow-md max-sm:mx-4 border" >
+        <div className="lg:w-4/5 md:w-2/3 mx-auto my-5 md:p-5 p-3 rounded-lg shadow-md max-sm:mx-4 border border-base-300" >
             <Helmet>
                 <title>Add Shipping</title>
             </Helmet>
-            <h3 className="text-2xl font-medium text-center text-orange-500 my-2">Add Shipping Method</h3>
+            <h3 className="text-lg md:text-2xl font-medium text-center text-orange-500 my-2">Add Shipping Method</h3>
             <form onSubmit={addHandleShippingMethod}>
                 <div>
-                    <p className="font-semibold mb-2">Shipping Location</p>
-                    <input type="text" required name="shippingLocation" placeholder="Shipping Location" id="" className="border-2 rounded-md w-full text-sm md:text-base px-4 md:py-1 mb-2" />
+                    <p className="max-sm:text-sm font-semibold mb-2">Shipping Location</p>
+                    <input type="text" required name="shippingLocation" placeholder="Shipping Location" id="" className="border-2 border-base-300 bg-base-100 rounded-md w-full text-sm md:text-base px-4  py-1 mb-2" />
                 </div>
                 <div>
-                    <p className="font-semibold mb-2">Shipping Service Charge</p>
-                    <input type="text" required name="serviceCharge" placeholder="Shipping Service Charge" id="" className="border-2 rounded-md w-full text-sm md:text-base px-4 md:py-1 mb-2" />
+                    <p className="max-sm:text-sm font-semibold mb-2">Shipping Service Charge</p>
+                    <input type="text" required name="serviceCharge" placeholder="Shipping Service Charge" id="" className="border-2 border-base-300 bg-base-100 rounded-md w-full text-sm md:text-base px-4  py-1 mb-2" />
                 </div>
                 <div className="flex justify-center">
-                        <input className="w-fit px-4 py-1 text-center text-lg rounded-md text-orange-500 border border-orange-400 hover:shadow-lg font-medium my-3" type="submit" value="Add Shipping" />
+                        <input className="max-sm:text-sm w-fit px-4 py-1 text-center  rounded-md text-orange-500 border border-orange-400 hover:shadow-lg font-medium my-3" type="submit" value="Add Shipping" />
 
                     </div>
             </form>
