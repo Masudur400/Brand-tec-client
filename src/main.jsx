@@ -35,11 +35,13 @@ import AllUsers from './components/AllUsers/AllUsers.jsx';
 import OrderInfo from './components/OrderInfo/OrderInfo.jsx';
 import AddShippingMethod from './components/AddShippingMethod/AddShippingMethod.jsx';
 import AllShipping from './components/AllShipping/AllShipping.jsx';
+import ErrorPage from './components/Errorpage/ErrorPage.jsx';
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Root></Root>,
+    errorElement:<ErrorPage></ErrorPage>,
     children: [
       {
         path: '/',

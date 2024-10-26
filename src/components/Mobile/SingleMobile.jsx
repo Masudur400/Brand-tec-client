@@ -45,11 +45,11 @@ const SingleMobile = ({ phone }) => {
     }
 
     return (
-
+        // shadow-[0_0_25px_rgba(0,0,0,0.3)]
         <div className='flex flex-col p-2 shadow-md rounded-md border border-base-300 group'>
             <ToastContainer></ToastContainer>
             <div>
-                <img src={productImage} alt="" className=' w-40 mx-auto group-hover:scale-105' />
+                <img src={productImage} alt="img" className=' w-40 mx-auto group-hover:scale-105' />
             </div>
             <div className='space-y-1 my-3 flex-grow'>
                 <p className='text-xs font-bold'>{productName}</p>

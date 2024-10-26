@@ -1,14 +1,18 @@
 import { useState } from "react";
 import useCart from "../Hooks/useCart";
-import { IoIosArrowDown } from "react-icons/io"; 
+import { IoIosArrowDown } from "react-icons/io";
 import Loading from "../../Loading/Loading";
 import useShippings from "../Hooks/useShippings";
+import useAxiosSecure from "../Hooks/useAxiosSecure";
+import useAuth from "../Hooks/useAuth";
 
 
-const OrderInfo = () => { 
-    
+const OrderInfo = () => {
+
     const [carts, isPending, refetch] = useCart()
-    const [shippings, shippingLoading]= useShippings()
+    const axiosSecure = useAxiosSecure()
+    const { user } = useAuth()
+    const [shippings, shippingLoading] = useShippings()
     const [open, setOpen] = useState(false)
     const [location, setLocation] = useState('Service Charge')
     const [serviceCharge, setServiceCharge] = useState(0)
@@ -16,11 +20,11 @@ const OrderInfo = () => {
     const totalPrice = carts.reduce((total, product) => total + product.newPrice, 0);
     const inTotal = parseInt(totalPrice) + parseInt(serviceCharge)
 
-     
+
     // const modOldPrice = new Intl.NumberFormat('en-IN').format(oldPrice);
     // const modNewPrice = new Intl.NumberFormat('en-IN').format(newPrice);
 
-     
+
 
     const cartsData = carts?.map(cart => {
         return {
@@ -29,36 +33,46 @@ const OrderInfo = () => {
             productPrice: cart.newPrice,
             quantity: cart.quantity,
         };
-    }); 
-     
+    });
 
-    const handleServiceCharge = shipping => {  
+
+    const handleServiceCharge = shipping => {
         setServiceCharge(shipping?.serviceCharge);
         setLocation(shipping?.shippingLocation)
         setOpen(!open)
         setServiceError('')
     }
 
-    const handleOrder = e => {
+    const handleOrder = async (e) => {
         e.preventDefault()
         const form = new FormData(e.currentTarget)
         const name = form.get('name')
         const phone = form.get('phone')
         const address = form.get('address')
+        const email = user?.email
         const shippingMethod = serviceCharge
-        const total = inTotal
+        const shippingArea = location
+        const total = parseInt(inTotal)
         const products = cartsData
         // const products = carts.map(cart => cart.productName)
         const productsIds = carts?.map(cart => cart._id)
         // const images = carts.map(cart => cart.productImage)
         const date = new Date()
+        const currency = 'BDT'
+        const data = {
+            name, email, phone, address, shippingMethod, shippingArea, total, products, productsIds, currency, date
+        }
+
         if (serviceCharge === 0) {
             setServiceError('select one service method')
             return
         }
         setServiceError('')
 
-        console.log('all right')
+        const res = await axiosSecure.post('/order', data)
+        if(res.data){
+            window.location.replace(res.data.url)
+        }
     }
 
     if (isPending || shippingLoading) {
@@ -69,7 +83,7 @@ const OrderInfo = () => {
         <div>
             <div className="lg:w-2/4 md:w-2/3 mx-auto my-5 md:p-5 p-3 rounded-lg border border-base-300 shadow-md max-sm:mx-4">
                 <h3 className="text-3xl font-bold text-center text-orange-500 my-2">Order Information</h3>
-  
+
                 <form onSubmit={handleOrder}>
 
                     <div className="">
@@ -99,7 +113,7 @@ const OrderInfo = () => {
                             }
                             {
                                 open ?
-                                    <ul className="flex flex-col z-[999] absolute bg-base-200 rounded-md p-2"> 
+                                    <ul className="flex flex-col z-[999] absolute bg-base-200 rounded-md p-2">
                                         {
                                             shippings?.length ?
                                                 shippings?.map(shipping => <li key={shipping._id}><button onClick={() => handleServiceCharge(shipping)} className="font-medium mb-1 text-center text-xs border px-2 w-full"> {shipping?.shippingLocation} (tk :  {shipping?.serviceCharge})</button></li>)
@@ -112,18 +126,18 @@ const OrderInfo = () => {
                     </div>
 
                     <div className="overflow-x-auto w-full">
-                        <table className="table"> 
+                        <table className="table">
                             <thead>
-                                <tr> 
+                                <tr>
                                     <th></th>
                                     <th></th>
                                     <th></th>
                                     <th></th>
                                 </tr>
                             </thead>
-                            <tbody> 
+                            <tbody>
                                 {
-                                    carts?.map((cart, idx) => <tr key={cart._id}> 
+                                    carts?.map((cart, idx) => <tr key={cart._id}>
                                         <td>
                                             <div className="avatar">
                                                 <div className="mask mask-squircle h-12 w-12">

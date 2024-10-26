@@ -11,6 +11,7 @@ const SingleUser = ({ user, idx, refetch }) => {
 
     const axiosSecure = useAxiosSecure()
     const [open , setOpen] = useState(false)
+    const [admin, setAdmin] = useState(true)
 
     const handleRoleUpdate = async (e) => {
         e.preventDefault()
@@ -60,7 +61,7 @@ const SingleUser = ({ user, idx, refetch }) => {
             }
 
         </div>
-        <div className=' flex md:flex-1 w-full justify-center items-center'>
+        <div className=' flex md:flex-1 w-full justify-center items-center'> 
             {
                 !open ?
                     <button onClick={() => setOpen(!open)} className='border border-orange-400 text-orange-500 hover:shadow-lg font-medium px-2 py-1 rounded-md max-sm:mb-3 flex gap-1 justify-center items-center'><span>Edit</span><RiEdit2Line /></button>
@@ -76,7 +77,7 @@ const SingleUser = ({ user, idx, refetch }) => {
                             <input type="submit" value="Done" className="w-fit md:px-2 px-1 py-1 text-center rounded-md bg-orange-500 text-white font-normal text-[10px]" />
                         </div>
                     </form>
-            }
+            }  
         </div>
         
     </div>

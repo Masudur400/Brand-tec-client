@@ -7,7 +7,7 @@ import DashboardSideBar from "../NavBar/DashboardSideBar";
 
 const Root = () => {
 
-    const [admin] = useState(true)
+    const [admin] = useState(false)
 
     return (
         <div>
