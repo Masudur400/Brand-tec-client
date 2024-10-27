@@ -22,9 +22,9 @@ const Cart = () => {
             <Helmet>
                 <title>MyCart</title>
             </Helmet>
-            <div className="px-4 flex mt-2">
-                <h2 className="text text-xl md:text-2xl font-bold text-white text-center flex-1">My Cart</h2>
-                <div className="flex justify-end">
+            {/* <div className="px-4   mt-2 "> */}
+                {/* <h2 className="text text-xl md:text-2xl font-bold text-white text-center flex-1">My Cart</h2> */}
+                <div className=" flex justify-end  text-sm">
                     {
                         carts.length ?
                             <Link to='/orderInfo'><button className="w-fit px-2 py-1 text-center rounded-md border border-orange-400 text-orange-500 hover:shadow-lg font-medium">Pay: {modTotalPrice} tk</button> </Link>
@@ -39,7 +39,7 @@ const Cart = () => {
                             }} className="w-fit px-2 py-1 text-center rounded-md bg-gradient-to-r from-orange-500 to-red-500 hover:from-red-400 hover:to-orange-400 text-white font-medium">Pay: {modTotalPrice} tk</button>
                     }
                 </div>
-            </div>
+            {/* </div> */}
             <div>
                 {
                     carts.map(cart => <SingleCart key={cart._id} cart={cart} refetch={refetch}></SingleCart>)

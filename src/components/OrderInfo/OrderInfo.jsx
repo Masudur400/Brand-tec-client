@@ -81,7 +81,7 @@ const OrderInfo = () => {
 
     return (
         <div>
-            <div className="lg:w-2/4 md:w-2/3 mx-auto my-5 md:p-5 p-3 rounded-lg border border-base-300 shadow-md max-sm:mx-4">
+            <div className="lg:w-2/4 md:w-2/3 mx-auto my-5 md:p-5 p-3 rounded-lg border border-base-300 shadow-[0_0_25px_rgba(0,0,0,0.1)] max-sm:mx-4">
                 <h3 className="text-3xl font-bold text-center text-orange-500 my-2">Order Information</h3>
 
                 <form onSubmit={handleOrder}>
@@ -89,23 +89,23 @@ const OrderInfo = () => {
                     <div className="">
                         <div>
                             <p className="font-semibold mb-2">Your Name</p>
-                            <input type="text" required name="name" placeholder="Your Name" id="" className="border-2 rounded-md w-full text-sm md:text-base px-4 md:py-1 mb-2" />
+                            <input type="text" required name="name" placeholder="Your Name" id="" className="border rounded-md w-full text-sm md:text-base px-4 md:py-1 mb-2" />
                         </div>
                         <div>
                             <p className="font-semibold mb-2">Phone Number</p>
-                            <input type="text" required name="phone" placeholder="Phone Number" id="" className="border-2 rounded-md w-full text-sm md:text-base px-4 md:py-1 mb-2" />
+                            <input type="text" required name="phone" placeholder="Phone Number" id="" className="border rounded-md w-full text-sm md:text-base px-4 md:py-1 mb-2" />
                         </div>
 
                         <div>
                             <p className="font-semibold text-sm md:text-base mb-2">Address</p>
-                            <input type="text" required name="address" placeholder="Address" id="" className="border-2 rounded-md w-full text-sm md:text-base px-4 md:py-1 mb-2" />
+                            <input type="text" required name="address" placeholder="Address" id="" className="border rounded-md w-full text-sm md:text-base px-4 md:py-1 mb-2" />
                         </div>
 
                         <div>
                             <p className="font-semibold text-sm md:text-base mb-2"> Service Charge  (select your location) </p>
                             <div className="flex gap-[2px] justify-center items-center text-xs font-medium">
 
-                                <p onClick={() => setOpen(!open)} required className=" flex items-center gap-1 bg-gray-100 rounded-md px-2 py-[9px] w-full "> {location}  <IoIosArrowDown></IoIosArrowDown></p>
+                                <p onClick={() => setOpen(!open)} required className=" flex items-center gap-1 bg-base-100 border rounded-md px-2 py-[9px] w-full "> {location}  <IoIosArrowDown></IoIosArrowDown></p>
                             </div>
                             {
                                 serviceError ?

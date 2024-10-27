@@ -81,13 +81,13 @@ const NavBar = () => {
                     {
                         user ?
                             <div className="mr-2 lg:mr-6">
-                                <div>
+                                <div className="relative">
                                     <div className="avatar">
                                         <div className="w-10 md:w-12 h-10 md:h-12 flex justify-center items-center border-black rounded-full mt-1">
                                             <img src={photo} alt="user image" onClick={() => setProfile(!profile)} />
                                         </div>
                                     </div>
-                                    <ul className={`absolute space-y-5 ${profile ? 'bg-base-100  shadow-lg border md:min-w-32 px-3 py-2 z-[99]  rounded-md right-1 md:right-4' : 'hidden'}`}> 
+                                    <ul className={`absolute  space-y-5  ${profile ? 'bg-base-100  shadow-lg border md:min-w-32 px-3 py-2 z-[99]  rounded-md right-1  md:right-0' : 'hidden'}`}> 
                                         <div className="space-y-2 py-4">
                                             <p className="text-sm font-medium">{name}</p>
                                             <div className="divider"></div>
