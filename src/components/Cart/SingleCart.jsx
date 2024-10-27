@@ -10,6 +10,9 @@ const SingleCart = ({ cart, refetch }) => {
 
     const { _id, productName, productBrand, oldPrice, newPrice, productQuantity, productImage, productDetails, productType, productAddDate, quantity } = cart
 
+    const discountPercentage = ((oldPrice - newPrice) / oldPrice) * 100;
+    const roundedNumber = parseFloat(discountPercentage.toFixed(1));
+
     const modOldPrice = new Intl.NumberFormat('en-IN').format(oldPrice);
     const modNewPrice = new Intl.NumberFormat('en-IN').format(newPrice);
 
@@ -54,7 +57,11 @@ const SingleCart = ({ cart, refetch }) => {
                 </div>
                 <div className='space-y-1 my-3 flex-grow'>
                     <p className='font-bold'>{productName}</p>
-                    {productQuantity > 0 ? <span className='  text-green-500 font-medium'>In Stock</span> : <span className='  text-red-500 font-medium' >Stock Out</span>}
+                    <div className='flex gap-3 items-center'>
+                        {productQuantity > 0 ? <span className='text-xs text-green-500 font-medium'>In Stock</span> : <span className='text-xs text-red-500 font-medium' >Stock Out</span>}
+
+                        <p className='text-xs font-medium text-red-500'>{roundedNumber} % OFF</p>
+                    </div>
                     <p className='flex gap-2 items-center'><span className='text-orange-500 font-medium'>{modNewPrice} Tk</span> <span className='text-sm line-through'>{modOldPrice} Tk</span></p>
                     <p>Quantity : {quantity}</p>
                     <p className="">{productDetails}</p>

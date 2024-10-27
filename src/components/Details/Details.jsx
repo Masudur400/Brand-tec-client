@@ -6,7 +6,7 @@ import Loading from "../../Loading/Loading";
 import SingleBrand from "./SingleBrand";
 import Marquee from "react-fast-marquee";
 import { useState } from "react";
-import { HiMinus } from "react-icons/hi"; 
+import { HiMinus } from "react-icons/hi";
 import useAuth from "../Hooks/useAuth";
 import { FiPlus } from "react-icons/fi";
 import Barcode from "react-barcode";
@@ -32,6 +32,9 @@ const Details = () => {
     })
 
     const { _id, productName, productBrand, oldPrice, newPrice, productQuantity, productImage, productDetails, productType, productAddDate } = singleData
+
+    const discountPercentage = ((oldPrice - newPrice) / oldPrice) * 100;
+    const roundedNumber = parseFloat(discountPercentage.toFixed(1));
 
     const modOldPrice = new Intl.NumberFormat('en-IN').format(oldPrice);
     const modNewPrice = new Intl.NumberFormat('en-IN').format(newPrice);
@@ -97,7 +100,7 @@ const Details = () => {
             <Helmet>
                 <title>Details</title>
             </Helmet>
-             
+
 
             <div className="md:flex gap-3 justify-center items-center lg:w-2/3 mx-auto border border-base-300 rounded-md shadow-md p-1">
                 <div className="flex-none">
@@ -105,7 +108,11 @@ const Details = () => {
                 </div>
                 <div className='space-y-1 my-3 flex-grow'>
                     <p className='font-bold'>{productName}</p>
-                    {productQuantity > 0 ? <span className='  text-green-500 font-medium'>In Stock</span> : <span className='  text-red-500 font-medium' >Stock Out</span>}
+                    <div className='flex gap-3 items-center'>
+                        {productQuantity > 0 ? <span className='text-xs text-green-500 font-medium'>In Stock</span> : <span className='text-xs text-red-500 font-medium' >Stock Out</span>}
+
+                        <p className='text-xs font-medium text-red-500'>{roundedNumber} % OFF</p>
+                    </div>
                     <p className='flex gap-2 items-center'><span className='text-orange-500 font-medium'>{modNewPrice} Tk</span> <span className='text-sm line-through'>{modOldPrice} Tk</span></p>
                     <p className="">{productDetails}</p>
                     <div className="flex justify-between items-center px-2">

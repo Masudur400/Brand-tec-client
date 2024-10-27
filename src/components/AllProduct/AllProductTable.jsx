@@ -144,7 +144,13 @@ const AllProductTable = () => {
                                             </td>
                                             <td>
                                                 <p className='text-xs font-bold'>{data?.productName}</p>
-                                                {data?.productQuantity > 0 ? <span className='text-xs text-green-500 font-medium'>In Stock</span> : <span className='text-xs text-red-500 font-medium' >Stock Out</span>}
+
+                                                <div className="flex gap-3 items-center">
+                                                    {data?.productQuantity > 0 ? <span className='text-xs text-green-500 font-medium'>In Stock</span> : <span className='text-xs text-red-500 font-medium' >Stock Out</span>}
+
+                                                    <p className="text-xs font-medium text-red-500">-{parseFloat(((data.oldPrice - data.newPrice) / data.oldPrice * 100).toFixed(2))}%</p>
+                                                </div>
+
                                                 <p className='flex gap-2 items-center'><span className='text-sm text-orange-500 font-medium'>{new Intl.NumberFormat('en-IN').format(data?.newPrice)} Tk</span> <span className='text-xs line-through'>{new Intl.NumberFormat('en-IN').format(data?.oldPrice)} Tk</span></p>
                                                 <p><span className="font-medium">Quantity :</span> {data?.productQuantity}</p>
                                                 <p><span className="font-medium">Brand :</span> {data?.productBrand}</p>

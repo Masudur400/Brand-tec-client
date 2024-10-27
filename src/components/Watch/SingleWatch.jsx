@@ -14,8 +14,13 @@ const SingleWatch = ({ watch }) => {
 
     const { _id, productName, productBrand, oldPrice, newPrice, productQuantity, productImage, productDetails, productType, productAddDate } = watch
 
+    const discountPercentage = ((oldPrice - newPrice) / oldPrice) * 100;
+    const roundedNumber = parseFloat(discountPercentage.toFixed(1)); 
+
     const modOldPrice = new Intl.NumberFormat('en-IN').format(oldPrice);
     const modNewPrice = new Intl.NumberFormat('en-IN').format(newPrice);
+
+
 
     const handleAddCart = async (watch) => {
 
@@ -56,10 +61,17 @@ const SingleWatch = ({ watch }) => {
                 <Link to={`/details/${_id}`}> <button title='view details' className="w-fit p-2 bg-base-200 text-center rounded-full border border-base-300 font-medium hover:text-orange-500"><FaRegEye /></button></Link>
                 <button onClick={() => handleAddCart(watch)} title='add cart' className="w-fit p-2 bg-base-200 text-center rounded-full border border-base-300 font-medium hover:text-orange-500"><FaCartPlus /></button>
                 </div>
+                 
+                    
+                 
             </div>
             <div className='space-y-1 my-3 flex-grow'>
                 <p className='text-xs font-bold'>{productName}</p>
-                {productQuantity > 0 ? <span className='text-xs text-green-500 font-medium'>In Stock</span> : <span className='text-xs text-red-500 font-medium' >Stock Out</span>}
+               <div className='flex justify-between   items-center'>
+               {productQuantity > 0 ? <span className='text-xs text-green-500 font-medium'>In Stock</span> : <span className='text-xs text-red-500 font-medium' >Stock Out</span>}
+               
+               <p className='text-xs font-medium text-red-500'>{roundedNumber} % OFF</p>
+               </div>
                 <p className='flex gap-1 md:gap-2 items-center'><span className='text-sm text-orange-500 font-medium'>{modNewPrice} Tk</span> <span className='text-xs line-through'>{modOldPrice} Tk</span></p>
             </div>
             {/* <div className="divider my-1"></div>
