@@ -60,7 +60,17 @@ const OrderInfo = () => {
         const date = new Date()
         const currency = 'BDT'
         const data = {
-            name, email, phone, address, shippingMethod, shippingArea, total, products, productsIds, currency, date
+            name,
+            email,
+            phone,
+            address,
+            shippingMethod,
+            shippingArea,
+            total,
+            products,
+            productsIds,
+            currency,
+            date,
         }
 
         if (serviceCharge === 0) {
@@ -69,8 +79,8 @@ const OrderInfo = () => {
         }
         setServiceError('')
 
-        const res = await axiosSecure.post('/order', data)
-        if(res.data){
+        const res = await axiosSecure.post('/orders', data)
+        if (res.data) {
             window.location.replace(res.data.url)
         }
     }
@@ -143,7 +153,7 @@ const OrderInfo = () => {
                                                 <div className="mask mask-squircle h-12 w-12">
                                                     <img
                                                         src={cart?.productImage}
-                                                        alt="Avatar Tailwind CSS Component" />
+                                                        alt="img" />
                                                 </div>
                                             </div>
                                         </td>

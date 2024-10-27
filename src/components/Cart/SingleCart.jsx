@@ -1,6 +1,7 @@
 import Swal from "sweetalert2";
 import useAxiosSecure from "../Hooks/useAxiosSecure";
 import PropTypes from 'prop-types'
+import toast from "react-hot-toast";
 
 
 const SingleCart = ({ cart, refetch }) => {
@@ -29,12 +30,16 @@ const SingleCart = ({ cart, refetch }) => {
                     .then(res => {
                         if (res.data.deletedCount > 0) {
                             refetch()
-                            Swal.fire({
-                                position: "top-end",
-                                title: "cart successful !",
-                                showConfirmButton: false,
-                                timer: 1000
-                            });
+                            toast.success('cart remove successful !', {
+                                duration: 1000,
+                                position: 'top-center',
+                            })
+                            // Swal.fire({
+                            //     position: "top-end",
+                            //     title: "cart successful !",
+                            //     showConfirmButton: false,
+                            //     timer: 1000
+                            // });
                         }
                     })
             }

@@ -5,6 +5,7 @@ import SingleWatch from "./SingleWatch";
 import Loading from "../../Loading/Loading"; 
 import { useState } from "react";
 import { IoIosArrowDown } from "react-icons/io";
+import { Toaster } from "react-hot-toast";
 
 
 const Watch = () => {
@@ -65,6 +66,7 @@ const Watch = () => {
 
     return (
         <div>
+            <Toaster></Toaster>
             <Helmet>
                 <title>Watch</title>
             </Helmet>

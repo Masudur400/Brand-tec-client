@@ -2,6 +2,7 @@ import axios from "axios";
 import { Helmet } from "react-helmet";
 import useAxiosSecure from "../Hooks/useAxiosSecure";
 import Swal from "sweetalert2";
+import toast, { Toaster } from "react-hot-toast";
 
 
 
@@ -55,11 +56,15 @@ const AddProduct = () => {
             axiosSecure.post('/products', data)
                 .then(res => { 
                     if (res.data.insertedId) {
-                        Swal.fire({
-                            title: "Success!",
-                            text: "Product added successfully!",
-                            icon: "success"
-                        }); 
+                        // Swal.fire({
+                        //     title: "Success!",
+                        //     text: "Product added successfully!",
+                        //     icon: "success"
+                        // }); 
+                        toast.success('Product added successfully!', {
+                            duration: 1000,
+                            position: 'top-center',
+                        })
                         e.target.reset()
                     } 
                 }) 
@@ -72,6 +77,7 @@ const AddProduct = () => {
 
     return (
         <div>
+            <Toaster></Toaster>
             <div className="lg:w-4/5 md:w-2/3 mx-auto my-5 md:p-5 p-3 rounded-lg  shadow-md max-sm:mx-4  border border-base-300">
                 <Helmet>
                     <title>Add Product</title>

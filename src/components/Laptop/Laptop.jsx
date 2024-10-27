@@ -5,6 +5,7 @@ import SingleLaptop from "./SingleLaptop";
 import Loading from "../../Loading/Loading";
 import { useState } from "react";
 import { IoIosArrowDown } from "react-icons/io";
+import { Toaster } from "react-hot-toast";
 
  
 const Laptop = () => {
@@ -62,6 +63,7 @@ const Laptop = () => {
 
     return (
         <div>
+            <Toaster></Toaster>
             <Helmet>
                 <title>Laptop</title>
             </Helmet>

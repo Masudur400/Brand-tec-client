@@ -36,6 +36,8 @@ import OrderInfo from './components/OrderInfo/OrderInfo.jsx';
 import AddShippingMethod from './components/AddShippingMethod/AddShippingMethod.jsx';
 import AllShipping from './components/AllShipping/AllShipping.jsx';
 import ErrorPage from './components/Errorpage/ErrorPage.jsx';
+import PaymentSuccess from './pages/PaymentSuccess/PaymentSuccess.jsx';
+import PaymentFail from './pages/PaymentFail/PaymentFail.jsx'; 
 
 const router = createBrowserRouter([
   {
@@ -112,6 +114,16 @@ const router = createBrowserRouter([
         path: '/orderInfo',
         element: <OrderInfo></OrderInfo>
       }, 
+      {
+        // user route 
+        path: '/payment/success/:tranId',
+        element: <PaymentSuccess></PaymentSuccess>
+      }, 
+      {
+        // user route 
+        path: 'payment/fail/:tranId',
+        element:  <PaymentFail></PaymentFail>
+      }, 
 
       // {
       //   path:'/login',
@@ -154,9 +166,11 @@ ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
      
     <AuthProvider>
+       
       <QueryClientProvider client={queryClient}>
         <RouterProvider router={router} />
       </QueryClientProvider>
+       
     </AuthProvider>
      
   </React.StrictMode>,

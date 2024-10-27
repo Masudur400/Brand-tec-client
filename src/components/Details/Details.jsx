@@ -6,12 +6,11 @@ import Loading from "../../Loading/Loading";
 import SingleBrand from "./SingleBrand";
 import Marquee from "react-fast-marquee";
 import { useState } from "react";
-import { HiMinus } from "react-icons/hi";
-import 'react-toastify/dist/ReactToastify.css';
-import { toast, ToastContainer } from "react-toastify";
+import { HiMinus } from "react-icons/hi"; 
 import useAuth from "../Hooks/useAuth";
 import { FiPlus } from "react-icons/fi";
 import Barcode from "react-barcode";
+import toast, { Toaster } from "react-hot-toast";
 
 
 const Details = () => {
@@ -94,10 +93,11 @@ const Details = () => {
 
     return (
         <div className="my-10">
+            <Toaster></Toaster>
             <Helmet>
                 <title>Details</title>
             </Helmet>
-            <ToastContainer></ToastContainer>
+             
 
             <div className="md:flex gap-3 justify-center items-center lg:w-2/3 mx-auto border border-base-300 rounded-md shadow-md p-1">
                 <div className="flex-none">

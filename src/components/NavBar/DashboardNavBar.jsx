@@ -77,7 +77,7 @@ const DashboardNavBar = () => {
                             <div className="sticky top-0 bg-base-200 px-4 py-3 md:py-4 border-b border-gray-700">
                                 <div className="text-2xl font-bold flex justify-between items-center">
                                     <div>
-                                        <Link to='/'><p className="text-3xl font-bold"> <span className="text-orange-500">Brand</span><span className="text-xl">TEC</span></p> </Link>
+                                        <Link to='/'><p title='Home' className="text-3xl font-bold"> <span className="text-orange-500">Brand</span><span className="text-xl">TEC</span></p> </Link>
                                     </div>
                                     <a onClick={closeMenu} className="hover:text-orange-500 cursor-pointer border-2 border-orange-400">
                                         <LiaTimesSolid className="text-xl lg:text-2xl cursor-pointer" />

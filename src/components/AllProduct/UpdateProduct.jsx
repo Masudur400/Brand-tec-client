@@ -6,6 +6,7 @@ import { Link, useNavigate, useParams } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import Loading from "../../Loading/Loading";
 import { FaXmark } from "react-icons/fa6";
+import toast, { Toaster } from "react-hot-toast";
 
 
 const imageHostingKey = import.meta.env.VITE_image_hosting_key;
@@ -72,11 +73,15 @@ const UpdateProduct = () => {
 
             if (res.data.modifiedCount > 0) {
                 refetch()
-                Swal.fire({
-                    title: "Success!",
-                    text: "Product update successfully!",
-                    icon: "success"
-                });
+                // Swal.fire({
+                //     title: "Success!",
+                //     text: "Product update successfully!",
+                //     icon: "success"
+                // });
+                toast.success('delete successful !', {
+                    duration: 1000,
+                    position: 'top-center',
+                })
                 navigate('/allProduct')
             }
 
@@ -93,6 +98,7 @@ const UpdateProduct = () => {
 
     return (
         <div>
+            <Toaster></Toaster>
             <div className="lg:w-3/4 md:w-2/3 mx-auto my-5 md:p-5 p-3 rounded-lg border border-base-300 shadow-md max-sm:mx-4 ">
                 <Helmet>
                     <title>Update Product</title>

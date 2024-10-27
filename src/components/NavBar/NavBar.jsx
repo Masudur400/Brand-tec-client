@@ -63,7 +63,7 @@ const NavBar = () => {
                                     <SlMenu className="text-2xl lg:text-3xl cursor-pointer" />
                                 )}
                             </div>
-                            <Link to='/'> <p className="text-3xl font-bold">
+                            <Link to='/'> <p title="Home" className="text-3xl font-bold">
                                     <span className="text-orange-500">Brand</span><span className="text-xl">TEC</span>
                                 </p>
                             </Link>

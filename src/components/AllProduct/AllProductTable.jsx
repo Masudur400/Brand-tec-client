@@ -4,6 +4,7 @@ import Loading from "../../Loading/Loading";
 import Swal from "sweetalert2";
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
+import toast, { Toaster } from "react-hot-toast";
 
 
 
@@ -78,12 +79,16 @@ const AllProductTable = () => {
                     .then(res => {
                         if (res.data.deletedCount > 0) {
                             refetch()
-                            Swal.fire({
-                                position: "top-end",
-                                title: "delete successful !",
-                                showConfirmButton: false,
-                                timer: 1000
-                            });
+                            // Swal.fire({
+                            //     position: "top-end",
+                            //     title: "delete successful !",
+                            //     showConfirmButton: false,
+                            //     timer: 1000
+                            // });
+                            toast.success('delete successful !', {
+                                duration: 1000,
+                                position: 'top-center',
+                            })
                         }
                     })
             }
@@ -96,6 +101,7 @@ const AllProductTable = () => {
 
     return (
         <div>
+            <Toaster></Toaster>
             <div className="flex gap-1 justify-end items-center mr-4 text-xs font-medium">
                 <p className="px-2 py-1 bg-base-100">Show : </p>
                 <select onChange={handleItemParPage} defaultValue={itemParPage} name="" id="" className="border px-2 py-1">

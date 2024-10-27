@@ -1,11 +1,10 @@
 import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom';
 import useAxiosSecure from '../Hooks/useAxiosSecure';
-import useAuth from '../Hooks/useAuth';
-import 'react-toastify/dist/ReactToastify.css';
-import { toast, ToastContainer } from 'react-toastify';
+import useAuth from '../Hooks/useAuth'; 
 import Loading from '../../Loading/Loading';
 import { FaCartPlus, FaRegEye } from 'react-icons/fa';
+import toast  from 'react-hot-toast';
 
 
 const SingleWatch = ({ watch }) => {
@@ -36,7 +35,10 @@ const SingleWatch = ({ watch }) => {
         }
         const res = await axiosSecure.post('/carts', data)
         if (res.data.insertedId) {
-            toast.success('Add cart successful')
+            toast.success('Add cart successful', {
+                duration: 1000,
+                position: 'top-center',
+            }) 
         }
     }
 
@@ -47,12 +49,12 @@ const SingleWatch = ({ watch }) => {
     return (
 
         <div className='flex flex-col p-2 shadow-md rounded-md border border-base-300 group'>
-            <ToastContainer></ToastContainer>
+             
             <div className='relative'>
-                <img src={productImage} alt="" className='w-40 mx-auto group-hover:scale-105' />
+                <img src={productImage} alt="img" className='w-40 mx-auto group-hover:scale-105' />
                 <div className='absolute top-2 right-1 flex flex-col gap-3'>
-                <Link to={`/details/${_id}`}> <button className="w-fit p-2 bg-base-200 text-center rounded-full border border-base-300 font-medium hover:text-orange-500"><FaRegEye /></button></Link>
-                <button onClick={() => handleAddCart(watch)} className="w-fit p-2 bg-base-200 text-center rounded-full border border-base-300 font-medium hover:text-orange-500"><FaCartPlus /></button>
+                <Link to={`/details/${_id}`}> <button title='view details' className="w-fit p-2 bg-base-200 text-center rounded-full border border-base-300 font-medium hover:text-orange-500"><FaRegEye /></button></Link>
+                <button onClick={() => handleAddCart(watch)} title='add cart' className="w-fit p-2 bg-base-200 text-center rounded-full border border-base-300 font-medium hover:text-orange-500"><FaCartPlus /></button>
                 </div>
             </div>
             <div className='space-y-1 my-3 flex-grow'>
