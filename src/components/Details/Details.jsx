@@ -121,7 +121,14 @@ const Details = () => {
                             <p className="font-medium bg-slate-50 px-4">{count}</p>
                             <button onClick={handlePlus} className="px-1 flex justify-center items-center"><FiPlus></FiPlus></button>
                         </div>
-                        <button onClick={() => handleAddCart(singleData)} className="w-fit px-4 py-1 text-center rounded-md border border-orange-400 text-orange-500 hover:shadow-lg font-medium text-sm my-3 mr-7">Add Cart</button>
+                        {
+                            user ?
+                            <button onClick={() => handleAddCart(singleData)} className="w-fit px-4 py-1 text-center rounded-md border border-orange-400 text-orange-500 hover:shadow-lg font-medium text-sm my-3 mr-7">Add Cart</button> :
+                            <button onClick={() => toast.error('Please Login', {
+                                duration: 1000,
+                                position: 'top-center',
+                            })} className="w-fit px-4 py-1 text-center rounded-md border border-orange-400 text-orange-500 hover:shadow-lg font-medium text-sm my-3 mr-7">Add Cart</button>
+                        }
                     </div>
                 </div>
             </div>
