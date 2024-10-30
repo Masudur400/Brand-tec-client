@@ -9,7 +9,7 @@ import useAuth from "../Hooks/useAuth";
 
 const OrderInfo = () => {
 
-    const [carts, isPending, refetch] = useCart()
+    const [carts, isLoading, refetch] = useCart()
     const axiosSecure = useAxiosSecure()
     const { user } = useAuth()
     const [shippings, shippingLoading] = useShippings()
@@ -85,7 +85,7 @@ const OrderInfo = () => {
         }
     }
 
-    if (isPending || shippingLoading) {
+    if (isLoading || shippingLoading) {
         return <Loading></Loading>
     }
 

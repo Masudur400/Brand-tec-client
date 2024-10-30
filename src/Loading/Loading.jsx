@@ -1,7 +1,7 @@
  
 const Loading = () => {
     return (
-        <div className="flex justify-center items-center">
+        <div className="flex justify-center items-center h-[300px]">
             <progress className="progress w-56 progress-warning"></progress>
         </div>
     );

@@ -14,7 +14,7 @@ const InStockProduct = () => {
     const [itemParPage, setItemParPage] = useState(12)
     const [currentPage, setCurrentPage] = useState(0)
 
-    const { data: inStockProduct = [], isPending, refetch } = useQuery({
+    const { data: inStockProduct = [], isLoading, refetch } = useQuery({
         queryKey: ['/products/st/stock', axiosSecure, itemParPage, currentPage],
         queryFn: async () => {
             const res = await axiosSecure.get(`/products/st/stock?page=${currentPage}&size=${itemParPage}`)
@@ -90,7 +90,7 @@ const InStockProduct = () => {
         });
     }
 
-    if (isPending) {
+    if (isLoading) {
         return <Loading></Loading>
     }
 

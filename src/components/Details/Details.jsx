@@ -23,7 +23,7 @@ const Details = () => {
 
 
     // data load for details
-    const { data: singleData = {}, isPending } = useQuery({
+    const { data: singleData = {}, isLoading } = useQuery({
         queryKey: ['products', id],
         queryFn: async () => {
             const res = await axiosSecure.get(`/products/${id}`)
@@ -41,7 +41,7 @@ const Details = () => {
 
 
     // load data by productBrand 
-    const { data: allData = [], isPending: isLoading } = useQuery({
+    const { data: allData = [], isLoading: isloading } = useQuery({
         queryKey: ['products', productBrand],
         queryFn: async () => {
             const res = await axiosSecure.get(`/products/br/${productBrand}`)
@@ -88,7 +88,7 @@ const Details = () => {
 
 
 
-    if (isPending || isLoading || loading) {
+    if (isLoading || isloading || loading) {
         return <Loading></Loading>
     }
 

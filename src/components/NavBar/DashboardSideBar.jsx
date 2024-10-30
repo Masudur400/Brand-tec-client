@@ -1,6 +1,5 @@
 import { Link, NavLink } from "react-router-dom";
-import useAuth from "../Hooks/useAuth";
-import Loading from "../../Loading/Loading";
+import useAuth from "../Hooks/useAuth"; 
 import { MdLogin, MdLogout } from "react-icons/md";
 
 

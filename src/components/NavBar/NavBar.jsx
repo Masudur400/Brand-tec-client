@@ -6,8 +6,7 @@ import { LiaTimesSolid } from 'react-icons/lia';
 import { PiUserCircleThin } from "react-icons/pi";
 import { Link, NavLink } from "react-router-dom";
 import useAuth from "../Hooks/useAuth";
-import { MdLogout } from "react-icons/md";
-import Loading from "../../Loading/Loading";
+import { MdLogout } from "react-icons/md"; 
 import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../Hooks/useAxiosSecure";
 
@@ -24,7 +23,7 @@ const NavBar = () => {
         setProfile(false);
     };
 
-    const { data: users = {}, isPending } = useQuery({
+    const { data: users = {}, isLoading } = useQuery({
         queryKey: ['users', user?.email, axiosSecure],
         enabled: !loading,
         queryFn: async () => {
@@ -43,8 +42,8 @@ const NavBar = () => {
         {/* <li><NavLink to='/dashboard' onClick={closeMenu} className={({ isActive }) => isActive ? 'text-orange-500 underline' : 'hover:text-red-500'}>Dashboard</NavLink></li> */}
     </>;
 
-    if (loading || isPending) {
-        return <Loading />;
+    if (loading || isLoading) {
+        return <p className="opacity-90 text-center mt-4">Loading...</p>;
     }
 
     return (

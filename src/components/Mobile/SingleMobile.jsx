@@ -47,9 +47,9 @@ const SingleMobile = ({ phone }) => {
         }
     }
 
-    if (loading) {
-        return <Loading></Loading>
-    }
+    // if (loading) {
+    //     return <Loading></Loading>
+    // }
 
     return (
         // shadow-[0_0_25px_rgba(0,0,0,0.3)]
@@ -65,7 +65,7 @@ const SingleMobile = ({ phone }) => {
                 <p className='text-xs font-bold'>{productName}</p>
                 <div className='flex justify-between   items-center'>
                {productQuantity > 0 ? <span className='text-xs text-green-500 font-medium'>In Stock</span> : <span className='text-xs text-red-500 font-medium' >Stock Out</span>}
-               
+
                <p className='text-xs font-medium text-red-500'>{roundedNumber} % OFF</p>
                </div>
                 <p className='flex gap-1 md:gap-2 items-center'><span className='text-sm text-orange-500 font-medium'>{modNewPrice} Tk</span> <span className='text-xs line-through'>{modOldPrice} Tk</span></p>

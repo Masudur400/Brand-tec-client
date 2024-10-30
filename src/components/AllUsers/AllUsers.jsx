@@ -1,8 +1,7 @@
 import { Helmet } from "react-helmet";
 import useAxiosSecure from "../Hooks/useAxiosSecure";
 import Loading from "../../Loading/Loading";
-import { useQuery } from "@tanstack/react-query"; 
-import 'react-toastify/dist/ReactToastify.css'; 
+import { useQuery } from "@tanstack/react-query";  
 import SingleUser from "./SingleUser";
 
 const AllUsers = () => {
@@ -10,7 +9,7 @@ const AllUsers = () => {
     const axiosSecure = useAxiosSecure();
      
 
-    const { data: allUser = [], isPending, refetch } = useQuery({
+    const { data: allUser = [], isLoading, refetch } = useQuery({
         queryKey: ['users', axiosSecure],
         queryFn: async () => {
             const res = await axiosSecure.get('/users');
@@ -19,7 +18,7 @@ const AllUsers = () => {
     }); 
      
 
-    if (isPending) {
+    if (isLoading) {
         return <Loading></Loading>
     }
 

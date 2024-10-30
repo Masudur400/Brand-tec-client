@@ -18,7 +18,7 @@ const Profile = () => {
   const [currentUser, setCurrentUser] = useState({});
   const modalRef = useRef(null); // Use ref to handle modal
 
-  const { data: users = {}, isPending, refetch } = useQuery({
+  const { data: users = {}, isLoading, refetch } = useQuery({
     queryKey: ["users", user?.email, axiosSecure],
     enabled: !loading,
     queryFn: async () => {
@@ -86,7 +86,7 @@ const Profile = () => {
     }
   };
 
-  if (loading || isPending) {
+  if (loading || isLoading) {
     return <Loading></Loading>;
   }
 

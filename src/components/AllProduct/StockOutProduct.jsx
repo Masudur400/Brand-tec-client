@@ -15,7 +15,7 @@ const StockOutProduct = () => {
     const [currentPage, setCurrentPage] = useState(0)
 
 
-    const { data: outOfStock = [], isPending, refetch } = useQuery({
+    const { data: outOfStock = [], isLoading, refetch } = useQuery({
         queryKey: ['/products/st/stockOut', axiosSecure, currentPage, itemParPage],
         queryFn: async () => {
             const res = await axiosSecure.get(`/products/st/stockOut?page=${currentPage}&size=${itemParPage}`)
@@ -92,7 +92,7 @@ const StockOutProduct = () => {
         });
     }
 
-    if (isPending) {
+    if (isLoading) {
         return <Loading></Loading>
     }
 

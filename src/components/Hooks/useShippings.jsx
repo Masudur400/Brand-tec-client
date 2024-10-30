@@ -6,7 +6,7 @@ const useShippings = () => {
 
     const axiosSecure = useAxiosSecure()
 
-    const { data: shippings = [], isPending: shippingLoading, refetch } = useQuery({
+    const { data: shippings = [], isLoading: shippingLoading, refetch } = useQuery({
         queryKey: ['shippings', axiosSecure],
         queryFn: async () => {
             const res = await axiosSecure.get('/shippings')

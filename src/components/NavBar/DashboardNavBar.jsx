@@ -7,8 +7,7 @@ import useAuth from '../Hooks/useAuth';
 import useAxiosSecure from '../Hooks/useAxiosSecure';
 import { useQuery } from '@tanstack/react-query';
 import { PiUserCircleThin } from 'react-icons/pi';
-import { MdLogout } from 'react-icons/md';
-import Loading from '../../Loading/Loading';
+import { MdLogout } from 'react-icons/md'; 
 
 
 const DashboardNavBar = () => {
@@ -24,7 +23,7 @@ const DashboardNavBar = () => {
         setProfile(false)
     };
 
-    const { data: users = {}, isPending } = useQuery({
+    const { data: users = {}, isLoading } = useQuery({
         queryKey: ['users', user?.email, axiosSecure],
         enabled: !loading,
         queryFn: async () => {
@@ -34,8 +33,8 @@ const DashboardNavBar = () => {
     })
     const { photo, name } = users;
 
-    if (loading || isPending) {
-        return <Loading></Loading>
+    if (loading || isLoading) {
+        return <p className="opacity-90 text-center mt-4">Loading...</p>
     } 
 
     const routes = <>

@@ -15,7 +15,7 @@ const Mobile = () => {
     const [search, setSearch] = useState('')
     const [open, setOpen] = useState(false)
 
-    const { data: allData = [], isPending } = useQuery({
+    const { data: allData = [], isLoading } = useQuery({
         queryKey: ['products', axiosSecure, search],
         queryFn: async () => {
             const res = await axiosSecure.get(`/products/pp?search=${search}`)
@@ -58,7 +58,7 @@ const Mobile = () => {
         e.target.reset()
     }
 
-    if (isPending) {
+    if (isLoading) {
         return <Loading></Loading>
     }
 

@@ -8,13 +8,13 @@ import toast, { Toaster } from "react-hot-toast";
 
 const Cart = () => {
 
-    const [carts, isPending, refetch, loading] = useCart();
+    const [carts, isLoading, refetch, loading] = useCart();
 
     const totalPrice = carts.reduce((total, product) => total + product.newPrice, 0);
     const modTotalPrice = new Intl.NumberFormat('en-IN').format(totalPrice);
 
 
-    if (isPending || loading) {
+    if (isLoading || loading) {
         return <Loading></Loading>
     }
 

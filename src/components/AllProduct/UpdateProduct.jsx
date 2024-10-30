@@ -18,7 +18,7 @@ const UpdateProduct = () => {
     const axiosSecure = useAxiosSecure()
     const navigate = useNavigate()
 
-    const { data: singleData = {}, isPending, refetch } = useQuery({
+    const { data: singleData = {}, isLoading, refetch } = useQuery({
         queryKey: ['products', id],
         queryFn: async () => {
             const res = await axiosSecure.get(`/products/${id}`)
@@ -92,7 +92,7 @@ const UpdateProduct = () => {
 
     }
 
-    if (isPending) {
+    if (isLoading) {
         return <Loading></Loading>
     }
 

@@ -16,7 +16,7 @@ const AllProductTable = () => {
     const [currentPage, setCurrentPage] = useState(0)
 
 
-    const { data: allData = [], isPending, refetch } = useQuery({
+    const { data: allData = [], isLoading, refetch } = useQuery({
         queryKey: ['products', axiosSecure, currentPage, itemParPage],
         queryFn: async () => {
             const res = await axiosSecure.get(`/products/product?page=${currentPage}&size=${itemParPage}`)
@@ -25,7 +25,7 @@ const AllProductTable = () => {
     })
 
 
-    const { data: count = {}, isPending: isLoading } = useQuery({
+    const { data: count = {}, isLoading : isloading } = useQuery({
         queryKey: ['productsCount', axiosSecure],
         queryFn: async () => {
             const res = await axiosSecure.get('/productsCount')
@@ -95,7 +95,7 @@ const AllProductTable = () => {
         });
     }
 
-    if (isPending || isLoading) {
+    if (isLoading || isloading) {
         return <Loading></Loading>
     }
 
