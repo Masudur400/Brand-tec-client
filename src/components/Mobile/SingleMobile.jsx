@@ -8,7 +8,7 @@ import toast  from 'react-hot-toast';
 
 
 
-const SingleMobile = ({ phone }) => {
+const SingleMobile = ({ phone,refetch }) => {
 
     const axiosSecure = useAxiosSecure()
     const { user, loading } = useAuth()
@@ -39,11 +39,13 @@ const SingleMobile = ({ phone }) => {
         }
         const res = await axiosSecure.post('/carts', data)
         if (res.data.insertedId) {
+            refetch()
             // toast.success('Add cart successful')
             toast.success('Add cart successful', {
                 duration: 1000,
                 position: 'top-center',
             }) 
+            
         }
     }
 
@@ -92,7 +94,8 @@ const SingleMobile = ({ phone }) => {
 };
 
 SingleMobile.propTypes = {
-    phone: PropTypes.object
+    phone: PropTypes.object,
+    refetch : PropTypes.func
 }
 
 export default SingleMobile;

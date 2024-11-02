@@ -8,7 +8,7 @@ import toast  from 'react-hot-toast';
 
 
 
-const SingleLaptop = ({ laptop }) => {
+const SingleLaptop = ({ laptop, refetch }) => {
 
     const axiosSecure = useAxiosSecure()
     const { user, loading } = useAuth()
@@ -43,6 +43,7 @@ const SingleLaptop = ({ laptop }) => {
                 duration: 1000,
                 position: 'top-center',
             }) 
+            refetch()
         }
     }
 
@@ -91,7 +92,8 @@ const SingleLaptop = ({ laptop }) => {
 };
 
 SingleLaptop.propTypes = {
-    laptop: PropTypes.object
+    laptop: PropTypes.object,
+    refetch : PropTypes.func
 }
 
 export default SingleLaptop;

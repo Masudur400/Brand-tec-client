@@ -16,7 +16,7 @@ const Watch = () => {
     const [search, setSearch] = useState('')
     const [open, setOpen] = useState(false)
 
-    const { data: allData = [], isLoading } = useQuery({
+    const { data: allData = [], isLoading, refetch } = useQuery({
         queryKey: ['products', axiosSecure, search],
         queryFn: async () => {
             const res = await axiosSecure.get(`/products/pp?search=${search}`)
@@ -97,8 +97,8 @@ const Watch = () => {
 
             <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-3 my-10">
                 {products.length ?
-                    products?.map(watch => <SingleWatch key={watch?._id} watch={watch}></SingleWatch>) :
-                    watches?.map(watch => <SingleWatch key={watch?._id} watch={watch}></SingleWatch>)
+                    products?.map(watch => <SingleWatch key={watch?._id} watch={watch} refetch={refetch}></SingleWatch>) :
+                    watches?.map(watch => <SingleWatch key={watch?._id} watch={watch} refetch={refetch}></SingleWatch>)
                 }
             </div>
         </div>

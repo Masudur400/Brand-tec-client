@@ -41,7 +41,7 @@ const Details = () => {
 
 
     // load data by productBrand 
-    const { data: allData = [], isLoading: isloading } = useQuery({
+    const { data: allData = [], isLoading: isloading, refetch } = useQuery({
         queryKey: ['products', productBrand],
         queryFn: async () => {
             const res = await axiosSecure.get(`/products/br/${productBrand}`)
@@ -82,7 +82,11 @@ const Details = () => {
         }
         const res = await axiosSecure.post('/carts', data)
         if (res.data.insertedId) {
-            toast.success('Add cart successful')
+            toast.success('Add cart successful', {
+                duration: 1000,
+                position: 'top-center',
+            })
+            refetch()
         }
     }
 

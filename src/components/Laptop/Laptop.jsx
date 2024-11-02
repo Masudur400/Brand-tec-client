@@ -15,7 +15,7 @@ const Laptop = () => {
     const [search, setSearch] = useState('')
     const [open, setOpen] = useState(false)
 
-    const { data: allData = [], isLoading } = useQuery({
+    const { data: allData = [], isLoading , refetch} = useQuery({
         queryKey: ['products', axiosSecure, search],
         queryFn: async () => {
             const res = await axiosSecure.get(`/products/pp?search=${search}`)
@@ -95,8 +95,8 @@ const Laptop = () => {
             <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-3 my-10">
                  {
                     products.length?
-                    products?.map(laptop => <SingleLaptop key={laptop?._id} laptop={laptop}></SingleLaptop>):
-                    laptops?.map(laptop => <SingleLaptop key={laptop?._id} laptop={laptop}></SingleLaptop>)
+                    products?.map(laptop => <SingleLaptop key={laptop?._id} laptop={laptop} refetch={refetch}></SingleLaptop>):
+                    laptops?.map(laptop => <SingleLaptop key={laptop?._id} laptop={laptop} refetch={refetch}></SingleLaptop>)
                  }
             </div>
         </div>

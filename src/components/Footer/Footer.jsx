@@ -94,7 +94,7 @@ const Footer = () => {
                     <form onSubmit={handleReview} className="text-sm space-y-2">
                         <div>
                             <p className="mb-1 font-medium">Name</p>
-                            <input type="text" name="name" placeholder="Name" className="px-2 py-1 rounded-md" />
+                            <input type="text" name="name" placeholder="Your Name" className="px-2 py-1 rounded-md" />
                         </div>
                         <div>
                             <p className="font-medium mb-1">Review</p>

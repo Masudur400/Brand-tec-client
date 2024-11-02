@@ -15,7 +15,7 @@ const Mobile = () => {
     const [search, setSearch] = useState('')
     const [open, setOpen] = useState(false)
 
-    const { data: allData = [], isLoading } = useQuery({
+    const { data: allData = [], isLoading,  refetch } = useQuery({
         queryKey: ['products', axiosSecure, search],
         queryFn: async () => {
             const res = await axiosSecure.get(`/products/pp?search=${search}`)
@@ -97,8 +97,8 @@ const Mobile = () => {
             <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-3 my-10">
                 {
                     products.length ?
-                        products?.map(phone => <SingleMobile key={phone?._id} phone={phone}></SingleMobile>) :
-                        allPhone?.map(phone => <SingleMobile key={phone?._id} phone={phone}></SingleMobile>)
+                        products?.map(phone => <SingleMobile key={phone?._id} phone={phone} refetch={refetch}></SingleMobile>) :
+                        allPhone?.map(phone => <SingleMobile key={phone?._id} phone={phone} refetch={refetch}></SingleMobile>)
                 }
             </div>
         </div>

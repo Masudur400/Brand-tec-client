@@ -7,7 +7,7 @@ import { FaCartPlus, FaRegEye } from 'react-icons/fa';
 import toast  from 'react-hot-toast';
 
 
-const SingleWatch = ({ watch }) => {
+const SingleWatch = ({ watch , refetch }) => {
 
     const axiosSecure = useAxiosSecure()
     const { user, loading } = useAuth()
@@ -44,6 +44,7 @@ const SingleWatch = ({ watch }) => {
                 duration: 1000,
                 position: 'top-center',
             }) 
+            refetch()
         }
     }
 
@@ -96,7 +97,8 @@ const SingleWatch = ({ watch }) => {
 };
 
 SingleWatch.propTypes = {
-    watch: PropTypes.object
+    watch: PropTypes.object,
+    refetch : PropTypes.func
 }
 
 export default SingleWatch;

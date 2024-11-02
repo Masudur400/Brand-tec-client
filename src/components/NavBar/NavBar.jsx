@@ -9,20 +9,31 @@ import useAuth from "../Hooks/useAuth";
 import { MdLogout } from "react-icons/md"; 
 import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../Hooks/useAxiosSecure";
-import Avatar from "react-avatar";
+import Avatar from "react-avatar";  
 
 const NavBar = () => {
 
     const [profile, setProfile] = useState(false);
     const { user, logOut, loading } = useAuth();
     const axiosSecure = useAxiosSecure();
-    const [click, setClick] = useState(false);
+    const [click, setClick] = useState(false);  
+     
 
     const handleClick = () => setClick(!click);
     const closeMenu = () => {
         setClick(false);
         setProfile(false);
     };
+
+     
+
+    // const { data: carts = [],  refetch } = useQuery({
+    //     queryKey: ['carts', user?.email, axiosSecure],
+    //     queryFn: async () => {
+    //         const res = await axiosSecure.get(`/carts/${user?.email}`)
+    //         return res.data
+    //     }
+    // })
 
     const { data: users = {}, isLoading } = useQuery({
         queryKey: ['users', user?.email, axiosSecure],
@@ -39,7 +50,7 @@ const NavBar = () => {
         <li><NavLink to='/watch' onClick={closeMenu} className={({ isActive }) => isActive ? 'text-orange-500 underline' : 'hover:text-red-500'}>Watch</NavLink></li>
         <li><NavLink to='/mobile' onClick={closeMenu} className={({ isActive }) => isActive ? 'text-orange-500 underline' : 'hover:text-red-500'}>Mobile</NavLink></li>
         <li><NavLink to='/laptop' onClick={closeMenu} className={({ isActive }) => isActive ? 'text-orange-500 underline' : 'hover:text-red-500'}>LapTop</NavLink></li>
-        <li><NavLink to='/cart' onClick={closeMenu} className={({ isActive }) => isActive ? 'text-orange-500 underline flex items-center gap-1' : 'hover:text-red-500 flex items-center gap-1'}>Carts<BsCart4></BsCart4></NavLink></li>
+        {/* <li><NavLink to='/cart' onClick={closeMenu} className={({ isActive }) => isActive ? 'text-orange-500 underline flex items-center gap-1' : 'hover:text-red-500 flex items-center gap-1'}>Carts<BsCart4></BsCart4></NavLink></li> */}
         {/* <li><NavLink to='/dashboard' onClick={closeMenu} className={({ isActive }) => isActive ? 'text-orange-500 underline' : 'hover:text-red-500'}>Dashboard</NavLink></li> */}
     </>;
 
@@ -82,7 +93,9 @@ const NavBar = () => {
                         user ?
                             <div className="mr-2 lg:mr-6">
                                 <div className="relative">
-                                    <div className="avatar">
+                                    <div className="flex gap-5 md:gap-10 justify-start items-center">
+                                    <p><NavLink to='/cart' className={({ isActive }) => isActive ? 'text-orange-500  underline flex items-center gap-1' : 'hover:text-red-500 flex items-center gap-1'}><BsCart4 className="text-2xl"></BsCart4></NavLink></p>
+
                                         <div className="flex justify-center items-center border-black rounded-full mt-1">
                                             {/* <img src={photo} alt="user image" onClick={() => setProfile(!profile)} /> */}
                                             <Avatar name={name?.charAt(0)} src={photo} alt='img' className="rounded-full" size="45" onClick={() => setProfile(!profile)}></Avatar>
