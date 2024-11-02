@@ -8,6 +8,8 @@ import axios from "axios";
 import Swal from "sweetalert2";
 import { updateProfile } from "firebase/auth";
 import { RiEdit2Line } from "react-icons/ri";
+import Avatar from "react-avatar";
+import { Rating, Typography } from "@mui/material";
 
 const imageHostingKey = import.meta.env.VITE_image_hosting_key;
 const imageHostingApi = `https://api.imgbb.com/1/upload?key=${imageHostingKey}`;
@@ -16,7 +18,8 @@ const Profile = () => {
   const { user, loading } = useAuth();
   const axiosSecure = useAxiosSecure();
   const [currentUser, setCurrentUser] = useState({});
-  const modalRef = useRef(null); // Use ref to handle modal
+  const [value, setValue] = useState(0)
+  const modalRef = useRef(null); // Use ref to handle modal 
 
   const { data: users = {}, isLoading, refetch } = useQuery({
     queryKey: ["users", user?.email, axiosSecure],
@@ -89,9 +92,24 @@ const Profile = () => {
   if (loading || isLoading) {
     return <Loading></Loading>;
   }
-
+ 
   return (
     <div>
+
+<div>
+   <Avatar name={name?.charAt(0)} src={'photo'} alt='img' className="rounded-full" size="60"></Avatar>
+</div>
+<div>
+<Typography component="">Controlled</Typography>
+<Rating
+  name=""
+  value={value}
+  onChange={(event, newValue) => {
+    setValue(newValue);
+  }}
+/>
+</div>
+
       <Helmet>
         <title>Profile</title>
       </Helmet>

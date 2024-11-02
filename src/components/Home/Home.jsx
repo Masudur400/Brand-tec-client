@@ -13,7 +13,7 @@ const Home = () => {
             </Helmet>
             
                     <div className="mt-5">
-                        <Carosel></Carosel>
+                        <Carosel></Carosel> 
                          
                     </div>
              

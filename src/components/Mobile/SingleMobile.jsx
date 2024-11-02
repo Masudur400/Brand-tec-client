@@ -58,13 +58,17 @@ const SingleMobile = ({ phone }) => {
                 <img src={productImage} alt="img" className='w-40 mx-auto group-hover:scale-105' />
                 <div className='absolute top-2 right-1 flex gap-3 flex-col'>
                 <Link to={`/details/${_id}`}> <button title='view details' className="w-fit p-2 bg-base-200 text-center rounded-full border border-base-300 font-medium hover:text-orange-500"><FaRegEye /></button></Link>
-                {
-                    user ?
-                    <button onClick={() => handleAddCart(phone)} title='add cart' className="w-fit p-2 bg-base-200 text-center rounded-full border border-base-300 font-medium hover:text-orange-500"><FaCartPlus /></button> :
-                    <button onClick={() => toast.error('Please Login', {
-                        duration: 1000,
-                        position: 'top-center',
-                    })} title='add cart' className="w-fit p-2 bg-base-200 text-center rounded-full border border-base-300 font-medium hover:text-orange-500"><FaCartPlus /></button>
+                {productQuantity > 0 ?  
+                    <div>
+                    {
+                        user ?
+                        <button onClick={() => handleAddCart(phone)} title='add cart' className="w-fit p-2 bg-base-200 text-center rounded-full border border-base-300 font-medium hover:text-orange-500"><FaCartPlus /></button> :
+                        <button onClick={() => toast.error('Please Login', {
+                            duration: 1000,
+                            position: 'top-center',
+                        })} title='add cart' className="w-fit p-2 bg-base-200 text-center rounded-full border border-base-300 font-medium hover:text-orange-500"><FaCartPlus /></button>
+                    }
+                    </div>  : ""
                 }
                 </div>
             </div>
