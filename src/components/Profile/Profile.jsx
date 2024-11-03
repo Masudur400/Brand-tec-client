@@ -72,8 +72,8 @@ const Profile = () => {
         photoURL: imageUrl,
       }).then(async () => {
         const res = await axiosSecure.patch(`/users/user/${currentUser?._id}`, data);
-        if (res.data.modifiedCount > 0) { 
-        Swal.fire({
+        if (res.data.modifiedCount > 0) {
+          Swal.fire({
             position: "top-end",
             icon: "success",
             title: "Profile update successfully !",
@@ -92,23 +92,23 @@ const Profile = () => {
   if (loading || isLoading) {
     return <Loading></Loading>;
   }
- 
+
   return (
     <div>
 
-<div>
-   <Avatar name={name?.charAt(0)} src={'photo'} alt='img' className="rounded-full" size="60"></Avatar>
-</div>
-<div>
-<Typography component="">Controlled</Typography>
-<Rating
-  name=""
-  value={value}
-  onChange={(event, newValue) => {
-    setValue(newValue);
-  }}
-/>
-</div>
+      <div>
+        <Avatar name={name?.charAt(0)} src={'photo'} alt='img' className="rounded-full" size="60"></Avatar>
+      </div>
+      <div>
+        <Typography component="">Controlled</Typography>
+        <Rating
+          name=""
+          value={value}
+          onChange={(event, newValue) => {
+            setValue(newValue);
+          }}
+        />
+      </div>
 
       <Helmet>
         <title>Profile</title>

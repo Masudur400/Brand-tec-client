@@ -6,19 +6,21 @@ import Loading from "../../Loading/Loading";
 import { useState } from "react";
 import { IoIosArrowDown } from "react-icons/io";
 import { Toaster } from "react-hot-toast";
+import useAxiosPublic from "../Hooks/useAxiosPublic";
 
  
 const Laptop = () => {
     const axiosSecure = useAxiosSecure()
+    const axiosPublic = useAxiosPublic()
     const [products, setProducts] = useState([]);
     const [sortPrice, setSortPrice] = useState('Default');
     const [search, setSearch] = useState('')
     const [open, setOpen] = useState(false)
 
     const { data: allData = [], isLoading , refetch} = useQuery({
-        queryKey: ['products', axiosSecure, search],
+        queryKey: ['products', axiosPublic, search],
         queryFn: async () => {
-            const res = await axiosSecure.get(`/products/pp?search=${search}`)
+            const res = await axiosPublic.get(`/products/pp?search=${search}`)
             return res.data
         }
     })
@@ -92,7 +94,7 @@ const Laptop = () => {
                 </form>
             </div>
 
-            <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-3 my-10">
+            <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-3 my-10">
                  {
                     products.length?
                     products?.map(laptop => <SingleLaptop key={laptop?._id} laptop={laptop} refetch={refetch}></SingleLaptop>):

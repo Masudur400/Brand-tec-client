@@ -10,6 +10,7 @@ import { MdLogout } from "react-icons/md";
 import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../Hooks/useAxiosSecure";
 import Avatar from "react-avatar";  
+import useCart from "../Hooks/useCart";
 
 const NavBar = () => {
 
@@ -17,6 +18,7 @@ const NavBar = () => {
     const { user, logOut, loading } = useAuth();
     const axiosSecure = useAxiosSecure();
     const [click, setClick] = useState(false);  
+    const [carts] = useCart()
      
 
     const handleClick = () => setClick(!click);
@@ -94,7 +96,8 @@ const NavBar = () => {
                             <div className="mr-2 lg:mr-6">
                                 <div className="relative">
                                     <div className="flex gap-5 md:gap-10 justify-start items-center">
-                                    <p><NavLink to='/cart' className={({ isActive }) => isActive ? 'text-orange-500  underline flex items-center gap-1' : 'hover:text-red-500 flex items-center gap-1'}><BsCart4 className="text-2xl"></BsCart4></NavLink></p>
+                                        
+                                    <p className="flex"><NavLink to='/cart' className={({ isActive }) => isActive ? 'text-orange-500 flex items-center gap-1' : 'hover:text-red-500 flex items-center gap-1'}><BsCart4 className="text-2xl"></BsCart4>  {carts?.length >0 && <sup className="text-sm bg-red-500 px-2 py-1 rounded-full font-medium text-white">{carts?.length}</sup>}</NavLink></p>
 
                                         <div className="flex justify-center items-center border-black rounded-full mt-1">
                                             {/* <img src={photo} alt="user image" onClick={() => setProfile(!profile)} /> */}

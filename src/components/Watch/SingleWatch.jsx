@@ -5,11 +5,16 @@ import useAuth from '../Hooks/useAuth';
 import Loading from '../../Loading/Loading';
 import { FaCartPlus, FaRegEye } from 'react-icons/fa';
 import toast  from 'react-hot-toast';
+import { useQuery, useQueryClient } from '@tanstack/react-query';
+import useAxiosPublic from '../Hooks/useAxiosPublic';
+import StarRatings from 'react-star-ratings';
 
 
 const SingleWatch = ({ watch , refetch }) => {
 
     const axiosSecure = useAxiosSecure()
+    const axiosPublic = useAxiosPublic()
+    const queryClient = useQueryClient()
     const { user, loading } = useAuth()
 
     const { _id, productName, productBrand, oldPrice, newPrice, productQuantity, productImage, productDetails, productType, productAddDate } = watch
@@ -45,8 +50,18 @@ const SingleWatch = ({ watch , refetch }) => {
                 position: 'top-center',
             }) 
             refetch()
+            queryClient.invalidateQueries('products');
         }
     }
+
+    // load product reviews 
+    const { data: productReviews = [] } = useQuery({
+        queryKey: ['products', productBrand, _id],
+        queryFn: async () => {
+            const res = await axiosPublic.get(`/productReviews/${_id}`)
+            return res.data
+        }
+    })
 
     // if(loading){
     //     return <Loading></Loading>
@@ -84,6 +99,20 @@ const SingleWatch = ({ watch , refetch }) => {
 
                <p className='text-xs font-medium'>{roundedNumber} % OFF</p>
                </div>
+               {
+                        productReviews?.length > 0 && 
+                        <div className="flex gap-2 items-center">
+                        <StarRatings
+                            rating={5}
+                            starRatedColor="#ff8804"
+                            starDimension="15px"
+                            starSpacing="0px"
+                            numberOfStars={5}
+                            name='rating'
+                        />
+                        <p className="font-bold">({productReviews?.length})</p>
+                    </div>
+                    }
                 <p className='flex gap-1 md:gap-2 items-center'><span className='text-sm text-orange-500 font-medium'>{modNewPrice} Tk</span> <span className='text-xs line-through'>{modOldPrice} Tk</span></p>
             </div>
             {/* <div className="divider my-1"></div>
