@@ -13,7 +13,7 @@ import Barcode from "react-barcode";
 import toast, { Toaster } from "react-hot-toast";
 import useAxiosPublic from "../Hooks/useAxiosPublic";
 import axios from "axios";
-import { Rating } from "@mui/material";
+import { Rating, styled } from "@mui/material";
 import { CiImageOn } from "react-icons/ci";
 import SingleProductReview from "./SingleProductReview";
 import StarRatings from "react-star-ratings";
@@ -64,7 +64,7 @@ const Details = () => {
 
     // load product reviews 
     const { data: productReviews = [] } = useQuery({
-        queryKey: ['products', productBrand, _id],
+        queryKey: ['productReviews', axiosPublic, _id],
         queryFn: async () => {
             const res = await axiosPublic.get(`/productReviews/${_id}`)
             return res.data
@@ -108,6 +108,7 @@ const Details = () => {
                 duration: 1000,
                 position: 'top-center',
             })
+            queryClient.invalidateQueries('products');
             refetch()
         }
     }
@@ -179,6 +180,20 @@ const Details = () => {
         }
     };
 
+    const StyledRating = styled(Rating)({
+        '& .MuiRating-icon': {
+            border: '1px solid #ddd',  
+            borderRadius: '4px',       
+            margin: '2px',             
+        },
+        '& .MuiRating-iconFilled': {
+            color: '#ff8804',  
+        },
+        '& .MuiRating-iconHover': {
+            color: '#ff8804', 
+        },
+    });
+
 
     if (isLoading || isloading || loading) {
         return <Loading></Loading>
@@ -244,13 +259,13 @@ const Details = () => {
             </div>
 
 
-            <div>
+            {/* <div>
                 <Barcode value={id} className='w-52'></Barcode>
-            </div>
+            </div> */}
             {/* related product  */}
             <div className="flex gap-2 items-center">
                 <p className="w-3 h-10 bg-orange-500"></p>
-                <h3 className="text-xl font-bold my-5">Related Items</h3>
+                <h3 className="text-xl font-bold my-5">Related Products</h3>
             </div>
             <Marquee speed={30}>
                 <div className="flex gap-4 my-5 ml-4">
@@ -271,7 +286,7 @@ const Details = () => {
 
                         <div className="">
                             {/* <p className="font-medium mb-1">Review</p> */}
-                            <Rating
+                            <StyledRating
                                 required
                                 name="simple-controlled"
                                 value={value}

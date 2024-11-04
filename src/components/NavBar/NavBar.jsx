@@ -96,7 +96,7 @@ const NavBar = () => {
                             <div className="mr-2 lg:mr-6">
                                 <div className="relative">
                                     <div className="flex gap-5 md:gap-10 justify-start items-center">
-                                        
+
                                     <p className="flex"><NavLink to='/cart' className={({ isActive }) => isActive ? 'text-orange-500 flex items-center gap-1' : 'hover:text-red-500 flex items-center gap-1'}><BsCart4 className="text-2xl"></BsCart4>  {carts?.length >0 && <sup className="text-sm bg-red-500 px-2 py-1 rounded-full font-medium text-white">{carts?.length}</sup>}</NavLink></p>
 
                                         <div className="flex justify-center items-center border-black rounded-full mt-1">
@@ -115,7 +115,7 @@ const NavBar = () => {
                                 </div>
                             </div>
                             : <div className="px-5">
-                                <Link to='/loginRegister/login' className="px-3 py-1 rounded-md font-bold max-sm:btn-sm text-white bg-orange-400 hover:bg-orange-500">Login</Link>
+                                <Link to='/loginRegister/login' className="px-3 py-1 rounded-md font-bold max-sm:btn-sm text-orange-500 border border-orange-500 hover:shadow-md">Login</Link>
                             </div>
                     }
                     </div>

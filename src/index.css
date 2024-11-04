@@ -77,5 +77,21 @@
   }
 }
 
+@layer base {
+  html, body {
+      overflow-y: scroll; /* Allows vertical scrolling */
+  }
+
+  /* Hide scrollbar for all elements on the site */
+  *::-webkit-scrollbar {
+      display: none;
+  }
+  * {
+      -ms-overflow-style: none;  /* IE and Edge */
+      scrollbar-width: none;     /* Firefox */
+  }
+}
+
+
 
  

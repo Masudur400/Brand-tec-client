@@ -1,8 +1,7 @@
-import { Rating, Typography } from '@mui/material';
+import { Rating, styled } from '@mui/material';
 import axios from 'axios';
 import { useState } from 'react';
-import { CiImageOn } from "react-icons/ci";
-import { VscSend } from "react-icons/vsc";
+import { CiImageOn } from "react-icons/ci"; 
 import useAxiosPublic from '../Hooks/useAxiosPublic';
 import toast, { Toaster } from 'react-hot-toast';
 import useAuth from '../Hooks/useAuth';
@@ -75,6 +74,20 @@ const Footer = () => {
         }
     };
 
+    const StyledRating = styled(Rating)({
+        '& .MuiRating-icon': {
+            border: '1px solid #ddd',  
+            borderRadius: '4px',        
+            margin: '2px',             
+        },
+        '& .MuiRating-iconFilled': {
+            color: '#ff8804',  
+        },
+        '& .MuiRating-iconHover': {
+            color: '#ff8804',  
+        },
+    });
+
     return (
         <div>
             <Toaster />
@@ -94,15 +107,15 @@ const Footer = () => {
                     <a className="link link-hover">Press kit</a>
                 </nav>
                 <nav>
-                    <h3 className="text-lg font-bold mb-1 opacity-50">Rate This App</h3>
+                    <h3 className="text-lg font-bold mb-1 opacity-50">Rate Us</h3>
                     <form onSubmit={handleReview} className="text-sm space-y-2">
                         <div>
                             <p className="mb-1 font-medium">Name</p>
-                            <input type="text" name="name" placeholder="Your Name" required className="px-2 py-1 rounded-md" />
+                            <input type="text" name="name" placeholder="Your Name" required className="px-2 py-1 rounded-md border-gray-100 border" />
                         </div>
                         <div>
                             {/* <p className="font-medium mb-1">Review</p> */}
-                            <Rating
+                            <StyledRating
                                 required
                                 name="simple-controlled"
                                 value={value}
@@ -148,8 +161,8 @@ const Footer = () => {
                                             </div>
                                         </div>
                                     </div>
-                                    <button className="px-2 py-1 w-fit h-fit border-2 hover:shadow-md border-gray-300   rounded-md  mt-12 font-medium">
-                                        {/* <VscSend className="text-2xl" /> */}Send
+                                    <button className="px-2 py-1 w-fit h-fit border-2 hover:shadow-md border-orange-500   rounded-md  mt-12 font-medium">
+                                        {/* <VscSend className="text-2xl" /> */}Send Rating
                                     </button>
                                 </div>
                             </div>

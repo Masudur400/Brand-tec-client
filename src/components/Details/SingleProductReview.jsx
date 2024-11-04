@@ -1,6 +1,6 @@
-import { CRating } from "@coreui/react-pro";
 import Avatar from "react-avatar";
 import StarRatings from "react-star-ratings";
+import PropTypes from 'prop-types'
 // import { CRating } from '@coreui/react';
 
 
@@ -26,5 +26,9 @@ const SingleProductReview = ({ review }) => {
         </div>
     );
 };
+
+SingleProductReview.propTypes = {
+    review: PropTypes.object
+}
 
 export default SingleProductReview;

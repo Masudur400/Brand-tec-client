@@ -46,6 +46,8 @@ const DashboardNavBar = () => {
         <li><NavLink to='/addShippingMethod' onClick={closeMenu} className={({ isActive }) => isActive ? 'text-orange-500 underline  d' : 'hover:text-red-500'}>AddShipping</NavLink> </li>
         <li><NavLink to='/allShipping' onClick={closeMenu} className={({ isActive }) => isActive ? 'text-orange-500 underline  ' : 'hover:text-red-500'}>AllShipping</NavLink> </li>
         <li><NavLink to='/allUsers' onClick={closeMenu} className={({ isActive }) => isActive ? 'text-orange-500 underline  ' : 'hover:text-red-500'}>AllUsers</NavLink> </li> 
+        <li><NavLink to='/appRatings' onClick={closeMenu} className={({ isActive }) => isActive ? 'text-orange-500 underline  ' : 'hover:text-red-500'}>App Reviews</NavLink> </li> 
+        <li><NavLink to='/productRatings' onClick={closeMenu} className={({ isActive }) => isActive ? 'text-orange-500 underline  ' : 'hover:text-red-500'}>Product Reviews</NavLink> </li> 
 
     </>
 
@@ -121,7 +123,7 @@ const DashboardNavBar = () => {
                                     <div className="avatar">
                                         <div className="w-10 md:w-12 h-10 md:h-12 flex justify-center items-center border-black rounded-full">
                                             {/* <img src={photo} alt="user image" onClick={() => setProfile(!profile)} /> */}
-                                            <Avatar name={name?.charAt(0)} src={'photo'} alt='img' className="rounded-full" size="45" onClick={() => setProfile(!profile)}></Avatar>
+                                            <Avatar name={name?.charAt(0)} src={photo} alt='img' className="rounded-full" size="45" onClick={() => setProfile(!profile)}></Avatar>
                                         </div>
                                     </div>
                                     <ul className={`absolute space-y-5 ${profile ? 'bg-base-100  shadow-lg border md:min-w-32 px-3 py-2 z-[99]  rounded-md right-1 md:right-0' : 'hidden'}`}>

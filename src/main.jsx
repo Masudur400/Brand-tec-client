@@ -38,6 +38,8 @@ import AllShipping from './components/AllShipping/AllShipping.jsx';
 import ErrorPage from './components/Errorpage/ErrorPage.jsx';
 import PaymentSuccess from './pages/PaymentSuccess/PaymentSuccess.jsx';
 import PaymentFail from './pages/PaymentFail/PaymentFail.jsx'; 
+import AppRatings from './components/Ratings/AppRatings.jsx';
+import ProductRatings from './components/Ratings/ProductRatings.jsx';
 
 const router = createBrowserRouter([
   {
@@ -123,6 +125,16 @@ const router = createBrowserRouter([
         // user route 
         path: 'payment/fail/:tranId',
         element:  <PaymentFail></PaymentFail>
+      }, 
+      {
+        // user route 
+        path: 'appRatings',
+        element: <AppRatings></AppRatings>
+      }, 
+      {
+        // user route 
+        path: 'productRatings',
+        element:  <ProductRatings></ProductRatings>
       }, 
 
       // {
