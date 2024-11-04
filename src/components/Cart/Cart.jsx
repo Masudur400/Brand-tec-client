@@ -47,8 +47,9 @@ const Cart = () => {
             </div>
             {/* </div> */}
             <div>
-                {
+                {carts?.length > 0 ?
                     carts.map(cart => <SingleCart key={cart._id} cart={cart} refetch={refetch}></SingleCart>)
+                    : <p className="font-bold opacity-50 h-56 flex items-center justify-center">Please Add A Product In Cart</p>
                 }
             </div>
 

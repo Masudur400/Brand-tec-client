@@ -6,10 +6,10 @@ import { LiaTimesSolid } from 'react-icons/lia';
 import { PiUserCircleThin } from "react-icons/pi";
 import { Link, NavLink } from "react-router-dom";
 import useAuth from "../Hooks/useAuth";
-import { MdLogout } from "react-icons/md"; 
+import { MdLogout } from "react-icons/md";
 import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../Hooks/useAxiosSecure";
-import Avatar from "react-avatar";  
+import Avatar from "react-avatar";
 import useCart from "../Hooks/useCart";
 
 const NavBar = () => {
@@ -17,16 +17,16 @@ const NavBar = () => {
     const [profile, setProfile] = useState(false);
     const { user, logOut, loading } = useAuth();
     const axiosSecure = useAxiosSecure();
-    const [click, setClick] = useState(false);  
+    const [click, setClick] = useState(false);
     const [carts] = useCart()
-     
+
 
     const handleClick = () => setClick(!click);
     const closeMenu = () => {
         setClick(false);
         setProfile(false);
     };
- 
+
 
     const { data: users = {}, isLoading } = useQuery({
         queryKey: ['users', user?.email, axiosSecure],
@@ -68,8 +68,8 @@ const NavBar = () => {
                                 )}
                             </div>
                             <Link to='/'> <p title="Home" className="text-3xl font-bold">
-                                    <span className="text-orange-500">Brand</span><span className="text-xl">TEC</span>
-                                </p>
+                                <span className="text-orange-500">Brand</span><span className="text-xl">TEC</span>
+                            </p>
                             </Link>
                         </div>
                     </div>
@@ -82,33 +82,43 @@ const NavBar = () => {
                     {/* Right Section - User Info */}
                     <div className="flex items-center">
                         {/* user image & button  */}
-                    {
-                        user ?
-                            <div className="mr-2 lg:mr-6">
-                                <div className="relative">
-                                    <div className="flex gap-5 md:gap-10 justify-start items-center">
+                        {
+                            user ?
+                                <div className="mr-2 lg:mr-6">
+                                    <div className="relative">
+                                        <div className="flex gap-5 md:gap-10 justify-start items-center">
+                                            <Link to="/cart">
+                                                <div className="relative">
+                                                    <BsCart4 className="text-[2rem]" />
+                                                    {
+                                                        carts?.length > 0 && <div className=" absolute top-[-10%] right-[-15%] min-w-[20px] min-h-[20px] text-white text-center">
+                                                            <span className="text-sm bg-red-500 p-1 rounded-full w-full h-full">
+                                                                {carts?.length}
+                                                            </span>
+                                                        </div>
+                                                    }
+                                                </div>
+                                            </Link>
 
-                                    <p className="flex"><NavLink to='/cart' className={({ isActive }) => isActive ? 'text-orange-500 flex items-center gap-1' : 'hover:text-red-500 flex items-center gap-1'}><BsCart4 className="text-2xl"></BsCart4>  {carts?.length >0 && <sup className="text-sm bg-red-500 px-2 py-1 rounded-full font-medium text-white">{carts?.length}</sup>}</NavLink></p>
-
-                                        <div className="flex justify-center items-center border-black rounded-full mt-1">
-                                            {/* <img src={photo} alt="user image" onClick={() => setProfile(!profile)} /> */}
-                                            <Avatar name={name?.charAt(0)} src={photo} alt='img' className="rounded-full" size="45" onClick={() => setProfile(!profile)}></Avatar>
+                                            <div className="flex justify-center items-center border-black rounded-full mt-1">
+                                                {/* <img src={photo} alt="user image" onClick={() => setProfile(!profile)} /> */}
+                                                <Avatar name={name?.charAt(0)} src={photo} alt='img' className="rounded-full" size="45" onClick={() => setProfile(!profile)}></Avatar>
+                                            </div>
                                         </div>
+                                        <ul className={`absolute  space-y-5  ${profile ? 'bg-base-100  shadow-lg border md:min-w-32 px-3 py-2 z-[99]  rounded-md right-1  md:right-0' : 'hidden'}`}>
+                                            <div className="space-y-1 py-4">
+                                                <p className="text-sm font-medium">{name}</p>
+                                                <div className="divider"></div>
+                                                <Link to='/profile'> <li onClick={() => setProfile(!profile)} className="flex gap-1 items-center text-sm hover:bg-base-300 px-1  py-1 rounded-md"><span><PiUserCircleThin></PiUserCircleThin></span>Profile</li></Link>
+                                                <button onClick={() => logOut()} className="text-sm w-full flex gap-1 items-center text-red-400 hover:bg-base-300 px-1 py-1 rounded-md">LogOut <MdLogout></MdLogout></button>
+                                            </div>
+                                        </ul>
                                     </div>
-                                    <ul className={`absolute  space-y-5  ${profile ? 'bg-base-100  shadow-lg border md:min-w-32 px-3 py-2 z-[99]  rounded-md right-1  md:right-0' : 'hidden'}`}> 
-                                        <div className="space-y-1 py-4">
-                                            <p className="text-sm font-medium">{name}</p>
-                                            <div className="divider"></div>
-                                            <Link to='/profile'> <li onClick={() => setProfile(!profile)} className="flex gap-1 items-center text-sm hover:bg-base-300 px-1  py-1 rounded-md"><span><PiUserCircleThin></PiUserCircleThin></span>Profile</li></Link>
-                                            <button onClick={() => logOut()} className="text-sm w-full flex gap-1 items-center text-red-400 hover:bg-base-300 px-1 py-1 rounded-md">LogOut <MdLogout></MdLogout></button>
-                                        </div>
-                                    </ul>
                                 </div>
-                            </div>
-                            : <div className="px-5">
-                                <Link to='/loginRegister/login' className="px-3 py-1 rounded-md font-bold max-sm:btn-sm text-orange-500 border border-orange-500 hover:shadow-md">Login</Link>
-                            </div>
-                    }
+                                : <div className="px-5">
+                                    <Link to='/loginRegister/login' className="px-3 py-1 rounded-md font-bold max-sm:btn-sm text-orange-500 border border-orange-500 hover:shadow-md">Login</Link>
+                                </div>
+                        }
                     </div>
                 </div>
             </nav>

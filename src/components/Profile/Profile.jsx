@@ -116,7 +116,10 @@ const Profile = () => {
       <div className="md:w-1/2 lg:w-1/2 mx-auto border border-base-300 my-4 p-3 rounded-md">
         <h3 className="text-2xl font-bold text-center text-orange-500 mb-6">Profile</h3>
         <div>
-          <img src={photo} alt="image" className="w-56 h-56 rounded-full mx-auto" />
+          {/* <img src={photo} alt="image" className="w-56 h-56 rounded-full mx-auto" /> */}
+          <div className="flex justify-center">
+          <Avatar name={name?.charAt(0)} src={photo} alt='img' className="rounded-full mx-auto" size="224"></Avatar>
+          </div>
           <div className="w-fit mx-auto my-5 space-y-2">
             <p>
               <span className="font-bold">Name : </span>
