@@ -30,16 +30,16 @@ const SingleLaptop = ({ laptop, refetch }) => {
         const data = {
             email: user?.email,
             name: user?.displayName,
-            productName: laptop.productName,
-            productBrand: laptop.productBrand,
-            oldPrice: laptop.oldPrice,
-            newPrice: laptop.newPrice,
+            productName: laptop?.productName,
+            productBrand: laptop?.productBrand,
+            oldPrice: laptop?.oldPrice,
+            newPrice: laptop?.newPrice,
             quantity: 1,
-            productQuantity: laptop.productQuantity,
-            productImage: laptop.productImage,
-            productDetails: laptop.productDetails,
-            productType: laptop.productType,
-            productAddDate: laptop.productAddDate
+            productQuantity: laptop?.productQuantity,
+            productImage: laptop?.productImage,
+            productDetails: laptop?.productDetails,
+            productType: laptop?.productType,
+            productAddDate: laptop?.productAddDate
         }
         const res = await axiosSecure.post('/carts', data)
         if (res.data.insertedId) {

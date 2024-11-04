@@ -32,16 +32,16 @@ const SingleWatch = ({ watch , refetch }) => {
         const data = {
             email: user?.email,
             name: user?.displayName,
-            productName : watch.productName,
-            productBrand : watch.productBrand,
-            oldPrice : watch.oldPrice,
-            newPrice : watch.newPrice,
-            productQuantity : watch.productQuantity,
+            productName : watch?.productName,
+            productBrand : watch?.productBrand,
+            oldPrice : watch?.oldPrice,
+            newPrice : watch?.newPrice,
+            productQuantity : watch?.productQuantity,
             quantity:1,
-            productImage : watch.productImage,
-            productDetails : watch.productDetails,
-            productType : watch.productType,
-            productAddDate : watch.productAddDate
+            productImage : watch?.productImage,
+            productDetails : watch?.productDetails,
+            productType : watch?.productType,
+            productAddDate : watch?.productAddDate
         }
         const res = await axiosSecure.post('/carts', data)
         if (res.data.insertedId) {

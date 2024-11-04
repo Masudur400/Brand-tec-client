@@ -20,8 +20,7 @@ const ProductRatings = () => {
         }
     })
 
-    const handleDelete = review => {
-        console.log(review)
+    const handleDelete = review => { 
         Swal.fire({
             title: "Are you sure?",
             text: "You want to delete rating...!",

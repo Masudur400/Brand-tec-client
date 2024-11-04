@@ -31,16 +31,16 @@ const SingleMobile = ({ phone, refetch }) => {
         const data = {
             email: user?.email,
             name: user?.displayName,
-            productName: phone.productName,
-            productBrand: phone.productBrand,
-            oldPrice: phone.oldPrice,
-            newPrice: phone.newPrice,
+            productName: phone?.productName,
+            productBrand: phone?.productBrand,
+            oldPrice: phone?.oldPrice,
+            newPrice: phone?.newPrice,
             quantity: 1,
-            productQuantity: phone.productQuantity,
-            productImage: phone.productImage,
-            productDetails: phone.productDetails,
-            productType: phone.productType,
-            productAddDate: phone.productAddDate
+            productQuantity: phone?.productQuantity,
+            productImage: phone?.productImage,
+            productDetails: phone?.productDetails,
+            productType: phone?.productType,
+            productAddDate: phone?.productAddDate
         }
         const res = await axiosSecure.post('/carts', data)
         if (res.data.insertedId) {

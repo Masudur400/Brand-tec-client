@@ -10,8 +10,7 @@ const SingleUser = ({ user, idx, refetch }) => {
     const { _id,name, photo, email, role, userCreateTime } = user
 
     const axiosSecure = useAxiosSecure()
-    const [open , setOpen] = useState(false)
-    const [admin, setAdmin] = useState(true)
+    const [open , setOpen] = useState(false) 
 
     const handleRoleUpdate = async (e) => {
         e.preventDefault()

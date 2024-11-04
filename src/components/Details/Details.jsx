@@ -91,16 +91,16 @@ const Details = () => {
         const data = {
             email: user?.email,
             name: user?.displayName,
-            productName: singleData.productName,
-            productBrand: singleData.productBrand,
-            oldPrice: parseFloat(singleData.oldPrice) * count,
-            newPrice: parseInt(singleData.newPrice) * count,
-            productQuantity: singleData.productQuantity,
+            productName: singleData?.productName,
+            productBrand: singleData?.productBrand,
+            oldPrice: parseFloat(singleData?.oldPrice) * count,
+            newPrice: parseInt(singleData?.newPrice) * count,
+            productQuantity: singleData?.productQuantity,
             quantity: count,
-            productImage: singleData.productImage,
-            productDetails: singleData.productDetails,
-            productType: singleData.productType,
-            productAddDate: singleData.productAddDate
+            productImage: singleData?.productImage,
+            productDetails: singleData?.productDetails,
+            productType: singleData?.productType,
+            productAddDate: singleData?.productAddDate
         }
         const res = await axiosSecure.post('/carts', data)
         if (res.data.insertedId) {

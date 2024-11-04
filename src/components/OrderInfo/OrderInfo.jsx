@@ -28,10 +28,10 @@ const OrderInfo = () => {
 
     const cartsData = carts?.map(cart => {
         return {
-            productName: cart.productName,
-            productImage: cart.productImage,
-            productPrice: cart.newPrice,
-            quantity: cart.quantity,
+            productName: cart?.productName,
+            productImage: cart?.productImage,
+            productPrice: cart?.newPrice,
+            quantity: cart?.quantity,
         };
     });
 

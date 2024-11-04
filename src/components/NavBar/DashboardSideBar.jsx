@@ -30,8 +30,8 @@ const DashboardSideBar = () => {
                 <p><NavLink to='/' className={({ isActive }) => isActive ? 'underline w-full bg-orange-500 text-white px-3 py-1 block rounded-md' : 'hover:text-red-500 hover:bg-base-300 px-3 py-1 rounded-md w-full block'}>Dashboard</NavLink> </p>
 
 
-                <div className={` ${openProducts ? 'bg-base-200 rounded-md' : ''} space-y-3`}>
-                    <p onClick={() => setOpenProducts(!openProducts)} className={`flex justify-between items-center px-3 py-1   rounded-md cursor-pointer w-full`}><span>Products</span> {open ? <FaAngleDown /> : <FaChevronRight />}</p>
+                <div className={` ${openProducts ? 'bg-base-200' : ''} bg-opacity-50 space-y-3 rounded-md`}>
+                    <p onClick={() => setOpenProducts(!openProducts)} className={`flex justify-between items-center px-3 py-1  hover:bg-base-300 rounded-md cursor-pointer w-full`}><span>Products</span> {openProducts ? <FaAngleDown /> : <FaChevronRight />}</p>
                     {
                         openProducts &&
                         <div className="space-y-3 ">
@@ -43,24 +43,24 @@ const DashboardSideBar = () => {
 
 
 
-                <div className={` ${openShippings ? 'bg-base-200 rounded-md' : ''} space-y-3`}>
-                    <p onClick={() => setOpenShippings(!openShippings)} className={`flex justify-between items-center px-3 py-1   rounded-md cursor-pointer w-full`}><span>Shippings</span> {open ? <FaAngleDown /> : <FaChevronRight />}</p>
+                <div className={` ${openShippings ? 'bg-base-200' : ''}  bg-opacity-50 space-y-3 rounded-md`}>
+                    <p onClick={() => setOpenShippings(!openShippings)} className={`flex justify-between items-center px-3 py-1 hover:bg-base-300  rounded-md cursor-pointer w-full`}><span>Shippings</span> {openShippings ? <FaAngleDown /> : <FaChevronRight />}</p>
                     {
                         openShippings &&
                         <div className="space-y-3 ">
-                           <p><NavLink to='/addShippingMethod' className={({ isActive }) => isActive ? ' underline w-full bg-orange-500 text-white px-3 py-1 block rounded-md' : 'hover:text-red-500 hover:bg-base-300 px-3 py-1 rounded-md w-full block'}>AddShipping</NavLink> </p>
-                           <p><NavLink to='/allShipping' className={({ isActive }) => isActive ? '  underline w-full bg-orange-500 text-white px-3 py-1 block rounded-md' : 'hover:text-red-500 hover:bg-base-300 px-3 py-1 rounded-md w-full block'}>AllShipping</NavLink> </p>
+                            <p><NavLink to='/addShippingMethod' className={({ isActive }) => isActive ? ' underline w-full bg-orange-500 text-white px-3 py-1 block rounded-md' : 'hover:text-red-500 hover:bg-base-300 px-3 py-1 rounded-md w-full block'}>AddShipping</NavLink> </p>
+                            <p><NavLink to='/allShipping' className={({ isActive }) => isActive ? '  underline w-full bg-orange-500 text-white px-3 py-1 block rounded-md' : 'hover:text-red-500 hover:bg-base-300 px-3 py-1 rounded-md w-full block'}>AllShipping</NavLink> </p>
                         </div>
                     }
                 </div>
 
-                
-                
+
+
                 <p><NavLink to='/allUsers' className={({ isActive }) => isActive ? '  underline w-full bg-orange-500 text-white px-3 py-1 block rounded-md' : 'hover:text-red-500 hover:bg-base-300 px-3 py-1 rounded-md w-full block'}>AllUsers</NavLink> </p>
 
 
-                <div className={` ${openRatings ? 'bg-base-200 rounded-md' : ''} space-y-3`}>
-                    <p onClick={() => setOpenRatings(!openRatings)} className={`flex justify-between items-center px-3 py-1   rounded-md cursor-pointer w-full`}><span>Ratings</span> {open ? <FaAngleDown /> : <FaChevronRight />}</p>
+                <div className={` ${openRatings ? 'bg-base-200' : ''}  bg-opacity-50 space-y-3 rounded-md`}>
+                    <p onClick={() => setOpenRatings(!openRatings)} className={`flex justify-between items-center px-3 py-1 hover:bg-base-300 rounded-md cursor-pointer w-full`}><span>Ratings & Reviews</span> {openRatings ? <FaAngleDown /> : <FaChevronRight />}</p>
                     {
                         openRatings &&
                         <div className="space-y-3 ">

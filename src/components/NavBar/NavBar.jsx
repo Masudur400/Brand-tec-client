@@ -26,16 +26,7 @@ const NavBar = () => {
         setClick(false);
         setProfile(false);
     };
-
-     
-
-    // const { data: carts = [],  refetch } = useQuery({
-    //     queryKey: ['carts', user?.email, axiosSecure],
-    //     queryFn: async () => {
-    //         const res = await axiosSecure.get(`/carts/${user?.email}`)
-    //         return res.data
-    //     }
-    // })
+ 
 
     const { data: users = {}, isLoading } = useQuery({
         queryKey: ['users', user?.email, axiosSecure],
