@@ -108,7 +108,7 @@ const Details = () => {
                 duration: 1000,
                 position: 'top-center',
             })
-            queryClient.invalidateQueries('products');
+            queryClient.invalidateQueries('carts');
             refetch()
         }
     }
@@ -170,7 +170,7 @@ const Details = () => {
                         setImage(null)
                         setPreview(null)
                         setValue(null)
-                        queryClient.invalidateQueries('products');
+                        queryClient.invalidateQueries('productReviews');
 
                     }
                 });

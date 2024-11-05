@@ -48,7 +48,7 @@ const SingleLaptop = ({ laptop, refetch }) => {
                 position: 'top-center',
             })
             refetch()
-            queryClient.invalidateQueries('products');
+            queryClient.invalidateQueries('carts');
         }
     }
 

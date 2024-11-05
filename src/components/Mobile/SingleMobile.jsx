@@ -50,7 +50,7 @@ const SingleMobile = ({ phone, refetch }) => {
                 duration: 1000,
                 position: 'top-center',
             })
-            queryClient.invalidateQueries('products');
+            queryClient.invalidateQueries('carts');
 
         }
     }

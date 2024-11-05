@@ -50,7 +50,7 @@ const SingleWatch = ({ watch , refetch }) => {
                 position: 'top-center',
             }) 
             refetch()
-            queryClient.invalidateQueries('products');
+            queryClient.invalidateQueries('carts');
         }
     }
 
