@@ -40,6 +40,7 @@ import PaymentSuccess from './pages/PaymentSuccess/PaymentSuccess.jsx';
 import PaymentFail from './pages/PaymentFail/PaymentFail.jsx'; 
 import AppRatings from './components/Ratings/AppRatings.jsx';
 import ProductRatings from './components/Ratings/ProductRatings.jsx';
+import AllPhoneWatchLaptop from './components/AllPhoneWatchLaptop/AllPhoneWatchLaptop.jsx';
 
 const router = createBrowserRouter([
   {
@@ -95,6 +96,11 @@ const router = createBrowserRouter([
         // admin route 
         path: '/allProduct',
         element:<AllProduct></AllProduct>
+      },
+      {
+        // admin route 
+        path: '/allPhoneWatchLaptop',
+        element: <AllPhoneWatchLaptop></AllPhoneWatchLaptop>
       },
       {
         // admin route 

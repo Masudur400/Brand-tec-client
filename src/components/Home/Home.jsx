@@ -3,6 +3,7 @@ import Carosel from "../../Slider/Carosel";
 import LatestMobile from "./LatestMobile"; 
 import LatestWatch from "./LatestWatch";
 import LatestLaptop from './LatestLaptop'
+import PublicRatings from "./PublicRatings";
 
 
 const Home = () => {
@@ -20,6 +21,7 @@ const Home = () => {
                         <LatestWatch></LatestWatch>
                         <LatestMobile></LatestMobile>
                         <LatestLaptop></LatestLaptop>
+                        <PublicRatings></PublicRatings>
                     </div>
              
         </div>

@@ -40,9 +40,10 @@ const NavBar = () => {
 
     const routes = <>
         <li><NavLink to='/' onClick={closeMenu} className={({ isActive }) => isActive ? 'text-orange-500 underline' : 'hover:text-red-500'}>Home</NavLink></li>
-        <li><NavLink to='/watch' onClick={closeMenu} className={({ isActive }) => isActive ? 'text-orange-500 underline' : 'hover:text-red-500'}>Watch</NavLink></li>
+        <li><NavLink to='/allPhoneWatchLaptop' onClick={closeMenu} className={({ isActive }) => isActive ? 'text-orange-500 underline' : 'hover:text-red-500'}>All Products</NavLink></li>
+        {/* <li><NavLink to='/watch' onClick={closeMenu} className={({ isActive }) => isActive ? 'text-orange-500 underline' : 'hover:text-red-500'}>Watch</NavLink></li>
         <li><NavLink to='/mobile' onClick={closeMenu} className={({ isActive }) => isActive ? 'text-orange-500 underline' : 'hover:text-red-500'}>Mobile</NavLink></li>
-        <li><NavLink to='/laptop' onClick={closeMenu} className={({ isActive }) => isActive ? 'text-orange-500 underline' : 'hover:text-red-500'}>LapTop</NavLink></li>
+        <li><NavLink to='/laptop' onClick={closeMenu} className={({ isActive }) => isActive ? 'text-orange-500 underline' : 'hover:text-red-500'}>LapTop</NavLink></li> */}
         {/* <li><NavLink to='/cart' onClick={closeMenu} className={({ isActive }) => isActive ? 'text-orange-500 underline flex items-center gap-1' : 'hover:text-red-500 flex items-center gap-1'}>Carts<BsCart4></BsCart4></NavLink></li> */}
         {/* <li><NavLink to='/dashboard' onClick={closeMenu} className={({ isActive }) => isActive ? 'text-orange-500 underline' : 'hover:text-red-500'}>Dashboard</NavLink></li> */}
     </>;

@@ -47,11 +47,19 @@ const InStockProduct = () => {
     const handlePrevPage = () => {
         if (currentPage > 0) {
             setCurrentPage(currentPage - 1)
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth", // Smooth scroll animation
+            });
         }
     }
     const handleNextPage = () => {
         if (currentPage < pages.length - 1) {
             setCurrentPage(currentPage + 1)
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth", // Smooth scroll animation
+            });
         }
     }
 

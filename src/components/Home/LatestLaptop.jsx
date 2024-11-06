@@ -70,26 +70,26 @@ const LatestMobile = () => {
                         <p className="w-3 h-10 bg-orange-500"></p>
                         <h3 className="text-xl font-bold my-2">Latest Laptop</h3>
                     </div>
-                    <Link to='/laptop'><p className="text-sm font-medium underline hover:text-orange-500">See more</p></Link>
+                    <Link to='/laptop' onClick={() => window.scrollTo({
+                        top: 0,
+                        behavior: "smooth", // Smooth scroll animation
+                    })}><p className="text-sm font-medium underline hover:text-orange-500">See more</p></Link>
                 </div>
-                <style >{`
-            .swiper-button-next,
-            .swiper-button-prev {
-            color: #ffffff;  
-            background-color: #848484;  
-            padding: 10px;
-            border-radius: 50%;
-            width: 30px;
-            height: 30px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            }
-            .swiper-button-next::after,
-            .swiper-button-prev::after {
-              font-size: 18px; 
-            }
-          `}</style>
+                <style >{`.swiper-button-next,
+                .swiper-button-prev {
+                color: #ffffff;  
+                background-color: #848484;  
+                padding: 10px;
+                border-radius: 50%;
+                width: 30px;
+                height: 30px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                }
+                .swiper-button-next::after,
+                .swiper-button-prev::after {
+              font-size: 18px;}`}</style>
                 <div className="mt-5 bg-base-200 rounded-md px-2  py-5 ">
                     <Swiper className=""
                         modules={[Pagination, Navigation]}
@@ -108,35 +108,38 @@ const LatestMobile = () => {
 
                         {
                             laptops.map(laptop => <SwiperSlide key={laptop._id}>
-                                <div className="bg-base-100  border border-base-200 rounded-md p-2 min-h-72"> 
-                                        <div className='relative'>
-                                            <img src={laptop?.productImage} alt="img" className='w-40 mx-auto' />
-                                            <div className='absolute top-2 right-2 flex gap-3 flex-col'>
-                                                <Link to={`/details/${laptop?._id}`}> <button title='view details' className="w-fit p-2 bg-base-200 text-center rounded-full border border-base-300 font-medium hover:text-orange-500"><FaRegEye /></button></Link>
-                                                {laptop?.productQuantity > 0 ?
-                                                    <div>
-                                                        {
-                                                            user ?
-                                                                <button onClick={() => handleAddCart(laptop)} title='add cart' className="w-fit p-2 bg-base-200 text-center rounded-full border border-base-300 font-medium hover:text-orange-500"><FaCartPlus /></button> :
-                                                                <button onClick={() => toast.error('Please Login', {
-                                                                    duration: 1000,
-                                                                    position: 'top-center',
-                                                                })} title='add cart' className="w-fit p-2 bg-base-200 text-center rounded-full border border-base-300 font-medium hover:text-orange-500"><FaCartPlus /></button>
-                                                        }
-                                                    </div> : ""
-                                                }
-                                            </div>
+                                <div className="bg-base-100  border border-base-200 rounded-md p-2 min-h-72">
+                                    <div className='relative'>
+                                        <img src={laptop?.productImage} alt="img" className='w-40 mx-auto' />
+                                        <div className='absolute top-2 right-2 flex gap-3 flex-col'>
+                                            <Link to={`/details/${laptop?._id}`} onClick={() => window.scrollTo({
+                                                top: 0,
+                                                behavior: "smooth", // Smooth scroll animation
+                                            })}> <button title='view details' className="w-fit p-2 bg-base-200 text-center rounded-full border border-base-300 font-medium hover:text-orange-500"><FaRegEye /></button></Link>
+                                            {laptop?.productQuantity > 0 ?
+                                                <div>
+                                                    {
+                                                        user ?
+                                                            <button onClick={() => handleAddCart(laptop)} title='add cart' className="w-fit p-2 bg-base-200 text-center rounded-full border border-base-300 font-medium hover:text-orange-500"><FaCartPlus /></button> :
+                                                            <button onClick={() => toast.error('Please Login', {
+                                                                duration: 1000,
+                                                                position: 'top-center',
+                                                            })} title='add cart' className="w-fit p-2 bg-base-200 text-center rounded-full border border-base-300 font-medium hover:text-orange-500"><FaCartPlus /></button>
+                                                    }
+                                                </div> : ""
+                                            }
                                         </div>
-                                        <div className='space-y-1 my-3 flex-grow'>
-                                            <p className='text-xs font-medium'>{laptop?.productName.split(' ').length > 5
-                                                ? laptop?.productName.split(' ').slice(0, 5).join(' ') + '...'
-                                                : laptop?.productName}  </p>
-                                            <div className='flex justify-between   items-center'>
-                                                {laptop?.productQuantity > 0 ? <span className='text-xs text-green-500 font-medium'>In Stock</span> : <span className='text-xs text-red-500 font-medium' >Stock Out</span>}
+                                    </div>
+                                    <div className='space-y-1 my-3 flex-grow'>
+                                        <p className='text-xs font-medium'>{laptop?.productName.split(' ').length > 5
+                                            ? laptop?.productName.split(' ').slice(0, 5).join(' ') + '...'
+                                            : laptop?.productName}  </p>
+                                        <div className='flex justify-between   items-center'>
+                                            {laptop?.productQuantity > 0 ? <span className='text-xs text-green-500 font-medium'>In Stock</span> : <span className='text-xs text-red-500 font-medium' >Stock Out</span>}
 
-                                                <p className='text-xs font-medium'>{parseFloat((((laptop?.oldPrice - laptop?.newPrice) / laptop?.oldPrice) * 100).toFixed(1))} % OFF</p>
-                                            </div>
-                                            {/* {
+                                            <p className='text-xs font-medium'>{parseFloat((((laptop?.oldPrice - laptop?.newPrice) / laptop?.oldPrice) * 100).toFixed(1))} % OFF</p>
+                                        </div>
+                                        {/* {
                                             phone?.productReviews?.length > 0 &&
                                             <div className="flex gap-2 items-center">
                                                 <StarRatings
@@ -150,8 +153,8 @@ const LatestMobile = () => {
                                                 <p className="font-bold">({phone?.productReviews?.length})</p>
                                             </div>
                                         } */}
-                                            <p className='flex gap-1 md:gap-2 items-center'><span className='text-sm text-orange-500 font-medium'>{new Intl.NumberFormat('en-IN').format(laptop?.newPrice)} Tk</span> <span className='text-xs line-through'>{new Intl.NumberFormat('en-IN').format(laptop?.oldPrice)} Tk</span></p>
-                                        </div> 
+                                        <p className='flex gap-1 md:gap-2 items-center'><span className='text-sm text-orange-500 font-medium'>{new Intl.NumberFormat('en-IN').format(laptop?.newPrice)} Tk</span> <span className='text-xs line-through'>{new Intl.NumberFormat('en-IN').format(laptop?.oldPrice)} Tk</span></p>
+                                    </div>
                                 </div>
                             </SwiperSlide>)
                         }

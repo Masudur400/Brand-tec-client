@@ -70,26 +70,26 @@ const LatestMobile = () => {
                         <p className="w-3 h-10 bg-orange-500"></p>
                         <h3 className="text-xl font-bold my-2">Latest Watch</h3>
                     </div>
-                    <Link to='/watch'><p className="text-sm font-medium underline hover:text-orange-500">See more</p></Link>
+                    <Link to='/watch' onClick={() => window.scrollTo({
+                        top: 0,
+                        behavior: "smooth", // Smooth scroll animation
+                    })}><p className="text-sm font-medium underline hover:text-orange-500">See more</p></Link>
                 </div>
-                <style >{`
-            .swiper-button-next,
-            .swiper-button-prev {
-            color: #ffffff;  
-            background-color: #848484;  
-            padding: 10px;
-            border-radius: 50%;
-            width: 30px;
-            height: 30px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            }
-            .swiper-button-next::after,
-            .swiper-button-prev::after {
-              font-size: 18px; 
-            }
-          `}</style>
+                <style >{`.swiper-button-next,
+                .swiper-button-prev {
+                color: #ffffff;  
+                background-color: #848484;  
+                padding: 10px;
+                border-radius: 50%;
+                width: 30px;
+                height: 30px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                }
+                .swiper-button-next::after,
+                .swiper-button-prev::after {
+              font-size: 18px;}`}</style>
                 <div className="mt-5 bg-base-200 rounded-md px-2  py-5 ">
                     <Swiper className=""
                         modules={[Pagination, Navigation]}
@@ -112,7 +112,10 @@ const LatestMobile = () => {
                                     <div className='relative'>
                                         <img src={watch?.productImage} alt="img" className='w-40 mx-auto group-hover:scale-105' />
                                         <div className='absolute top-2 right-2 flex gap-3 flex-col'>
-                                            <Link to={`/details/${watch?._id}`}> <button title='view details' className="w-fit p-2 bg-base-200 text-center rounded-full border border-base-300 font-medium hover:text-orange-500"><FaRegEye /></button></Link>
+                                            <Link to={`/details/${watch?._id}`} onClick={() => window.scrollTo({
+                                                top: 0,
+                                                behavior: "smooth", // Smooth scroll animation
+                                            })}> <button title='view details' className="w-fit p-2 bg-base-200 text-center rounded-full border border-base-300 font-medium hover:text-orange-500"><FaRegEye /></button></Link>
                                             {watch?.productQuantity > 0 ?
                                                 <div>
                                                     {
@@ -128,7 +131,7 @@ const LatestMobile = () => {
                                         </div>
                                     </div>
                                     <div className='space-y-1 my-3 flex-grow'>
-                                    <p className='text-xs font-medium'>{watch?.productName.split(' ').length > 5
+                                        <p className='text-xs font-medium'>{watch?.productName.split(' ').length > 5
                                             ? watch?.productName.split(' ').slice(0, 5).join(' ') + '...'
                                             : watch?.productName}  </p>
                                         <div className='flex justify-between   items-center'>

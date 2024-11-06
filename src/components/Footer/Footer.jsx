@@ -5,6 +5,7 @@ import { CiImageOn } from "react-icons/ci";
 import useAxiosPublic from '../Hooks/useAxiosPublic';
 import toast, { Toaster } from 'react-hot-toast';
 import useAuth from '../Hooks/useAuth';
+import { useQueryClient } from '@tanstack/react-query';
 
 const imageHostingKey = import.meta.env.VITE_image_hosting_key;
 const imageHostingApi = `https://api.imgbb.com/1/upload?key=${imageHostingKey}`;
@@ -15,8 +16,10 @@ const Footer = () => {
     const [preview, setPreview] = useState(null);
     const [value, setValue] = useState(0);
     const axiosPublic = useAxiosPublic();
+    const queryClient = useQueryClient()
 
-    const handleFileChange = (event) => {
+    const handleFileChange = (event) => { 
+
         const file = event.target.files[0];
         if (file) {
             setImage(file); // Store the actual file for uploading
@@ -66,6 +69,7 @@ const Footer = () => {
                         setImage(null)
                         setPreview(null)
                         setValue(null)
+                        queryClient.invalidateQueries('carts');
                     }
                 });
 
