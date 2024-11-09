@@ -90,7 +90,7 @@ const NavBar = () => {
                                         <div className="flex gap-5 md:gap-10 justify-start items-center">
                                             <Link to="/cart">
                                                 <div className="relative">
-                                                    <BsCart4 className="text-[2rem]" />
+                                                    <BsCart4 className="text-[1.8rem]" />
                                                     {
                                                         carts?.length > 0 && <div className=" absolute top-[-10%] right-[-15%] min-w-[20px] min-h-[20px] text-white text-center">
                                                             <span className="text-sm bg-red-500 p-1 rounded-full w-full h-full">

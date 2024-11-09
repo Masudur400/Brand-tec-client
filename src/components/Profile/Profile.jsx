@@ -83,7 +83,7 @@ const Profile = () => {
           refetch();
         }
       });
-      modalRef.current.close(); // Close modal after updating
+      modalRef.current.close();  
     } catch (error) {
       console.error("Error uploading the image or submitting the form:", error);
     }
@@ -118,7 +118,7 @@ const Profile = () => {
         <div>
           {/* <img src={photo} alt="image" className="w-56 h-56 rounded-full mx-auto" /> */}
           <div className="flex justify-center">
-          <Avatar name={name?.charAt(0)} src={photo} alt='img' className="rounded-full mx-auto" size="224"></Avatar>
+            <Avatar name={name?.charAt(0)} src={photo} alt='img' className="rounded-full mx-auto" size="224"></Avatar>
           </div>
           <div className="w-fit mx-auto my-5 space-y-2">
             <p>

@@ -26,7 +26,7 @@ const Login = () => {
         login(email, password)
             .then(result => {
                 if (result?.user) {
-                    Swal.fire({ 
+                    Swal.fire({
                         position: "center",
                         icon: "success",
                         title: "Login successful",
@@ -42,7 +42,7 @@ const Login = () => {
                 setLoading(false)
                 setError(err.message)
                 console.log(err.message)
-            }) 
+            })
     }
 
 
@@ -50,9 +50,10 @@ const Login = () => {
         const date = new Date()
         googleLogin()
             .then(result => {
+
                 const userinfo = {
-                    email: result.user?.email,
-                    name: result.user?.displayName,
+                    email: result?.user?.email,
+                    name: result?.user?.displayName,
                     photo: result?.user?.photoURL,
                     role: 'Guest',
                     userCreateTime: date
@@ -60,26 +61,28 @@ const Login = () => {
                 axiosPublic.post('/users', userinfo)
                     .then(res => {
                         if (res.data.insertedId) {
-                            Swal.fire({ 
+                            Swal.fire({
                                 tposition: "center",
                                 icon: "success",
                                 title: "Login successful",
                                 showConfirmButton: false,
                                 timer: 1000
-                            }); 
-                        } 
+                            });
+                        }
+                        // navigate(location?.state ? location.state : '/')
+                    },
                         navigate(location?.state ? location.state : '/')
-                    })
+                    )
                     .catch(err => {
                         console.log(err.message)
-                    }) 
+                    })
             })
             .catch(err => {
                 console.log(err.message)
             })
     }
 
-    if(loading){
+    if (loading) {
         return <Loading></Loading>
     }
 
@@ -92,28 +95,28 @@ const Login = () => {
                 <Link to='/' className="p-1 border-2 border-orange-500 rounded-full"><FaXmark className="md:text-3xl text-orange-600 my-0"></FaXmark></Link>
             </div>
             <h3 className="text-lg md:text-3xl font-bold text-center text-orange-600 my-4">Please LogIn</h3>
-            <form onSubmit={handleLogin} className=""> 
+            <form onSubmit={handleLogin} className="">
                 <div>
                     <p className="font-semibold mb-2">Email</p>
                     <input type="email" name="email" placeholder="Your Email" id="" className="border-2 border-base-300 bg-base-100 rounded-md w-full text-sm md:text-base px-4  py-1 mb-2" />
 
                 </div>
                 <p className="font-semibold text-sm md:text-base mb-2">Password</p>
-                    <div className="relative">
-                        <input className="border-2 border-base-300 bg-base-100 rounded-md w-full text-sm md:text-base px-4  py-1 mb-2" type={showPassword ? "text" : "password"} name="password" placeholder="Password" id="password" required />
-                        <span className="absolute md:top-1/4 top-[5px] right-3" onClick={() => setShowPassword(!showPassword)}>
-                            {showPassword ? <FaRegEyeSlash></FaRegEyeSlash> : <FaRegEye></FaRegEye>}
-                        </span>
-                    </div> 
+                <div className="relative">
+                    <input className="border-2 border-base-300 bg-base-100 rounded-md w-full text-sm md:text-base px-4  py-1 mb-2" type={showPassword ? "text" : "password"} name="password" placeholder="Password" id="password" required />
+                    <span className="absolute md:top-1/4 top-[5px] right-3" onClick={() => setShowPassword(!showPassword)}>
+                        {showPassword ? <FaRegEyeSlash></FaRegEyeSlash> : <FaRegEye></FaRegEye>}
+                    </span>
+                </div>
                 <div>
-                {
-                    error?
-                    <p className='text-sm text-red-500'>please give your right email and password</p>:''
-                }
                     {
-                        loading ? 
-                        <button disabled className="w-full px-4 py-1 md:py-2 text-center text-lg rounded-md bg-orange-500 hover:bg-orange-600 border hover:border-black-500 text-white font-bold my-3"><span className="loading loading-spinner loading-md"></span></button>
-                         :
+                        error ?
+                            <p className='text-sm text-red-500'>please give your right email and password</p> : ''
+                    }
+                    {
+                        loading ?
+                            <button disabled className="w-full px-4 py-1 md:py-2 text-center text-lg rounded-md bg-orange-500 hover:bg-orange-600 border hover:border-black-500 text-white font-bold my-3"><span className="loading loading-spinner loading-md"></span></button>
+                            :
                             <input disabled={loading} className="w-full px-4 py-1 md:py-2 text-center max-sm:text-sm text-lg rounded-md border border-orange-400 text-orange-500 hover:shadow-lg font-bold my-3" type="submit" value="Login" />
                     }
                     {/* <input type="submit" value="LogIn" className="w-full px-4 py-2 rounded-md bg-orange-500 text-white font-bold hover:bg-orange-600" /> */}

@@ -41,6 +41,7 @@ import PaymentFail from './pages/PaymentFail/PaymentFail.jsx';
 import AppRatings from './components/Ratings/AppRatings.jsx';
 import ProductRatings from './components/Ratings/ProductRatings.jsx';
 import AllPhoneWatchLaptop from './components/AllPhoneWatchLaptop/AllPhoneWatchLaptop.jsx';
+import ContactUs from './components/ContactUs/ContactUs.jsx';
 
 const router = createBrowserRouter([
   {
@@ -141,6 +142,11 @@ const router = createBrowserRouter([
         // user route 
         path: 'productRatings',
         element:  <ProductRatings></ProductRatings>
+      }, 
+      {
+        // user route 
+        path: 'contact',
+        element: <ContactUs></ContactUs>
       }, 
 
       // {

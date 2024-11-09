@@ -110,8 +110,8 @@ const Register = () => {
         googleLogin()
             .then(result => {
                 const userinfo = {
-                    email: result.user?.email,
-                    name: result.user?.displayName,
+                    email: result?.user?.email,
+                    name: result?.user?.displayName,
                     photo: result?.user?.photoURL,
                     role: 'Guest',
                     userCreateTime: date
@@ -128,9 +128,11 @@ const Register = () => {
                             });
                         }
 
-                        navigate(location?.state ? location.state : '/')
+                        // navigate(location?.state ? location.state : '/')
                         // window.location.reload()
-                    })
+                    },
+                        navigate(location?.state ? location.state : '/')
+                    )
                     .catch(err => {
                         console.log(err.message)
                     })
