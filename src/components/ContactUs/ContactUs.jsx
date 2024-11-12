@@ -61,16 +61,16 @@ const ContactUs = () => {
                 <div className='border border-base-300 py-2 px-4 rounded-md shadow-md '>
                     <div className="w-full flex flex-col items-center justify-center">
                         <h1 className="text-[2rem] font-bold  text-orange-500">Contact Us</h1>
-                        <p className="text-[1rem] text-text">Write Your FeedBack and Problem</p>
+                        <p className="text-[1rem] font-medium opacity-75">Write Your FeedBack and Problem</p>
                     </div>
                     <form ref={form} onSubmit={sendEmail} className="lg:w-[360px] md:w-[300px] mt-[50px space-y-3 mt-4">
-                        <input placeholder='Name' type="text" name='name' className='px-4 py-2 w-full rounded-md border border-base-300' />
+                        <input placeholder='Name' type="text" name='from_name' className='px-4 py-2 w-full rounded-md border border-base-300' />
 
-                        <input placeholder='Email' type="email" name="email" id="" className='px-4 py-2 w-full rounded-md border border-base-300' /> 
+                        <input placeholder='Email' type="email" name="user_email" id="" className='px-4 py-2 w-full rounded-md border border-base-300' /> 
 
-                        <textarea name="comment" id="" rows={4} className='w-full border border-base-300'></textarea>
+                        <textarea name="message" id="" rows={4} className='w-full border border-base-300'></textarea>
 
-                        <button type="submit" className={`py-2 w-full px-4 border border-orange-500 rounded-md text-orange-500 hover:shadow-md  mt-[10px]`}>Submit</button>
+                        <button type="submit" className={`py-2 w-full px-4 border border-orange-500 rounded-md text-orange-500 hover:shadow-md  mt-[10px] font-bold`}>Send Mail</button>
                     </form> 
                 </div>
                 {/* map  */}

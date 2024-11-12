@@ -10,6 +10,8 @@ import { updateProfile } from "firebase/auth";
 import { RiEdit2Line } from "react-icons/ri";
 import Avatar from "react-avatar";
 import { Rating, Typography } from "@mui/material";
+import { RxCross2 } from "react-icons/rx";
+import { IoCheckmarkSharp } from "react-icons/io5";
 
 const imageHostingKey = import.meta.env.VITE_image_hosting_key;
 const imageHostingApi = `https://api.imgbb.com/1/upload?key=${imageHostingKey}`;
@@ -19,6 +21,9 @@ const Profile = () => {
   const axiosSecure = useAxiosSecure();
   const [currentUser, setCurrentUser] = useState({});
   const [value, setValue] = useState(0)
+  const [editInfo, setEditInfo] = useState(false)
+  const [image, setImage] = useState(null);
+  const [preview, setPreview] = useState(null);
   const modalRef = useRef(null); // Use ref to handle modal 
 
   const { data: users = {}, isLoading, refetch } = useQuery({
@@ -29,65 +34,110 @@ const Profile = () => {
       return res.data;
     },
   });
-  const { name, photo, email, role, userCreateTime } = users;
+  const { _id, name, photo, email, role, userCreateTime, phone, userLocation } = users;
 
   const date = new Date(userCreateTime);
   const formattedDate = date.toLocaleString();
 
-  const handleDataUpdate = (users) => {
-    setCurrentUser(users);
-    modalRef.current.showModal(); // Open modal
+  const handleFileChange = (event) => {
+    const file = event.target.files[0];
+    if (file) {
+      setImage(file); // Store the actual file for uploading
+      setPreview(URL.createObjectURL(file)); // Set the preview URL for display
+    }
   };
 
-  const handleProfileUpdate = async (e) => {
-    e.preventDefault();
-    const form = new FormData(e.currentTarget);
-    const name = form.get("name");
-    const photoFile = form.get("photo");
+  const handleImageClick = () => {
+    document.getElementById('file-upload').click();
+  }; 
+
+  const profileChange = async (e) => {
+    e.preventDefault();  
 
     try {
       const imageData = new FormData();
-      imageData.append("image", photoFile);
+      imageData.append('image', image);  
 
-      if (photoFile.name) {
+      if (image?.name) {
         var imageRes = await axios.post(imageHostingApi, imageData, {
           headers: {
-            "Content-Type": "multipart/form-data",
+            'Content-Type': 'multipart/form-data',
           },
         });
       }
 
       const imageUrl = imageRes?.data?.data?.url;
 
-      const data = {
-        name: name || currentUser?.name,
-        email: email,
-        role: currentUser?.role,
-        userCreateTime: currentUser?.userCreateTime,
-        photo: imageUrl || currentUser?.photo,
-      };
+      // const data = {
+      //   name: name || user?.displayName,
+      //   image: imageUrl || user?.photoURL || '',
+      //   rating: value,
+      // };
 
-      updateProfile(user, {
-        displayName: name,
-        photoURL: imageUrl,
-      }).then(async () => {
-        const res = await axiosSecure.patch(`/users/user/${currentUser?._id}`, data);
-        if (res.data.modifiedCount > 0) {
-          Swal.fire({
-            position: "top-end",
-            icon: "success",
-            title: "Profile update successfully !",
-            showConfirmButton: false,
-            timer: 1000
-          });
-          refetch();
-        }
-      });
-      modalRef.current.close();  
+      const data = {
+              name: name,
+              email: email,
+              role: role,
+              userCreateTime: userCreateTime,
+              photo: imageUrl || photo,
+              phone: phone || '',
+              userLocation: userLocation || ''
+            };
+
+            updateProfile(user, {
+                    displayName: name,
+                    photoURL: imageUrl,
+                  }).then(async () => {
+                    const res = await axiosSecure.patch(`/users/user/${_id}`, data);
+                    if (res.data.modifiedCount > 0) {
+                      Swal.fire({
+                        position: "top-end",
+                        icon: "success",
+                        title: "Profile update successfully !",
+                        showConfirmButton: false,
+                        timer: 1000
+                      });
+                      setImage(null);
+                      setPreview(null);
+                      refetch();
+                    }
+                  }); 
     } catch (error) {
-      console.error("Error uploading the image or submitting the form:", error);
+      console.error('Error uploading the image or submitting the form:', error);
     }
   };
+
+  const editUserInfo = async (e) => {
+    e.preventDefault()
+    const form = new FormData(e.currentTarget)
+    const name = form.get('name')
+    const phone = form.get('phone')
+    const location = form.get('location')
+
+    const data = {
+      name: name ,
+      email: email,
+      role: role,
+      userCreateTime:userCreateTime,
+      photo: photo,
+      phone: phone || '',
+      userLocation: location || ''
+    };
+
+    const res = await axiosSecure.patch(`/users/user/${_id}`, data);
+    if (res.data.modifiedCount > 0) {
+      Swal.fire({
+        position: "top-end",
+        icon: "success",
+        title: "Profile update successfully !",
+        showConfirmButton: false,
+        timer: 1000
+      });
+      refetch();
+      setEditInfo(false)
+    }
+
+  }
 
   if (loading || isLoading) {
     return <Loading></Loading>;
@@ -96,7 +146,7 @@ const Profile = () => {
   return (
     <div>
 
-      <div>
+      {/* <div>
         <Avatar name={name?.charAt(0)} src={'photo'} alt='img' className="rounded-full" size="60"></Avatar>
       </div>
       <div>
@@ -108,77 +158,128 @@ const Profile = () => {
             setValue(newValue);
           }}
         />
-      </div>
+      </div> */}
 
       <Helmet>
         <title>Profile</title>
       </Helmet>
-      <div className="md:w-1/2 lg:w-1/2 mx-auto border border-base-300 my-4 p-3 rounded-md">
-        <h3 className="text-2xl font-bold text-center text-orange-500 mb-6">Profile</h3>
-        <div>
-          {/* <img src={photo} alt="image" className="w-56 h-56 rounded-full mx-auto" /> */}
-          <div className="flex justify-center">
-            <Avatar name={name?.charAt(0)} src={photo} alt='img' className="rounded-full mx-auto" size="224"></Avatar>
-          </div>
-          <div className="w-fit mx-auto my-5 space-y-2">
-            <p>
-              <span className="font-bold">Name : </span>
-              {name}
-            </p>
-            <p>
-              <span className="font-bold">Email : </span>
-              {email}
-            </p>
-            <p>
-              <span className="font-bold">Role : </span>
-              {role}
-            </p>
-          </div>
-          <div className="flex justify-center items-center">
-            <div
-              onClick={() => handleDataUpdate(users)}
-              className="w-fit mx-auto border border-orange-500 text-orange-500 hover:shadow-md px-4 py-1 rounded-md font-bold mb-5"
-            >
-              <button className="flex gap-1 justify-center items-center"><span>Edit</span><RiEdit2Line /></button>
-            </div>
-          </div>
-        </div>
-      </div>
 
-      <dialog id="my_modal_3" className="modal" ref={modalRef}>
-        <div className="modal-box">
-          <form method="dialog">
-            <button
-              className="px-2 py-1 rounded-md border border-orange-400 text-orange-500 absolute right-2 top-2"
-              onClick={() => modalRef.current.close()}
-            >
-              ✕
-            </button>
-          </form>
-          <form onSubmit={handleProfileUpdate}>
-            <p className="font-medium mb-1 max-sm:text-sm">Your Name</p>
-            <input
-              defaultValue={currentUser?.name}
-              type="text"
-              name="name"
-              className="w-full px-4 py-1 rounded-md border bg-base-100 border-orange-500"
-            />
-            <p className="font-medium mb-1 max-sm:text-sm">Your Photo</p>
-            <input
-              type="file"
-              name="photo"
-              className="w-full px-4 py-1 rounded-md border bg-base-100 border-orange-500"
-            />
-            <div className="flex items-center justify-center mt-5">
-              <input
-                type="submit"
-                value="Save"
-                className="w-fit px-4 py-1 rounded-md border border-orange-400 text-orange-500 hover:shadow-lg font-bold mb-5"
-              />
-            </div>
-          </form>
+
+      <div className="flex justify-center items-center border py-1 shadow-md">
+        <div className=" md:flex  items-center gap-10">
+          <div className="flex justify-center items-center relative">
+            {preview ? (
+              <div className="relative">
+                {/* <img src={preview} alt="Preview" className="rounded-md" /> */}
+                <Avatar name={name?.charAt(0)} src={preview} alt='img' className="rounded-full mx-auto border border-base-300" size="224"></Avatar>
+                <p
+                  onClick={() => {
+                    setImage(null);
+                    setPreview(null);
+                  }}
+                  className="text-white absolute right-10 top-0 bg-red-500 p-1 rounded-full cursor-pointer"
+                >
+                  <span className='mb-1 text-2xl'><RxCross2 /></span>
+                </p>
+              </div>
+            ) :
+
+              <div className="relative">
+                <Avatar name={name?.charAt(0)} src={photo} alt='img' className="rounded-full mx-auto border border-base-300" size="224"></Avatar>
+                <p onClick={handleImageClick} className=" text-xl absolute top-0 right-10 p-2 border border-base-300 bg-base-200 rounded-full"><RiEdit2Line /></p>
+              </div>
+            }
+            <form onSubmit={profileChange}>
+              <div className="image-file-input">
+                <input
+                  type="file"
+                  id="file-upload"
+                  accept="image/*"
+                  onChange={handleFileChange}
+                  className="hidden"
+                />
+                <div className="flex gap-4">
+                  {
+                    preview && <button className="px-2 py-1 w-fit h-fit border-2 hover:shadow-md border-orange-500 bg-base-300 text-orange-500  rounded-md  mt-12 font-medium absolute bottom-2 right-6">
+                      <IoCheckmarkSharp />
+                    </button>
+                  }
+                </div>
+              </div>
+            </form>
+          </div>
+
+          {
+            !editInfo ?
+              <div className="gap-6 max-sm:p-2 relative">
+                <div className="w-fit mx-auto my-5 space-y-2">
+                  <p>
+                    <span className="font-bold">Role : </span>
+                    {role}
+                  </p>
+                  <p>
+                    <span className="font-bold">Name : </span>
+                    {name}
+                  </p>
+                  <p>
+                    <span className="font-bold">Email : </span>
+                    {email}
+                  </p>
+                  {
+                    phone && <p>
+                      <span className="font-bold">Phone : </span>
+                      {phone}
+                    </p>
+                  }
+                  {
+                    userLocation && <p>
+                      <span className="font-bold">Location : </span>
+                      {userLocation}
+                    </p>
+                  }
+                </div>
+
+                <div>
+                  <button onClick={() => setEditInfo(true)} className="flex gap-1 justify-center items-center absolute top-5 right-0 text-red-400"><span>Edit</span><RiEdit2Line /></button>
+                </div>
+              </div> :
+              <form onSubmit={editUserInfo} className="space-y-2 p-3 relative">
+                <div className="flex items-center">
+                  {/* <span className="font-bold mr-2">Name : </span> */}
+                  <input type="text" name="name" defaultValue={name} placeholder="Name" className="border  border-base-300 px-3 py-1 rounded-md " />
+                </div>
+                {
+                  phone ?
+                    <div className="flex items-center">
+                      {/* <span className="font-bold mr-2">phone : </span> */}
+                      <input type="text" name="phone" defaultValue={phone} placeholder="Phone" className="border  border-base-300 px-3 py-1 rounded-md" />
+                    </div> :
+                    <div className="flex items-center">
+                      {/* <span className="font-bold mr-2">phone : </span> */}
+                      <input type="text" name="phone" placeholder="Phone" className="border  border-base-300 px-3 py-1 rounded-md" />
+                    </div>
+                }
+                {
+                  userLocation ?
+                    <div className="flex items-center">
+                      {/* <span className="font-bold mr-2">Location : </span> */}
+                      <input type="text" name="location" defaultValue={userLocation} placeholder="Location" className="border  border-base-300 px-3 py-1 rounded-md" />
+                    </div> :
+                    <div className="flex items-center">
+                      {/* <span className="font-bold mr-2">Location : </span> */}
+                      <input type="text" name="location" placeholder="Location" className="border  border-base-300 px-3 py-1 rounded-md" />
+                    </div>
+                }
+
+                <button type="submit" className="w-full px-3 py-1 rounded-md border border-orange-500 text-orange-500 font-medium">Save</button> 
+
+                <p onClick={()=>setEditInfo(false)} className="text-2xl text-red-500 p-1 border bg-base-200 -top-5 -left-4 w-fit absolute rounded-full"><RxCross2 /></p>
+              </form>
+          }
+ 
         </div>
-      </dialog>
+      </div> 
+       
     </div>
   );
 };
