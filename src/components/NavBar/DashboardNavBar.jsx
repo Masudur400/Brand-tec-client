@@ -48,6 +48,8 @@ const DashboardNavBar = () => {
         <li><NavLink to='/allUsers' onClick={closeMenu} className={({ isActive }) => isActive ? 'text-orange-500 underline  ' : 'hover:text-red-500'}>AllUsers</NavLink> </li> 
         <li><NavLink to='/appRatings' onClick={closeMenu} className={({ isActive }) => isActive ? 'text-orange-500 underline  ' : 'hover:text-red-500'}>App Reviews</NavLink> </li> 
         <li><NavLink to='/productRatings' onClick={closeMenu} className={({ isActive }) => isActive ? 'text-orange-500 underline  ' : 'hover:text-red-500'}>Product Reviews</NavLink> </li> 
+        <li><NavLink to='/Orders' onClick={closeMenu} className={({ isActive }) => isActive ? 'text-orange-500 underline  ' : 'hover:text-red-500'}>Orders</NavLink> </li> 
+        <li><NavLink to='/completeOrders' onClick={closeMenu} className={({ isActive }) => isActive ? 'text-orange-500 underline  ' : 'hover:text-red-500'}>CompleteOrders</NavLink> </li> 
 
     </>
 

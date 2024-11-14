@@ -186,7 +186,7 @@ const Profile = () => {
 
               <div className="relative">
                 <Avatar name={name?.charAt(0)} src={photo} alt='img' className="rounded-full mx-auto border border-base-300" size="224"></Avatar>
-                <p onClick={handleImageClick} className=" text-xl absolute top-0 right-10 p-2 border border-base-300 bg-base-200 rounded-full"><RiEdit2Line /></p>
+                <p onClick={handleImageClick} className=" text-xl absolute top-0 right-10 p-2 border border-base-300 bg-base-200 rounded-full cursor-pointer"><RiEdit2Line /></p>
               </div>
             }
             <form onSubmit={profileChange}>
@@ -273,7 +273,7 @@ const Profile = () => {
 
                 <button type="submit" className="w-full px-3 py-1 rounded-md border border-orange-500 text-orange-500 font-medium">Save</button> 
 
-                <p onClick={()=>setEditInfo(false)} className="text-2xl text-red-500 p-1 border bg-base-200 -top-5 -left-4 w-fit absolute rounded-full"><RxCross2 /></p>
+                <p onClick={()=>setEditInfo(false)} className="text-2xl text-red-500 p-1 border bg-base-200 -top-5 -left-4 w-fit absolute rounded-full cursor-pointer"><RxCross2 /></p>
               </form>
           }
  

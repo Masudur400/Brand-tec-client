@@ -8,7 +8,7 @@ import Footer from "../Footer/Footer";
 
 const Root = () => {
 
-    const [admin] = useState(false)
+    const [admin] = useState(true)
 
     return (
         <div>

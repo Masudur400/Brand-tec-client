@@ -42,6 +42,8 @@ import AppRatings from './components/Ratings/AppRatings.jsx';
 import ProductRatings from './components/Ratings/ProductRatings.jsx';
 import AllPhoneWatchLaptop from './components/AllPhoneWatchLaptop/AllPhoneWatchLaptop.jsx';
 import ContactUs from './components/ContactUs/ContactUs.jsx';
+import AllOrders from './components/Orders/AllOrders/AllOrders.jsx';
+import CompleteOrders from './components/Orders/CompleteOrders/CompleteOrders.jsx';
 
 const router = createBrowserRouter([
   {
@@ -147,6 +149,16 @@ const router = createBrowserRouter([
         // user route 
         path: 'contact',
         element: <ContactUs></ContactUs>
+      }, 
+      {
+        // user route 
+        path: 'orders',
+        element: <AllOrders></AllOrders>
+      }, 
+      {
+        // user route 
+        path: 'completeOrders',
+        element: <CompleteOrders></CompleteOrders>
       }, 
 
       // {

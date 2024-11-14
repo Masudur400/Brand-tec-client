@@ -12,6 +12,7 @@ const DashboardSideBar = () => {
     const [openRatings, setOpenRatings] = useState(false)
     const [openProducts, setOpenProducts] = useState(false)
     const [openShippings, setOpenShippings] = useState(false)
+    const [openOrders, setOpenOrders] = useState(false)
 
     if (loading) {
         // return <Loading></Loading>
@@ -66,6 +67,17 @@ const DashboardSideBar = () => {
                         <div className="space-y-3 ">
                             <p><NavLink to='/appRatings' className={({ isActive }) => isActive ? '  underline w-full bg-orange-500 text-white px-3 py-1 block rounded-md' : 'hover:text-red-500 hover:bg-base-300 px-3 py-1 rounded-md w-full block'}>App Reviews</NavLink> </p>
                             <p><NavLink to='/productRatings' className={({ isActive }) => isActive ? '  underline w-full bg-orange-500 text-white px-3 py-1 block rounded-md' : 'hover:text-red-500 hover:bg-base-300 px-3 py-1 rounded-md w-full block'}>Product Reviews</NavLink> </p>
+                        </div>
+                    }
+                </div>
+
+                <div className={` ${openOrders ? 'bg-base-200' : ''}  bg-opacity-50 space-y-3 rounded-md`}>
+                    <p onClick={() => setOpenOrders(!openOrders)} className={`flex justify-between items-center px-3 py-1 hover:bg-base-300 rounded-md cursor-pointer w-full`}><span>Manage Orders</span> {openOrders ? <FaAngleDown /> : <FaChevronRight />}</p>
+                    {
+                        openOrders &&
+                        <div className="space-y-3 ">
+                            <p><NavLink to='/orders' className={({ isActive }) => isActive ? '  underline w-full bg-orange-500 text-white px-3 py-1 block rounded-md' : 'hover:text-red-500 hover:bg-base-300 px-3 py-1 rounded-md w-full block'}>Orders</NavLink> </p>
+                            <p><NavLink to='/completeOrders' className={({ isActive }) => isActive ? '  underline w-full bg-orange-500 text-white px-3 py-1 block rounded-md' : 'hover:text-red-500 hover:bg-base-300 px-3 py-1 rounded-md w-full block'}>Complete Orders</NavLink> </p>
                         </div>
                     }
                 </div>
