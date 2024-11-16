@@ -1,14 +1,12 @@
-import PropTypes from 'prop-types' 
+import PropTypes from 'prop-types'
 
 
-const SingleCompleteOrder = ({order}) => {
-    
+const SingleOrders = ({order}) => {
 
     const { _id, data, paidStatus, status, transactionId } = order  
     const { name, email, phone, address, shippingMethod, shippingArea, total, products, productsIds } = data
+
     const modamount = new Intl.NumberFormat('en-IN').format(total);
-    const modshippingMethod = new Intl.NumberFormat('en-IN').format(shippingMethod);
-    const intotal = new Intl.NumberFormat('en-IN').format(shippingMethod + total); 
 
     return (
         <div className='md:flex gpa-5 justify-center items-center shadow-md border border-base-300 p-2 mb-5 max-sm:space-y-3'>
@@ -56,13 +54,16 @@ const SingleCompleteOrder = ({order}) => {
                         }
                     </tbody>
                 </table>
-            </div> 
-        </div> 
+            </div>
+             
+        </div>
+
+       
     );
 };
 
-SingleCompleteOrder.propTypes = {
+SingleOrders.propTypes = {
     order: PropTypes.object, 
 }
 
-export default SingleCompleteOrder;
+export default SingleOrders;

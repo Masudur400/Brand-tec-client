@@ -12,6 +12,12 @@ import Avatar from "react-avatar";
 import { Rating, Typography } from "@mui/material";
 import { RxCross2 } from "react-icons/rx";
 import { IoCheckmarkSharp } from "react-icons/io5";
+import Orders from "./Orders/Orders";
+import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
+import 'react-tabs/style/react-tabs.css';
+import MyCompletedOrders from "./MyCompletedOrders/MyCompletedOrders";
+
+
 
 const imageHostingKey = import.meta.env.VITE_image_hosting_key;
 const imageHostingApi = `https://api.imgbb.com/1/upload?key=${imageHostingKey}`;
@@ -49,14 +55,14 @@ const Profile = () => {
 
   const handleImageClick = () => {
     document.getElementById('file-upload').click();
-  }; 
+  };
 
   const profileChange = async (e) => {
-    e.preventDefault();  
+    e.preventDefault();
 
     try {
       const imageData = new FormData();
-      imageData.append('image', image);  
+      imageData.append('image', image);
 
       if (image?.name) {
         var imageRes = await axios.post(imageHostingApi, imageData, {
@@ -75,33 +81,33 @@ const Profile = () => {
       // };
 
       const data = {
-              name: name,
-              email: email,
-              role: role,
-              userCreateTime: userCreateTime,
-              photo: imageUrl || photo,
-              phone: phone || '',
-              userLocation: userLocation || ''
-            };
+        name: name,
+        email: email,
+        role: role,
+        userCreateTime: userCreateTime,
+        photo: imageUrl || photo,
+        phone: phone || '',
+        userLocation: userLocation || ''
+      };
 
-            updateProfile(user, {
-                    displayName: name,
-                    photoURL: imageUrl,
-                  }).then(async () => {
-                    const res = await axiosSecure.patch(`/users/user/${_id}`, data);
-                    if (res.data.modifiedCount > 0) {
-                      Swal.fire({
-                        position: "top-end",
-                        icon: "success",
-                        title: "Profile update successfully !",
-                        showConfirmButton: false,
-                        timer: 1000
-                      });
-                      setImage(null);
-                      setPreview(null);
-                      refetch();
-                    }
-                  }); 
+      updateProfile(user, {
+        displayName: name,
+        photoURL: imageUrl,
+      }).then(async () => {
+        const res = await axiosSecure.patch(`/users/user/${_id}`, data);
+        if (res.data.modifiedCount > 0) {
+          Swal.fire({
+            position: "top-end",
+            icon: "success",
+            title: "Profile update successfully !",
+            showConfirmButton: false,
+            timer: 1000
+          });
+          setImage(null);
+          setPreview(null);
+          refetch();
+        }
+      });
     } catch (error) {
       console.error('Error uploading the image or submitting the form:', error);
     }
@@ -115,10 +121,10 @@ const Profile = () => {
     const location = form.get('location')
 
     const data = {
-      name: name ,
+      name: name,
       email: email,
       role: role,
-      userCreateTime:userCreateTime,
+      userCreateTime: userCreateTime,
       photo: photo,
       phone: phone || '',
       userLocation: location || ''
@@ -271,15 +277,31 @@ const Profile = () => {
                     </div>
                 }
 
-                <button type="submit" className="w-full px-3 py-1 rounded-md border border-orange-500 text-orange-500 font-medium">Save</button> 
+                <button type="submit" className="w-full px-3 py-1 rounded-md border border-orange-500 text-orange-500 font-medium">Save</button>
 
-                <p onClick={()=>setEditInfo(false)} className="text-2xl text-red-500 p-1 border bg-base-200 -top-5 -left-4 w-fit absolute rounded-full cursor-pointer"><RxCross2 /></p>
+                <p onClick={() => setEditInfo(false)} className="text-2xl text-red-500 p-1 border bg-base-200 -top-5 -left-4 w-fit absolute rounded-full cursor-pointer"><RxCross2 /></p>
               </form>
           }
- 
+
         </div>
-      </div> 
-       
+      </div>
+
+      <div className="my-5">
+        <Tabs>
+          <TabList> 
+            <Tab>My Orders</Tab>
+            <Tab>Complete Transactions</Tab>
+          </TabList> 
+          
+          <TabPanel>
+             <Orders></Orders> 
+          </TabPanel>
+          <TabPanel>
+              <MyCompletedOrders></MyCompletedOrders>
+          </TabPanel>
+        </Tabs> 
+      </div>
+
     </div>
   );
 };

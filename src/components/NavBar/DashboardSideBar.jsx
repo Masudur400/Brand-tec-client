@@ -28,7 +28,7 @@ const DashboardSideBar = () => {
                 <div className="border-b-2 my-3 border-orange-500"></div>
             </div>
             <div className="space-y-3">
-                <p><NavLink to='/' className={({ isActive }) => isActive ? 'underline w-full bg-orange-500 text-white px-3 py-1 block rounded-md' : 'hover:text-red-500 hover:bg-base-300 px-3 py-1 rounded-md w-full block'}>Dashboard</NavLink> </p>
+                <p><NavLink to='/' className={({ isActive }) => isActive ? '  w-full bg-orange-500 text-white px-3 py-1 block rounded-md' : 'hover:text-red-500 hover:bg-base-300 px-3 py-1 rounded-md w-full block'}>Dashboard</NavLink> </p>
 
 
                 <div className={` ${openProducts ? 'bg-base-200' : ''} bg-opacity-50 space-y-3 rounded-md`}>
@@ -36,8 +36,8 @@ const DashboardSideBar = () => {
                     {
                         openProducts &&
                         <div className="space-y-3 ">
-                            <p><NavLink to='/addProduct' className={({ isActive }) => isActive ? '  underline w-full bg-orange-500 text-white px-3 py-1 block rounded-md' : 'hover:text-red-500 hover:bg-base-300 px-3 py-1 rounded-md w-full block'}>AddProduct</NavLink> </p>
-                            <p><NavLink to='/allProduct' className={({ isActive }) => isActive ? '  underline w-full bg-orange-500 text-white px-3 py-1 block rounded-md' : 'hover:text-red-500 hover:bg-base-300 px-3 py-1 rounded-md w-full block'}>AllProduct</NavLink> </p>
+                            <p><NavLink to='/addProduct' className={({ isActive }) => isActive ? '    w-full bg-orange-500 text-white px-3 py-1 block rounded-md' : 'hover:text-red-500 hover:bg-base-300 px-3 py-1 rounded-md w-full block'}>AddProduct</NavLink> </p>
+                            <p><NavLink to='/allProduct' className={({ isActive }) => isActive ? '    w-full bg-orange-500 text-white px-3 py-1 block rounded-md' : 'hover:text-red-500 hover:bg-base-300 px-3 py-1 rounded-md w-full block'}>AllProduct</NavLink> </p>
                         </div>
                     }
                 </div>
@@ -49,15 +49,15 @@ const DashboardSideBar = () => {
                     {
                         openShippings &&
                         <div className="space-y-3 ">
-                            <p><NavLink to='/addShippingMethod' className={({ isActive }) => isActive ? ' underline w-full bg-orange-500 text-white px-3 py-1 block rounded-md' : 'hover:text-red-500 hover:bg-base-300 px-3 py-1 rounded-md w-full block'}>AddShipping</NavLink> </p>
-                            <p><NavLink to='/allShipping' className={({ isActive }) => isActive ? '  underline w-full bg-orange-500 text-white px-3 py-1 block rounded-md' : 'hover:text-red-500 hover:bg-base-300 px-3 py-1 rounded-md w-full block'}>AllShipping</NavLink> </p>
+                            <p><NavLink to='/addShippingMethod' className={({ isActive }) => isActive ? '   w-full bg-orange-500 text-white px-3 py-1 block rounded-md' : 'hover:text-red-500 hover:bg-base-300 px-3 py-1 rounded-md w-full block'}>AddShipping</NavLink> </p>
+                            <p><NavLink to='/allShipping' className={({ isActive }) => isActive ? '    w-full bg-orange-500 text-white px-3 py-1 block rounded-md' : 'hover:text-red-500 hover:bg-base-300 px-3 py-1 rounded-md w-full block'}>AllShipping</NavLink> </p>
                         </div>
                     }
                 </div>
 
 
 
-                <p><NavLink to='/allUsers' className={({ isActive }) => isActive ? '  underline w-full bg-orange-500 text-white px-3 py-1 block rounded-md' : 'hover:text-red-500 hover:bg-base-300 px-3 py-1 rounded-md w-full block'}>AllUsers</NavLink> </p>
+                <p><NavLink to='/allUsers' className={({ isActive }) => isActive ? '    w-full bg-orange-500 text-white px-3 py-1 block rounded-md' : 'hover:text-red-500 hover:bg-base-300 px-3 py-1 rounded-md w-full block'}>AllUsers</NavLink> </p>
 
 
                 <div className={` ${openRatings ? 'bg-base-200' : ''}  bg-opacity-50 space-y-3 rounded-md`}>
@@ -65,8 +65,8 @@ const DashboardSideBar = () => {
                     {
                         openRatings &&
                         <div className="space-y-3 ">
-                            <p><NavLink to='/appRatings' className={({ isActive }) => isActive ? '  underline w-full bg-orange-500 text-white px-3 py-1 block rounded-md' : 'hover:text-red-500 hover:bg-base-300 px-3 py-1 rounded-md w-full block'}>App Reviews</NavLink> </p>
-                            <p><NavLink to='/productRatings' className={({ isActive }) => isActive ? '  underline w-full bg-orange-500 text-white px-3 py-1 block rounded-md' : 'hover:text-red-500 hover:bg-base-300 px-3 py-1 rounded-md w-full block'}>Product Reviews</NavLink> </p>
+                            <p><NavLink to='/appRatings' className={({ isActive }) => isActive ? '    w-full bg-orange-500 text-white px-3 py-1 block rounded-md' : 'hover:text-red-500 hover:bg-base-300 px-3 py-1 rounded-md w-full block'}>App Reviews</NavLink> </p>
+                            <p><NavLink to='/productRatings' className={({ isActive }) => isActive ? '    w-full bg-orange-500 text-white px-3 py-1 block rounded-md' : 'hover:text-red-500 hover:bg-base-300 px-3 py-1 rounded-md w-full block'}>Product Reviews</NavLink> </p>
                         </div>
                     }
                 </div>
@@ -76,14 +76,14 @@ const DashboardSideBar = () => {
                     {
                         openOrders &&
                         <div className="space-y-3 ">
-                            <p><NavLink to='/orders' className={({ isActive }) => isActive ? '  underline w-full bg-orange-500 text-white px-3 py-1 block rounded-md' : 'hover:text-red-500 hover:bg-base-300 px-3 py-1 rounded-md w-full block'}>Orders</NavLink> </p>
-                            <p><NavLink to='/completeOrders' className={({ isActive }) => isActive ? '  underline w-full bg-orange-500 text-white px-3 py-1 block rounded-md' : 'hover:text-red-500 hover:bg-base-300 px-3 py-1 rounded-md w-full block'}>Complete Orders</NavLink> </p>
+                            <p><NavLink to='/orders' className={({ isActive }) => isActive ? '    w-full bg-orange-500 text-white px-3 py-1 block rounded-md' : 'hover:text-red-500 hover:bg-base-300 px-3 py-1 rounded-md w-full block'}>Orders</NavLink> </p>
+                            <p><NavLink to='/completeOrders' className={({ isActive }) => isActive ? '    w-full bg-orange-500 text-white px-3 py-1 block rounded-md' : 'hover:text-red-500 hover:bg-base-300 px-3 py-1 rounded-md w-full block'}>Complete Orders</NavLink> </p>
                         </div>
                     }
                 </div>
 
 
-                <p><NavLink to='/profile' className={({ isActive }) => isActive ? '  underline w-full bg-orange-500 text-white px-3 py-1 block rounded-md' : 'hover:text-red-500 hover:bg-base-300 px-3 py-1 rounded-md w-full block'}>Profile</NavLink> </p>
+                <p><NavLink to='/profile' className={({ isActive }) => isActive ? '    w-full bg-orange-500 text-white px-3 py-1 block rounded-md' : 'hover:text-red-500 hover:bg-base-300 px-3 py-1 rounded-md w-full block'}>Profile</NavLink> </p>
             </div>
 
             <div className="border-b-2 mt-2 border-orange-500"></div>

@@ -61,10 +61,11 @@ const SingleOrder = (order) => {
                 <p className='text-sm'><span className='font-medium'>Name: </span>{name}</p>
                 <p className='text-sm'><span className='font-medium'>Email: </span>{email}</p>
                 <p className='text-sm'><span className='font-medium'>Address: </span>{address}</p>
+                <p className='text-sm'><span className='font-medium'>Area: </span>{shippingArea}</p>
                 <p className='text-sm'><span className='font-medium'>Phone: </span>{phone}</p>
                 <p className='text-sm'><span className='font-medium'>Status: </span><span className="text-red-500">{status}</span></p>
-                <p className='text-sm'><span className='font-medium'>Area: </span>{shippingArea}</p>
                 <p className='text-sm'><span className='font-medium'>Total With Charge: </span>{modamount} Tk</p>
+                <p className='text-sm text-red-400'><span className='font-medium'></span>{transactionId}</p>
                 {/* <p className='text-sm'><span className='font-medium'>Charge: </span>{modshippingMethod} Tk</p> */}
                 {/* <p className='text-sm'><span className='font-medium'>Total: </span>{intotal} Tk</p> */}
             </div>
