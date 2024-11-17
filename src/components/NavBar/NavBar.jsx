@@ -39,8 +39,18 @@ const NavBar = () => {
     const { photo, name } = users;
 
     const routes = <>
-        <li><NavLink to='/' onClick={closeMenu} className={({ isActive }) => isActive ? 'text-orange-500 underline' : 'hover:text-red-500'}>Home</NavLink></li>
-        <li><NavLink to='/allPhoneWatchLaptop' onClick={closeMenu} className={({ isActive }) => isActive ? 'text-orange-500 underline' : 'hover:text-red-500'}>All Products</NavLink></li>
+        <li onClick={() => window.scrollTo({
+            top: 0,
+            behavior: "smooth", // Smooth scroll animation
+        })}><NavLink to='/' onClick={closeMenu} className={({ isActive }) => isActive ? 'text-orange-500 underline' : 'hover:text-red-500'}>Home</NavLink></li>
+        <li onClick={() => window.scrollTo({
+            top: 0,
+            behavior: "smooth", // Smooth scroll animation
+        })}><NavLink to='/allPhoneWatchLaptop' onClick={closeMenu} className={({ isActive }) => isActive ? 'text-orange-500 underline' : 'hover:text-red-500'}>All Products</NavLink></li>
+        <li onClick={() => window.scrollTo({
+            top: 0,
+            behavior: "smooth", // Smooth scroll animation
+        })}><NavLink to='/contact' onClick={closeMenu} className={({ isActive }) => isActive ? 'text-orange-500 underline' : 'hover:text-red-500'}>Contact Us</NavLink></li>
         {/* <li><NavLink to='/watch' onClick={closeMenu} className={({ isActive }) => isActive ? 'text-orange-500 underline' : 'hover:text-red-500'}>Watch</NavLink></li>
         <li><NavLink to='/mobile' onClick={closeMenu} className={({ isActive }) => isActive ? 'text-orange-500 underline' : 'hover:text-red-500'}>Mobile</NavLink></li>
         <li><NavLink to='/laptop' onClick={closeMenu} className={({ isActive }) => isActive ? 'text-orange-500 underline' : 'hover:text-red-500'}>LapTop</NavLink></li> */}
@@ -88,7 +98,10 @@ const NavBar = () => {
                                 <div className="mr-2 lg:mr-6">
                                     <div className="relative">
                                         <div className="flex gap-5 md:gap-10 justify-start items-center">
-                                            <Link to="/cart">
+                                            <Link to="/cart" onClick={() => window.scrollTo({
+                                                top: 0,
+                                                behavior: "smooth", // Smooth scroll animation
+                                            })}>
                                                 <div className="relative">
                                                     <BsCart4 className="text-[1.8rem]" />
                                                     {
@@ -110,7 +123,10 @@ const NavBar = () => {
                                             <div className="space-y-1 py-4">
                                                 <p className="text-sm font-medium">{name}</p>
                                                 <div className="divider"></div>
-                                                <Link to='/profile'> <li onClick={() => setProfile(!profile)} className="flex gap-1 items-center text-sm hover:bg-base-300 px-1  py-1 rounded-md"><span><PiUserCircleThin></PiUserCircleThin></span>Profile</li></Link>
+                                                <Link to='/profile' onClick={() => window.scrollTo({
+                                                    top: 0,
+                                                    behavior: "smooth", // Smooth scroll animation
+                                                })}> <li onClick={() => setProfile(!profile)} className="flex gap-1 items-center text-sm hover:bg-base-300 px-1  py-1 rounded-md"><span><PiUserCircleThin></PiUserCircleThin></span>Profile</li></Link>
                                                 <button onClick={() => logOut()} className="text-sm w-full flex gap-1 items-center text-red-400 hover:bg-base-300 px-1 py-1 rounded-md">LogOut <MdLogout></MdLogout></button>
                                             </div>
                                         </ul>

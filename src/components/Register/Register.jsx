@@ -201,11 +201,18 @@ const Register = () => {
 
                 <p>Already have an account ? <Link to='/loginRegister/login' className="text-red-500 font-bold underline">please Login</Link></p>
                 <div className="divider my-5"></div>
-                <div className="mb-t">
-                    <div>
-                        <button onClick={handleGoogleLogin} className="p-3 border border-orange-400 rounded-xl font-bold"> <FcGoogle className="text-3xl"></FcGoogle></button>
+                <div className="mb-t flex justify-center items-center">
+                     
+                        {/* <button  className="p-3 border border-orange-400 rounded-xl font-bold"> <FcGoogle className="text-3xl"></FcGoogle></button> */} 
+                        <button
+                        onClick={handleGoogleLogin}
+                            className="border border-[#e5eaf2] rounded-md py-2 px-4 flex items-center gap-[10px] text-[1rem] text-[#424242] hover:bg-gray-50 transition-all duration-200">
+                            <img src="https://i.ibb.co/dQMmB8h/download-4-removebg-preview-1.png" alt="google logo"
+                                className="w-[23px]" />
+                            Sign in with Google
+                        </button>
 
-                    </div>
+                     
                 </div>
             </div>
         </div>

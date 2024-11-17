@@ -71,7 +71,10 @@ const SingleLaptop = ({ laptop, refetch }) => {
             <div className='relative'>
                 <img src={productImage} alt="img" className='w-40 mx-auto group-hover:scale-105' />
                 <div className='absolute top-2 right-2 flex gap-3 flex-col'>
-                    <Link to={`/details/${_id}`}> <button title='view details' className="w-fit p-2 bg-base-200 text-center rounded-full border border-base-300 font-medium hover:text-orange-500"><FaRegEye /></button></Link>
+                    <Link to={`/details/${_id}`} onClick={() => window.scrollTo({
+                        top: 0,
+                        behavior: "smooth", // Smooth scroll animation
+                    })}> <button title='view details' className="w-fit p-2 bg-base-200 text-center rounded-full border border-base-300 font-medium hover:text-orange-500"><FaRegEye /></button></Link>
                     {productQuantity > 0 ?
                         <div>
                             {
