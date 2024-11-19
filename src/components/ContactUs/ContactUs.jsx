@@ -1,9 +1,12 @@
 import { useRef, useState } from 'react';
 import emailjs from '@emailjs/browser';
+import useAuth from '../Hooks/useAuth';
+import toast, { Toaster } from 'react-hot-toast';
 
 const ContactUs = () => {
 
     const form = useRef();
+    const {user} = useAuth()
     const [feedbackMessage, setFeedbackMessage] = useState("");
     const [isLoading, setIsLoading] = useState(false);
 
@@ -37,6 +40,7 @@ const ContactUs = () => {
 
     return (
         <div>
+            <Toaster></Toaster>
             <div>
                 <div className="contactBG bg-fixed container m-auto rounded-xl ">
                     <div className="bg-black w-full h-full bg-opacity-40 flex flex-col items-center rounded-xl justify-center">
@@ -70,7 +74,14 @@ const ContactUs = () => {
 
                         <textarea name="message" id="" rows={4} className='w-full border border-base-300'></textarea>
 
-                        <button type="submit" className={`py-2 w-full px-4 border border-orange-500 rounded-md text-orange-500 hover:shadow-md  mt-[10px] font-bold`}>Send Mail</button>
+                        {
+                            user?
+                            <button type="submit" className={`py-2 w-full px-4 border border-orange-500 rounded-md text-orange-500 hover:shadow-md  mt-[10px] font-bold`}>Send Mail</button>: 
+                            <button onClick={() => toast.error('Please Login', {
+                                duration: 1000,
+                                position: 'top-center',
+                            })} className={`py-2 w-full px-4 border border-orange-500 rounded-md text-orange-500 hover:shadow-md  mt-[10px] font-bold`}>Send Mail</button>
+                        }
                     </form> 
                 </div>
                 {/* map  */}

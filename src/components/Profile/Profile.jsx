@@ -24,13 +24,10 @@ const imageHostingApi = `https://api.imgbb.com/1/upload?key=${imageHostingKey}`;
 
 const Profile = () => {
   const { user, loading } = useAuth();
-  const axiosSecure = useAxiosSecure();
-  const [currentUser, setCurrentUser] = useState({});
-  const [value, setValue] = useState(0)
+  const axiosSecure = useAxiosSecure();  
   const [editInfo, setEditInfo] = useState(false)
   const [image, setImage] = useState(null);
-  const [preview, setPreview] = useState(null);
-  const modalRef = useRef(null); // Use ref to handle modal 
+  const [preview, setPreview] = useState(null); 
 
   const { data: users = {}, isLoading, refetch } = useQuery({
     queryKey: ["users", user?.email, axiosSecure],
@@ -286,7 +283,8 @@ const Profile = () => {
         </div>
       </div>
 
-      <div className="my-5">
+      {
+        role === 'Guest' && <div className="my-5">
         <Tabs>
           <TabList> 
             <Tab>My Orders</Tab>
@@ -301,6 +299,7 @@ const Profile = () => {
           </TabPanel>
         </Tabs> 
       </div>
+      }
 
     </div>
   );

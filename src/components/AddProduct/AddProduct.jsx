@@ -83,7 +83,7 @@ const AddProduct = () => {
                     <title>Add Product</title>
                 </Helmet>
 
-                <h3 className="text-lg md:text-3xl font-bold text-center text-orange-600 my-4">Add Product</h3>
+                <h3 className="text-lg md:text-3xl font-medium text-center text-orange-600 my-4">Add Product</h3>
                 <form onSubmit={handleAddProduct}>
 
                     <div className="grid grid-cols-1 md:grid-cols-2 md:gap-3">
@@ -129,7 +129,7 @@ const AddProduct = () => {
 
 
                     <div className="flex justify-center">
-                        <input className="w-fit px-4 py-1 md:py-2 text-center rounded-md text-orange-500 border border-orange-400 hover:shadow-lg font-bold my-3" type="submit" value="Add Product" />
+                        <input className="w-fit px-4 py-1 md:py-2 text-center rounded-md text-orange-500 border border-orange-400 hover:shadow-lg font-medium my-3" type="submit" value="Add Product" />
 
                     </div>
                 </form>

@@ -4,17 +4,30 @@ import { MdLogin, MdLogout } from "react-icons/md";
 import { useState } from "react";
 import { FaChevronRight } from "react-icons/fa6";
 import { FaAngleDown } from "react-icons/fa6";
+import { useQuery } from "@tanstack/react-query";
+import useAxiosSecure from "../Hooks/useAxiosSecure";
 
 
 const DashboardSideBar = () => {
 
     const { user, logOut, loading } = useAuth()
+    const axiosSecure = useAxiosSecure()
     const [openRatings, setOpenRatings] = useState(false)
     const [openProducts, setOpenProducts] = useState(false)
     const [openShippings, setOpenShippings] = useState(false)
     const [openOrders, setOpenOrders] = useState(false)
 
-    if (loading) {
+    const { data: users = {}, isLoading } = useQuery({
+        queryKey: ['users', user?.email, axiosSecure],
+        enabled: !loading,
+        queryFn: async () => {
+            const res = await axiosSecure.get(`/users/${user?.email}`)
+            return res.data
+        }
+    })
+    const { photo, name, role } = users;
+
+    if (loading || isLoading) {
         // return <Loading></Loading>
         return <p className="opacity-90 text-center mt-4">Loading...</p>
     }
@@ -57,7 +70,9 @@ const DashboardSideBar = () => {
 
 
 
-                <p><NavLink to='/allUsers' className={({ isActive }) => isActive ? '    w-full bg-orange-500 text-white px-3 py-1 block rounded-md' : 'hover:text-red-500 hover:bg-base-300 px-3 py-1 rounded-md w-full block'}>AllUsers</NavLink> </p>
+                {
+                    role === 'Admin' && <p><NavLink to='/allUsers' className={({ isActive }) => isActive ? '    w-full bg-orange-500 text-white px-3 py-1 block rounded-md' : 'hover:text-red-500 hover:bg-base-300 px-3 py-1 rounded-md w-full block'}>AllUsers</NavLink> </p>
+                }
 
 
                 <div className={` ${openRatings ? 'bg-base-200' : ''}  bg-opacity-50 space-y-3 rounded-md`}>

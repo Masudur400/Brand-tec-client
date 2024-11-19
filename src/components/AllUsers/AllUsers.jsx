@@ -37,9 +37,9 @@ const AllUsers = () => {
             <Helmet>
                 <title>All Users</title>
             </Helmet>
-            <h3 className="text-2xl font-bold text-center text-orange-500 mt-5">All Users</h3>
+            <h3 className="text-2xl font-medium text-orange-500 mt-2">All Users</h3>
               
-                <div className="mt-10">
+                <div className="mt-5">
                 {
                     sortedUsers?.map((user, idx) => <SingleUser key={user?._id} user={user} idx={idx} refetch={refetch}></SingleUser>)
                 }

@@ -32,7 +32,7 @@ const DashboardNavBar = () => {
             return res.data
         }
     })
-    const { photo, name } = users;
+    const { photo, name, role } = users;
 
     if (loading || isLoading) {
         return <p className="opacity-90 text-center mt-4">Loading...</p>
@@ -45,7 +45,9 @@ const DashboardNavBar = () => {
         <li><NavLink to='/allProduct' onClick={closeMenu} className={({ isActive }) => isActive ? 'text-orange-500 underline  ' : 'hover:text-red-500'}>AllProduct</NavLink> </li>
         <li><NavLink to='/addShippingMethod' onClick={closeMenu} className={({ isActive }) => isActive ? 'text-orange-500 underline  d' : 'hover:text-red-500'}>AddShipping</NavLink> </li>
         <li><NavLink to='/allShipping' onClick={closeMenu} className={({ isActive }) => isActive ? 'text-orange-500 underline  ' : 'hover:text-red-500'}>AllShipping</NavLink> </li>
-        <li><NavLink to='/allUsers' onClick={closeMenu} className={({ isActive }) => isActive ? 'text-orange-500 underline  ' : 'hover:text-red-500'}>AllUsers</NavLink> </li> 
+        {
+            role === 'Admin' && <li><NavLink to='/allUsers' onClick={closeMenu} className={({ isActive }) => isActive ? 'text-orange-500 underline  ' : 'hover:text-red-500'}>AllUsers</NavLink> </li>
+        } 
         <li><NavLink to='/appRatings' onClick={closeMenu} className={({ isActive }) => isActive ? 'text-orange-500 underline  ' : 'hover:text-red-500'}>App Reviews</NavLink> </li> 
         <li><NavLink to='/productRatings' onClick={closeMenu} className={({ isActive }) => isActive ? 'text-orange-500 underline  ' : 'hover:text-red-500'}>Product Reviews</NavLink> </li> 
         <li><NavLink to='/Orders' onClick={closeMenu} className={({ isActive }) => isActive ? 'text-orange-500 underline  ' : 'hover:text-red-500'}>Orders</NavLink> </li> 

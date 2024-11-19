@@ -13,7 +13,7 @@ const AllProduct = () => {
             <Helmet>
                 <title>All product</title>
             </Helmet>
-            <h3 className="text-2xl font-bold text-center text-orange-500 mt-5">All Product</h3>
+            <h3 className="text-2xl font-medium text-center text-orange-500 mt-5">All Product</h3>
              
             <div>
             <Tabs>

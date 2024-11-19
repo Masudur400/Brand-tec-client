@@ -107,7 +107,7 @@ const SingleOrder = (order) => {
                     !open ?
                      <button onClick={()=>setOpen(!open)} className='border border-orange-400 text-orange-500 hover:shadow-lg font-medium px-2 py-1 rounded-md max-sm:mb-3 flex gap-1 justify-center items-center'><RiEdit2Line /> <span>Status</span></button>
                     :
-                    <form onSubmit={handleEditStatus} className='flex items-center gap-3 my-2'>
+                    <form onSubmit={handleEditStatus} className='flex flex-col items-center gap-3 my-2'>
                         <select name="status" id="" className="border-2 border-base-300 bg-base-100 px-4 py-1 rounded-md">
                             <option disabled selected>{status}</option>
                             <option value='Processing'>Processing</option>

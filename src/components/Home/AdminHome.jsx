@@ -87,7 +87,7 @@ const AdminHome = () => {
     }
 
     return (
-        <div className="min-h-screen bg-base-200 p-6 bg-opacity-40">
+        <div className="min-h-screen bg-base-200 p-4 bg-opacity-40">
             {/* Header */}
             <header className="mb-6">
                 <h1 className="text-3xl font-bold ">Admin Dashboard</h1>
@@ -99,7 +99,7 @@ const AdminHome = () => {
                 {stats.map((stat, index) => (
                     <div
                         key={index}
-                        className={`${stat.bg} p-6 rounded-lg shadow-md flex items-center`}
+                        className={`${stat.bg} p-4 rounded-lg shadow-md flex items-center hover:shadow-lg`}
                     >
                         <div className="p-2 rounded-full bg-opacity-20 text-4xl">
                             {stat.icon}
