@@ -1,4 +1,4 @@
-# # Well Come To Ghorer Bazar :(E-Commerce)
+## Well Come To BrandTec :(E-Commerce)
 
 * live link : https://brand-tec.web.app/
 * client site github : https://github.com/Masudur400/Brand-tec-client
