@@ -2,6 +2,7 @@ import { useRef, useState } from 'react';
 import emailjs from '@emailjs/browser';
 import useAuth from '../Hooks/useAuth';
 import toast, { Toaster } from 'react-hot-toast';
+import { Helmet } from 'react-helmet';
 
 const ContactUs = () => {
 
@@ -40,6 +41,9 @@ const ContactUs = () => {
 
     return (
         <div>
+            <Helmet>
+                <title>Contact</title>
+            </Helmet>
             <Toaster></Toaster>
             <div>
                 <div className="contactBG bg-fixed container m-auto rounded-xl ">

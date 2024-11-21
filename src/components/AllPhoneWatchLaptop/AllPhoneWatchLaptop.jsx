@@ -5,6 +5,7 @@ import { useQuery } from "@tanstack/react-query";
 import { IoIosArrowDown } from "react-icons/io";
 import SingleProduct from "./SingleProduct";
 import Loading from "../../Loading/Loading";
+import { Helmet } from "react-helmet";
 
 
 const AllPhoneWatchLaptop = () => {
@@ -107,6 +108,9 @@ const AllPhoneWatchLaptop = () => {
 
     return (
         <div>
+            <Helmet>
+                <title>All Products</title>
+            </Helmet>
             {/* <div className="my-4 flex justify-center items-center gap-10">
                 <h3 className="text-lg md:text-2xl font-bold text-center text-orange-500 ">All Product</h3>
                 <div>

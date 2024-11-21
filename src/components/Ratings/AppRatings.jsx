@@ -5,6 +5,7 @@ import toast, { Toaster } from "react-hot-toast";
 import Loading from "../../Loading/Loading";
 import Swal from "sweetalert2";
 import useAxiosSecure from "../Hooks/useAxiosSecure";
+import { Helmet } from "react-helmet";
 
 
 const AppRatings = () => {
@@ -50,6 +51,9 @@ const AppRatings = () => {
 
     return (
         <div>
+            <Helmet>
+                <title>App Rating</title>
+            </Helmet>
             <Toaster></Toaster>
             <h3 className="text-2xl font-bold text-center text-orange-500 mt-2 mb-5">App Reviews</h3>
             {

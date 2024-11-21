@@ -2,6 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../Hooks/useAxiosSecure";
 import SingleOrder from "./SingleOrder";
 import Loading from "../../../Loading/Loading";
+import { Helmet } from "react-helmet";
 
  
 const AllOrders = () => {
@@ -21,6 +22,9 @@ const AllOrders = () => {
 
     return (
         <div>
+            <Helmet>
+                <title>Orders</title>
+            </Helmet>
             {
                 orders.map(order => <SingleOrder key={order?._id} order={order}></SingleOrder>)
             }

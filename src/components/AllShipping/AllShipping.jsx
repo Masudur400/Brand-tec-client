@@ -2,6 +2,7 @@ import Swal from "sweetalert2";
 import Loading from "../../Loading/Loading";
 import useAxiosSecure from "../Hooks/useAxiosSecure";
 import useShippings from "../Hooks/useShippings";
+import { Helmet } from "react-helmet";
 
 
 const AllShipping = () => {
@@ -42,6 +43,9 @@ const AllShipping = () => {
 
     return (
         <div>
+            <Helmet>
+                <title>All Shipping</title>
+            </Helmet>
             <div className="overflow-x-auto w-full">
                 <table className="table">
                     <thead>
