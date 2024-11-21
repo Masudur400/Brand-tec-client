@@ -1,8 +1,36 @@
-# React + Vite
+# Well Come To Ghorer Bazar :(E-Commerce)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+* live link : https://brand-tec.web.app/
+* client site github : https://github.com/Masudur400/Brand-tec-client
+* server site github : https://github.com/Masudur400/Brand-tec-server
 
-Currently, two official plugins are available:
+ # Technologies
+ * JavaScript,
+* React,
+* Node.js,
+* Express.js,
+* MongoDB,
+* Firebase
+ 
+ # Run Locally
+ * npm i 
+ * npm run dev
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+
+# impotent for server
+{
+    "version": 2,
+    "builds": [
+      {
+        "src": "index.js",
+        "use": "@vercel/node"
+      }
+    ],
+    "routes": [
+      {
+        "src": "/(.*)",
+        "dest": "index.js",
+        "methods": ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"]
+      }
+    ]
+  }
