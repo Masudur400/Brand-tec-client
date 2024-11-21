@@ -13,7 +13,9 @@
 * Node.js,
 * Express.js,
 * MongoDB,
-* Firebase
+* Firebase,
+* sslcommerz,
+* emailjs
  
  ## Run Locally
  * npm i 
