@@ -66,8 +66,7 @@ const SingleOrder = (order) => {
                 <p className='text-sm'><span className='font-medium'>Status: </span><span className="text-red-500">{status}</span></p>
                 <p className='text-sm'><span className='font-medium'>Total With Charge: </span>{modamount} Tk</p>
                 <p className='text-sm text-red-400'><span className='font-medium'></span>{transactionId}</p>
-                {/* <p className='text-sm'><span className='font-medium'>Charge: </span>{modshippingMethod} Tk</p> */}
-                {/* <p className='text-sm'><span className='font-medium'>Total: </span>{intotal} Tk</p> */}
+                 
             </div>
 
             <div className="overflow-x-scroll w-full">
@@ -108,10 +107,12 @@ const SingleOrder = (order) => {
                      <button onClick={()=>setOpen(!open)} className='border border-orange-400 text-orange-500 hover:shadow-lg font-medium px-2 py-1 rounded-md max-sm:mb-3 flex gap-1 justify-center items-center'><RiEdit2Line /> <span>Status</span></button>
                     :
                     <form onSubmit={handleEditStatus} className='flex flex-col items-center gap-3 my-2'>
-                        <select name="status" id="" className="border-2 border-base-300 bg-base-100 px-4 py-1 rounded-md">
+                        <select name="status" id="" className="border-2 border-base-300 bg-base-100 px-2 py-1 rounded-md text-sm">
                             <option disabled selected>{status}</option>
                             <option value='Processing'>Processing</option>
                             <option value='OnTheWay'>OnTheWay</option>
+                            <option value='Reach-WithIn-30-min'>Reach WithIn 30 min</option>
+                            <option value='completed'>completed</option>
                             <option value='Completed'>Completed</option>
                         </select>
                         <div>

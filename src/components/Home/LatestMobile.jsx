@@ -1,14 +1,10 @@
-import { Swiper, SwiperSlide } from "swiper/react";
-// import "swiper/css";
-// import "swiper/css/navigation";
-// import "swiper/css/pagination";
+import { Swiper, SwiperSlide } from "swiper/react"; 
 import { Pagination, Navigation } from "swiper/modules";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { Link } from "react-router-dom";
 import { FaCartPlus, FaRegEye } from "react-icons/fa";
 import toast, { Toaster } from "react-hot-toast";
-import Loading from "../../Loading/Loading";
-import StarRatings from "react-star-ratings";
+import Loading from "../../Loading/Loading"; 
 import useAxiosSecure from "../Hooks/useAxiosSecure";
 import useAxiosPublic from "../Hooks/useAxiosPublic";
 import useAuth from "../Hooks/useAuth";

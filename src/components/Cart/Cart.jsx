@@ -1,7 +1,6 @@
 import { Helmet } from "react-helmet";
 import Loading from "../../Loading/Loading";
-import SingleCart from "./SingleCart";
-import Swal from "sweetalert2";
+import SingleCart from "./SingleCart"; 
 import useCart from "../Hooks/useCart";
 import { Link } from "react-router-dom";
 import toast, { Toaster } from "react-hot-toast";

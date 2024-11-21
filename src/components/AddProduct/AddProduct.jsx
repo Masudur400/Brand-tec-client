@@ -1,7 +1,6 @@
 import axios from "axios";
 import { Helmet } from "react-helmet";
-import useAxiosSecure from "../Hooks/useAxiosSecure";
-import Swal from "sweetalert2";
+import useAxiosSecure from "../Hooks/useAxiosSecure"; 
 import toast, { Toaster } from "react-hot-toast";
 
 
@@ -55,12 +54,7 @@ const AddProduct = () => {
 
             axiosSecure.post('/products', data)
                 .then(res => { 
-                    if (res.data.insertedId) {
-                        // Swal.fire({
-                        //     title: "Success!",
-                        //     text: "Product added successfully!",
-                        //     icon: "success"
-                        // }); 
+                    if (res.data.insertedId) { 
                         toast.success('Product added successfully!', {
                             duration: 1000,
                             position: 'top-center',
@@ -92,8 +86,7 @@ const AddProduct = () => {
                             <input type="text" name="productName" placeholder="Product Name" id="" className="border-2 border-base-300 bg-base-100 rounded-md w-full text-sm md:text-base px-4  py-1 mb-2" />
                         </div>
                         <div>
-                            <p className="font-semibold mb-2 max-sm:text-sm">Product Type</p>
-                            {/* <input type="text" name="productType" placeholder="Product Type" id="" className="border-2 rounded-md w-full text-sm md:text-base px-4 md:py-1 mb-2" /> */}
+                            <p className="font-semibold mb-2 max-sm:text-sm">Product Type</p> 
                             <select name="productType" id="" className="border-2 border-base-300 bg-base-100 rounded-md w-full text-sm md:text-base px-4  py-1 mb-2">
                                 <option disabled selected value="">Select One</option>
                                 <option value="Phone">Phone</option>

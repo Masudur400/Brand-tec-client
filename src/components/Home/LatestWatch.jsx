@@ -10,8 +10,7 @@ import { Link } from "react-router-dom";
 import { FaCartPlus, FaRegEye } from "react-icons/fa";
 import useAuth from "../Hooks/useAuth";
 import toast, { Toaster } from "react-hot-toast";
-import Loading from "../../Loading/Loading";
-import StarRatings from "react-star-ratings";
+import Loading from "../../Loading/Loading"; 
 
 
 const LatestMobile = () => {
@@ -138,21 +137,7 @@ const LatestMobile = () => {
                                             {watch?.productQuantity > 0 ? <span className='text-xs text-green-500 font-medium'>In Stock</span> : <span className='text-xs text-red-500 font-medium' >Stock Out</span>}
 
                                             <p className='text-xs font-medium'>{parseFloat((((watch?.oldPrice - watch?.newPrice) / watch?.oldPrice) * 100).toFixed(1))} % OFF</p>
-                                        </div>
-                                        {/* {
-                                            phone?.productReviews?.length > 0 &&
-                                            <div className="flex gap-2 items-center">
-                                                <StarRatings
-                                                    rating={5}
-                                                    starRatedColor="#ff8804"
-                                                    starDimension="15px"
-                                                    starSpacing="0px"
-                                                    numberOfStars={5}
-                                                    name='rating'
-                                                />
-                                                <p className="font-bold">({phone?.productReviews?.length})</p>
-                                            </div>
-                                        } */}
+                                        </div> 
                                         <p className='flex gap-1 md:gap-2 items-center'><span className='text-sm text-orange-500 font-medium'>{new Intl.NumberFormat('en-IN').format(watch?.newPrice)} Tk</span> <span className='text-xs line-through'>{new Intl.NumberFormat('en-IN').format(watch?.oldPrice)} Tk</span></p>
                                     </div>
                                 </div>

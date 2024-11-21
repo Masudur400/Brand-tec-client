@@ -1,9 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import useAxiosPublic from "../Hooks/useAxiosPublic";
 import Avatar from "react-avatar";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Pagination, Navigation } from "swiper/modules";
-import { Link } from "react-router-dom";
+import { Swiper, SwiperSlide } from "swiper/react"; 
 import StarRatings from "react-star-ratings";
 
 const PublicRatings = () => {

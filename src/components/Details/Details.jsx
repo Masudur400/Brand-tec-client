@@ -2,14 +2,11 @@ import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { Link, useParams } from "react-router-dom";
 import useAxiosSecure from "../Hooks/useAxiosSecure";
 import { Helmet } from "react-helmet";
-import Loading from "../../Loading/Loading";
-import SingleBrand from "./SingleBrand";
-import Marquee from "react-fast-marquee";
+import Loading from "../../Loading/Loading"; 
 import { useState } from "react";
 import { HiMinus } from "react-icons/hi";
 import useAuth from "../Hooks/useAuth";
-import { FiPlus } from "react-icons/fi";
-import Barcode from "react-barcode";
+import { FiPlus } from "react-icons/fi"; 
 import toast, { Toaster } from "react-hot-toast";
 import useAxiosPublic from "../Hooks/useAxiosPublic";
 import axios from "axios";
@@ -17,8 +14,7 @@ import { Rating, styled } from "@mui/material";
 import { CiImageOn } from "react-icons/ci";
 import SingleProductReview from "./SingleProductReview";
 import StarRatings from "react-star-ratings";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Pagination, Navigation } from "swiper/modules";
+import { Swiper, SwiperSlide } from "swiper/react"; 
 import { FaCartPlus, FaRegEye } from "react-icons/fa";
 
 
@@ -286,20 +282,7 @@ const Details = () => {
                         }
                     </div>
                 </div>
-            </div>
-
-
-            {/* <div>
-                <Barcode value={id} className='w-52'></Barcode>
-            </div> */}
-            {/* related product  */}
-            {/* <Marquee speed={30}>
-                <div className="flex gap-4 my-5 ml-4">
-                    {
-                        allBrand?.map(brand => <SingleBrand key={brand?._id} brand={brand}></SingleBrand>)
-                    }
-                </div>
-            </Marquee> */}
+            </div> 
 
 
             <div>
@@ -309,8 +292,7 @@ const Details = () => {
                             <div className="flex gap-2 items-center">
                                 <p className="w-3 h-10 bg-orange-500"></p>
                                 <h3 className="text-xl font-bold my-2">Related Products</h3>
-                            </div>
-                            {/* <Link to='/watch'><p className="text-sm font-medium underline hover:text-orange-500">See more</p></Link> */}
+                            </div> 
                         </div>
                         <style >{`.swiper-button-next,
                 .swiper-button-prev {
@@ -375,21 +357,7 @@ const Details = () => {
                                                     {brand?.productQuantity > 0 ? <span className='text-xs text-green-500 font-medium'>In Stock</span> : <span className='text-xs text-red-500 font-medium' >Stock Out</span>}
 
                                                     <p className='text-xs font-medium'>{parseFloat((((brand?.oldPrice - brand?.newPrice) / brand?.oldPrice) * 100).toFixed(1))} % OFF</p>
-                                                </div>
-                                                {/* {
-                                            phone?.productReviews?.length > 0 &&
-                                            <div className="flex gap-2 items-center">
-                                                <StarRatings
-                                                    rating={5}
-                                                    starRatedColor="#ff8804"
-                                                    starDimension="15px"
-                                                    starSpacing="0px"
-                                                    numberOfStars={5}
-                                                    name='rating'
-                                                />
-                                                <p className="font-bold">({phone?.productReviews?.length})</p>
-                                            </div>
-                                        } */}
+                                                </div> 
                                                 <p className='flex gap-1 md:gap-2 items-center'><span className='text-sm text-orange-500 font-medium'>{new Intl.NumberFormat('en-IN').format(brand?.newPrice)} Tk</span> <span className='text-xs line-through'>{new Intl.NumberFormat('en-IN').format(brand?.oldPrice)} Tk</span></p>
                                             </div>
                                         </div>

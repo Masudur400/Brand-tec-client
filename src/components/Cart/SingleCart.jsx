@@ -36,13 +36,7 @@ const SingleCart = ({ cart, refetch }) => {
                             toast.success('cart remove successful !', {
                                 duration: 1000,
                                 position: 'top-center',
-                            })
-                            // Swal.fire({
-                            //     position: "top-end",
-                            //     title: "cart successful !",
-                            //     showConfirmButton: false,
-                            //     timer: 1000
-                            // });
+                            }) 
                         }
                     })
             }

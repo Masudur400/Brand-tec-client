@@ -3,19 +3,19 @@ import useAuth from "../Hooks/useAuth";
 import useAxiosSecure from "../Hooks/useAxiosSecure";
 import { useQuery } from "@tanstack/react-query";
 import Loading from "../../Loading/Loading";
-import { useState, useRef } from "react";
+import { useState } from "react";
 import axios from "axios";
 import Swal from "sweetalert2";
 import { updateProfile } from "firebase/auth";
 import { RiEdit2Line } from "react-icons/ri";
-import Avatar from "react-avatar";
-import { Rating, Typography } from "@mui/material";
+import Avatar from "react-avatar"; 
 import { RxCross2 } from "react-icons/rx";
 import { IoCheckmarkSharp } from "react-icons/io5";
 import Orders from "./Orders/Orders";
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
 import MyCompletedOrders from "./MyCompletedOrders/MyCompletedOrders";
+import useAxiosPublic from "../Hooks/useAxiosPublic";
 
 
 
@@ -24,16 +24,17 @@ const imageHostingApi = `https://api.imgbb.com/1/upload?key=${imageHostingKey}`;
 
 const Profile = () => {
   const { user, loading } = useAuth();
-  const axiosSecure = useAxiosSecure();  
+  const axiosSecure = useAxiosSecure(); 
+  const axiosPublic = useAxiosPublic() 
   const [editInfo, setEditInfo] = useState(false)
   const [image, setImage] = useState(null);
   const [preview, setPreview] = useState(null); 
 
   const { data: users = {}, isLoading, refetch } = useQuery({
-    queryKey: ["users", user?.email, axiosSecure],
+    queryKey: ["users", user?.email, axiosPublic],
     enabled: !loading,
     queryFn: async () => {
-      const res = await axiosSecure.get(`/users/${user?.email}`);
+      const res = await axiosPublic.get(`/users/${user?.email}`);
       return res.data;
     },
   });
@@ -69,13 +70,8 @@ const Profile = () => {
         });
       }
 
-      const imageUrl = imageRes?.data?.data?.url;
-
-      // const data = {
-      //   name: name || user?.displayName,
-      //   image: imageUrl || user?.photoURL || '',
-      //   rating: value,
-      // };
+      const imageUrl = imageRes?.data?.data?.url; 
+       
 
       const data = {
         name: name,

@@ -1,14 +1,10 @@
-import { Swiper, SwiperSlide } from "swiper/react";
-// import "swiper/css";
-// import "swiper/css/navigation";
-// import "swiper/css/pagination";
+import { Swiper, SwiperSlide } from "swiper/react"; 
 import { Pagination, Navigation } from "swiper/modules";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { Link } from "react-router-dom";
 import { FaCartPlus, FaRegEye } from "react-icons/fa";
 import toast, { Toaster } from "react-hot-toast";
-import Loading from "../../Loading/Loading";
-import StarRatings from "react-star-ratings";
+import Loading from "../../Loading/Loading"; 
 import useAxiosSecure from "../Hooks/useAxiosSecure";
 import useAxiosPublic from "../Hooks/useAxiosPublic";
 import useAuth from "../Hooks/useAuth";
@@ -139,20 +135,7 @@ const LatestMobile = () => {
 
                                             <p className='text-xs font-medium'>{parseFloat((((laptop?.oldPrice - laptop?.newPrice) / laptop?.oldPrice) * 100).toFixed(1))} % OFF</p>
                                         </div>
-                                        {/* {
-                                            phone?.productReviews?.length > 0 &&
-                                            <div className="flex gap-2 items-center">
-                                                <StarRatings
-                                                    rating={5}
-                                                    starRatedColor="#ff8804"
-                                                    starDimension="15px"
-                                                    starSpacing="0px"
-                                                    numberOfStars={5}
-                                                    name='rating'
-                                                />
-                                                <p className="font-bold">({phone?.productReviews?.length})</p>
-                                            </div>
-                                        } */}
+                                        
                                         <p className='flex gap-1 md:gap-2 items-center'><span className='text-sm text-orange-500 font-medium'>{new Intl.NumberFormat('en-IN').format(laptop?.newPrice)} Tk</span> <span className='text-xs line-through'>{new Intl.NumberFormat('en-IN').format(laptop?.oldPrice)} Tk</span></p>
                                     </div>
                                 </div>

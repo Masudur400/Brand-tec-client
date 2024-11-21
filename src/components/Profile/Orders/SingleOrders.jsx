@@ -20,8 +20,7 @@ const SingleOrders = ({order}) => {
                 <p className='text-sm'><span className='font-medium'>Status: </span><span className="text-red-500">{status}</span></p>
                 <p className='text-sm'><span className='font-medium'>Total With Charge: </span>{modamount} Tk</p>
                 <p className='text-sm text-red-400'><span className='font-medium'></span>{transactionId}</p>
-                {/* <p className='text-sm'><span className='font-medium'>Charge: </span>{modshippingMethod} Tk</p> */}
-                {/* <p className='text-sm'><span className='font-medium'>Total: </span>{intotal} Tk</p> */}
+                
             </div>
 
             <div className="overflow-x-scroll w-full">

@@ -1,12 +1,10 @@
 import { Outlet } from "react-router-dom";
-import NavBar from "../NavBar/NavBar";
-import { useState } from "react";
+import NavBar from "../NavBar/NavBar"; 
 import DashboardNavBar from "../NavBar/DashboardNavBar";
 import DashboardSideBar from "../NavBar/DashboardSideBar";
 import Footer from "../Footer/Footer"; 
 import useAuth from "../Hooks/useAuth";
-import useAxiosPublic from "../Hooks/useAxiosPublic";
-import { useQuery } from "@tanstack/react-query";
+import useAxiosPublic from "../Hooks/useAxiosPublic"; 
 import useAdmin from "../Hooks/useAdmin";
 import useModerator from "../Hooks/useModerator";
 import Loading from "../../Loading/Loading";
@@ -14,20 +12,10 @@ import Loading from "../../Loading/Loading";
 
 const Root = () => {
 
-    const {user} = useAuth()
-    const axiosPublic = useAxiosPublic()
-    const [isAdmin, isAdminLoading] = useAdmin()
-    const [isModerator , isModeratorLoading] = useModerator()
     
-
-    //  const { data: users = {}, isLoading, refetch } = useQuery({
-    //     queryKey: ["users", user?.email, axiosPublic], 
-    //     queryFn: async () => {
-    //       const res = await axiosPublic.get(`/users/${user?.email}`);
-    //       return res.data;
-    //     },
-    //   });
-    //   const {role} = users;
+    const [isAdmin, isAdminLoading] = useAdmin()
+    const [isModerator , isModeratorLoading] = useModerator() 
+     
 
     if(isAdminLoading || isModeratorLoading){
         return <Loading></Loading>

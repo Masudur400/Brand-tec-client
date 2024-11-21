@@ -1,8 +1,7 @@
 import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom';
 import useAxiosSecure from '../Hooks/useAxiosSecure';
-import useAuth from '../Hooks/useAuth';
-import Loading from '../../Loading/Loading';
+import useAuth from '../Hooks/useAuth'; 
 import { FaCartPlus, FaRegEye } from 'react-icons/fa';
 import toast from 'react-hot-toast';
 import { useQuery, useQueryClient } from '@tanstack/react-query';
@@ -63,9 +62,7 @@ const SingleWatch = ({ watch, refetch }) => {
         }
     })
 
-    // if(loading){
-    //     return <Loading></Loading>
-    // }
+     
 
     return (
 

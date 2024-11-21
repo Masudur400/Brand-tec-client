@@ -8,7 +8,7 @@ const axiosSecure = axios.create({
 })
 
 const useAxiosSecure = () => {
-    const { logOut ,loading, setLoading} = useAuth()
+    const { logOut ,  setLoading} = useAuth()
     const navigate = useNavigate()
 
    useEffect(()=>{
