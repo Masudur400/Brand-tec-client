@@ -52,7 +52,7 @@ const AllProductTable = () => {
             setCurrentPage(currentPage - 1)
             window.scrollTo({
                 top: 0,
-                behavior: "smooth", // Smooth scroll animation
+                behavior: "smooth", 
             });
         }
     }
@@ -61,13 +61,11 @@ const AllProductTable = () => {
             setCurrentPage(currentPage + 1)
             window.scrollTo({
                 top: 0,
-                behavior: "smooth", // Smooth scroll animation
+                behavior: "smooth",  
             });
         }
     }
-
-
-    // const { _id, productName, productBrand, oldPrice, newPrice, productQuantity, productImage, productDetails, productType, productAddDate } = watch
+ 
 
     // const modOldPrice = new Intl.NumberFormat('en-IN').format(oldPrice);
     // const modNewPrice = new Intl.NumberFormat('en-IN').format(newPrice);
@@ -86,13 +84,7 @@ const AllProductTable = () => {
                 axiosSecure.delete(`/products/${data?._id}`)
                     .then(res => {
                         if (res.data.deletedCount > 0) {
-                            refetch()
-                            // Swal.fire({
-                            //     position: "top-end",
-                            //     title: "delete successful !",
-                            //     showConfirmButton: false,
-                            //     timer: 1000
-                            // });
+                            refetch() 
                             toast.success('delete successful !', {
                                 duration: 1000,
                                 position: 'top-center',
@@ -164,7 +156,7 @@ const AllProductTable = () => {
                                                 <p><span className="font-medium">Brand :</span> {data?.productBrand}</p>
                                                 <p className="md:text-sm text-xs">{data?.productDetails}</p>
                                             </td>
-                                            {/* <td className="md:text-sm text-xs">{data?.productDetails}</td> */}
+                                             
                                             <td className="flex justify-center items-center">
                                                 <div className="flex flex-col gap-2">
                                                     <Link to={`/updateProduct/${data?._id}`}><button className="w-fit md:px-2 px-1 py-1 text-center rounded-md border border-orange-400 text-orange-500 hover:shadow-lg font-bold text-[10px]">Update</button></Link>

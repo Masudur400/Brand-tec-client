@@ -27,9 +27,7 @@ const PaymentSuccess = () => {
     }
 
     return (
-        <div className="md:w-2/3 lg:w-1/3 mx-auto p-2 border border-base-300 shadow-md">
-            {/* <h3 className="text-lg font-medium text-center text-orange-500 my-5">Payment Successful</h3>
-            <p>Transaction : {tranId}</p>  */}
+        <div className="md:w-2/3 lg:w-1/3 mx-auto p-2 border border-base-300 shadow-md"> 
             <div
                 className="boxShadow p-2 flex items-center justify-center flex-col gap-[2px] rounded-xl mb-2">
                 <h3 className="text-lg font-medium text-center text-orange-500 my-5">Payment Successful</h3>

@@ -22,9 +22,7 @@ const Cart = () => {
             <Toaster></Toaster>
             <Helmet>
                 <title>MyCart</title>
-            </Helmet>
-            {/* <div className="px-4   mt-2 "> */}
-            {/* <h2 className="text text-xl md:text-2xl font-bold text-white text-center flex-1">My Cart</h2> */}
+            </Helmet> 
             <div className=" flex justify-end  text-sm">
                 {
                     carts.length ?
@@ -34,13 +32,7 @@ const Cart = () => {
                             toast.error('No product available in cart', {
                                 duration: 1000,
                                 position: 'top-center',
-                            })
-                            // Swal.fire({
-                            //     position: "top-end",
-                            //     title: "No product available in cart",
-                            //     showConfirmButton: false,
-                            //     timer: 1000
-                            // });
+                            }) 
                         }} className="w-fit px-2 py-1 text-center rounded-md border border-orange-400 text-orange-500 hover:shadow-lg font-medium">Pay: {modTotalPrice} tk</button>
                 }
             </div>

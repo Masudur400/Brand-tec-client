@@ -10,7 +10,7 @@ const SingleBrand = ({ brand }) => {
     return (
         <Link to={`/details/${_id}`} onClick={() => window.scrollTo({
             top: 0,
-            behavior: "smooth", // Smooth scroll animation
+            behavior: "smooth", 
         })} className='flex flex-col p-2 shadow-md rounded-md border border-base-300 group w-40'>
             <div>
                 <img src={productImage} alt="image" className='w-36 mx-auto group-hover:scale-105' />

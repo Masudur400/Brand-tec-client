@@ -41,17 +41,17 @@ const NavBar = () => {
     const routes = <>
         <li onClick={() => window.scrollTo({
             top: 0,
-            behavior: "smooth", // Smooth scroll animation
+            behavior: "smooth",  
         })}><NavLink to='/' onClick={closeMenu} className={({ isActive }) => isActive ? 'text-orange-500 underline' : 'hover:text-red-500'}>Home</NavLink></li>
 
         <li onClick={() => window.scrollTo({
             top: 0,
-            behavior: "smooth", // Smooth scroll animation
+            behavior: "smooth",  
         })}><NavLink to='/allPhoneWatchLaptop' onClick={closeMenu} className={({ isActive }) => isActive ? 'text-orange-500 underline' : 'hover:text-red-500'}>All Products</NavLink></li>
 
         <li onClick={() => window.scrollTo({
             top: 0,
-            behavior: "smooth", // Smooth scroll animation
+            behavior: "smooth",  
         })}><NavLink to='/contact' onClick={closeMenu} className={({ isActive }) => isActive ? 'text-orange-500 underline' : 'hover:text-red-500'}>Contact Us</NavLink></li>
          
     </>;
@@ -98,7 +98,7 @@ const NavBar = () => {
                                         <div className="flex gap-5 md:gap-10 justify-start items-center">
                                             <Link to="/cart" onClick={() => window.scrollTo({
                                                 top: 0,
-                                                behavior: "smooth", // Smooth scroll animation
+                                                behavior: "smooth",  
                                             })}>
                                                 <div className="relative">
                                                     <BsCart4 className="text-[1.8rem]" />
@@ -112,8 +112,7 @@ const NavBar = () => {
                                                 </div>
                                             </Link>
 
-                                            <div className="flex justify-center items-center border-black rounded-full mt-1">
-                                                {/* <img src={photo} alt="user image" onClick={() => setProfile(!profile)} /> */}
+                                            <div className="flex justify-center items-center border-black rounded-full mt-1"> 
                                                 <Avatar name={name?.charAt(0)} src={photo} alt='img' className="rounded-full" size="45" onClick={() => setProfile(!profile)}></Avatar>
                                             </div>
                                         </div>
@@ -123,7 +122,7 @@ const NavBar = () => {
                                                 <div className="divider"></div>
                                                 <Link to='/profile' onClick={() => window.scrollTo({
                                                     top: 0,
-                                                    behavior: "smooth", // Smooth scroll animation
+                                                    behavior: "smooth",  
                                                 })}> <li onClick={() => setProfile(!profile)} className="flex gap-1 items-center text-sm hover:bg-base-300 px-1  py-1 rounded-md"><span><PiUserCircleThin></PiUserCircleThin></span>Profile</li></Link>
                                                 <button onClick={() => logOut()} className="text-sm w-full flex gap-1 items-center text-red-400 hover:bg-base-300 px-1 py-1 rounded-md">LogOut <MdLogout></MdLogout></button>
                                             </div>
@@ -155,7 +154,7 @@ const NavBar = () => {
 
                 {/* Scrollable Content with Hidden Scrollbar */}
                 <ul className="overflow-y-scroll px-4 space-y-4 font-medium" style={{ maxHeight: 'calc(100vh - 64px)' }}>
-                    <style jsx>{`ul::-webkit-scrollbar { display: none; }`}</style>
+                    <style>{`ul::-webkit-scrollbar { display: none; }`}</style>
                     {routes}
                 </ul>
             </div>

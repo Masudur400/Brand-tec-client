@@ -143,21 +143,7 @@ const Profile = () => {
   }
 
   return (
-    <div>
-
-      {/* <div>
-        <Avatar name={name?.charAt(0)} src={'photo'} alt='img' className="rounded-full" size="60"></Avatar>
-      </div>
-      <div>
-        <Typography component="">Controlled</Typography>
-        <Rating
-          name=""
-          value={value}
-          onChange={(event, newValue) => {
-            setValue(newValue);
-          }}
-        />
-      </div> */}
+    <div> 
 
       <Helmet>
         <title>Profile</title>
@@ -168,8 +154,7 @@ const Profile = () => {
         <div className=" md:flex  items-center gap-10">
           <div className="flex justify-center items-center relative">
             {preview ? (
-              <div className="relative">
-                {/* <img src={preview} alt="Preview" className="rounded-md" /> */}
+              <div className="relative"> 
                 <Avatar name={name?.charAt(0)} src={preview} alt='img' className="rounded-full mx-auto border border-base-300" size="224"></Avatar>
                 <p
                   onClick={() => {
@@ -243,29 +228,24 @@ const Profile = () => {
                 </div>
               </div> :
               <form onSubmit={editUserInfo} className="space-y-2 p-3 relative">
-                <div className="flex items-center">
-                  {/* <span className="font-bold mr-2">Name : </span> */}
+                <div className="flex items-center"> 
                   <input type="text" name="name" defaultValue={name} placeholder="Name" className="border  border-base-300 px-3 py-1 rounded-md " />
                 </div>
                 {
                   phone ?
-                    <div className="flex items-center">
-                      {/* <span className="font-bold mr-2">phone : </span> */}
+                    <div className="flex items-center"> 
                       <input type="text" name="phone" defaultValue={phone} placeholder="Phone" className="border  border-base-300 px-3 py-1 rounded-md" />
                     </div> :
-                    <div className="flex items-center">
-                      {/* <span className="font-bold mr-2">phone : </span> */}
+                    <div className="flex items-center"> 
                       <input type="text" name="phone" placeholder="Phone" className="border  border-base-300 px-3 py-1 rounded-md" />
                     </div>
                 }
                 {
                   userLocation ?
-                    <div className="flex items-center">
-                      {/* <span className="font-bold mr-2">Location : </span> */}
+                    <div className="flex items-center"> 
                       <input type="text" name="location" defaultValue={userLocation} placeholder="Location" className="border  border-base-300 px-3 py-1 rounded-md" />
                     </div> :
-                    <div className="flex items-center">
-                      {/* <span className="font-bold mr-2">Location : </span> */}
+                    <div className="flex items-center"> 
                       <input type="text" name="location" placeholder="Location" className="border  border-base-300 px-3 py-1 rounded-md" />
                     </div>
                 }

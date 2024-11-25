@@ -1,6 +1,5 @@
 import { Helmet } from "react-helmet";
-import { FaRegEye, FaRegEyeSlash, FaXmark } from "react-icons/fa6";
-import { FcGoogle } from "react-icons/fc";
+import { FaRegEye, FaRegEyeSlash, FaXmark } from "react-icons/fa6"; 
 import { Link, useNavigate } from "react-router-dom";
 import useAuth from "../Hooks/useAuth";
 import useAxiosPublic from "../Hooks/useAxiosPublic";
@@ -119,14 +118,14 @@ const Login = () => {
                             :
                             <input disabled={loading} className="w-full px-4 py-1 md:py-2 text-center max-sm:text-sm text-lg rounded-md border border-orange-400 text-orange-500 hover:shadow-lg font-bold my-3" type="submit" value="Login" />
                     }
-                    {/* <input type="submit" value="LogIn" className="w-full px-4 py-2 rounded-md bg-orange-500 text-white font-bold hover:bg-orange-600" /> */}
+                     
                 </div>
             </form>
             <p className="my-3">Do not have an account <Link to='/loginRegister/register' className="text-red-500 font-bold">Please Register</Link></p>
             <div className="divider my-5"></div>
             <div className="mb-t flex justify-center items-center">
                  
-                    {/* <button  className=" p-3 border border-orange-400 rounded-xl font-bold"> <FcGoogle className="text-3xl"></FcGoogle></button> */}
+                     
 
                     <button onClick={handleGoogleLogin}
                         className="border border-[#e5eaf2] rounded-md py-2 px-4 flex items-center gap-[10px] text-[1rem] text-[#424242] hover:bg-gray-50 transition-all duration-200">

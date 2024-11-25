@@ -15,7 +15,7 @@ import { CiImageOn } from "react-icons/ci";
 import SingleProductReview from "./SingleProductReview";
 import StarRatings from "react-star-ratings";
 import { Swiper, SwiperSlide } from "swiper/react"; 
-import { FaCartPlus, FaRegEye } from "react-icons/fa";
+import { FaCartPlus } from "react-icons/fa";
 
 
 const imageHostingKey = import.meta.env.VITE_image_hosting_key;
@@ -327,14 +327,14 @@ const Details = () => {
 
                                 {
                                     allBrand.map(brand => <SwiperSlide key={brand._id}>
+                                        <Link to={`/details/${brand?._id}`} onClick={() => window.scrollTo({
+                                                        top: 0,
+                                                        behavior: "smooth",  
+                                                    })}>
                                         <div className="bg-base-100  border border-base-200 rounded-md p-2 min-h-72">
                                             <div className='relative'>
                                                 <img src={brand?.productImage} alt="img" className='w-40 mx-auto group-hover:scale-105' />
-                                                <div className='absolute top-2 right-2 flex gap-3 flex-col'>
-                                                    <Link to={`/details/${brand?._id}`} onClick={() => window.scrollTo({
-                                                        top: 0,
-                                                        behavior: "smooth", // Smooth scroll animation
-                                                    })}> <button title='view details' className="w-fit p-2 bg-base-200 text-center rounded-full border border-base-300 font-medium hover:text-orange-500"><FaRegEye /></button></Link>
+                                                <div className='absolute top-2 right-2 flex gap-3 flex-col'> 
                                                     {brand?.productQuantity > 0 ?
                                                         <div>
                                                             {
@@ -361,6 +361,7 @@ const Details = () => {
                                                 <p className='flex gap-1 md:gap-2 items-center'><span className='text-sm text-orange-500 font-medium'>{new Intl.NumberFormat('en-IN').format(brand?.newPrice)} Tk</span> <span className='text-xs line-through'>{new Intl.NumberFormat('en-IN').format(brand?.oldPrice)} Tk</span></p>
                                             </div>
                                         </div>
+                                        </Link>
                                     </SwiperSlide>)
                                 }
                             </Swiper>
@@ -378,8 +379,7 @@ const Details = () => {
                 <div>
                     <form onSubmit={handleReview} className="text-sm">
 
-                        <div className="">
-                            {/* <p className="font-medium mb-1">Review</p> */}
+                        <div className=""> 
                             <StyledRating
                                 required
                                 name="simple-controlled"
@@ -396,13 +396,11 @@ const Details = () => {
                         <div className="flex gap-4 my-2">
                             {
                                 !user &&
-                                <div>
-                                    {/* <p className="mb-1 font-medium">Name</p> */}
+                                <div> 
                                     <input type="text" name="name" placeholder="Your Name" required className="px-2 py-1 rounded-md border-2 border-base-200" />
                                 </div>
                             }
-                            <div>
-                                {/* <p className="mb-1 font-medium">Comment</p> */}
+                            <div> 
                                 <input type="text" name="comment" placeholder="Comment" required className="px-2 py-1 rounded-md border-2 border-base-200 " />
                             </div>
                         </div>

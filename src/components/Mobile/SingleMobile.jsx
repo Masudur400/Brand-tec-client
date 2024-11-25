@@ -62,20 +62,18 @@ const SingleMobile = ({ phone, refetch }) => {
             return res.data
         }
     })
-    // if (loading) {
-    //     return <Loading></Loading>
-    // }
+     
 
     return (
         // shadow-[0_0_25px_rgba(0,0,0,0.3)]
-        <div className='flex flex-col p-2 shadow-md rounded-md border border-base-300 group'>
+        <Link to={`/details/${_id}`} onClick={() => window.scrollTo({
+            top: 0,
+            behavior: "smooth",  
+        })}>
+        <div className='flex flex-col p-2 shadow-md rounded-md border border-base-300 group min-h-72'>
             <div className='relative'>
                 <img src={productImage} alt="img" className='w-40 mx-auto group-hover:scale-105' />
-                <div className='absolute top-2 right-1 flex gap-3 flex-col'>
-                    <Link to={`/details/${_id}`} onClick={() => window.scrollTo({
-                        top: 0,
-                        behavior: "smooth", // Smooth scroll animation
-                    })}> <button title='view details' className="w-fit p-2 bg-base-200 text-center rounded-full border border-base-300 font-medium hover:text-orange-500"><FaRegEye /></button></Link>
+                <div className='absolute top-2 right-1 flex gap-3 flex-col'> 
                     {productQuantity > 0 ?
                         <div>
                             {
@@ -91,7 +89,9 @@ const SingleMobile = ({ phone, refetch }) => {
                 </div>
             </div>
             <div className='space-y-1 my-3 flex-grow'>
-                <p className='text-xs font-bold'>{productName}</p>
+            <p className='text-xs font-medium'>{productName.split(' ').length > 5
+                        ?  productName.split(' ').slice(0, 5).join(' ') + '...'
+                        : productName}</p>
                 <div className='flex justify-between   items-center'>
                     {productQuantity > 0 ? <span className='text-xs text-green-500 font-medium'>In Stock</span> : <span className='text-xs text-red-500 font-medium' >Stock Out</span>}
 
@@ -112,13 +112,9 @@ const SingleMobile = ({ phone, refetch }) => {
                     </div>
                 }
                 <p className='flex gap-1 md:gap-2 items-center'><span className='text-sm text-orange-500 font-medium'>{modNewPrice} Tk</span> <span className='text-xs line-through'>{modOldPrice} Tk</span></p>
-            </div>
-            {/* <div className="divider my-1"></div>
-            <div className='flex justify-between items-center'>
-                <Link to={`/details/${_id}`}> <button className="w-fit px-2 py-1 text-center rounded-md border border-orange-400 text-orange-500 hover:shadow-lg font-medium mb-3 text-sm">Details</button></Link>
-                <button onClick={() => handleAddCart(phone)} className="w-fit md:px-2 px-1 py-1 text-center rounded-md border border-orange-400 text-orange-500 hover:shadow-lg font-medium text-sm mb-3">AddCart</button>
-            </div> */}
+            </div> 
         </div>
+        </Link>
 
     );
 };

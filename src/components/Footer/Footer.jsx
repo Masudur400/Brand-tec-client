@@ -117,8 +117,7 @@ const Footer = () => {
                             <p className="mb-1 font-medium">Name</p>
                             <input type="text" name="name" placeholder="Your Name" required className="px-2 py-1 rounded-md border-gray-100 border" />
                         </div>
-                        <div>
-                            {/* <p className="font-medium mb-1">Review</p> */}
+                        <div> 
                             <StyledRating
                                 required
                                 name="simple-controlled"
@@ -166,7 +165,7 @@ const Footer = () => {
                                         </div>
                                     </div>
                                     <button className="px-2 py-1 w-fit h-fit border-2 hover:shadow-md border-orange-500   rounded-md  mt-12 font-medium">
-                                        {/* <VscSend className="text-2xl" /> */}Send Rating
+                                         Send Rating
                                     </button>
                                 </div>
                             </div>

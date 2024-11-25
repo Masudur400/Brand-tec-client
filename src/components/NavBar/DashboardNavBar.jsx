@@ -95,14 +95,13 @@ const DashboardNavBar = () => {
                             <ul
                                 className="overflow-y-scroll p-4 space-y-6"
                                 style={{
-                                    maxHeight: 'calc(100vh - 64px)',
-                                    // scrollbarWidth: 'thin', /* For Firefox */
-                                    scrollbarWidth: 'none', /* For Firefox */
-                                    msOverflowStyle: 'none'  /* For Internet Explorer and Edge */
+                                    maxHeight: 'calc(100vh - 64px)', 
+                                    scrollbarWidth: 'none', 
+                                    msOverflowStyle: 'none'  
                                 }}
                             >
                                 {/* Hide Scrollbar for WebKit Browsers */}
-                                <style jsx>{` ul::-webkit-scrollbar { display: none; } `}</style>
+                                <style>{` ul::-webkit-scrollbar { display: none; } `}</style>
 
                                 {routes}
 
@@ -118,20 +117,17 @@ const DashboardNavBar = () => {
                         )}
                     </div>
 
-                    {/* Right Section */}
-                    {/* user image & button  */}
+                    
                     {
                         user ?
                             <div className="mr-2 lg:mr-6">
                                 <div className='relative'>
                                     <div className="avatar">
-                                        <div className="w-10 md:w-12 h-10 md:h-12 flex justify-center items-center border-black rounded-full">
-                                            {/* <img src={photo} alt="user image" onClick={() => setProfile(!profile)} /> */}
+                                        <div className="w-10 md:w-12 h-10 md:h-12 flex justify-center items-center border-black rounded-full"> 
                                             <Avatar name={name?.charAt(0)} src={photo} alt='img' className="rounded-full" size="45" onClick={() => setProfile(!profile)}></Avatar>
                                         </div>
                                     </div>
-                                    <ul className={`absolute space-y-5 ${profile ? 'bg-base-100  shadow-lg border md:min-w-32 px-3 py-2 z-[99]  rounded-md right-1 md:right-0' : 'hidden'}`}>
-                                        {/* <li onClick={() => setProfile(!profile)} className="absolute text-2xl  top-0 right-0"> <GoX className="border border-black rounded-full"></GoX></li> */}
+                                    <ul className={`absolute space-y-5 ${profile ? 'bg-base-100  shadow-lg border md:min-w-32 px-3 py-2 z-[99]  rounded-md right-1 md:right-0' : 'hidden'}`}> 
                                         <div className="space-y-2 py-4">
                                             <p className="text-sm font-medium">{name}</p>
                                             <div className="divider"></div>

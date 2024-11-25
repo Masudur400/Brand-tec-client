@@ -36,21 +36,7 @@ const SingleOrder = (order) => {
             queryClient.invalidateQueries('orders') 
             navigate('/orders') 
         } 
-    }
-
-    // useEffect(()=>{
-    //     if (status === 'Completed') {
-    //         setTimeout(async () => {
-    //             const res = await axiosSecure.post(`/completeOrders`, { orderId: _id, ...order });
-    //             // toast.success('Order moved to Completed Orders');
-    //             if (res.data.insertedId) { 
-    //                 queryClient.invalidateQueries('completeOrders')  
-    //             }
-    //         }, 1000); // 1 hour
-    //     }
-    // },[queryClient,axiosSecure, order, _id,status])
-
-     
+    } 
 
     
 

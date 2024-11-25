@@ -7,7 +7,7 @@ import useAxiosSecure from "../Hooks/useAxiosSecure";
 import useAxiosPublic from "../Hooks/useAxiosPublic";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { Link } from "react-router-dom";
-import { FaCartPlus, FaRegEye } from "react-icons/fa";
+import { FaCartPlus } from "react-icons/fa";
 import useAuth from "../Hooks/useAuth";
 import toast, { Toaster } from "react-hot-toast";
 import Loading from "../../Loading/Loading"; 
@@ -71,7 +71,7 @@ const LatestMobile = () => {
                     </div>
                     <Link to='/watch' onClick={() => window.scrollTo({
                         top: 0,
-                        behavior: "smooth", // Smooth scroll animation
+                        behavior: "smooth",  
                     })}><p className="text-sm font-medium underline hover:text-orange-500">See more</p></Link>
                 </div>
                 <style >{`.swiper-button-next,
@@ -107,14 +107,14 @@ const LatestMobile = () => {
 
                         {
                             watches.map(watch => <SwiperSlide key={watch._id}>
+                                <Link to={`/details/${watch?._id}`} onClick={() => window.scrollTo({
+                                                top: 0,
+                                                behavior: "smooth",  
+                                            })}>
                                 <div className="bg-base-100  border border-base-200 rounded-md p-2 min-h-72">
                                     <div className='relative'>
                                         <img src={watch?.productImage} alt="img" className='w-40 mx-auto group-hover:scale-105' />
-                                        <div className='absolute top-2 right-2 flex gap-3 flex-col'>
-                                            <Link to={`/details/${watch?._id}`} onClick={() => window.scrollTo({
-                                                top: 0,
-                                                behavior: "smooth", // Smooth scroll animation
-                                            })}> <button title='view details' className="w-fit p-2 bg-base-200 text-center rounded-full border border-base-300 font-medium hover:text-orange-500"><FaRegEye /></button></Link>
+                                        <div className='absolute top-2 right-2 flex gap-3 flex-col'> 
                                             {watch?.productQuantity > 0 ?
                                                 <div>
                                                     {
@@ -141,6 +141,7 @@ const LatestMobile = () => {
                                         <p className='flex gap-1 md:gap-2 items-center'><span className='text-sm text-orange-500 font-medium'>{new Intl.NumberFormat('en-IN').format(watch?.newPrice)} Tk</span> <span className='text-xs line-through'>{new Intl.NumberFormat('en-IN').format(watch?.oldPrice)} Tk</span></p>
                                     </div>
                                 </div>
+                                </Link>
                             </SwiperSlide>)
                         }
                     </Swiper>
