@@ -66,14 +66,19 @@ const SingleMobile = ({ phone, refetch }) => {
 
     return (
         // shadow-[0_0_25px_rgba(0,0,0,0.3)]
-        <Link to={`/details/${_id}`} onClick={() => window.scrollTo({
-            top: 0,
-            behavior: "smooth",  
-        })}>
-        <div className='flex flex-col p-2 shadow-md rounded-md border border-base-300 group min-h-72'>
+          
+        <div className='flex flex-col p-2 shadow-md rounded-md border border-base-300 group'>
             <div className='relative'>
                 <img src={productImage} alt="img" className='w-40 mx-auto group-hover:scale-105' />
                 <div className='absolute top-2 right-1 flex gap-3 flex-col'> 
+
+                <Link to={`/details/${_id}`} onClick={() => window.scrollTo({
+                            top: 0,
+                            behavior: "smooth",
+                        })}>
+                            <button title='details' className="w-fit p-2 bg-base-200 text-center rounded-full border border-base-300 font-medium hover:text-orange-500"><FaRegEye /></button>
+                        </Link>
+
                     {productQuantity > 0 ?
                         <div>
                             {
@@ -114,7 +119,7 @@ const SingleMobile = ({ phone, refetch }) => {
                 <p className='flex gap-1 md:gap-2 items-center'><span className='text-sm text-orange-500 font-medium'>{modNewPrice} Tk</span> <span className='text-xs line-through'>{modOldPrice} Tk</span></p>
             </div> 
         </div>
-        </Link>
+         
 
     );
 };

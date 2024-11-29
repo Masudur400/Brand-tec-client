@@ -2,7 +2,7 @@ import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom';
 import useAxiosSecure from '../Hooks/useAxiosSecure';
 import useAuth from '../Hooks/useAuth';
-import { FaCartPlus } from 'react-icons/fa';
+import { FaCartPlus, FaRegEye } from 'react-icons/fa';
 import toast from 'react-hot-toast';
 import { useQuery, useQueryClient } from '@tanstack/react-query';
 import useAxiosPublic from '../Hooks/useAxiosPublic';
@@ -65,15 +65,23 @@ const SingleWatch = ({ watch, refetch }) => {
 
 
     return (
-        <Link to={`/details/${_id}`} onClick={() => window.scrollTo({
-            top: 0,
-            behavior: "smooth", // Smooth scroll animation
-        })}>
-            <div className='flex flex-col p-2 shadow-md rounded-md border border-base-300 group min-h-[290px]'>
+        // <Link to={`/details/${_id}`} onClick={() => window.scrollTo({
+        //     top: 0,
+        //     behavior: "smooth", // Smooth scroll animation
+        // })}>
+            <div className='flex flex-col p-2 shadow-md rounded-md border border-base-300 group'>
 
                 <div className='relative'>
                     <img src={productImage} alt="img" className='w-40 mx-auto group-hover:scale-105' />
-                    <div className='absolute top-2 right-1 flex flex-col gap-3'> 
+                    <div className='absolute top-2 right-1 flex flex-col gap-3'>
+
+                        <Link to={`/details/${_id}`} onClick={() => window.scrollTo({
+                            top: 0,
+                            behavior: "smooth",
+                        })}>
+                            <button title='details' className="w-fit p-2 bg-base-200 text-center rounded-full border border-base-300 font-medium hover:text-orange-500"><FaRegEye /></button>
+                        </Link>
+
                         {productQuantity > 0 ?
                             <div>
                                 {
@@ -115,9 +123,9 @@ const SingleWatch = ({ watch, refetch }) => {
                         </div>
                     }
                     <p className='flex gap-1 md:gap-2 items-center'><span className='text-sm text-orange-500 font-medium'>{modNewPrice} Tk</span> <span className='text-xs line-through'>{modOldPrice} Tk</span></p>
-                </div> 
+                </div>
             </div>
-        </Link>
+        // </Link>
 
     );
 };

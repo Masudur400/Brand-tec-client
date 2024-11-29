@@ -2,7 +2,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination, Navigation } from "swiper/modules";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { Link } from "react-router-dom";
-import { FaCartPlus } from "react-icons/fa";
+import { FaCartPlus, FaRegEye } from "react-icons/fa";
 import toast, { Toaster } from "react-hot-toast";
 import Loading from "../../Loading/Loading"; 
 import useAxiosSecure from "../Hooks/useAxiosSecure";
@@ -104,14 +104,19 @@ const LatestMobile = () => {
 
                         {
                             laptops.map(laptop => <SwiperSlide key={laptop._id}>
-                                <Link to={`/details/${laptop?._id}`} onClick={() => window.scrollTo({
-                                                top: 0,
-                                                behavior: "smooth",  
-                                            })}>
+                                 
                                 <div className="bg-base-100  border border-base-200 rounded-md p-2 min-h-72">
                                     <div className='relative'>
                                         <img src={laptop?.productImage} alt="img" className='w-40 mx-auto' />
                                         <div className='absolute top-2 right-2 flex gap-3 flex-col'> 
+
+                                        <Link to={`/details/${laptop?._id}`} onClick={() => window.scrollTo({
+                                                top: 0,
+                                                behavior: "smooth",
+                                            })}>
+                                                <button title='details' className="w-fit p-2 bg-base-200 text-center rounded-full border border-base-300 font-medium hover:text-orange-500"><FaRegEye /></button>
+                                            </Link>
+
                                             {laptop?.productQuantity > 0 ?
                                                 <div>
                                                     {
@@ -139,7 +144,7 @@ const LatestMobile = () => {
                                         <p className='flex gap-1 md:gap-2 items-center'><span className='text-sm text-orange-500 font-medium'>{new Intl.NumberFormat('en-IN').format(laptop?.newPrice)} Tk</span> <span className='text-xs line-through'>{new Intl.NumberFormat('en-IN').format(laptop?.oldPrice)} Tk</span></p>
                                     </div>
                                 </div>
-                                </Link>
+                                 
                             </SwiperSlide>)
                         }
                     </Swiper>
